@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Dynamics CRM]">
+  <test thread-count="5" name="Test(failed)">
+    <classes>
+      <class name="testcases.Member.TestCase_5475">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="beforeMethod"/>
+          <include name="createMemberTP"/>
+          <include name="beforeSuite"/>
+          <include name="afterSuite"/>
+          <include name="setData"/>
+          <include name="startLogin"/>
+          <include name="beforeClass"/>
+        </methods>
+      </class> <!-- testcases.Member.TestCase_5475 -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Dynamics CRM] -->
