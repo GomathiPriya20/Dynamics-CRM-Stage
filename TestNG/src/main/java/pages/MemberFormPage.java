@@ -1,17 +1,18 @@
 package pages;
 
 import java.awt.AWTException;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
-import hooks.TestNgHooks;
+import driver.Driver;
+import services.WebDriverServiceImpl;
+import utils.DataInputProvider;
+
 
 //this code start account information fields
-public class MemberFormPage extends TestNgHooks {
+public class MemberFormPage extends WebDriverServiceImpl {
 
 	public MemberFormPage typeAccountName(String AccountName) {
 		//click(((getDriver().findElement(By.id("name_d")))));
@@ -318,13 +319,19 @@ public MemberFormPage selectBKfieldNo() throws InterruptedException {
 
 	}
   
-  
-	
+  	
 	public MemberFormPage crmNumberIsDisplayed() {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
-		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
 		getText(((getDriver().findElement(By.id("CRM Account #_label")))));
+		String sCRMNumber = getText(((getDriver().findElement(By.id("CRM Account #_label")))));;
+		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
+		try {
+			DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		return this;
 	}
 	
@@ -829,6 +836,14 @@ public MemberFormPage clickSystem() throws InterruptedException{
 	click(((getDriver().findElement(By.id("tab_5_header_h2")))));
 	Thread.sleep(3000);
 //	selectDropDownUsingVisibleText(((getDriver().findElement(By.id("customertypecode_i")))),ChangeAccountType1);
+	return this;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public MemberFormPage CAMSFlag() {
+	//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+	JavascriptExecutor js = (JavascriptExecutor)getDriver();
+	js.executeScript("return document.getElementById('ix_fbomanualoverride_cl').innerHTML").toString();
+	getText(((getDriver().findElement(By.id("ix_fbomanualoverride_cl")))));
 	return this;
 }
 

@@ -1,18 +1,15 @@
 package services;
 
-import design.WebDriverService;
 import events.WebDriverEvents;
 
+import static org.testng.Assert.fail;
+
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import org.apache.poi.ss.usermodel.DataFormatter;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
@@ -22,17 +19,57 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NoSuchFrameException;
 import org.openqa.selenium.NoSuchWindowException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.OutputType;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.MediaEntityBuilder;
+import com.aventstack.extentreports.MediaEntityModelProvider;
+import com.aventstack.extentreports.Status;
+import base.WebDriverService;
+import driver.Driver;
+
+
+
 
 public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverService{
 
-
-	public WebElement locateElement(String locator, String locValue) {
-
+	private ExtentTest reporter;
+	public static String screenshotPath;
+	static MediaEntityModelProvider img;
+	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	public ExtentTest setReport()
+	{
+		this.reporter = Driver.test;
+		return reporter;
+	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	public static String getScreenshot() throws IOException
+	{
+		TakesScreenshot ts = (TakesScreenshot)getDriver();
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        screenshotPath = System.getProperty("user.dir") +"/Screenshots/"+java.time.LocalDate.now()+"/"+System.currentTimeMillis()+".png";
+        File destination = new File(screenshotPath);
+        FileUtils.copyFile(source, destination);  
+        return screenshotPath;
+	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	public static MediaEntityModelProvider screenshotCapture() 
+	{
+		try {
+			img= MediaEntityBuilder.createScreenCaptureFromPath(getScreenshot()).build();	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return img;
+	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public WebElement locateElement(String locator, String locValue)  {
 		try {
 			switch (locator) {
 			case "id": return getDriver().findElement(By.id(locValue));
@@ -44,88 +81,105 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			}
 
 		} catch (NoSuchElementException e) {
-			reportStep("The element with locator "+locator+" not found.","FAIL");
+			setReport().log(Status.FAIL, "The element with locator "+locator+" not found ");
+			throw e;
+			
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while finding "+locator+" with the value "+locValue, "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while finding  "+locator+" with the value "+locValue);
+			throw e;
 		}
 		return null;
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public WebElement locateElement(String locValue) {
 		return getDriver().findElement(By.id(locValue));
 	}
-
-	public void type(WebElement ele, String data) {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	public void type(WebElement ele, String data)  {
 		try {
 			ele.clear();
 			ele.sendKeys(data);
-			
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
+			//setReport().log(Status.PASS, "The data: "+data+" successfully entered in : "+ele);
 		} catch (InvalidElementStateException e) {
-			reportStep("The data: "+data+" could not be entered in the field :"+ele,"FAIL");
+			setReport().log(Status.FAIL, "The data: "+data+" could not be entered in  : "+ele, screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
 			e.printStackTrace();
-			reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+" in "+ele, screenshotCapture());	
+			throw e;
 		}
 	}
 	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	
-	public void typeAndChoose(WebElement ele, String data) {
+	public void typeAndChoose(WebElement ele, String data)  {
 		try {
 			ele.clear();
 			ele.sendKeys(data, Keys.TAB);
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
+			setReport().log(Status.PASS, "The data: "+data+" entered successfully in  :"+ele,screenshotCapture());
 		} catch (InvalidElementStateException e) {
-			reportStep("The data: "+data+" could not be entered in the field :"+ele,"FAIL");
+			setReport().log(Status.FAIL, "The data: "+data+" could not be entered in the field :"+ele,screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+" in the field :"+ele,screenshotCapture());
+			throw e;
 		}
 	}
-
-	public void clickAndChoose(WebElement ele, String data) {
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	public void clickAndChoose(WebElement ele, String data)  {
 		try {
 			ele.clear();
 			ele.sendKeys(data, Keys.valueOf(data));
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
+			setReport().log(Status.PASS, "The data: "+data+"entered successfully in the field :"+ele,screenshotCapture());
 		} catch (InvalidElementStateException e) {
-			reportStep("The data: "+data+" could not be entered in the field :"+ele,"FAIL");
+			setReport().log(Status.FAIL, "The data: "+data+"could not be entered in the field :"+ele,screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+"in the field :"+ele);
+			throw e;
 		}
 	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	
 	public void typeAndEnter(WebElement ele, String data) {
 		try {
 			ele.clear();
 			ele.sendKeys(data, Keys.ENTER);
-			reportStep("The data: "+data+" entered successfully in the field :"+ele, "PASS");
+			setReport().log(Status.PASS, "The data: "+data+" entered successfully in the field :"+ele,screenshotCapture());
 		} catch (InvalidElementStateException e) {
-			reportStep("The data: "+data+" could not be entered in the field :"+ele,"FAIL");
+			setReport().log(Status.FAIL, "The data: "+data+"could not be entered in the field :"+ele,screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
 			e.printStackTrace();
-			reportStep("Unknown exception occured while entering "+data+" in the field :"+ele, "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+"in the field :"+ele,screenshotCapture());
+			throw e;
 		}
 	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public void click(WebElement ele) {
+	public void click(WebElement ele)  {
 		String text = "";
 		try {
 			WebDriverWait wait = new WebDriverWait(getDriver(), 15);
 			wait.until(ExpectedConditions.elementToBeClickable(ele));			
 			text = ele.getText();
 			ele.click();
-			reportStep("The element "+text+" is clicked", "PASS");
-
+			setReport().log(Status.PASS, text+" is clicked",screenshotCapture());
+			System.out.println("Text in click method 1 "+text);
 		} catch (InvalidElementStateException e) {
 			e.printStackTrace();
-			reportStep("The element: "+text+" could not be clicked", "FAIL");			
+			setReport().log(Status.FAIL,text+" could not be clicked", screenshotCapture());	
 		} catch (WebDriverException e) {
 			e.printStackTrace();
-			reportStep("Unknown exception occured while clicking in the field :" + text, "FAIL");			
+			setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+text,screenshotCapture());		
 		} 
-	}
-
-
 		
+	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
+	
 	public void clickWithNoSnap(WebElement ele) {
 		String text = "";
 		try {
@@ -133,283 +187,335 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			wait.until(ExpectedConditions.elementToBeClickable(ele));	
 			text = ele.getText();
 			ele.click();			
-			reportStep("The element :"+text+"  is clicked.", "PASS",false);
+			setReport().log(Status.PASS, text+" is clicked",screenshotCapture());
 		} catch (InvalidElementStateException e) {
-			reportStep("The element: "+text+" could not be clicked", "FAIL",false);
+			setReport().log(Status.FAIL, text+" could not be clicked",screenshotCapture());
 			e.printStackTrace();
+			
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while clicking in the field :","FAIL",false);
+			setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+text,screenshotCapture());		
 			e.printStackTrace();
+			throw e;
 		} 
 	}
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public String getText(WebElement ele) {	
 		String bReturn = "";
 		try {
 			bReturn = ele.getText();
-			reportStep("The Text :"+bReturn+ " is displayed.", "PASS",false);
+			setReport().log(Status.PASS, bReturn+" is displayed",screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "FAIL");
+			setReport().log(Status.FAIL, ele+"could not be found",screenshotCapture());
+			throw e;
 		}
 		return bReturn;
 	}
 	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public String getTitle() {		
 		String bReturn = "";
 		try {
 			bReturn =  getDriver().getTitle();
-			reportStep("The Title :"+bReturn+"  is displayed.", "PASS",false);
+			setReport().log(Status.PASS, "The Title: "+bReturn+" is displayed",screenshotCapture());
+			
 		} catch (WebDriverException e) {
-			reportStep("Unknown Exception Occured While fetching Title", "FAIL");
+			setReport().log(Status.FAIL, "Unknown Exception Occured While fetching Title",screenshotCapture());
+			throw e;
 		} 
 		return bReturn;
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public String getAttribute(WebElement ele, String attribute) {		
 		String bReturn = "";
 		try {
 			bReturn=  ele.getAttribute(attribute);
-			reportStep("The Title :"+bReturn+"  is displayed.", "PASS",false);
+			setReport().log(Status.PASS, "The Title: "+bReturn+"is displayed",screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "FAIL");
+			setReport().log(Status.FAIL, ele+"could not be found",screenshotCapture());
+			throw e;
 		} 
 		return bReturn;
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void selectDropDownUsingVisibleText(WebElement ele, String value) {
 		try {
 			new Select(ele).selectByVisibleText(value);
-			reportStep("The dropdown is selected with text "+value,"PASS");
+			setReport().log(Status.PASS, ele+" is selected with text "+value,screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "FAIL");
+			setReport().log(Status.FAIL,  ele+" could not be found",screenshotCapture());
+			throw e;
 		}
 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void selectDropDownUsingIndex(WebElement ele, int index) {
 		try {
 			new Select(ele).selectByIndex(index);
-			
-			reportStep("The dropdown is selected with index "+index,"PASS");
+			setReport().log(Status.PASS, ele+" is selected with index "+index,screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "FAIL");
+			setReport().log(Status.FAIL, "The element: "+ele+"could not be found",screenshotCapture());
+			throw e;
 		} 
 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public boolean verifyExactTitle(String title) {
 		boolean bReturn =false;
 		try {
 			if(getTitle().equals(title)) {
-				reportStep("The title of the page matches with the value :"+title,"PASS");
+				setReport().log(Status.PASS, "The title of the page matches with the value : "+title,screenshotCapture());
 				bReturn= true;
 			}else {
-				reportStep("The title of the page:"+getDriver().getTitle()+" did not match with the value :"+title, "FAIL");
+				setReport().log(Status.FAIL, "The title of the page:"+getDriver().getTitle()+" did not match with the value :"+title,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the title", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the title",screenshotCapture());
+			throw e;
 		} 
 		return bReturn;
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public boolean verifyPartialTitle(String title) {
 		boolean bReturn =false;
 		try {
 			if(getTitle().contains(title)) {
-				reportStep("The title of the page matches with the value :"+title,"PASS");
+				setReport().log(Status.PASS, "The title of the page matches with the value : "+title,screenshotCapture());
 				bReturn= true;
 			}else {
-				reportStep("The title of the page:"+getDriver().getTitle()+" did not match with the value :"+title, "FAIL");
+				setReport().log(Status.FAIL, "The title of the page:"+getDriver().getTitle()+" did not match with the value :"+title,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the title", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the title",screenshotCapture());
+			throw e;
 		} 
 		return bReturn;		
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifyExactText(WebElement ele, String expectedText) {
 		try {
 			if(getText(ele).equals(expectedText)) {
-				reportStep("The text: "+getText(ele)+" matches with the value :"+expectedText,"PASS");
+				setReport().log(Status.PASS, "The text :"+getText(ele)+" matches with the value :"+expectedText,screenshotCapture());
 			}else {
-				reportStep("The text "+getText(ele)+" doesn't matches the actual "+expectedText,"FAIL");
+				setReport().log(Status.FAIL, "The text :"+getText(ele)+" did not match with the value :"+expectedText,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Text", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the Text",screenshotCapture());
+			throw e;
 		} 
 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifyPartialText(WebElement ele, String expectedText) {
 		try {
 			if(getText(ele).contains(expectedText)) {
-				reportStep("The expected text contains the actual "+expectedText,"PASS");
+				setReport().log(Status.PASS, "The expected text contains the actual "+expectedText,screenshotCapture());
 			}else {
-				reportStep("The expected text doesn't contain the actual "+expectedText,"FAIL");
+				setReport().log(Status.FAIL, "The expected text does not contain the actual "+expectedText,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Text", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the Text",screenshotCapture());
+			throw e;
 		} 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifyExactAttribute(WebElement ele, String attribute, String value) {
 		try {
 			if(getAttribute(ele, attribute).equals(value)) {
-				reportStep("The expected attribute :"+attribute+" value matches the actual "+value,"PASS");
+				setReport().log(Status.PASS, "The expected attribute : "+attribute+" value matches the actual : "+value,screenshotCapture());
 			}else {
-				reportStep("The expected attribute :"+attribute+" value does not matches the actual "+value,"FAIL");
+				setReport().log(Status.FAIL, "The expected attribute : "+attribute+" value does not matches the actual : "+value,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Attribute Text", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the attribute",screenshotCapture());
+			throw e;
 		} 
 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifyPartialAttribute(WebElement ele, String attribute, String value) {
 		try {
 			if(getAttribute(ele, attribute).contains(value)) {
-				reportStep("The expected attribute :"+attribute+" value contains the actual "+value,"PASS");
+				setReport().log(Status.PASS, "The expected attribute : "+attribute+" value contains the actual : "+value,screenshotCapture());
 			}else {
-				reportStep("The expected attribute :"+attribute+" value does not contains the actual "+value,"FAIL");
+				setReport().log(Status.FAIL, "The expected attribute : "+attribute+" value does not contains the actual : "+value,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("Unknown exception occured while verifying the Attribute Text", "FAIL");
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the attribute",screenshotCapture());
+			throw e;
 		}
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifySelected(WebElement ele) {
 		try {
 			if(ele.isSelected()) {
-				reportStep("The element "+ele+" is selected","PASS");
+				setReport().log(Status.PASS, ele+" is selected",screenshotCapture());
 			} else {
-				reportStep("The element "+ele+" is not selected","FAIL");
+				setReport().log(Status.FAIL, ele+" is not selected",screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException : \"+e.getMessage()",screenshotCapture());
+			throw e;
+			
 		}
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void verifyDisplayed(WebElement ele) {
 		try {
 			if(ele.isDisplayed()) {
-				reportStep("The element "+ele+" is visible","PASS");
+				setReport().log(Status.PASS, ele+" is visible",screenshotCapture());
 			} else {
-				reportStep("The element "+ele+" is not visible","FAIL");
+				setReport().log(Status.FAIL, ele+" is not visible",screenshotCapture());
 			}
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException : \"+e.getMessage()",screenshotCapture());
+			throw e;
 		} 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void switchToWindow(int index) {
 		try {
 			Set<String> allWindowHandles = getDriver().getWindowHandles();
-			List<String> allHandles = new ArrayList<>();
+			List<String> allHandles = new ArrayList<String>();
 			allHandles.addAll(allWindowHandles);
 			getDriver().switchTo().window(allHandles.get(index));
 		} catch (NoSuchWindowException e) {
-			reportStep("The driver could not move to the given window by index "+index,"PASS");
+			setReport().log(Status.FAIL, "The driver could not move to the given window by index "+index,screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+			throw e;
 		}
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void switchToFrame(WebElement ele) {
 		try {
 			getDriver().switchTo().frame(ele);
-			reportStep("switch In to the Frame "+ele,"PASS");
+			setReport().log(Status.PASS, "switch In to the Frame "+ele,screenshotCapture());
 		} catch (NoSuchFrameException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+			throw e;
 		} 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void switchToDefaultContent() {
 		try {
 			getDriver().switchTo().defaultContent();
-			reportStep("switch out to Default Content ","PASS");
+			setReport().log(Status.PASS, "switch out to Default Content ",screenshotCapture());
 		} catch (NoSuchFrameException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+			throw e;
 		} 
+		
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void acceptAlert() {
 		String text = "";		
 		try {
 			Alert alert = getDriver().switchTo().alert();
 			text = alert.getText();
 			alert.accept();
-			reportStep("The alert "+text+" is accepted.","PASS");
+			setReport().log(Status.PASS, "The alert "+ text+" is accepted",screenshotCapture());	
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","FAIL");
+			setReport().log(Status.PASS, "There is no alert present",screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException "+e.getMessage(),screenshotCapture());
+			throw e;
 		}  
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void dismissAlert() {
 		String text = "";		
 		try {
 			Alert alert = getDriver().switchTo().alert();
 			text = alert.getText();
 			alert.dismiss();
-			reportStep("The alert "+text+" is dismissed.","PASS");
+			setReport().log(Status.PASS, "The alert "+ text+" is dismissed",screenshotCapture());
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","FAIL");
+			setReport().log(Status.PASS, "There is no alert present",screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException  "+e.getMessage(),screenshotCapture());
+			throw e;
 		} 
 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public String getAlertText() {
 		String text = "";		
 		try {
 			Alert alert = getDriver().switchTo().alert();
 			text = alert.getText();
 		} catch (NoAlertPresentException e) {
-			reportStep("There is no alert present.","FAIL");
+			setReport().log(Status.FAIL, "There is no alert present",screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
-			reportStep("WebDriverException : "+e.getMessage(), "FAIL");
+			setReport().log(Status.FAIL, "WebDriverException "+e.getMessage(),screenshotCapture());
+			throw e;
 		} 
 		return text;
 	}
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void closeActiveBrowser() {
 		try {
 			getDriver().close();
-			reportStep("The browser is closed","PASS", false);
+			setReport().log(Status.PASS, "The browser is closed",screenshotCapture());
 		} catch (Exception e) {
-			reportStep("The browser could not be closed","FAIL", false);
+			setReport().log(Status.FAIL, "The browser could not be closed",screenshotCapture());
+			throw e;
 		}
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void closeAllBrowsers() {
 		try {
 			getDriver().quit();
-			reportStep("The opened browsers are closed","PASS", false);
+			setReport().log(Status.PASS, "The opened browsers are closed");
 		} catch (Exception e) {
-			reportStep("Unexpected error occured in Browser","FAIL", false);
+			setReport().log(Status.FAIL, "Unexpected error occured in Browser",screenshotCapture());
+			throw e;
 		}
 	}
 
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	public void selectDropDownUsingValue(WebElement ele, String value) {
 		try {
 			new Select(ele).selectByValue(value);
-			reportStep("The dropdown is selected with text "+value,"PASS");
+			setReport().log(Status.PASS, "The dropdown "+ ele  +" is selected with text : "+value,screenshotCapture());
 		} catch (WebDriverException e) {
-			reportStep("The element: "+ele+" could not be found.", "FAIL");
+			setReport().log(Status.FAIL, "The dropdown "+ele+ " could not be found",screenshotCapture());
+			throw e;
 		}
-
 	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public void scrollDown(WebElement ele) {
 		String text = "";
@@ -418,50 +524,25 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			WebDriverWait wait = new WebDriverWait(getDriver(), 10);
 			wait.until(ExpectedConditions.elementToBeClickable(ele));			
 			text = ele.getText();
-			ele.click();
-			reportStep("The element "+text+" is clicked", "PASS");			
+			ele.click();	
+			setReport().log(Status.PASS, text+" is clicked 3",screenshotCapture());
+			System.out.println("Text in click method"+text);
 		} catch (InvalidElementStateException e) {
-			reportStep("The element: "+text+" could not be clicked", "FAIL");			
+			setReport().log(Status.FAIL, text+ " could not be clicked",screenshotCapture());
+			throw e;
 		} catch (WebDriverException e) {
 			e.printStackTrace();
-			reportStep("Unknown exception occured while clicking in the field :" + text, "FAIL");			
+			setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field :"+text,screenshotCapture());
+			throw e;
 		} 
 	}
-
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 	@Override
 	public void waitForLoaderToDisapper() {
 		// TODO Auto-generated method stub
 	}
-
-	public void setLanguage(String lang) {
-		try {
-			synchronized (lang) {
-				language.load(new FileInputStream(new File("./src/test/resources/"+lang+".properties")));
-				tlProp.set(language);
-			}			
-		} catch (IOException e) {
-		}
-	}
-
-//  public void getTestIdData(String TestId) {
-//	  try {
-//	  String path = ".data/MasterData.xlsx";
-//	  XSSFWorkbook wb = new XSSFWorkbook(path);
-//	  XSSFSheet sheet = wb.getSheet("Sheet1");
-//	  DataFormatter formatter = new DataFormatter();
-//	   value = formatter.formatCellValue(sheet.getRow(1).getCell(1));
-//	  System.out.println(value);
-//	      if(value.equals(TestId))
-//	      { 
-//	    	  reportStep("The element "+TestId+" is visible","PASS");
-//			} else {
-//				reportStep("The element "+TestId+" is not visible","FAIL");
-//			}
-//	      
-//                  }
-//	  catch(IOException e) {
-//  }
-//	
-//  }
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 }
 

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
 <suite name="Suite">
-  <test thread-count="5" name="Test">
+	<listeners>
+        <listener class-name="events.TestAnnotation"/>
+    </listeners>
+    
+  <test thread-count="5" name="Results">
     <classes>
-      <class name="testcases.Member.TestCase_5475"/>
-       <class name="testcases.Member.TestCase_5486"/>
-      <class name="testcases.Member.TestCase_5828"/>
-      <class name="testcases.Member.TestCase_5476"/>
-      <class name="testcases.Member.TestCase_1152"/> 
-      <class name="testcases.Member.TestCase_1241"/>
+   		 <class name="driver.Driver"/>   
     </classes>
-  </test> <!-- Test -->
+  </test> <!-- Test --> 
 </suite> <!-- Suite -->
+

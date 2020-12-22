@@ -2,18 +2,17 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import services.WebDriverServiceImpl;
 
-import hooks.TestNgHooks;
+public class SupplierFormPage extends WebDriverServiceImpl {
 
-public class SupplierFormPage extends TestNgHooks {
-
-	public SupplierFormPage defaultAccountStatus() {
-		verifyExactText((getDriver().findElement(By.id("Account Status_label"))),"Active");
+	public SupplierFormPage defaultAccountStatus(String defaultAccountStatus) {
+		verifyExactText((getDriver().findElement(By.id("Account Status_label"))),defaultAccountStatus);
 		return this;
 	}
 
-	public SupplierFormPage defaultAccountType() {
-		verifyExactText((getDriver().findElement(By.id("Account Type_label"))),"Supplier");
+	public SupplierFormPage defaultAccountType(String defaultAccountType) {
+		verifyExactText((getDriver().findElement(By.id("Account Type_label"))),defaultAccountType);
 		return this;
 	}
 
@@ -24,23 +23,23 @@ public class SupplierFormPage extends TestNgHooks {
 		return this;
 	}
 
-	public SupplierFormPage typeAccountName() {
+	public SupplierFormPage typeAccountName(String accountName) {
 		click(((getDriver().findElement(By.id("name_c")))));
-		type(((getDriver().findElement(By.id("name_i")))),"Faridhah Supplier TP");
+		type(((getDriver().findElement(By.id("name_i")))),accountName);
 		return this;
 	}
 
-	public SupplierFormPage pickPremierStartDate() {
+	public SupplierFormPage pickPremierStartDate(String premierStartDate) {
 		click(((getDriver().findElement(By.id("ix_premiermemberstartdate_d")))));
-		type(((getDriver().findElement(By.id("ix_premiermemberstartdate_iDateInput")))),"07/11/2020");
+		type(((getDriver().findElement(By.id("ix_premiermemberstartdate_iDateInput")))),premierStartDate);
 		return this;
 	}
 
-	public SupplierFormPage selectBusinessClassification() {
+	public SupplierFormPage selectBusinessClassification(String businessClassification) throws InterruptedException {
 		scrollDown(((getDriver().findElement(By.id("ix_businessclassification_cl")))));
 		click(((getDriver().findElement(By.id("ix_businessclassification_cl")))));
-		click(((getDriver().findElement(By.id("ix_businessclassification_lookupSearch")))));
-		click(((getDriver().findElement(By.xpath("//span[text()='Service Agreement']")))));
+		typeAndChoose(((getDriver().findElement(By.id("ix_businessclassification_ledit")))),businessClassification);
+		Thread.sleep(3000);
 		return this;
 	}
 
@@ -53,10 +52,21 @@ public class SupplierFormPage extends TestNgHooks {
 	}
 
 	public SupplierFormPage crmNumberIsDisplayed() {
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
 		getText(((getDriver().findElement(By.id("CRM Account #_label")))));
+		return this;
+	}
+	
+	
+	public SupplierFormPage entityCodeIsDisplayed() throws InterruptedException {
+		//switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		//switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		Thread.sleep(4000);
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
+		getText(((getDriver().findElement(By.id("Entity Code_label")))));
 		return this;
 	}
 
@@ -67,24 +77,35 @@ public class SupplierFormPage extends TestNgHooks {
 	}
 
 
-	public SupplierFormPage pickTPRD() {
+	public SupplierFormPage pickTPRD(String selectTPRelationDate) {
 		scrollDown(getDriver().findElement(By.id("ix_topparentrelationdate")));
-		click(getDriver().findElement(By.id("ix_topparentrelationdate")));
-		click(getDriver().findElement(By.id("ix_topparentrelationdate_iimg")));
-		click(getDriver().findElement(By.id("tdToday")));	
+		click(((getDriver().findElement(By.id("ix_topparentrelationdate")))));
+		type(((getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")))),selectTPRelationDate);
 		return this;
 	}
 
-	public SupplierFormPage typeStreet1() {
+	public SupplierFormPage typeStreet1(String street1) {
+		scrollDown(((getDriver().findElement(By.id("address1_line1")))));
 		click((getDriver().findElement(By.id("address1_line1"))));
-		type((getDriver().findElement(By.id("address1_line1_i"))), "253 33rd St");
+		type((getDriver().findElement(By.id("address1_line1_i"))), street1);
 		return this;
 	}
 
-	public SupplierFormPage typeZipCode() {
+	public SupplierFormPage typeZipCode(String zipCode) {
 		click((getDriver().findElement(By.id("address1_postalcode"))));
-		type((getDriver().findElement(By.id("address1_postalcode_i"))), "11010");
+		type((getDriver().findElement(By.id("address1_postalcode_i"))), zipCode);
 		return this;
 
 	}
+	
+	public SupplierFormPage recordStatusPublished(String recordStatusPublished) throws InterruptedException {
+		Thread.sleep(3000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(((getDriver().findElement(By.id("ix_recordstatus")))));
+		click(((getDriver().findElement(By.id("ix_recordstatus_i")))));
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished);
+		Thread.sleep(2000);
+		return this;
+}
+	
 }

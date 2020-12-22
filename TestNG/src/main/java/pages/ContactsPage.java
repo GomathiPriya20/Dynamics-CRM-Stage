@@ -1,10 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import services.WebDriverServiceImpl;
 
-import hooks.TestNgHooks;
-
-public class ContactsPage extends TestNgHooks{
+public class ContactsPage extends WebDriverServiceImpl{
 	
 	public ContactsPage clickNewOnContactsPage() {
 		click(getDriver().findElement(By.xpath("//span[@command='contact|NoRelationship|HomePageGrid|Mscrm.NewRecordFromGrid']")));

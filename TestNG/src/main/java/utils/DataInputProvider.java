@@ -1,175 +1,157 @@
 package utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.sql.Driver;
-import java.sql.DriverAction;
-import java.util.HashMap;
-import java.util.Map;
-
-
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.http.conn.ssl.BrowserCompatHostnameVerifier;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.util.CellAddress;
+import java.io.FileOutputStream;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFTableColumn;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.apache.poi.xssf.usermodel.helpers.XSSFColumnShifter;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.remote.BrowserType;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
 
-import pages.LoginPage;
+import driver.Driver;
 
+public class DataInputProvider extends Driver {
 
-  
-public class DataInputProvider 
-   {
-         
-	public static Object[][] getSheet(String dataSheetName) throws IOException {
-	
-		Object[][] data = null ;
-		try {
-			String text = "./data/"+dataSheetName+".xlsx";
-			System.out.println(text);
-			FileInputStream fis = new FileInputStream("./data/"+dataSheetName+".xlsx");
-			XSSFWorkbook workbook = new XSSFWorkbook(fis);
-			XSSFSheet sheet = workbook.getSheetAt(0);	
-
-			// get the number of rows
-			int rowCount = sheet.getLastRowNum();
-
-		    //   int rowCount = 3;  //sel only this
-			// get the number of columns
-			int columnCount = sheet.getRow(0).getLastCellNum();
-			
-			data = new String[rowCount][columnCount];
-
-			// loop through the rows 
-			
-			for(int i=1; i <rowCount+1; i++)
-			
-			{
-				try {
-					XSSFRow row = sheet.getRow(i);						   
-				   
-				
-				//f((row.getCell(0).getStringCellValue()).equals(Testcasename.contentEquals(TestId))) {
-					for(int j=0; j<columnCount; j++) {
-					 // loop through the columns
-						try {
-							String cellValue = "";
-							try{
-								cellValue = row.getCell(j).getStringCellValue();
-							}catch(NullPointerException e){
-
-							}
-							
- 						data[i-1][j]  = cellValue; // add to the data array
-						} 
-					catch (Exception e) {
-							e.printStackTrace();
-						}				
-					}
-						
-					
-				}					
-					
-				 catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-			fis.close();
-			workbook.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return data;         
-
-		
-		}
+       private static XSSFSheet ExcelWSheet;
+       private static XSSFWorkbook ExcelWBook;
+       private static XSSFCell Cell;
+       private static XSSFRow Row;
+       public static int iTestCaseRowNum;
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ //This method is to set the File path and to open the Excel file, Pass Excel Path and Sheetname as Arguments to this method
+ public static void setExcelFile(String Path,String SheetName) throws Exception
+ {
+	  try
+	  {
+	   // Open the Excel file
+	   FileInputStream ExcelFile = new FileInputStream(Path);
+	   // Access the required test data sheet
+	   ExcelWBook = new XSSFWorkbook(ExcelFile);
+	   ExcelWSheet = ExcelWBook.getSheet(SheetName);
+	   
+	   } 
+	  catch (Exception e)
+	  {
+	       throw (e);
+	   }
    }
-//ren	
-//	public static void setMapData(Object TestId) throws IOException 
-//	{			  
-//	  
-//		String path = "E:\\skm\\Dynamics Crm Updated\\data\\MasterData.xlsx";
-//	//	String path = "user.dir" + "\\Dynamics Crm Updated\\data\\MasterData.xlsx";
-//		FileInputStream fis = new FileInputStream(path);
-//		Workbook workbook = new XSSFWorkbook(fis);
-//		Sheet sheet1 =  workbook.getSheetAt(0);
-//		 
-//		int totalNoOfRows = sheet1.getLastRowNum() - sheet1.getFirstRowNum();
-//        Row headerrow = sheet1.getRow(0);
-//        HashMap<String, String> map = new HashMap<String, String>();
-//        for (int row = 1; row < totalNoOfRows; row++) {
-//            Row row1 = sheet1.getRow(row);
-//            if ((row1.getCell(0).getStringCellValue()).equals(TestId)) {
-//                for (int col = 1; col < row1.getLastCellNum(); col++) {
-//                    map.put(headerrow.getCell(col).getStringCellValue(), row1.getCell(col).getStringCellValue());
-//                }
-//            }
-          //  System.out.println(map);// TODO Auto-generated method stub
-     //   }
-	
-		
-		
-	
-		
-		
-		
-		
-//		int lastRow = sheet1.getLastRowNum();
-//		
-//		Map<String, Map<String, String>> excelFileMap = new HashMap<String, Map<String,String>>();
-//		Map<String, String> dataMap = new HashMap<String, String>();
-//
-//		//Looping over entire row
-//
-//		for(int i=0; i<=lastRow; i++){
-//		Row row = sheet1.getRow(i);
-//
-//		//1st Cell as Value
-//		Cell valueCell = row.getCell(1);
-//
-//		//0th Cell as Key
-//		Cell keyCell = row.getCell(0);
-//
-//		String value = valueCell.getStringCellValue().trim();
-//		String key = keyCell.getStringCellValue().trim();
-//
-//		//Putting key & value in dataMap
-//		dataMap.put(key, value);
-//
-//		//Putting dataMap to excelFileMap
-//		excelFileMap.put("dataSheetName", dataMap);
-//		}
-//
-//		//Returning excelFileMap
-//		return excelFileMap;
-//		}
-	//Method to retrieve value
-//	public static String getMapData(String key) throws IOException{
-//	Map<String, String> m = setMapData().get("dataSheetName");
-//	String value = m.get(key);
-//	return value;
-//           }
-//	public static Object[][] getSheet(String dataSheetName) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//This method is to read the test data from the Excel cell, in this we are passing parameters as Row num and Col num
+public static String getCellData(int RowNum, int ColNum) throws Exception{
+	try
+	{
+		Cell = ExcelWSheet.getRow(RowNum).getCell(ColNum);
+		String CellData = Cell.getStringCellValue();
+		return CellData;
+	}
+	catch (Exception e)
+	{
+	    return"";
+	}
+}
 
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public static int getRowNum(String sDataSheetName, String sTestCaseName) throws Exception
+{
+	ExcelWSheet = ExcelWBook.getSheet(sDataSheetName);
+	//Get total number of rows in the excel
+	int lastRowNum=ExcelWSheet.getLastRowNum();
 	
+	//Read all the row values and compare if it matches with TESTCASE NAME
+	for(int i=1;i<lastRowNum+1;i++)
+	{	
+		String sActualTestCaseName = ExcelWSheet.getRow(i).getCell(1).toString();
+		if (sActualTestCaseName.equalsIgnoreCase(sTestCaseName))
+		{
+			iTestCaseRowNum=i;
+			break;
+		}
+	}
+	return iTestCaseRowNum;
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public static String getCellData_ColName(int iRowNum, String sColName, String sDataSheetName) throws Exception
+{
+	try
+	{
+		int iColNum=0;
+		
+		ExcelWSheet = ExcelWBook.getSheet(sDataSheetName);
+		Row=ExcelWSheet.getRow(0);
+		int lastCellNum = Row.getLastCellNum();
+		for(int j=0;j<lastCellNum;j++)
+		{
+			if (Row.getCell(j).getStringCellValue().trim().equalsIgnoreCase(sColName.trim()))
+			{
+				iColNum=j;
+			}
+		}
+		
+		XSSFCell Cell = ExcelWSheet.getRow(iRowNum).getCell(iColNum);
+		String cellValue=Cell.toString();
+		return cellValue;
+	}
+	catch (Exception e)
+	{
+		e.printStackTrace();
+		return null;
+	}	
+} 
 
-	
-      
-           
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ //This method is to write in the Excel cell, Row number and Column name are the parameters
+public static void setCellData(String Result,  int RowNum, String sColName) throws Exception    {
+	try
+	{
+		int iColNum=0;
+		ExcelWSheet = ExcelWBook.getSheet(Driver.properties.getProperty("DriverSheetName"));
+		Row=ExcelWSheet.getRow(0);
+		int lastCellNum = Row.getLastCellNum();
+		for(int j=0;j<lastCellNum;j++)
+		{
+			if (Row.getCell(j).getStringCellValue().trim().equalsIgnoreCase(sColName.trim()))
+			{
+				iColNum=j;
+			}
+		}
+	     Row  = ExcelWSheet.getRow(RowNum);
+	     Cell = Row.getCell(iColNum);
+	     if (Cell == null)
+	     {
+	    	 Cell = Row.createCell(iColNum);
+	    	 Cell.setCellValue(Result);
+	     } 
+	     else
+	     {
+	    	 Cell.setCellValue(Result);
+	     }
+
+		// Constant variables Test Data path and Test Data file name
+		 FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir")+"/data/"+Driver.properties.getProperty("DataFile"));
+		 ExcelWBook.write(fileOut);
+         fileOut.flush();
+         fileOut.close();
+	}
+	catch(Exception e)
+	{
+       throw (e);
+	}
+}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+public static int getRowCount(String sheetName) throws Exception
+{
+	try
+	{
+		ExcelWSheet = ExcelWBook.getSheet(sheetName);
+		int rowCount = ExcelWSheet.getLastRowNum();
+		//Log.info("Total number of Row used return as &lt; " + RowCount + " &gt;."); 
+		return rowCount;
+	}
+	catch (Exception e)
+	{
+		System.out.println(e.getMessage());
+		throw (e);
+	}
+}
+
+}
+

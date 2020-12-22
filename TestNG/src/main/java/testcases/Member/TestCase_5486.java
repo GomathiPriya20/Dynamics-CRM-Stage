@@ -1,78 +1,69 @@
 package testcases.Member;
 
-//This class file for to verify GPO Member creation
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
-import events.TestNgListeners;
-import hooks.TestNgHooks;
 import pages.LoginPage;
+import utils.DataInputProvider;
 
-
-public class TestCase_5486 extends TestNgHooks{
-
-
-	@BeforeTest
-	public void setData() {
-		testCaseName = "TFS ID_ 5486 : Create a new Non-GPO Member";
-		testDescription = "Verify a new N0n-GPO Member can be created"; 
-		category = "Member";
-		authors = "Senthil, Faridhah";  
-		dataSheetName = "Create Non-Gpo Member_TP_5486";
-		//dataSheetName = "MasterData";
-		nodes = "Create Non-GPO Member";
-
-	}
-
-	@BeforeMethod()
-	public void startLogin() {		
-		
-	}
+public class TestCase_5486 {
 	
-	@Test(dataProvider ="fetchData", groups = "Member", enabled=true)
-	public void createMemberTP(String username,String password,String AccountName,String PremierStartDate,String BusinessClassification,
-			String ClassOfTrade,String ApplicationDate,String ParticipationType,String Recordstatus,
-			String AccountType,String Street1,String Country,String City,String County,
-			String ZipCode,String DirectParent,String DirectParentRelation,
-			String DirectParentRelationDate,String DPReason,String TopParentRelation,
-			String TopParentRelationDate,String TPReason,
-			String RecordStatusPublished1) throws InterruptedException  {
+	@Test()
+	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	
 		new LoginPage()
-		.typeUsername(username)
-  	    .typePassword(password)
+		.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
+  	    .typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName)) 
 		.clickSignIn()
 		.clickWorkplace()
 		.selectAccounts()
 		.clickNewOnAccountsPage()
 		.chooseMemberForm()
-		.typeAccountName(AccountName)
-		.pickPremierStartDate(PremierStartDate)
-		.selectBusinessClassification(BusinessClassification)
-		.selectClassOfTrade(ClassOfTrade)
+		
+		.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
+		
+		.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
+		
+		.selectBusinessClassification(DataInputProvider.getCellData_ColName(iRowNumber, "BusinessClassification", sDataSheetName))
+		
+		.selectClassOfTrade(DataInputProvider.getCellData_ColName(iRowNumber, "ClassOfTrade", sDataSheetName))
 		.defaultAccountStatus()
-		.chooseApplicationDate(ApplicationDate)
+	
+		.chooseApplicationDate(	DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
 		.chooseRoasterType()
-		.selectParticipationType(ParticipationType)
-		.chooseRecordstatus(Recordstatus)
-		.defaultAccountType(AccountType)
-		//.clickSave()
-		.typeStreet1(Street1)
-		.typeCountry(Country)
-		.typeCity(City)
-		.typeCounty(County)
-		.typeZipCode(ZipCode)
-		.selectDirectParent(DirectParent)
-		.selectDirectParentRelationManaged(DirectParentRelation) 
-		.selectDirectParentRelationDate(DirectParentRelationDate)
-		.typeDPReason(DPReason)
-		 .selectTopParentRelation(TopParentRelation)
-		.selectTopParentRelationDate(TopParentRelationDate)
-		 .typeTPReason(TPReason)
+		
+		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
+		
+		.chooseRecordstatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
+		
+		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
+
+		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
+		
+		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
+	
+		.typeCity(	DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
+		
+		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+		
+		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
+		
+		.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+		
+		.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName) )
+	
+		.selectDirectParentRelationDate(	DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+		
+		.typeDPReason(DataInputProvider.getCellData_ColName(iRowNumber, "DPReason", sDataSheetName))
+		
+		 .selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
+		
+		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
+		
+		 .typeTPReason(DataInputProvider.getCellData_ColName(iRowNumber, "TPReason", sDataSheetName))
 		.clickSave()
-		.crmNumberIsDisplayed()					
-		.chooseRecordStatusWithoutPublished(RecordStatusPublished1)
-		//.selectBusinessClassification(BusinessClassification)
+		.crmNumberIsDisplayed()		
+		
+		.chooseRecordStatusWithoutPublished(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+
 		.clickSave()
 		.entityCodeIsDisplayedWithoutFrame()
 		.accountTypeIsVerified()
@@ -81,8 +72,6 @@ public class TestCase_5486 extends TestNgHooks{
 		.rostertTypeIsVerified()
         .directParentRelationIsVerified()
         .topParentRelationIsVerified();
-				
-	
 	}
 
 }

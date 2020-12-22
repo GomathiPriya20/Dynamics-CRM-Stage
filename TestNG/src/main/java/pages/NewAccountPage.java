@@ -1,10 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import services.WebDriverServiceImpl;
 
-import hooks.TestNgHooks;
-
-public class NewAccountPage extends TestNgHooks {
+public class NewAccountPage extends WebDriverServiceImpl {
 
 	public SupplierFormPage chooseSupplierForm() {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));

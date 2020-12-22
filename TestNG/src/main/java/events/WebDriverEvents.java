@@ -1,33 +1,14 @@
 package events;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
-import com.aventstack.extentreports.ExtentTest;
-
-import utils.HTMLReporter;
-
-
-
-public class WebDriverEvents extends HTMLReporter implements WebDriverEventListener {
+public class WebDriverEvents implements WebDriverEventListener {
 
 	public RemoteWebDriver webdriver;
 	public EventFiringWebDriver driver;
@@ -132,19 +113,7 @@ public class WebDriverEvents extends HTMLReporter implements WebDriverEventListe
 
 	}
 
-	public long takeSnap() {
-
-		long number = (long) Math.floor(Math.random() * 900000000L) + 10000000L;
-		try {
-			FileUtils.copyFile(getDriver().getScreenshotAs(OutputType.FILE) , new File("./reports/images/"+number+".png"));
-		} catch (WebDriverException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return number;
-	}
-
+	
 	public void beforeGetText(WebElement element, WebDriver driver) {
 		
 	}
@@ -153,8 +122,13 @@ public class WebDriverEvents extends HTMLReporter implements WebDriverEventListe
 		
 	}
 	
-	public EventFiringWebDriver getDriver() {
+	public static EventFiringWebDriver getDriver() {
 		return tlDriver.get();
+	}
+
+	public void waitForLoaderToDisapper() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

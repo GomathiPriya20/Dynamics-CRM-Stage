@@ -1,12 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.chrome.ChromeDriver;
+import services.WebDriverServiceImpl;
 
-import base.PreAndPost;
-import hooks.TestNgHooks;
-
-public class DashboardPage extends TestNgHooks {
+public class DashboardPage extends WebDriverServiceImpl {
 
 
 	public DashboardPage clickWorkplace() throws InterruptedException {	
