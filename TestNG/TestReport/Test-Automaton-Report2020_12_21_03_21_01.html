@@ -1,0 +1,2429 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='category-view' onclick="configureView(1)"><i class='material-icons'>label_outline</i></a></li>
+			<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>CRM Automation Test Results</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Dec 21, 2020 03:21:02 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.3</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button category-toggle' data-activates='category-toggle' data-constrainwidth='false' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>local_offer</i> Category
+				</a>
+				<ul id='category-toggle' class='dropdown-content'>
+					<li><a href='#'>Member</a></li>
+					<li><a href='#'>Supplier</a></li>
+					<li class='divider'></li>
+					<li class='clear'><a href='#!' clear='true'>Clear Filters</a></li>
+				</ul>
+			</div>
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1141 : Validate Business Key</span>
+						<span class='test-time'>Dec 21, 2020 03:21:03 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:21:03 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:23:54 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 51s+523ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:29 PM</td>
+					<td class='step-details'>Sign in is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544289427.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544289427.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544289427.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:33 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293174.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293174.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293174.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:33 PM</td>
+					<td class='step-details'>Accounts is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293822.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293822.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544293822.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:37 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame0]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297261.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297261.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297261.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:37 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297860.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297860.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544297860.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:38 PM</td>
+					<td class='step-details'>The data: 2000420865 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: crmGrid_findCriteria]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544298587.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544298587.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544298587.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:39 PM</td>
+					<td class='step-details'>Negotiatus at Magmutual Insurance Company is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544299400.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544299400.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544299400.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:45 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544305823.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544305823.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544305823.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:46 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544306274.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544306274.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544306274.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:47 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307180.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307180.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307180.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:47 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307589.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307589.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544307589.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:48 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544308305.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544308305.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544308305.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:56 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544316738.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544316738.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544316738.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:57 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: InlineDialog_Iframe]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317192.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317192.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317192.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:21:57 PM</td>
+					<td class='step-details'>Business Process Error is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317825.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317825.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544317825.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:01 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321266.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321266.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321266.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:01 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: InlineDialog_Iframe]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321735.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321735.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544321735.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:02 PM</td>
+					<td class='step-details'>OK is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544322380.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544322380.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544322380.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:05 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544325804.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544325804.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544325804.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:06 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544326245.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544326245.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544326245.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:07 PM</td>
+					<td class='step-details'>Yes is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327130.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327130.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327130.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:07 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327885.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327885.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544327885.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:08 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544328301.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544328301.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544328301.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:09 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544329047.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544329047.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544329047.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:17 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337451.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337451.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337451.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:17 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: InlineDialog_Iframe]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337932.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337932.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544337932.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:18 PM</td>
+					<td class='step-details'>OK is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544338585.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544338585.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544338585.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:22 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342005.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342005.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342005.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:22 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342440.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342440.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544342440.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:23 PM</td>
+					<td class='step-details'>Yes is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343205.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343205.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343205.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:23 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343614.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343614.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544343614.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:24 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544344294.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544344294.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544344294.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:33 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544353345.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544353345.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544353345.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:36 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544356739.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544356739.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544356739.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:37 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame0]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357179.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357179.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357179.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:37 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357819.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357819.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544357819.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:38 PM</td>
+					<td class='step-details'>The data: 2000391336 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: crmGrid_findCriteria]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544358466.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544358466.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544358466.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:40 PM</td>
+					<td class='step-details'>Negotiatus is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544360136.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544360136.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544360136.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:46 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366538.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366538.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366538.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:46 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366991.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366991.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544366991.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:47 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544367985.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544367985.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544367985.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:48 PM</td>
+					<td class='step-details'>Yes is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544368763.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544368763.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544368763.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:49 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369185.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369185.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369185.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:49 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369859.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369859.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544369859.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:22:58 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544378757.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544378757.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544378757.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:02 PM</td>
+					<td class='step-details'>NEW
+CREATE A NEW ACCOUNT RECORD. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544382967.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544382967.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544382967.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:03 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544383833.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544383833.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544383833.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:04 PM</td>
+					<td class='step-details'>ACCOUNT : MEMBER FORM is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544384947.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544384947.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544384947.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:05 PM</td>
+					<td class='step-details'>Member Form is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544385748.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544385748.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544385748.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:06 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544386623.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544386623.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544386623.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:07 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544387806.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544387806.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544387806.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:08 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544388590.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544388590.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544388590.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:09 PM</td>
+					<td class='step-details'>Business Classification is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544389666.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544389666.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544389666.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:10 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544390500.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544390500.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544390500.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:11 PM</td>
+					<td class='step-details'>The data: Acute entered successfully in  :[[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: ix_businessclassification_ledit]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544391414.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544391414.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544391414.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:15 PM</td>
+					<td class='step-details'>Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544395425.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544395425.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544395425.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:16 PM</td>
+					<td class='step-details'>Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396220.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396220.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396220.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:16 PM</td>
+					<td class='step-details'>Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396934.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396934.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544396934.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:17 PM</td>
+					<td class='step-details'>Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397345.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397345.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397345.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:17 PM</td>
+					<td class='step-details'>The text :Active matches with the value :Active<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397732.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397732.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544397732.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:18 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544398697.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544398697.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544398697.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:19 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544399798.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544399798.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544399798.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:20 PM</td>
+					<td class='step-details'>[[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: ix_participationtype_i] is selected with text Standard<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400494.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400494.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400494.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:20 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400903.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400903.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544400903.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:21 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544401370.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544401370.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544401370.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:22 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402260.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402260.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402260.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:22 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402681.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402681.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544402681.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:23 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544403324.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544403324.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544403324.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:31 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544411732.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544411732.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544411732.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:32 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412163.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412163.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412163.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:32 PM</td>
+					<td class='step-details'>Yes is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412922.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412922.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544412922.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:33 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544413323.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544413323.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544413323.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:34 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544414001.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544414001.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544414001.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:42 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422403.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422403.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422403.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:42 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422858.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422858.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544422858.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:43 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544423646.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544423646.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544423646.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:44 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424050.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424050.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424050.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:44 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424755.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424755.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544424755.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:53 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (ddc9aa5f1fc3ef37082246e629782465)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433191.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433191.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433191.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:53 PM</td>
+					<td class='step-details'>BKAcc07635 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433645.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433645.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544433645.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:23:54 PM</td>
+					<td class='step-details'><span class='label white-text green'>TFS ID_ 1141 : Validate Business Key PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1148 : Validate Address Changes</span>
+						<span class='test-time'>Dec 21, 2020 03:23:54 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:23:54 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:24:39 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 45s+13ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:21 PM</td>
+					<td class='step-details'>Sign in is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544461500.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544461500.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544461500.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:25 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465192.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465192.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465192.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:25 PM</td>
+					<td class='step-details'>Accounts is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465834.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465834.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544465834.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:29 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (d8175a7e7cf09a14023219832e295ae3)] -> id: contentIFrame0]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469269.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469269.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469269.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:29 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469917.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469917.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544469917.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:30 PM</td>
+					<td class='step-details'>The data: 2000438441 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (d8175a7e7cf09a14023219832e295ae3)] -> id: crmGrid_findCriteria]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544470632.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544470632.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544470632.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:31 PM</td>
+					<td class='step-details'>101730 Mentor CCS is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544471550.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544471550.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544471550.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:37 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544477972.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544477972.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544477972.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:38 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (d8175a7e7cf09a14023219832e295ae3)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478437.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478437.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478437.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:38 PM</td>
+					<td class='step-details'>142 /148 Stuart Nelson Dr is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478887.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478887.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544478887.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:24:39 PM</td>
+					<td class='step-details'><span class='label white-text green'>TFS ID_ 1148 : Validate Address Changes PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct</span>
+						<span class='test-time'>Dec 21, 2020 03:24:39 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:24:39 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:24:39 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+62ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:24:39 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:24:39 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member</span>
+						<span class='test-time'>Dec 21, 2020 03:24:39 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:24:39 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:27:43 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 3m 4s+288ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:04 PM</td>
+					<td class='step-details'>Sign in is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544504559.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544504559.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544504559.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:08 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508246.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508246.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508246.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:08 PM</td>
+					<td class='step-details'>Accounts is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508873.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508873.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544508873.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:12 PM</td>
+					<td class='step-details'>NEW
+CREATE A NEW ACCOUNT RECORD. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544512619.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544512619.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544512619.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:17 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544517341.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544517341.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544517341.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:18 PM</td>
+					<td class='step-details'>ACCOUNT : MEMBER FORM is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544518427.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544518427.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544518427.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:19 PM</td>
+					<td class='step-details'>Member Form is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544519316.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544519316.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544519316.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:20 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544520165.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544520165.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544520165.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:21 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544521328.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544521328.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544521328.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:22 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544522126.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544522126.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544522126.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:23 PM</td>
+					<td class='step-details'>Business Classification is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544523234.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544523234.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544523234.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:24 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524086.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524086.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524086.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:24 PM</td>
+					<td class='step-details'>The data: Acute entered successfully in  :[[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: ix_businessclassification_ledit]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524994.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524994.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544524994.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:28 PM</td>
+					<td class='step-details'>Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544528933.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544528933.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544528933.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:29 PM</td>
+					<td class='step-details'>Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544529671.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544529671.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544529671.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:30 PM</td>
+					<td class='step-details'>Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530385.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530385.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530385.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:30 PM</td>
+					<td class='step-details'>Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530811.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530811.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544530811.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:31 PM</td>
+					<td class='step-details'>The text :Active matches with the value :Active<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544531222.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544531222.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544531222.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:32 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544532186.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544532186.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544532186.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:36 PM</td>
+					<td class='step-details'>No is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544536350.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544536350.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544536350.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:37 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537187.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537187.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537187.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:37 PM</td>
+					<td class='step-details'>[[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: ix_participationtype_i] is selected with text Standard<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537894.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537894.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544537894.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:38 PM</td>
+					<td class='step-details'>Draft is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544538802.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544538802.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544538802.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:39 PM</td>
+					<td class='step-details'>Prospect is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544539664.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544539664.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544539664.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:40 PM</td>
+					<td class='step-details'>[[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: customertypecode_i] is selected with text Non-GPO Member<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544540422.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544540422.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544540422.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:41 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544541301.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544541301.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544541301.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:42 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544542363.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544542363.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544542363.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:43 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544543452.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544543452.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544543452.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:44 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544544507.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544544507.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544544507.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:45 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544545553.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544545553.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544545553.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:49 PM</td>
+					<td class='step-details'>Direct Parent is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544549735.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544549735.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544549735.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:50 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544550586.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544550586.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544550586.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:51 PM</td>
+					<td class='step-details'>The data: (DFW) CVS/Specialty #48604 entered successfully in  :[[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: parentaccountid_ledit]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544551787.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544551787.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544551787.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:52 PM</td>
+					<td class='step-details'>Managed is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544552514.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544552514.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544552514.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:53 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544553420.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544553420.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544553420.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:54 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544554536.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544554536.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544554536.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:55 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544555603.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544555603.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544555603.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:56 PM</td>
+					<td class='step-details'>[[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: ix_topparentrelationship_i] is selected with text Affiliate<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544556256.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544556256.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544556256.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:57 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544557098.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544557098.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544557098.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:58 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558214.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558214.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558214.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:58 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558835.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558835.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544558835.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:25:59 PM</td>
+					<td class='step-details'>SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544559562.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544559562.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544559562.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:26:08 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (768d3e24070dfc2ea797545d37ca6fe6)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568034.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568034.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568034.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:26:08 PM</td>
+					<td class='step-details'>2000454918 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568476.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568476.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568476.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:26:08 PM</td>
+					<td class='step-details'>2000454918 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568919.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568919.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544568919.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:26:12 PM</td>
+					<td class='step-details'>Draft is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544572868.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544572868.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544572868.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:26:13 PM</td>
+					<td class='step-details'>Draft
+Published is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544573791.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544573791.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544573791.png'></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:27:43 PM</td>
+					<td class='step-details'><span class='label white-text red'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member FAILED due to below issues:</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:27:43 PM</td>
+					<td class='step-details'><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56455}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 768d3e24070dfc2ea797545d37ca6fe6
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.selectDropDownUsingVisibleText(WebDriverServiceImpl.java:249)
+	at pages.MemberFormPage.chooseRecordStatusWithoutPublished(MemberFormPage.java:499)
+	at testcases.Member.TestCase_1241.createMemberTP(TestCase_1241.java:65)
+	... 33 more
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5475 : Create a new GPO Member</span>
+						<span class='test-time'>Dec 21, 2020 03:27:43 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:27:43 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:30:08 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 24s+71ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:30:08 PM</td>
+					<td class='step-details'><span class='label white-text red'>TFS ID_ 5475 : Create a new GPO Member FAILED due to below issues:</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:30:08 PM</td>
+					<td class='step-details'><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56515}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: aa0203386652c417ffe05711aa4e7f75
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.click(WebDriverServiceImpl.java:176)
+	at pages.LoginPage.clickSignIn(LoginPage.java:20)
+	at testcases.Member.TestCase_5475.createMemberTP(TestCase_5475.java:16)
+	... 33 more
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5476 : Modify existing GPO Member</span>
+						<span class='test-time'>Dec 21, 2020 03:30:08 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:30:08 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:30:08 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+39ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:30:08 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5476 : Modify existing GPO Member SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:30:08 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5476 : Modify existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5486 : Create a new Non-GPO Member</span>
+						<span class='test-time'>Dec 21, 2020 03:30:08 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:30:08 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:32:32 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 2m 24s+51ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:32:32 PM</td>
+					<td class='step-details'><span class='label white-text red'>TFS ID_ 5486 : Create a new Non-GPO Member FAILED due to below issues:</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:32:32 PM</td>
+					<td class='step-details'><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56774}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 0c75bc438f63155ef2ca6eb0a9ee1409
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.click(WebDriverServiceImpl.java:176)
+	at pages.LoginPage.clickSignIn(LoginPage.java:20)
+	at testcases.Member.TestCase_5486.createMemberTP(TestCase_5486.java:15)
+	... 33 more
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5828 : Terminate existing GPO Member</span>
+						<span class='test-time'>Dec 21, 2020 03:32:32 PM</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:32:32 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:33:50 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 18s+218ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Member</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:32:57 PM</td>
+					<td class='step-details'>Sign in is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544977208.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544977208.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544977208.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:00 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544980902.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544980902.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544980902.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:01 PM</td>
+					<td class='step-details'>Accounts is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544981545.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544981545.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544981545.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:04 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (1d7816ce0248719b539b4f2c667def08)] -> id: contentIFrame0]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544984987.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544984987.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544984987.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:05 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544985587.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544985587.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544985587.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:06 PM</td>
+					<td class='step-details'>The data: 2000448312 entered successfully in the field :[[ChromeDriver: chrome on WINDOWS (1d7816ce0248719b539b4f2c667def08)] -> id: crmGrid_findCriteria]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544986310.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544986310.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544986310.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:07 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544987373.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544987373.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544987373.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:13 PM</td>
+					<td class='step-details'>is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544993657.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544993657.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544993657.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:14 PM</td>
+					<td class='step-details'>Membership is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544994398.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544994398.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544994398.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:17 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (1d7816ce0248719b539b4f2c667def08)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544997834.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544997834.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544997834.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>3:33:18 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (1d7816ce0248719b539b4f2c667def08)] -> id: area_ix_account_ix_membership_AccountNameFrame]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544998284.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544998284.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-21/1608544998284.png'></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:33:50 PM</td>
+					<td class='step-details'><span class='label white-text red'>TFS ID_ 5828 : Terminate existing GPO Member FAILED due to below issues:</span></td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>3:33:50 PM</td>
+					<td class='step-details'><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//table[@id='gridBodyTable']/tbody//tr[4]/td[2]/nobr//span[text()='Premier']"}
+  (Session info: chrome=87.0.4280.88)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56829}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1d7816ce0248719b539b4f2c667def08
+*** Element info: {Using=xpath, value=//table[@id='gridBodyTable']/tbody//tr[4]/td[2]/nobr//span[text()='Premier']}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:328)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:446)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:320)
+	at jdk.internal.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.findElement(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:195)
+	at pages.MemberFormPage.selectPremierPremierMembership(MemberFormPage.java:637)
+	at testcases.Member.TestCase_5828.createMemberTP(TestCase_5828.java:23)
+	... 33 more
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5921 : Create a supplier top parent</span>
+						<span class='test-time'>Dec 21, 2020 03:33:50 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 21, 2020 03:33:50 PM</span>
+	<span class='label end-time'>Dec 21, 2020 03:33:50 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+38ms</span>
+</div>
+	<div class='test-attributes'>
+			<div class='category-list'>
+				<span class='category label white-text'>Supplier</span>
+			</div>
+	</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:33:50 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5921 : Create a supplier top parent SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>3:33:50 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5921 : Create a supplier top parent
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='22.222%'><span class='strong'>2</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='44.444%'>4</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='33.333%'>3</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='91.463%'><span class='strong'>150</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='4.878%'>8</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='3.659%'>6</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+</div>
+<!-- test view -->
+<div id='category-view' class='view hide'>
+
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+				
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Categories</h3>
+			<ul id='category-collection' class='category-collection'>
+				
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Member</span>
+						<span class='category-status right'>
+							<span class='label pass'>2</span>
+							<span class='label fail'>4</span>
+							<span class='label others'>2</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							<span class='label green accent-4 white-text'>Passed: 2</span>
+							<span class='label red lighten-1 white-text'>Failed: 4</span>
+							<span class='label yellow darken-2 white-text'>Others: 2</span>
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Dec 21, 2020 03:21:03 PM</td>
+										<td class='linked' test-id='1'>TFS ID_ 1141 : Validate Business Key</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:23:54 PM</td>
+										<td class='linked' test-id='2'>TFS ID_ 1148 : Validate Address Changes</td>
+										<td><span class='test-status pass'>pass</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:24:39 PM</td>
+										<td class='linked' test-id='3'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct</td>
+										<td><span class='test-status skip'>skip</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:24:39 PM</td>
+										<td class='linked' test-id='4'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:27:43 PM</td>
+										<td class='linked' test-id='5'>TFS ID_ 5475 : Create a new GPO Member</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:30:08 PM</td>
+										<td class='linked' test-id='6'>TFS ID_ 5476 : Modify existing GPO Member</td>
+										<td><span class='test-status skip'>skip</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:30:08 PM</td>
+										<td class='linked' test-id='7'>TFS ID_ 5486 : Create a new Non-GPO Member</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+									<tr>
+										<td>Dec 21, 2020 03:32:32 PM</td>
+										<td class='linked' test-id='8'>TFS ID_ 5828 : Terminate existing GPO Member</td>
+										<td><span class='test-status fail'>fail</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+				<li class='category displayed active'>
+					<div class='category-heading'>
+						<span class='category-name'>Supplier</span>
+						<span class='category-status right'>
+							<span class='label others'>1</span>
+						</span>
+					</div>
+					<div class='category-content hide'>
+						<div class='category-status-counts'>
+							
+							
+							<span class='label yellow darken-2 white-text'>Others: 1</span>
+						</div>
+					
+						<div class='category-tests'>
+							<table class='bordered table-results'>
+								<thead>
+									<tr>
+										<th>Timestamp</th>
+										<th>TestName</th>
+										<th>Status</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Dec 21, 2020 03:33:50 PM</td>
+										<td class='linked' test-id='9'>TFS ID_ 5921 : Create a supplier top parent</td>
+										<td><span class='test-status skip'>skip</span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='category-name'></h5>
+		</div>
+	</div>
+</div>
+<!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.testng.SkipException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>3</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:24:39 PM</td>
+                                                        <td class='linked' test-id='3'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:30:08 PM</td>
+                                                        <td class='linked' test-id='6'>TFS ID_ 5476 : Modify existing GPO Member</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5476 : Modify existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:33:50 PM</td>
+                                                        <td class='linked' test-id='9'>TFS ID_ 5921 : Create a supplier top parent</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5921 : Create a supplier top parent
+	at driver.Driver.executeTestcase(Driver.java:86)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>java.lang.reflect.InvocationTargetException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>4</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:24:39 PM</td>
+                                                        <td class='linked' test-id='4'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member</td>
+                                                        <td><pre><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56455}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 768d3e24070dfc2ea797545d37ca6fe6
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.selectDropDownUsingVisibleText(WebDriverServiceImpl.java:249)
+	at pages.MemberFormPage.chooseRecordStatusWithoutPublished(MemberFormPage.java:499)
+	at testcases.Member.TestCase_1241.createMemberTP(TestCase_1241.java:65)
+	... 33 more
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:27:43 PM</td>
+                                                        <td class='linked' test-id='5'>TFS ID_ 5475 : Create a new GPO Member</td>
+                                                        <td><pre><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56515}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: aa0203386652c417ffe05711aa4e7f75
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.click(WebDriverServiceImpl.java:176)
+	at pages.LoginPage.clickSignIn(LoginPage.java:20)
+	at testcases.Member.TestCase_5475.createMemberTP(TestCase_5475.java:16)
+	... 33 more
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:30:08 PM</td>
+                                                        <td class='linked' test-id='7'>TFS ID_ 5486 : Create a new Non-GPO Member</td>
+                                                        <td><pre><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.TimeoutException: timeout: Timed out receiving message from renderer: 10.000
+  (Session info: chrome=87.0.4280.88)
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56774}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 0c75bc438f63155ef2ca6eb0a9ee1409
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:634)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:638)
+	at org.openqa.selenium.remote.RemoteWebDriver.getScreenshotAs(RemoteWebDriver.java:298)
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.getScreenshotAs(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.getScreenshotAs(EventFiringWebDriver.java:303)
+	at services.WebDriverServiceImpl.getScreenshot(WebDriverServiceImpl.java:55)
+	at services.WebDriverServiceImpl.screenshotCapture(WebDriverServiceImpl.java:65)
+	at services.WebDriverServiceImpl.click(WebDriverServiceImpl.java:176)
+	at pages.LoginPage.clickSignIn(LoginPage.java:20)
+	at testcases.Member.TestCase_5486.createMemberTP(TestCase_5486.java:15)
+	... 33 more
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 21, 2020 03:32:32 PM</td>
+                                                        <td class='linked' test-id='8'>TFS ID_ 5828 : Terminate existing GPO Member</td>
+                                                        <td><pre><pre>java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at driver.Driver.executeTestcase(Driver.java:80)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//table[@id='gridBodyTable']/tbody//tr[4]/td[2]/nobr//span[text()='Premier']"}
+  (Session info: chrome=87.0.4280.88)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '4.0.0-alpha-1', revision: 'd1d3728cae', time: '2019-04-24T13:42:21'
+System info: host: 'Z3GAVSP2PU0052', ip: '10.99.38.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.5'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 87.0.4280.88, chrome: {chromedriverVersion: 86.0.4240.22 (398b0743353ff..., userDataDir: E:\schandr3\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:56829}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:virtualAuthenticators: true}
+Session ID: 1d7816ce0248719b539b4f2c667def08
+*** Element info: {Using=xpath, value=//table[@id='gridBodyTable']/tbody//tr[4]/td[2]/nobr//span[text()='Premier']}
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:190)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:124)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:51)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:161)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:577)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:328)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:446)
+	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:320)
+	at jdk.internal.reflect.GeneratedMethodAccessor5.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.lambda$new$1(EventFiringWebDriver.java:106)
+	at com.sun.proxy.$Proxy11.findElement(Unknown Source)
+	at org.openqa.selenium.support.events.EventFiringWebDriver.findElement(EventFiringWebDriver.java:195)
+	at pages.MemberFormPage.selectPremierPremierMembership(MemberFormPage.java:637)
+	at testcases.Member.TestCase_5828.createMemberTP(TestCase_5828.java:23)
+	... 33 more
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>9</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>164</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Dec 21, 2020 03:21:02 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Dec 21, 2020 03:33:50 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 12m 47s+583ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>OS</td>
+								<td>Windows</td>
+							</tr>
+							<tr>
+								<td>Environment</td>
+								<td>QA</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+			<div class='col s6'>
+				<div class='card-panel dashboard-categories'>
+					<span class='right label cyan white-text'>Categories</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Passed</th>
+							<th>Failed</th>
+							<th>Others</th>
+							<th>Passed %</th>
+						</tr>
+						<tr>
+							<td>Member</td>
+							<td>2</td>
+							<td>4</td>
+							<td>2</td>
+							<td>
+									25%
+							</td>
+						</tr>
+						<tr>
+							<td>Supplier</td>
+							<td>0</td>
+							<td>0</td>
+							<td>1</td>
+							<td>
+									0%
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 2,
+				failParent: 4,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 3,
+				exceptionsParent: 7,
+				
+				passChild: 150,
+				failChild: 8,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 6,
+				infoChild: 0,
+				exceptionsChild: 14,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>

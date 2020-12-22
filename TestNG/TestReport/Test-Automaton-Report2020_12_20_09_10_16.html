@@ -1,0 +1,1541 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta id="timeStampFormat" name="timeStampFormat" content='MMM d, yyyy hh:mm:ss a'/>
+	
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+		<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/b4a58fcfd1e137bd9287244035a7c80d3d73b3af/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>ExtentReports</title>
+
+	<style type='text/css'>
+	</style>
+</head>
+
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' view='exception-view' onclick="configureView(2)"><i class='material-icons'>bug_report</i></a></li>
+			<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>CRM Automation Test Results</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<li>
+                <a href='#!'>
+                    <span class='label suite-start-time blue darken-3'>Dec 20, 2020 09:10:17 PM</span>
+				</a>
+			</li>
+			<li>
+                <a href='#!'>
+                    <span class='label blue darken-3'>3.1.3</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='skip'><a href='#!'>Skip <i class='material-icons cyan-text'>redo</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h5>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1141 : Validate Business Key</span>
+						<span class='test-time'>Dec 20, 2020 09:10:17 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:10:17 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:10:17 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+277ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:17 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 1141 : Validate Business Key SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:17 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1141 : Validate Business Key
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1148 : Validate Address Changes</span>
+						<span class='test-time'>Dec 20, 2020 09:10:17 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:10:17 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:10:17 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+61ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:17 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 1148 : Validate Address Changes SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:17 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1148 : Validate Address Changes
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct</span>
+						<span class='test-time'>Dec 20, 2020 09:10:17 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:10:17 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:10:18 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+78ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:18 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:18 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member</span>
+						<span class='test-time'>Dec 20, 2020 09:10:18 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:10:18 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:10:18 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+50ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:18 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:10:18 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5475 : Create a new GPO Member</span>
+						<span class='test-time'>Dec 20, 2020 09:10:18 PM</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:10:18 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 1m 57s+33ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:44 PM</td>
+					<td class='step-details'>The element: Sign in is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478844288.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478844288.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478844288.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:48 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848010.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848010.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848010.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:48 PM</td>
+					<td class='step-details'>The element: Accounts is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848662.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848662.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478848662.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:52 PM</td>
+					<td class='step-details'>The element: NEW
+CREATE A NEW ACCOUNT RECORD. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478852353.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478852353.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478852353.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:56 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478856898.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478856898.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478856898.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:57 PM</td>
+					<td class='step-details'>The element: ACCOUNT : MEMBER FORM is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478857994.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478857994.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478857994.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:58 PM</td>
+					<td class='step-details'>The element: Member Form is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478858847.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478858847.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478858847.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:10:59 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478859678.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478859678.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478859678.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:00 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478860819.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478860819.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478860819.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:01 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478861575.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478861575.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478861575.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:02 PM</td>
+					<td class='step-details'>The element Business Classification is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478862639.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478862639.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478862639.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:03 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478863474.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478863474.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478863474.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:04 PM</td>
+					<td class='step-details'>The data: Acute entered successfully in  :[[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: ix_businessclassification_ledit]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478864372.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478864372.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478864372.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:08 PM</td>
+					<td class='step-details'>The element Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478868288.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478868288.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478868288.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:09 PM</td>
+					<td class='step-details'>The element: Class of Trade is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869078.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869078.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869078.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:09 PM</td>
+					<td class='step-details'>The element: Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869736.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869736.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478869736.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:10 PM</td>
+					<td class='step-details'>The element: Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870148.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870148.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870148.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:10 PM</td>
+					<td class='step-details'>The text :Active matches with the value :Active<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870538.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870538.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478870538.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:11 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478871488.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478871488.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478871488.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:12 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478872582.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478872582.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478872582.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:13 PM</td>
+					<td class='step-details'>The dropdown is selected with text Standard<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478873273.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478873273.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478873273.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:14 PM</td>
+					<td class='step-details'>The element: Draft is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478874163.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478874163.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478874163.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:15 PM</td>
+					<td class='step-details'>The element: Prospect is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875041.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875041.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875041.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:15 PM</td>
+					<td class='step-details'>The dropdown is selected with text Member<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875765.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875765.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478875765.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:16 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478876626.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478876626.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478876626.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:17 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478877715.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478877715.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478877715.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:18 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478878738.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478878738.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478878738.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:19 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478879772.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478879772.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478879772.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:20 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478880857.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478880857.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478880857.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:25 PM</td>
+					<td class='step-details'>The element Direct Parent is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885031.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885031.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885031.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:25 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885762.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885762.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478885762.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:26 PM</td>
+					<td class='step-details'>The data: (DFW) CVS/Specialty #48604 entered successfully in  :[[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: parentaccountid_ledit]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478886954.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478886954.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478886954.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:27 PM</td>
+					<td class='step-details'>The element: Affiliated is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478887690.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478887690.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478887690.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:28 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478888516.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478888516.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478888516.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:29 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478889652.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478889652.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478889652.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:30 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478890700.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478890700.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478890700.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:31 PM</td>
+					<td class='step-details'>The dropdown is selected with text Affiliate<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478891344.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478891344.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478891344.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:32 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478892151.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478892151.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478892151.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:33 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893250.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893250.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893250.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:33 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893879.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893879.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478893879.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:34 PM</td>
+					<td class='step-details'>The element: SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478894576.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478894576.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478894576.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:43 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903031.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903031.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903031.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:43 PM</td>
+					<td class='step-details'>The element: 2000454906 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903479.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903479.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903479.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:43 PM</td>
+					<td class='step-details'>The element: 2000454906 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903924.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903924.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478903924.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:48 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908011.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908011.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908011.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:48 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908871.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908871.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478908871.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:49 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: NavBarGloablQuickCreate]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478909411.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478909411.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478909411.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:50 PM</td>
+					<td class='step-details'>The element Line of Business is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910039.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910039.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910039.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:50 PM</td>
+					<td class='step-details'>The element: General GPO is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910543.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910543.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478910543.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:51 PM</td>
+					<td class='step-details'>The element: Classification Type is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911127.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911127.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911127.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:51 PM</td>
+					<td class='step-details'>The element: Classification Type is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911664.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911664.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478911664.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:52 PM</td>
+					<td class='step-details'>The element:  is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912440.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912440.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912440.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:52 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912969.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912969.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478912969.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:56 PM</td>
+					<td class='step-details'>The element: Save is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478916612.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478916612.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478916612.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:11:57 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478917266.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478917266.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478917266.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:01 PM</td>
+					<td class='step-details'>The element: Draft is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478921247.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478921247.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478921247.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:02 PM</td>
+					<td class='step-details'>The element: Draft
+Published is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922156.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922156.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922156.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:02 PM</td>
+					<td class='step-details'>The dropdown is selected with text Published<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922621.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922621.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478922621.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:03 PM</td>
+					<td class='step-details'>switch out to Default Content<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923034.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923034.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923034.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:03 PM</td>
+					<td class='step-details'>The element: SAVE
+SAVE THIS ACCOUNT. is clicked<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923670.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923670.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478923670.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:12 PM</td>
+					<td class='step-details'>switch In to the Frame [[ChromeDriver: chrome on WINDOWS (77dfe836c1dcb5bcbb5ec0fc3003bc1d)] -> id: contentIFrame1]<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932107.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932107.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932107.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:12 PM</td>
+					<td class='step-details'>The element: AE5008 is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932550.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932550.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478932550.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:13 PM</td>
+					<td class='step-details'>The element:  is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933032.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933032.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933032.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:13 PM</td>
+					<td class='step-details'>The element: Member is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933487.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933487.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933487.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:13 PM</td>
+					<td class='step-details'>The element: Published is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933932.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933932.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478933932.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:14 PM</td>
+					<td class='step-details'>The element: Active is displayed<img data-featherlight='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478934375.png' width='10%' src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478934375.png' data-src='E:\schandr3\eclipse-workspace\Dynamics-CRM-V1.0\TestNG/Screenshots/2020-12-20/1608478934375.png'></td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><span class='label white-text green'>TFS ID_ 5475 : Create a new GPO Member PASSED</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5476 : Modify existing GPO Member</span>
+						<span class='test-time'>Dec 20, 2020 09:12:15 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+41ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5476 : Modify existing GPO Member SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5476 : Modify existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5486 : Create a new Non-GPO Member</span>
+						<span class='test-time'>Dec 20, 2020 09:12:15 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+39ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5486 : Create a new Non-GPO Member SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5486 : Create a new Non-GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5828 : Terminate existing GPO Member</span>
+						<span class='test-time'>Dec 20, 2020 09:12:15 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+46ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5828 : Terminate existing GPO Member SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5828 : Terminate existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  skip' status='skip' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>TFS ID_ 5921 : Create a supplier top parent</span>
+						<span class='test-time'>Dec 20, 2020 09:12:15 PM</span>
+						<span class='test-status right skip'>skip</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label end-time'>Dec 20, 2020 09:12:15 PM</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+42ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><span class='label white-text orange'>TFS ID_ 5921 : Create a supplier top parent SKIPPED</span></td>
+				</tr>
+				<tr class='log' status='skip'>
+					<td class='status skip' title='skip' alt='skip'><i class='material-icons'>redo</i></td>
+					<td class='timestamp'>9:12:15 PM</td>
+					<td class='step-details'><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5921 : Create a supplier top parent
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='11.111%'><span class='strong'>1</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> test(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='88.889%'>8</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span class='tooltipped' data-position='top' data-tooltip='80.723%'><span class='strong'>67</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong tooltipped' data-position='top' data-tooltip='0%'>0</span> step(s) failed, <span class='strong tooltipped' data-position='top' data-tooltip='19.277%'>16</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+</div>
+<!-- test view -->
+<!-- category view -->
+<div id='exception-view' class='view hide'>
+
+    <section id='controls'>
+        <div class='controls grey lighten-4'>
+            <!-- search -->
+            <div class='chip transparent' alt='Search Tests' title='Search Tests'>
+                <a href="#" class='search-div'>
+                    <i class='material-icons'>search</i> Search
+                </a>
+
+                <div class='input-field left hide'>
+                    <input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+                </div>
+
+            </div>
+            <!-- search -->
+        </div>
+    </section>
+
+    <div class='subview-left left'>
+
+        <div class='view-summary'>
+            <h5>Exceptions</h3>
+                <ul id='exception-collection' class='exception-collection'>
+
+                        <li class='exception displayed active'>
+                            <div class='exception-heading'>
+                                <span class='exception-name'>org.testng.SkipException</span>
+                                <span class='exception-count right'><span class='label red lighten-1 white-text'>8</span></span>
+                            </div>
+                            <div class='exception-content hide'>
+                                <div class='exception-tests'>
+                                    <table class='bordered table-results'>
+                                        <thead>
+                                        <tr>
+                                            <th>Timestamp</th>
+                                            <th>TestName</th>
+                                            <th>Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:10:17 PM</td>
+                                                        <td class='linked' test-id='1'>TFS ID_ 1141 : Validate Business Key</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1141 : Validate Business Key
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:10:17 PM</td>
+                                                        <td class='linked' test-id='2'>TFS ID_ 1148 : Validate Address Changes</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1148 : Validate Address Changes
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:10:17 PM</td>
+                                                        <td class='linked' test-id='3'>TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1152 : Validate Convert Acct Entity Code to Ship-to Acct
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:10:18 PM</td>
+                                                        <td class='linked' test-id='4'>TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 1241 : Validate that a Non-GPO can only be changed to Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:12:15 PM</td>
+                                                        <td class='linked' test-id='6'>TFS ID_ 5476 : Modify existing GPO Member</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5476 : Modify existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:12:15 PM</td>
+                                                        <td class='linked' test-id='7'>TFS ID_ 5486 : Create a new Non-GPO Member</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5486 : Create a new Non-GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:12:15 PM</td>
+                                                        <td class='linked' test-id='8'>TFS ID_ 5828 : Terminate existing GPO Member</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5828 : Terminate existing GPO Member
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Dec 20, 2020 09:12:15 PM</td>
+                                                        <td class='linked' test-id='9'>TFS ID_ 5921 : Create a supplier top parent</td>
+                                                        <td><pre><pre>org.testng.SkipException: Skipping execution for  :TFS ID_ 5921 : Create a supplier top parent
+	at driver.Driver.executeTestcase(Driver.java:85)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:132)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:599)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:174)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:822)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:147)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1540)
+	at org.testng.TestRunner.privateRun(TestRunner.java:764)
+	at org.testng.TestRunner.run(TestRunner.java:585)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:384)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:378)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:337)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:286)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1218)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1140)
+	at org.testng.TestNG.runSuites(TestNG.java:1069)
+	at org.testng.TestNG.run(TestNG.java:1037)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></pre></td>
+                                                    </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class='subview-right left'>
+        <div class='view-summary'>
+            <h5 class='exception-name'></h5>
+        </div>
+    </div>
+</div>
+<!-- exception view -->
+<div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>9</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>83</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>Dec 20, 2020 09:10:17 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>Dec 20, 2020 09:12:15 PM</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>0h 1m 57s+917ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel dashboard-environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>OS</td>
+								<td>Windows</td>
+							</tr>
+							<tr>
+								<td>Environment</td>
+								<td>QA</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view -->
+<!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 1,
+				failParent: 0,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 8,
+				exceptionsParent: 8,
+				
+				passChild: 67,
+				failChild: 0,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 16,
+				infoChild: 0,
+				exceptionsChild: 16,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+		
+			<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/fca20fb7653aade98810546ab96a2a4360e3e712/dist/js/extent.js' type='text/javascript'></script>
+		
+		
+ 		<script type='text/javascript'>
+ 		</script>
+	</body>
+	
+</html>
