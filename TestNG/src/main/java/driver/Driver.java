@@ -81,30 +81,26 @@ public class Driver extends PreAndPost{
     {
 		try
   		 {
-
-
    	 String sTimeStamp=new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
    	 if(result.getStatus() == ITestResult.FAILURE)
      {
-				DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result");
-				DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
-				 test.log(Status.FAIL, MarkupHelper.createLabel(sTestCaseID+" FAILED due to below issues:", ExtentColor.RED));
-		         test.fail(result.getThrowable());
+		DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result");
+		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
+		test.log(Status.FAIL, MarkupHelper.createLabel(sTestCaseID+" FAILED due to below issues:", ExtentColor.RED));
+		test.fail(result.getThrowable());
      }	
-   
      else if(result.getStatus() == ITestResult.SUCCESS)
      {
-  			DataInputProvider.setCellData("PASSED", iTestCaseRowNumDriver, "Result");
-			DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
-			test.log(Status.PASS, MarkupHelper.createLabel(sTestCaseID+" PASSED", ExtentColor.GREEN));
+  		DataInputProvider.setCellData("PASSED", iTestCaseRowNumDriver, "Result");
+		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
+		test.log(Status.PASS, MarkupHelper.createLabel(sTestCaseID+" PASSED", ExtentColor.GREEN));
      }
      else
      {     	
-			DataInputProvider.setCellData("Skipped", iTestCaseRowNumDriver, "Result");
-			DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
-			
-         test.log(Status.SKIP, MarkupHelper.createLabel(sTestCaseID+" SKIPPED", ExtentColor.ORANGE));
-         test.skip(result.getThrowable());
+		DataInputProvider.setCellData("Skipped", iTestCaseRowNumDriver, "Result");
+		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");			
+        test.log(Status.SKIP, MarkupHelper.createLabel(sTestCaseID+" SKIPPED", ExtentColor.ORANGE));
+        test.skip(result.getThrowable());
      }
     }
 	 catch(Exception e)

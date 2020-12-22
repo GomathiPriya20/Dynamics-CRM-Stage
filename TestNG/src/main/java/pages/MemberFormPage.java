@@ -839,7 +839,7 @@ public MemberFormPage clickSystem() throws InterruptedException{
 	return this;
 }
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-public MemberFormPage CAMSFlag() {
+public MemberFormPage isCAMSFlagAutoPopulated() {
 	//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 	JavascriptExecutor js = (JavascriptExecutor)getDriver();
 	js.executeScript("return document.getElementById('ix_fbomanualoverride_cl').innerHTML").toString();
