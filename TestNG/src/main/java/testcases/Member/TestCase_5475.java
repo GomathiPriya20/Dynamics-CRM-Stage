@@ -25,22 +25,14 @@ public class TestCase_5475 {
 		.defaultAccountStatus()
 		.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
-		.chooseRecordstatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
-	
-		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
-		
-		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
-		
-		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-		
-		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-		
-		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
-		
-		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
-		
-		.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
-	
+		.chooseRecordstatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))	
+		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))		
+		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))		
+		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))		
+		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))		
+		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))		
+		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))	
+		.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))	
 		.selectDirectParentRelationAffiliated(	DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 		
 		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))

@@ -104,7 +104,7 @@ public class TestCase_7140 {
 			 .chooseRecordStatusPublished(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			 
 			//Click on Save 
-			 .clickSave() 
+			 .clickSave() ;
 			 
 		//9 Verify Entity code is generated 
 		//10 Verify "IS Corporate parent" field

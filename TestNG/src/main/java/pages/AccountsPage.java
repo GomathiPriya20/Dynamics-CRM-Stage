@@ -26,7 +26,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 	}
   	
 
-  	public  AccountsPage searchOnAccountsPage(String ActiveMember1) throws InterruptedException {	
+  	public  AccountsPage searchOnAccountsPage(String crmNumberInput) throws InterruptedException {	
 		try {
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		} catch (Exception e) {
@@ -34,7 +34,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 			e.printStackTrace();
 		}
 		click(getDriver().findElement(By.id("crmGrid_findCriteria")));
-		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),ActiveMember1 );
+		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),crmNumberInput );
 		return this;
 	}
   	public  MemberFormPage selectAccountFromSearchResults() throws InterruptedException {	
@@ -43,6 +43,13 @@ public class AccountsPage extends WebDriverServiceImpl {
 		action.doubleClick(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr"))).build().perform();
 		
 		return new MemberFormPage();
+	}
+  	
+  	public  SupplierFormPage selectSupplierAccountFromSearchResults() throws InterruptedException {	
+		Actions action = new Actions(getDriver());	
+		action.moveToElement(getDriver().findElement(By.xpath("//nobr[@class='gridcellpadding']")));
+		action.doubleClick(getDriver().findElement(By.xpath("//nobr[@class='gridcellpadding']"))).build().perform();
+		return new SupplierFormPage();
 	}
 
 }

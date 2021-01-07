@@ -35,7 +35,7 @@ public class PreAndPost extends WebDriverEvents
     private static String reportFileName = "Test-Automaton-Report";
     private static String fileSeperator = System.getProperty("file.separator");
     private static String reportFilepath = System.getProperty("user.dir") +fileSeperator+ "TestReport";
-    static String timeStamp=new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
+    static String timeStamp=new SimpleDateFormat("yyyy_MM_dd_hh_mm_a").format(new Date());
     private static String reportFileLocation =  reportFilepath +fileSeperator+ reportFileName+timeStamp+".html";
      
     
@@ -117,7 +117,7 @@ public class PreAndPost extends WebDriverEvents
 			getDriver().quit();
 			//test.log(Status.PASS, "The opened browsers are closed");
 		} catch (Exception e) {
-			//test.log(Status.FAIL, "Unexpected error occured in Browser");
+			//test.log(Status.FAIL, "Unexpected error occurred in Browser");
 		}
     }
     @AfterSuite

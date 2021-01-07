@@ -15,7 +15,7 @@ public class TestCase_7139 {
 			new LoginPage()
 			.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
 	  	    .typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName))  
-			.clickSignIn()
+			.clickSignIn();
 		
 		//2 Go to Workplace > Accounts and search for EIN 673415
 		

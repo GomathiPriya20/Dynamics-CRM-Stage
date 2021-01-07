@@ -15,7 +15,7 @@ public class TestCase_7138 {
 			new LoginPage()
 			.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
 	  	    .typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName))  
-			.clickSignIn()
+			.clickSignIn();
 		
 		//2. Go to Workplace > Accounts and search for EIN 673415 
 		//3. Double click on the account and go to Sub accounts entity by clicking > on the top 
