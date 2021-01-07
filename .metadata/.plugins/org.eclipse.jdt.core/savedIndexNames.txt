@@ -1,0 +1,10 @@
+INDEX VERSION 1.131+E:\schandr3\eclipse-workspace\.metadata\.plugins\org.eclipse.jdt.core
+20853410.index
+2801584660.index
+2577681470.index
+1076345484.index
+3353440236.index
+3078468409.index
+2168687353.index
+1237528721.index
+1673224920.index
