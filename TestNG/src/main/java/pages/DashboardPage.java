@@ -8,16 +8,22 @@ public class DashboardPage extends WebDriverServiceImpl {
 
 	public DashboardPage clickWorkplace() throws InterruptedException {	
 		Thread.sleep(3000);
+		getDriver().navigate().refresh();
 		click(getDriver().findElement(By.id("TabWorkplace")));
 		return this;
 	}
 
 	public AccountsPage selectAccounts() throws InterruptedException {	
+		Thread.sleep(3000);
 		click(getDriver().findElement(By.xpath("//span[text()='Accounts']")));
 		Thread.sleep(3000);
 		return new AccountsPage();
 		}
 	
+	public AccountsPage pageRefresh() {
+		getDriver().navigate().refresh();
+		return new AccountsPage();
+	}
 	
 	public ContactsPage selectContacts() {	
 		click(getDriver().findElement(By.xpath("//span[text()='Contacts']")));

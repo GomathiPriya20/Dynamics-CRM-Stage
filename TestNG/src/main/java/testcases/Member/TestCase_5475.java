@@ -26,7 +26,7 @@ public class TestCase_5475 {
 		.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 		.chooseRecordstatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))	
-		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))		
+		//.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))		
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))		
 		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))		
 		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))		
@@ -58,7 +58,7 @@ public class TestCase_5475 {
 		.chooseRecordStatusPublished(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 
 		.clickSave() 
-		.entityCodeIsDisplayedWithFrame()
+		//.entityCodeIsDisplayedWithFrame()
 		.businessClassificationIsVerified()
 		.accountTypeIsVerified()
 		.recordStatusIsVerified()

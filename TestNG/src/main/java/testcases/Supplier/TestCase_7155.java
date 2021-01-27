@@ -21,13 +21,11 @@ public class TestCase_7155 {
 		.verifyAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "verifyAccountName", sDataSheetName))		
 		.defaultAccountStatus(DataInputProvider.getCellData_ColName(iRowNumber, "defaultAccountStatus", sDataSheetName))
 		.existingRecordStatusDraftToPublished(DataInputProvider.getCellData_ColName(iRowNumber, "recordStatusPublished", sDataSheetName))
+		//.pickTPRDClear()
 		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "defaultAccountType", sDataSheetName))
-		.pickTPRD(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
+		.pickTPRDEdit(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
 		.crmNumberIsDisplayed()
 		.clickSave()		
-		.entityCodeIsDisplayed();
-		
+		.entityCodeIsDisplayed();	
 	}
-
-
 }

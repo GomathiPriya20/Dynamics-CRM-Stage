@@ -7,12 +7,12 @@ public class LoginPage extends WebDriverServiceImpl{
 
 
 	public LoginPage typeUsername(String username) {
-		type(getDriver().findElement(By.id("userNameInput")),username);
+		type(getDriver().findElement(By.id("userNameInput")),username,"Username");
 		return this;
 	}
 		
 	public LoginPage typePassword(String password) {
-		type(getDriver().findElement(By.id("passwordInput")),password);
+		type(getDriver().findElement(By.id("passwordInput")),password,"Password");
 		return this;
 	}
 

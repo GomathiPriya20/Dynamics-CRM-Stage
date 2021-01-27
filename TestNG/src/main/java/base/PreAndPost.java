@@ -18,11 +18,14 @@ import org.testng.annotations.BeforeSuite;
  import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import events.WebDriverEvents;
+import utils.DataInputProvider;
 
  
 public class PreAndPost extends WebDriverEvents
@@ -37,59 +40,44 @@ public class PreAndPost extends WebDriverEvents
     private static String reportFilepath = System.getProperty("user.dir") +fileSeperator+ "TestReport";
     static String timeStamp=new SimpleDateFormat("yyyy_MM_dd_hh_mm_a").format(new Date());
     private static String reportFileLocation =  reportFilepath +fileSeperator+ reportFileName+timeStamp+".html";
-     
+    public static String URL;
     
     @BeforeSuite
-    public static void setUp()
+    public static void setUp() throws Exception
     {
+    	properties.load(new FileInputStream(new File("./src/test/resources/environment.properties")));	
+		//read excel file
+		String sExcelFilePath=System.getProperty("user.dir")+"\\data\\"+properties.getProperty("DataFile");
+		DataInputProvider.setExcelFile(sExcelFilePath,properties.getProperty("DriverSheetName"));
+    	URL=DataInputProvider.getCellData_ColName(1, "Environment",properties.getProperty("DriverSheetName"));
     	String fileName = getReportPath(reportFilepath);
     	htmlReporter = new ExtentHtmlReporter(fileName);
         extent = new ExtentReports();
         extent.attachReporter(htmlReporter);
          
         extent.setSystemInfo("OS", "Windows");
-        extent.setSystemInfo("Environment", "QA");
-             
+        extent.setSystemInfo("Environment", URL);         
         htmlReporter.config().setChartVisibilityOnOpen(true);
         htmlReporter.config().setReportName("CRM Automation Test Results");
         htmlReporter.config().setTestViewChartLocation(ChartLocation.BOTTOM);
         htmlReporter.config().setTheme(Theme.STANDARD);
     }
     
-   	public void beforeMethod() throws FileNotFoundException, IOException {
+   	public void beforeMethod() throws Exception {
+   	//	Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
+   		
    		properties.load(new FileInputStream(new File("./src/test/resources/environment.properties")));
-   		
-   		
-   		/*ClassLoader classLoader = getClass().getClassLoader();
-        URL resource = classLoader.getResource("resources/chromedriver.exe");
-        File f = new File("Driver");
-        if (!f.exists()) {
-            f.mkdirs();
-        }
-        File chromeDriver = new File("Driver" + File.separator + "chromedriver.exe");
-        if (!chromeDriver.exists()) {
-            chromeDriver.createNewFile();
-            org.apache.commons.io.FileUtils.copyURLToFile(resource, chromeDriver);
-        }*/
-        //System.setProperty("webdriver.chrome.driver", chromeDriver.getAbsolutePath());
         System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
-        
-        
-  
-   		
-   		ChromeOptions options = new ChromeOptions();
-   		
+   		ChromeOptions options = new ChromeOptions();  		
    		if(properties.getProperty("Headless").equalsIgnoreCase("true"))
    			options.setHeadless(true);
-   		
    		webdriver = new ChromeDriver(options);
    		driver = new EventFiringWebDriver(webdriver);
    		driver.register(this);
 
    		tlDriver.set(driver);		
    		getDriver().manage().window().maximize();
-
-   		getDriver().get(properties.getProperty("URL"));
+   		getDriver().get(URL);
    		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
    	}
    	
@@ -110,14 +98,13 @@ public class PreAndPost extends WebDriverEvents
 		return reportFileLocation;
     }
    	    
-   // @AfterMethod
-    public void closeBrowser()
+  public void closeAllBrowsers()
     {
     	try {
 			getDriver().quit();
-			//test.log(Status.PASS, "The opened browsers are closed");
+			test.log(Status.PASS, "The opened browsers are closed");
 		} catch (Exception e) {
-			//test.log(Status.FAIL, "Unexpected error occurred in Browser");
+			test.log(Status.FAIL, "Unexpected error occured in Browser");
 		}
     }
     @AfterSuite

@@ -1,8 +1,11 @@
 package testcases.Member;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.MemberFormPage;
 import utils.DataInputProvider;
+//TFS ID_ 7137:Create new member - New Member form and Save it as prospect first
 
 public class TestCase_7137 {
 
@@ -20,7 +23,7 @@ public class TestCase_7137 {
 		.clickWorkplace()
 			.selectAccounts()
 			.clickNewOnAccountsPage()
-			.chooseMemberForm()
+			.chooseMemberFormwithFrame1()
 		
 		//3. Account Name = Any
 		.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
@@ -29,10 +32,10 @@ public class TestCase_7137 {
 			.clickSave() 
 		
 		//4. Verify CRM Account # is generated 
-		.crmNumberIsDisplayed()	
+		.crmNumberIsDisplayedWithFrame1()	
 		
-		//5. Account  Type = Member
-		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
+		//5. Account Type = Member
+		.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 		
 			//Premier Start date = Today's Date
 			.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
@@ -49,13 +52,13 @@ public class TestCase_7137 {
 			//Application Start Date = Today's Date
 			.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
 			
-			//CAMS
+			//CAMS Flag = Yes
+			.changeCAMSFlag()
 			
 			//Participation Type = Standard
 			.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 				
 			//Direct Parent Entity Code = 673415
-			//Entity code instead of name
 			.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 			
 			//Direct Parent Relation = Managed
@@ -71,7 +74,7 @@ public class TestCase_7137 {
 			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
 			 
 			//Click on Save 
-			 .clickSave() 
+			// .clickSave() 
 			 
 		//6. Street 1 = Any
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
@@ -86,7 +89,7 @@ public class TestCase_7137 {
 			.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
 			
 			 //Click on Save 
-			 .clickSave() 
+			// .clickSave() 
 		
 		//7.  Click the + icon on the Line of Business Grid
 		.clickLineOfBusiness()
@@ -100,41 +103,48 @@ public class TestCase_7137 {
 			// Start Date =Today's date
 			.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
 			
-			// Click on Save 
+			// Click on LOB Save 
 			.clickLineOfBusinessSave()
 		
 		
 		//8. Record Status = Published
-		.chooseRecordStatusPublished(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			
 			//Click on Save 
 			.clickSave() 
 		
 		//9. Verify Entity code is generated 
-		.entityCodeIsDisplayedWithFrame();
+		.entityCodeIsDisplayedWithFrame1()
 		
-			
-		//10. Verify "IS Corporate parent" field
-		
+		//10. Verify "IS Corporate account" field
+		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
 		
 		//11. Verify Corporate parent name in the form
+		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
 		
 		//12. Verify "Is Food Service parent" field 
+		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
 		
 		//13 Verify Food Service parent name in the form 
+		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
 		
 		//14 Verify Sponsor field 
+		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
 		
 		//15 Verify "Is Sponsor" field 
+		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 		
 		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
+		.selectMembershipEntity()
+		.doubleClickOnTopParentInMembership()
 		
 		//17 Click on > and go to Audit history 
+		.selectTPAuditHistory()
 		
 		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
+		.verifyIsMemberAddMailSent()
 		
-		//19 Verify the timestamp on which the flag gets updated 
-		 
-	
+		//19 Verify the time-stamp on which the flag gets updated 
+		.verifyTimeStampInTPMembershipAuditHistory();
 	}
 }

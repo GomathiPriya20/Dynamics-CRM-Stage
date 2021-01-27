@@ -10,15 +10,24 @@ public class TestCase_1141 {
 	
 //	@Test()
 	public static void createMemberTP(int iRowNumber, String sDataSheetName)throws Exception, InterruptedException, AWTException
-	{				
+	{		
+		//1. Find or create a Member Account that is a Direct Parent of another Member or Non-GPO Account.  
 			new LoginPage()
 			.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
 			.typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName))
 			.clickSignIn()
 			.clickWorkplace()
+			//DP's BK Active = No
 			.selectAccounts()
 			.chooseActiveMember(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))	
+			//Child's BK Active = No
 			.selectBKfieldNoToYes()
+			
+			
+			//Set the Child Member Account's BK Active field to Yes and click the Save Button.
+			//DP's BK Active = No
+			//Child's BK Active = Yes
+			
 			.clickSave()
 			.clickSaveForError()
 			.clickSaveForOk()

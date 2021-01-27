@@ -5,8 +5,7 @@
 	<listeners>
         <listener class-name="events.TestAnnotation"/>
     </listeners>
-    
-  <test thread-count="5" name="Results">
+  <test  name="Results" >
     <classes>
    		 <class name="driver.Driver"/>   
     </classes>

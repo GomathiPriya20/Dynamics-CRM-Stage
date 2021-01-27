@@ -12,7 +12,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 
 	public ContactsPage selectPrimaryAccount() {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-		typeAndChoose(getDriver().findElement(By.id("parentcustomerid_ledit")), "CNECT");
+		typeAndChoose(getDriver().findElement(By.id("parentcustomerid_ledit")), "CNECT","Primary Account");
 		return this;
 	}
 	

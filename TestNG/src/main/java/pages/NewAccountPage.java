@@ -13,12 +13,29 @@ public class NewAccountPage extends WebDriverServiceImpl {
 		return new SupplierFormPage();
 		
 	}
+	
+	public MemberFormPage chooseMemberFormwithFrame1() {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		chooseMemberForm();
+		return new MemberFormPage();
+	}
+	
 		
-		public MemberFormPage chooseMemberForm() {
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+	public MemberFormPage chooseMemberForm() {
+		click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")));
+		click(getDriver().findElement(By.xpath("//span[@title='Member Form']")));
+		//switchToDefaultContent();
+		return new MemberFormPage();
+	}
+	public MemberFormPage chooseMemberEntryFormWithFrame1() {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		chooseMemberEntryForm();	
+		return new MemberFormPage();
+	}
+	
+		public MemberFormPage chooseMemberEntryForm() {
 			click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")));
-			click(getDriver().findElement(By.xpath("//span[@title='Member Form']")));
-			//switchToDefaultContent();
+			click(getDriver().findElement(By.xpath("//span[@title='Member Entry Form']")));
 			return new MemberFormPage();
 	}
 		public AccountsPage chooseActiveMember() {
@@ -28,4 +45,5 @@ public class NewAccountPage extends WebDriverServiceImpl {
 			//switchToDefaultContent();
 			return new AccountsPage();
 	}
+
 }

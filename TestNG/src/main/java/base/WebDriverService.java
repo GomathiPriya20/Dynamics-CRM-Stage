@@ -99,7 +99,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void verifyExactText(WebElement ele, String expectedText) throws IOException;
+	public void verifyExactText(WebElement ele, String expectedText,String field) throws IOException;
 
 	/**
 	 * This method will verify given text contains actual text on the given element
@@ -144,7 +144,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void verifyDisplayed(WebElement ele) throws IOException;
+	public void verifyDisplayed(WebElement ele,String field) throws IOException;
 
 	/**
 	 * This method will switch to the Window of interest

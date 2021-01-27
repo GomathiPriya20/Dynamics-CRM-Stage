@@ -34,7 +34,7 @@ public class TestCase_5486 {
 		
 		.chooseRecordstatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
 		
-		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
+		//.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
 		
