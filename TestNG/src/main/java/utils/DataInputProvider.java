@@ -99,11 +99,13 @@ public static String getCellData_ColName(int iRowNum, String sColName, String sD
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  //This method is to write in the Excel cell, Row number and Column name are the parameters
-public static void setCellData(String Result,  int RowNum, String sColName) throws Exception    {
+public static void setCellData(String Result,  int RowNum, String sColName,String sSheetName) throws Exception    {
 	try
 	{
 		int iColNum=0;
-		ExcelWSheet = ExcelWBook.getSheet(Driver.properties.getProperty("DriverSheetName"));
+		//ExcelWSheet = ExcelWBook.getSheet(Driver.properties.getProperty("DriverSheetName"));
+		ExcelWSheet = ExcelWBook.getSheet(sSheetName);
+		
 		Row=ExcelWSheet.getRow(0);
 		int lastCellNum = Row.getLastCellNum();
 		for(int j=0;j<lastCellNum;j++)

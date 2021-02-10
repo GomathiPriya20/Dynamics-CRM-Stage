@@ -1,14 +1,11 @@
 package testcases.Member;
 
-
 import java.awt.AWTException;
 
 
 import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.DataInputProvider;
-
-
 
 public class TestCase_1152 {
 	
@@ -27,5 +24,4 @@ public class TestCase_1152 {
 		.manualOverrideIsDisplayed()
 		.manualOverrideIsDisplayed1();
 	}
-
 }

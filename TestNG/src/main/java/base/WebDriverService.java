@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 public interface WebDriverService {
 
 
+	
 	/**
 	 * This method will locate the element using any given locator
 	 * @param locator  - The locator by which the element to be found
@@ -108,7 +109,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void verifyPartialText(WebElement ele, String expectedText) throws IOException;
+	public void verifyPartialText(WebElement ele, String expectedText,String field) throws IOException;
 
 	/**
 	 * This method will verify exact given attribute's value with actual value on the given element

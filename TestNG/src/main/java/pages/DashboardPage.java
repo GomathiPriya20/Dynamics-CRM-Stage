@@ -34,7 +34,7 @@ public class DashboardPage extends WebDriverServiceImpl {
 	public DashboardPage clickUserIcon() {
 		click(getDriver().findElement(By.className("navTabButtonUserInfoProfileImage")));
 		click(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")));
-		verifyPartialText(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")), "Test");
+		verifyPartialText(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")), "Test","User info");
 		return this;
 	}
 	

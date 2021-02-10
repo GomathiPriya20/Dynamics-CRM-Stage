@@ -209,7 +209,6 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			text = ele.getText();
 			ele.click();
 		}
-
 		catch (InvalidElementStateException e) {
 			e.printStackTrace();
 			setReport().log(Status.FAIL,text+" could not be clicked", screenshotCapture());	
@@ -301,11 +300,11 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	public String getAttribute(WebElement ele, String attribute) {		
+	public String getAttribute(WebElement ele, String attribute,String field) {		
 		String bReturn = "";
 		try {
 			bReturn=  ele.getAttribute(attribute);
-			setReport().log(Status.PASS, "The Title: "+bReturn+" is displayed",screenshotCapture());
+			setReport().log(Status.PASS, bReturn+" is displayed in :"+field,screenshotCapture());
 		} catch (WebDriverException e) {
 			setReport().log(Status.FAIL, ele+"could not be found",screenshotCapture());
 			Driver.failCount++;
@@ -393,13 +392,14 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	public void verifyPartialText(WebElement ele, String expectedText) {
+	public void verifyPartialText(WebElement ele, String expectedText,String field) {
 		String bReturn=ele.getText();
+		String s=ele.getAttribute("title");
 		try {
 			if(bReturn.contains(expectedText)) {
-				setReport().log(Status.PASS, "The expected text contains the actual "+expectedText,screenshotCapture());
+				setReport().log(Status.PASS, "The "+field+" contains "+expectedText,screenshotCapture());
 			}else {
-				setReport().log(Status.FAIL, "The expected text does not contain the actual "+expectedText,screenshotCapture());
+				setReport().log(Status.FAIL, "The "+field+" does not contain "+expectedText,screenshotCapture());
 				Driver.failCount++;
 			}
 		} catch (WebDriverException e) {
@@ -410,12 +410,12 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	public void verifyExactAttribute(WebElement ele, String attribute, String value) {
+	public void verifyExactAttribute(WebElement ele, String attribute, String value,String field) {
 		try {
-			if(getAttribute(ele, attribute).equals(value)) {
-				setReport().log(Status.PASS, "The expected attribute : "+attribute+" value matches the actual : "+value,screenshotCapture());
+			if(getAttribute(ele, attribute,field).equals(value)) {
+				setReport().log(Status.PASS, "The "+field+ " contains "+ ": "+value,screenshotCapture());
 			}else {
-				setReport().log(Status.FAIL, "The expected attribute : "+attribute+" value does not matches the actual : "+value,screenshotCapture());
+				setReport().log(Status.FAIL, "The "+field+ "doen not contains "+ ": "+value,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
 			setReport().log(Status.FAIL, "Unknown exception occured while verifying the attribute",screenshotCapture());
@@ -425,12 +425,12 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	public void verifyPartialAttribute(WebElement ele, String attribute, String value) {
+	public void verifyPartialAttribute(WebElement ele, String attribute, String value,String field) {
 		try {
-			if(getAttribute(ele, attribute).contains(value)) {
-				setReport().log(Status.PASS, "The expected attribute : "+attribute+" value contains the actual : "+value,screenshotCapture());
+			if(getAttribute(ele, attribute,field).contains(value)) {
+				setReport().log(Status.PASS, "The "+field+ " contains "+ ": "+value,screenshotCapture());
 			}else {
-				setReport().log(Status.FAIL, "The expected attribute : "+attribute+" value does not contains the actual : "+value,screenshotCapture());
+				setReport().log(Status.FAIL, "The "+field+ "doen not contains "+ ": "+value,screenshotCapture());
 			}
 		} catch (WebDriverException e) {
 			setReport().log(Status.FAIL, "Unknown exception occured while verifying the attribute",screenshotCapture());
@@ -608,6 +608,9 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			throw e;
 		}
 	}
+	
+	
+
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public void scrollDown(WebElement ele) {
@@ -665,6 +668,16 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 	@Override
 	public void selectDropDownUsingVisibleText(WebElement ele, String value) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void verifyExactAttribute(WebElement ele, String attribute, String value) throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void verifyPartialAttribute(WebElement ele, String attribute, String value) throws IOException {
 		// TODO Auto-generated method stub
 		
 	}

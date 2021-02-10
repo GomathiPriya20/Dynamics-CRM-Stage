@@ -73,7 +73,7 @@ public class Driver extends PreAndPost{
 				beforeMethod();
 				System.out.println(sTestCaseID+" is being excuted");				
 				aMethod[0].invoke(clsInstance,iTestCaseRowNum,sCategory);
-				closeAllBrowsers();			
+			//	closeAllBrowsers();			
 		}
 		else
 		{
@@ -89,8 +89,8 @@ public class Driver extends PreAndPost{
    	 String sTimeStamp=new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss").format(new Date());
    	 if(result.getStatus() == ITestResult.FAILURE)
      {
-		DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result");
-		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
+		DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result",Driver.properties.getProperty("DriverSheetName"));
+		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp",Driver.properties.getProperty("DriverSheetName"));
 		test.log(Status.FAIL, MarkupHelper.createLabel(sTestCaseID+" FAILED due to below issues:", ExtentColor.RED));
 		test.fail(result.getThrowable());
      }	
@@ -98,21 +98,21 @@ public class Driver extends PreAndPost{
      {
     	if (failCount==0 )
     	{	
-	  		DataInputProvider.setCellData("PASSED", iTestCaseRowNumDriver, "Result");
-			DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
+	  		DataInputProvider.setCellData("PASSED", iTestCaseRowNumDriver, "Result",Driver.properties.getProperty("DriverSheetName"));
+			DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp",Driver.properties.getProperty("DriverSheetName"));
 			test.log(Status.PASS, MarkupHelper.createLabel(sTestCaseID+" PASSED", ExtentColor.GREEN));
     	}
     	else
     	{
-    		DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result");
-    		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp");
+    		DataInputProvider.setCellData("Failed", iTestCaseRowNumDriver, "Result",Driver.properties.getProperty("DriverSheetName"));
+    		DataInputProvider.setCellData(sTimeStamp, iTestCaseRowNumDriver, "TimeStamp",Driver.properties.getProperty("DriverSheetName"));
     		test.log(Status.FAIL, MarkupHelper.createLabel(sTestCaseID+" FAILED :", ExtentColor.RED));
     	}
      }
      else
      {     	
-		DataInputProvider.setCellData("No Run", iTestCaseRowNumDriver, "Result");
-		DataInputProvider.setCellData("", iTestCaseRowNumDriver, "TimeStamp");			
+		DataInputProvider.setCellData("No Run", iTestCaseRowNumDriver, "Result",Driver.properties.getProperty("DriverSheetName"));
+		DataInputProvider.setCellData("", iTestCaseRowNumDriver, "TimeStamp",Driver.properties.getProperty("DriverSheetName"));			
         test.log(Status.SKIP, MarkupHelper.createLabel(sTestCaseID+" SKIPPED", ExtentColor.ORANGE));
         test.skip(result.getThrowable());
      }

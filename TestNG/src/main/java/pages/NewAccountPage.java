@@ -11,7 +11,6 @@ public class NewAccountPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//span[@title='Supplier Form']")));
 		//switchToDefaultContent();
 		return new SupplierFormPage();
-		
 	}
 	
 	public MemberFormPage chooseMemberFormwithFrame1() {

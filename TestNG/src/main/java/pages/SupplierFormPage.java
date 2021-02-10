@@ -119,7 +119,7 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
 		String sCRMNumber = getTextValue(((getDriver().findElement(By.id("CRM Account #_label")))));;
 		try {
-			DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber");
+			DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber",Driver.sCategory);
 			assertNotNull(sCRMNumber);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -155,13 +155,13 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 	public SupplierFormPage clickIsTPYes() {
 		scrollDown(getDriver().findElement(By.id("Is Top Parent_label")));
 		verifyExactText(getDriver().findElement(By.id("Is Top Parent_label")), "Yes","Is Top Parent");
-		getAttribute(getDriver().findElement(By.id("ix_topparent_lock")), "id");
+		getAttribute(getDriver().findElement(By.id("ix_topparent_lock")), "id","Is Top Parent");
 		return this;
 	}
 	
 	public SupplierFormPage clickIsTPNo() {
 		verifyExactText(getDriver().findElement(By.id("Is Top Parent_label")), "No","Is Top Parent");
-		getAttribute(getDriver().findElement(By.id("ix_topparent_lock")), "id");
+		getAttribute(getDriver().findElement(By.id("ix_topparent_lock")), "id","Is Top PArent");
 		return this;
 	}
 
@@ -292,7 +292,7 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		Thread.sleep(2000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));	
 		scrollUp((getDriver().findElement(By.id("ix_recordstatus"))));
-		getAttribute(getDriver().findElement(By.id("ix_recordstatus_lock")), "id");
+		getAttribute(getDriver().findElement(By.id("ix_recordstatus_lock")), "id","Record Status Lock");
 		return this;
 	}
 		
