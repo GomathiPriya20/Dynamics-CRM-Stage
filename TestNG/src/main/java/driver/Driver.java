@@ -73,7 +73,7 @@ public class Driver extends PreAndPost{
 				beforeMethod();
 				System.out.println(sTestCaseID+" is being excuted");				
 				aMethod[0].invoke(clsInstance,iTestCaseRowNum,sCategory);
-			//	closeAllBrowsers();			
+				closeAllBrowsers();			
 		}
 		else
 		{

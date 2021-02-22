@@ -43,6 +43,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
+	public MemberFormPage verifyAccountName2IsEnabled() {
+		verifyIsEnabled(getDriver().findElement(By.id("ix_hiscirostername")),"Account name2");
+		return this;
+	}
+	
+	
 	//Click on Save
 	public MemberFormPage clickSave() throws InterruptedException {
 		switchToDefaultContent();
@@ -114,9 +120,10 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
-
-	
-	public MemberFormPage selectParticipationType(String ParticipationType) {
+	public MemberFormPage selectParticipationType(String ParticipationType) throws InterruptedException {
+		Thread.sleep(10000);
+		//scrollDown(((getDriver().findElement(By.id("ix_participationtype")))));
+		//click(((getDriver().findElement(By.id("ix_participationtype_c")))));
 		click(((getDriver().findElement(By.id("ix_participationtype")))));
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_participationtype_i")))),ParticipationType,"Participation type");
 		verifyExactText(getDriver().findElement(By.id("ix_participationtype")),ParticipationType,"Participation type"); 
@@ -173,8 +180,20 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	
 	public MemberFormPage typeStreet1(String Street1) {
+		scrollDown(getDriver().findElement(By.id("address1_line1")));
 		click((getDriver().findElement(By.id("address1_line1"))));
 		type(((getDriver().findElement(By.id("address1_line1_i")))),Street1, "Street1");
+		return this;
+	}
+	public MemberFormPage verifyStreet1IsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_line1")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_line1")),"Street1");
+		return this;
+	}
+	
+	public MemberFormPage verifyStreet2IsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_line2")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_line2")),"Street2");
 		return this;
 	}
 	public MemberFormPage typeStreet2(String Street2) {
@@ -188,9 +207,25 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(((getDriver().findElement(By.id("address1_line3_i")))),DeliveryInfo, "Delivery Info");
 		return this;
 	}
+	public MemberFormPage verifyDeliveryInfoIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_line3")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_line3")),"Delivery Info");
+		return this;
+	}
+
 	public MemberFormPage typeState(String State) {
 		click((getDriver().findElement(By.id("address1_stateorprovince"))));
 		type(((getDriver().findElement(By.id("address1_stateorprovince_i")))),State, "State");
+		return this;
+	}
+	public MemberFormPage verifyStateIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_stateorprovince")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_stateorprovince")),"State");
+		return this;
+	}
+	public MemberFormPage verifyMainPhoneIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("telephone1")));
+		verifyIsEnabled(getDriver().findElement(By.id("telephone1")),"Main Phone");
 		return this;
 	}
 
@@ -236,25 +271,40 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),ExternalAddessID,"External Addess ID"); 
 		return this;
 	}
-	
-	
-	
-	
-	public MemberFormPage typeCountry(String Country) {
-		click((getDriver().findElement(By.id("address1_county"))));
-		type((getDriver().findElement(By.id("address1_county_i"))),Country,"Country");
+	public MemberFormPage verifyCountyIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_county")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_county")),"County");
 		return this;
 	}
+	
+	public MemberFormPage typeCounty(String County) {
+		click((getDriver().findElement(By.id("address1_county"))));
+		type((getDriver().findElement(By.id("address1_county_i"))),County,"County");
+		return this;
+	}
+	
 	
 	public MemberFormPage typeCity(String City) {
 		click((getDriver().findElement(By.id("address1_city"))));
 		type((getDriver().findElement(By.id("address1_city_i"))),City,"City");
 		return this;
 	}
+	public MemberFormPage verifyCityIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_city")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_city")),"City");
+		return this;
+	}
+
 	
-	public MemberFormPage typeCounty(String County) {
+	public MemberFormPage typeCountry(String Country) {
 		click((getDriver().findElement(By.id("address1_country"))));
-		type((getDriver().findElement(By.id("address1_country_i"))),County,"County");
+		type((getDriver().findElement(By.id("address1_country_i"))),Country,"Country");
+		return this;
+	}
+	
+	public MemberFormPage verifyCountryIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_country")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_country")),"Country");
 		return this;
 	}
 	
@@ -263,6 +313,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type((getDriver().findElement(By.id("address1_postalcode_i"))),ZipCode, "ZipCode");
 		return this;
 	}
+	public MemberFormPage verifyZipIsEnabled() {
+		scrollDown(getDriver().findElement(By.id("address1_postalcode")));
+		verifyIsEnabled(getDriver().findElement(By.id("address1_postalcode")),"ZipCode");
+		return this;
+	}
+	
 	
 	public MemberFormPage chooseApplicationDate(String ApplicationDate) {
 		click(((getDriver().findElement(By.id("ix_applicationstartdate")))));
@@ -291,6 +347,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(((getDriver().findElement(By.id("ix_classoftradedetail_ledit")))),ClassOfTrade,"Class of Trade");
 		return this;
 	}
+	public MemberFormPage verifyClassOfTradeIsEnabled() {
+		scrollDown(((getDriver().findElement(By.id("ix_classoftradedetail_c")))));
+		verifyIsEnabled(getDriver().findElement(By.id("ix_classoftradedetail_c")),"Class of Trade");
+		return this;
+	}
+	
 	public MemberFormPage defaultAccountStatus() {
 		verifyExactText((getDriver().findElement(By.id("ix_accountstatus"))),"Active","Account Status");
 		return this;
@@ -336,7 +398,10 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		}
 		return this;
 	}
-	
+	public MemberFormPage verifyRecordChangeStatus(String verifyRecordChangeStatus) {
+		verifyExactText((getDriver().findElement(By.id("Record Change Status_label"))),verifyRecordChangeStatus,"Record Change Status");
+		return this;
+	}
 
 	public MemberFormPage validateXMLFieldValues() {
 	try{
@@ -432,7 +497,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	
 	public MemberFormPage chooseRecordStatusPublished(String RecordStatusPublished) throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(9000);
+		//scrollDown(((getDriver().findElement(By.id("ix_recordstatus")))));
 		click(((getDriver().findElement(By.id("ix_recordstatus")))));
 		//click(((getDriver().findElement(By.id("ix_recordstatus_i")))));
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
@@ -1178,6 +1244,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(((getDriver().findElement(By.id("name_i")))),AccountName,"Account name");
 		return this;
 	}
+	public MemberFormPage verifyAccountNameIsEnabled() throws InterruptedException {
+		verifyIsEnabled(getDriver().findElement(By.id("name_i")),"Accoun name");
+		return this;
+	}
+	
 	public MemberFormPage typeAccountModify(String AccountName) throws InterruptedException {
 		click(getDriver().findElement(By.id("name_d")));
 		Thread.sleep(3000);

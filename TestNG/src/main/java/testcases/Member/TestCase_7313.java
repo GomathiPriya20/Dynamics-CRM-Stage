@@ -12,7 +12,7 @@ public class TestCase_7313 {
 	@Test
 	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 		
-		//1. Login to CRM using member supervisor / member credentials 
+		//1. Login to CRM as Limited member 
 		new LoginPage()
 			.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
 	  	    .typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName))  

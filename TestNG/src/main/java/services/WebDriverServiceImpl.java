@@ -662,24 +662,26 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			throw e;
 		}
 	}
-	@Override
-	public void type(WebElement ele, String data) throws IOException {
-		// TODO Auto-generated method stub
+	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public void verifyIsEnabled(WebElement ele,String field) {
+		boolean bReturn =false;
+		bReturn=ele.isEnabled();
+		try {
+			if(bReturn==true) {
+				setReport().log(Status.PASS, "The "+field+" is enabled",screenshotCapture());
+			}else {
+				setReport().log(Status.FAIL, "The "+field+" is disabled",screenshotCapture());
+				Driver.failCount++;
+			}
+		} catch (WebDriverException e) {
+			setReport().log(Status.FAIL, "Unknown exception occured while verifying the Text",screenshotCapture());
+			Driver.failCount++;
+			throw e;
+		} 
 	}
-	@Override
-	public void selectDropDownUsingVisibleText(WebElement ele, String value) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void verifyExactAttribute(WebElement ele, String attribute, String value) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void verifyPartialAttribute(WebElement ele, String attribute, String value) throws IOException {
-		// TODO Auto-generated method stub
-		
-	}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	
 }
 

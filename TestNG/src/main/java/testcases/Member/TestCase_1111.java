@@ -202,7 +202,7 @@ public class TestCase_1111 {
 		
 //Top Parent
 		
-		// Verify Direct parent and Top parent are populated 
+		// Verify Top parent is populated 
 		.verifyDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyTopParent", sDataSheetName))
 		
 		//Top Parent Relation Date = Today's Date

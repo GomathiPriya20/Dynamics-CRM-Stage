@@ -304,6 +304,133 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		Thread.sleep(2000);
 		return this;
 	}
+	
+	//Account name 2
+	public SupplierFormPage typeAccountName2(String AccountName2) {
+		click(((getDriver().findElement(By.id("ix_hiscirostername")))));
+		type(((getDriver().findElement(By.id("ix_hiscirostername_i")))),AccountName2,"Account name2");
+		return this;
+	}
+	public SupplierFormPage verifyCAMSFlag(String VerifyCAMSFlag) {
+		verifyExactText(getDriver().findElement(By.id("ix_camsflag")),VerifyCAMSFlag,"CAMS Flag"); 
+		return this;
+	}
+	
+	
+	public SupplierFormPage selectOwnership(String Ownership){
+		click(((getDriver().findElement(By.id("ix_ownership")))));
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_ownership_i']")))),Ownership,"Ownership");
+		verifyExactText(getDriver().findElement(By.id("ix_ownership")),Ownership,"Ownership"); 
+		return this;
+	}
+	
+	public SupplierFormPage typeStockSymbol(String StockSymbol) {
+		click(((getDriver().findElement(By.id("ix_stocksymbol")))));
+		type(((getDriver().findElement(By.id("ix_stocksymbol_i")))),StockSymbol, "Stock Symbol");
+		return this;
+	}
+	
+	public SupplierFormPage typeExchange(String Exchange) {
+		click(((getDriver().findElement(By.id("ix_exchange")))));
+		type(((getDriver().findElement(By.id("ix_exchange_i")))),Exchange, "Exchange");
+		return this;
+	}
+	
+	public SupplierFormPage typeOverrideName(String OverrideName) {
+		click((getDriver().findElement(By.id("address1_name"))));
+		type(((getDriver().findElement(By.id("address1_name_i")))),OverrideName, "OverrideName");
+		return this;
+	}
+
+	public SupplierFormPage typeStreet2(String Street2) {
+		click((getDriver().findElement(By.id("address1_line2"))));
+		type(((getDriver().findElement(By.id("address1_line2_i")))),Street2, "Street2");
+		return this;
+	}
+	
+	public SupplierFormPage typeDeliveryInfo(String DeliveryInfo) {
+		click((getDriver().findElement(By.id("address1_line3"))));
+		type(((getDriver().findElement(By.id("address1_line3_i")))),DeliveryInfo, "Delivery Info");
+		return this;
+	}
+	public SupplierFormPage typeState(String State) {
+		click((getDriver().findElement(By.id("address1_stateorprovince"))));
+		type(((getDriver().findElement(By.id("address1_stateorprovince_i")))),State, "State");
+		return this;
+	}
+
+	
+	public SupplierFormPage typeMainPhone(String MainPhone) {
+		click((getDriver().findElement(By.id("telephone1"))));
+		type(((getDriver().findElement(By.id("telephone1_i")))),MainPhone, "Main Phone");
+		return this;
+	}
+
+	
+	public SupplierFormPage typeCity(String City) {
+		click((getDriver().findElement(By.id("address1_city"))));
+		type((getDriver().findElement(By.id("address1_city_i"))),City,"City");
+		return this;
+	}
+	
+	public SupplierFormPage typeCounty(String County) {
+		click((getDriver().findElement(By.id("address1_country"))));
+		type((getDriver().findElement(By.id("address1_country_i"))),County,"County");
+		return this;
+	}
+	
+	public SupplierFormPage typeCountry(String Country) {
+		click((getDriver().findElement(By.id("address1_county"))));
+		type((getDriver().findElement(By.id("address1_county_i"))),Country,"Country");
+		return this;
+	}
+	
+	public SupplierFormPage typeFax(String Fax) {
+		click((getDriver().findElement(By.id("fax"))));
+		type(((getDriver().findElement(By.id("fax_i")))),Fax, "Fax");
+		return this;
+	}
+	public SupplierFormPage typeWebsite(String Website) {
+		click((getDriver().findElement(By.id("websiteurl"))));
+		type(((getDriver().findElement(By.id("websiteurl_i")))),Website, "Website");
+		return this;
+	}
+	public SupplierFormPage verifyReceiveDirectMail(String ReceiveDirectMail) {
+		verifyExactText(getDriver().findElement(By.id("ix_receivedirectmail")),ReceiveDirectMail,"Receive Direct Mail"); 
+		return this;
+	}
+	
+	public SupplierFormPage verifyDoNotVerifyAddress(String DoNotVerifyAddress) {
+		verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),DoNotVerifyAddress,"Do Not Verify Address"); 
+		return this;
+	}
+	public SupplierFormPage verifyIsTopParent(String IsTopParent) {
+		verifyExactText(getDriver().findElement(By.id("ix_istopparent")),IsTopParent,"Is Top Parent"); 
+		return this;
+	}
+	public SupplierFormPage verifyTopParent(String TopParent) {
+		verifyExactText((getDriver().findElement(By.id("parentaccountid"))),TopParent,"Top Parent");
+		return this;
+	}
+
+	public SupplierFormPage addMemberRecord(String MemberRecord) throws InterruptedException {
+		Thread.sleep(3000);
+		scrollDown(((getDriver().findElement(By.id("ix_memberrecordid")))));
+		click(((getDriver().findElement(By.id("ix_memberrecordid")))));
+		typeAndChoose(((getDriver().findElement(By.id("ix_memberrecordid_ledit")))),MemberRecord,"Member Record");
+		Thread.sleep(2000);
+		return this;
+	}
+	
+	public SupplierFormPage verifyHIBCC(String VerifyHIBCC) {
+		verifyExactText(getDriver().findElement(By.id("ix_hibccsubsc")),VerifyHIBCC,"HIBCC Subsec"); 
+		return this;
+	}
+
+	public SupplierFormPage verifyNoNewProducts(String VerifyNoNewProducts) {
+		verifyExactText(getDriver().findElement(By.id("ix_nonewproducts")),VerifyNoNewProducts,"No New Products"); 
+		return this;
+	}
 
 }
 

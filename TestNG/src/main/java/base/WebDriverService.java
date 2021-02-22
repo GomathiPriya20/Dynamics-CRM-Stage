@@ -30,7 +30,7 @@ public interface WebDriverService {
 	 * @throws IOException 
 	 * @throws ElementNotVisibleException - Element not visible to interact 
 	 */
-	public void type(WebElement ele, String data) throws IOException ;
+	public void type(WebElement ele, String data,String field) throws IOException ;
 
 	/**
 	 * This method will click the element and take snap
@@ -55,7 +55,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void selectDropDownUsingVisibleText(WebElement ele, String value) throws IOException ;
+	public void selectDropDownUsingVisibleText(WebElement ele, String value,String field) throws IOException ;
 
 	/**
 	 * This method will select the drop down using value
@@ -119,7 +119,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void verifyExactAttribute(WebElement ele, String attribute, String value) throws IOException;
+	public void verifyExactAttribute(WebElement ele, String attribute, String value,String field) throws IOException;
 
 	/**
 	 * This method will verify partial given attribute's value with actual value on the given element
@@ -129,7 +129,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void verifyPartialAttribute(WebElement ele, String attribute, String value) throws IOException;
+	public void verifyPartialAttribute(WebElement ele, String attribute, String value,String field) throws IOException;
 
 	/**
 	 * This method will verify if the element (Radio button, Checkbox)  is selected
