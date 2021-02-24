@@ -650,7 +650,17 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		try {
 			//ele.clear();
 			ele.sendKeys(Keys.BACK_SPACE);
-			ele.sendKeys(data);			
+			ele.sendKeys(data);		
+			String sExpectedValue= ele.getAttribute("value");
+			if (sExpectedValue.equalsIgnoreCase(data))
+			{
+				setReport().log(Status.PASS, "The data: "+data+" successfully entered in  "+field+ " field",screenshotCapture());
+			}
+			else
+			{
+				setReport().log(Status.FAIL, "The data: "+data+" is NOT entered in : "+field,screenshotCapture());
+				Driver.failCount++;
+			}
 		} catch (InvalidElementStateException e) {
 			setReport().log(Status.FAIL, "The data: "+data+" could not be entered in  : "+field, screenshotCapture());
 			Driver.failCount++;
@@ -665,10 +675,10 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public void verifyIsEnabled(WebElement ele,String field) {
-		boolean bReturn =false;
-		bReturn=ele.isEnabled();
+		boolean bReturn =true;
+		bReturn=ele.isDisplayed();
 		try {
-			if(bReturn==true) {
+			if(bReturn==false) {
 				setReport().log(Status.PASS, "The "+field+" is enabled",screenshotCapture());
 			}else {
 				setReport().log(Status.FAIL, "The "+field+" is disabled",screenshotCapture());

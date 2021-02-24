@@ -71,7 +71,7 @@ public class TestCase_1111 {
 		//16. BK Active
 		.verifyBKActive(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyBKActive", sDataSheetName))
 		
-		//17. SupplierRecord
+		//17. Record status
 		.AddSupplierRecord(DataInputProvider.getCellData_ColName(iRowNumber, "SupplierRecord", sDataSheetName))
 		
 		
