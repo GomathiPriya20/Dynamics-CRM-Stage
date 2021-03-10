@@ -56,10 +56,14 @@ public class Driver extends PreAndPost{
 		{
 			sTestClassName="testcases.Member.".concat(sTestClassName);
 		}
-		else
+		else if(sCategory.equalsIgnoreCase("Supplier"))
 		{
 			sTestClassName="testcases.Supplier.".concat(sTestClassName);
 		}	
+		else
+		{
+			sTestClassName="testcases.Contacts.".concat(sTestClassName);
+		}
 			//Create instance of the class during run time
 			Class<?> cls = Class.forName(sTestClassName);
 			Object clsInstance = (Object) cls.getDeclaredConstructor().newInstance();
@@ -71,7 +75,6 @@ public class Driver extends PreAndPost{
 			// Get all methods of the class
 			aMethod=clsInstance.getClass().getDeclaredMethods();
 				beforeMethod();
-				System.out.println(sTestCaseID+" is being excuted");				
 				aMethod[0].invoke(clsInstance,iTestCaseRowNum,sCategory);
 				closeAllBrowsers();			
 		}

@@ -105,7 +105,7 @@ public class TestCase_7485 {
 			//.typeMainPhone(DataInputProvider.getCellData_ColName(iRowNumber, "MainPhone", sDataSheetName))	
 
 			
-		//5. Click  on Save after updating following fields. 
+		//5. Click  on Save after updating the following fields. 
 		.clickSave() 
 			
 		//6.Verify and Observe the Record status field after updating following fields. 

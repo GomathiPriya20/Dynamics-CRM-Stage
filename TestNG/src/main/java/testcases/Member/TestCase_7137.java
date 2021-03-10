@@ -2,6 +2,8 @@ package testcases.Member;
 
 import org.openqa.selenium.By;
 import org.testng.annotations.Test;
+
+import driver.Driver;
 import pages.LoginPage;
 import pages.MemberFormPage;
 import utils.DataInputProvider;
@@ -106,7 +108,20 @@ public class TestCase_7137 {
 			// Click on LOB Save 
 			.clickLineOfBusinessSave()
 		
-		
+		 //Click on Save 
+		 .clickSave() 
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+		//Add Membership provider
+			.clickAddNewPremierMembershipWithFrame1()
+			
+			// Choose Membership type 
+			.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+			.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+			
+			//Provide any start date and click on save
+			.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
+			.clickAddNewMembershipProviderSave()
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		//8. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			
@@ -135,7 +150,7 @@ public class TestCase_7137 {
 		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 		
 		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
-		.selectMembershipEntity()
+	/*	.selectMembershipEntity()
 		.doubleClickOnTopParentInMembership()
 		
 		//17 Click on > and go to Audit history 
@@ -145,6 +160,6 @@ public class TestCase_7137 {
 		.verifyIsMemberAddMailSent()
 		
 		//19 Verify the time-stamp on which the flag gets updated 
-		.verifyTimeStampInTPMembershipAuditHistory();
+		.verifyTimeStampInTPMembershipAuditHistory()*/;
 	}
 }

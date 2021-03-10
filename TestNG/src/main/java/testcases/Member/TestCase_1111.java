@@ -31,7 +31,7 @@ public class TestCase_1111 {
 		.typeAccountName2(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName2", sDataSheetName))
 		
 		//5. Premier Start Date
-		.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
+		//.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 		
 		//6. Primary Contact
 		.AddMemberPrimaryContact(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactName", sDataSheetName))
@@ -67,11 +67,10 @@ public class TestCase_1111 {
 		//15. Participation Type = Standard
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 		
-		
 		//16. BK Active
 		.verifyBKActive(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyBKActive", sDataSheetName))
 		
-		//17. Record status
+		//17. SupplierRecord
 		.AddSupplierRecord(DataInputProvider.getCellData_ColName(iRowNumber, "SupplierRecord", sDataSheetName))
 		
 		

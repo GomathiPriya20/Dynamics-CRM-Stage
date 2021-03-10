@@ -18,7 +18,6 @@ public class NewAccountPage extends WebDriverServiceImpl {
 		chooseMemberForm();
 		return new MemberFormPage();
 	}
-	
 		
 	public MemberFormPage chooseMemberForm() {
 		click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")));

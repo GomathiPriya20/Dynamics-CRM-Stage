@@ -20,6 +20,8 @@ public class TestCase_1141 {
 			.selectAccounts()
 			.chooseActiveMember(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))	
 			
+			
+			
 		//3.Now change the BK active from Yes to No and save
 			.selectBKfield()
 			

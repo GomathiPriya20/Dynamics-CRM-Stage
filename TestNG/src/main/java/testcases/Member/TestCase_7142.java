@@ -48,7 +48,7 @@ public class TestCase_7142 {
 			.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
 			
 			//Premier Start date = Today's Date
-			.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
+			//.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 			
 			//Class of Trade =Any
 			.selectClassOfTrade(DataInputProvider.getCellData_ColName(iRowNumber, "ClassOfTrade", sDataSheetName))
@@ -97,6 +97,22 @@ public class TestCase_7142 {
 			
 			// Click on LOB Save 
 			.clickLineOfBusinessSave()
+			
+			 //Click on Save 
+			 .clickSave() 
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+			//Add Membership provider
+				.clickAddNewPremierMembershipWithFrame1()
+				
+				// Choose Membership type 
+				.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+				.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+				
+				//Provide any start date and click on save
+				.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
+				.clickAddNewMembershipProviderSave()
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 		
 		//6. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
@@ -126,7 +142,7 @@ public class TestCase_7142 {
 		//13 Verify "Is Sponsor" field 
 		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 		
-		//14  Go to > and click on Membership entity and double click on the Top parent membership entity
+	/*	//14  Go to > and click on Membership entity and double click on the Top parent membership entity
 		.selectMembershipEntity()
 		.doubleClickOnTopParentInMembership()
 		
@@ -137,7 +153,9 @@ public class TestCase_7142 {
 		.verifyIsMemberAddMailSent()
 		
 		//17 Verify the time-stamp on which the flag gets updated 
-		.verifyTimeStampInTPMembershipAuditHistory();
+		.verifyTimeStampInTPMembershipAuditHistory() */
+		
+		;
 
 	}
 }

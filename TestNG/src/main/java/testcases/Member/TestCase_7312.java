@@ -33,7 +33,7 @@ public class TestCase_7312 {
 			.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 			
 			//Premier Start date = Today's Date
-			.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
+		//	.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 			
 			//Primary contact = 7000331193
 			.AddMemberPrimaryContact(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContact", sDataSheetName))
@@ -110,6 +110,22 @@ public class TestCase_7312 {
 			
 			// Click on LOB Save 
 			.clickLineOfBusinessSave()
+			
+			 //Click on Save 
+			 .clickSave() 
+			 
+				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+				//Add Membership provider
+					.clickAddNewPremierMembershipWithFrame1()
+					
+					// Choose Membership type
+					.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+					.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+					
+					//Provide any start date and click on save
+					.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
+					.clickAddNewMembershipProviderSave()
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		
 			//Record Status = Published
 			.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))

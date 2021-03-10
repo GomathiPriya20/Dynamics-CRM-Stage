@@ -267,6 +267,13 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(getDriver().findElement(By.id("ix_membershipprovider_ledit")),MembershipProvider,"Membership Provider");
 		return this;
 	}
+	
+	public MemberFormPage typeInAddNewMembershipProvider(String MembershipProvider) {
+		click(getDriver().findElement(By.id("ix_membershipprovider")));
+		typeAndChoose(((getDriver().findElement(By.id("ix_membershipprovider_ledit")))),MembershipProvider,"Direct Parent");
+	//	type(getDriver().findElement(By.id("ix_membershipprovider_ledit")),MembershipProvider,"Membership Provider");
+		return this;
+	}
 
 //*******************************************************************************************************************************************************************
 	
@@ -301,8 +308,6 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	
 	public MemberFormPage selectParticipationType(String ParticipationType) throws InterruptedException {
 		Thread.sleep(10000);
-		//scrollDown(((getDriver().findElement(By.id("ix_participationtype")))));
-		//click(((getDriver().findElement(By.id("ix_participationtype_c")))));
 		click(((getDriver().findElement(By.id("ix_participationtype")))));
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_participationtype_i")))),ParticipationType,"Participation type");
 		verifyExactText(getDriver().findElement(By.id("ix_participationtype")),ParticipationType,"Participation type"); 
@@ -826,6 +831,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		Thread.sleep(3000);
 		return this;
 	}
+	
 	public MemberFormPage doubleClickOnTopParentInMembershipWithFrame0() throws InterruptedException {	
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		Thread.sleep(3000);
@@ -844,21 +850,21 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		Thread.sleep(3000);
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
 		Thread.sleep(3000);
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[3]/nobr")),"National","Membership Provider");
 		Actions a = new Actions(getDriver());
-	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr[5]/td[2]/nobr"))).
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[3]/nobr"))).
 	      doubleClick().
 	      build().perform();
 		Thread.sleep(3000);
 		return this;
 	}
-	
 	public MemberFormPage doubleClickOnTopParentInMembershipLocationType() throws InterruptedException {	
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		Thread.sleep(3000);
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
 		Thread.sleep(3000);
 		Actions a = new Actions(getDriver());
-	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr[4]/td[2]/nobr"))).
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[3]/nobr"))).
 	      doubleClick().
 	      build().perform();
 		Thread.sleep(3000);
@@ -1054,13 +1060,41 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
+	public MemberFormPage clickAddNewPremierMembershipWithFrame1() throws InterruptedException {
+		Thread.sleep(4000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		//scrollDown(((getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")))));
+		click(getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")));
+		Thread.sleep(6000);
+		return this;
+	}
+	
+	public MemberFormPage clickAddNewPremierMembershipWithFrame0() throws InterruptedException {
+		Thread.sleep(4000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+	//	scrollDown(((getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")))));
+		click(getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")));
+		Thread.sleep(6000);
+		return this;
+	}
 	
 	public MemberFormPage selectMembershipProviderTypeInAddNewMembershipProvider(String MembershipProviderType){
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
 		click(((getDriver().findElement(By.id("ix_membershiptype")))));
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_membershiptype_i']")))),MembershipProviderType,"Membership Provider Type");
-		
+		return this;
+	}
+	
+
+	public MemberFormPage selectMembershipProviderType1(String MembershipProviderType){
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
+		click(((getDriver().findElement(By.id("ix_membershiptype")))));
+		//selectDropDownUsingIndex(getDriver().findElement(By.id("ix_membershiptype_i")),15);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_membershiptype_i']")))),MembershipProviderType,"Membership Provider Type");
 		return this;
 	}
 	

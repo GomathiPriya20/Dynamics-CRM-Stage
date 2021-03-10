@@ -56,7 +56,7 @@ public class TestCase_7139 {
 				.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 				
 				//Premier Start date = Today's Date
-				.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
+			//	.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 				
 				//Class of Trade =Any
 				.selectClassOfTrade(DataInputProvider.getCellData_ColName(iRowNumber, "ClassOfTrade", sDataSheetName))
@@ -119,6 +119,21 @@ public class TestCase_7139 {
 				// Click on LOB Save 
 				.clickLineOfBusinessSave()
 				
+				 //Click on Save 
+				 .clickSave() 
+				 
+					//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+					//Add Membership provider
+						.clickAddNewPremierMembershipWithFrame0()
+						
+						// Choose Membership type and Membership Provider
+						.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+						.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+						
+						//Provide any start date and click on save
+						.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
+						.clickAddNewMembershipProviderSave()
+				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			
 			//11 Record Status = Published
 				.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
@@ -148,17 +163,19 @@ public class TestCase_7139 {
 				.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 				
 			//19 Go to > and click on Membership entity and double click on the Top parent membership entity
-				.selectMembershipEntity()
-				.doubleClickOnTopParentInMembershipWithFrame0()
+				//.selectMembershipEntity()
+				//.doubleClickOnTopParentInMembershipWithFrame0()
 				
 			//20 Click on > and go to Audit history 
-				.selectTPAuditHistory()
+				//.selectTPAuditHistory()
 				
 			//21 Verify "Is Member Add mail sent" flag turned from No to Yes 
-				.verifyIsMemberAddMailSentwithFrame0()
+				//.verifyIsMemberAddMailSentwithFrame0()
 				
 			//22 Verify the timestamp on which the flag gets updated 
-				.verifyTimeStampInTPMembershipAuditHistory();
+				//.verifyTimeStampInTPMembershipAuditHistory()
+				
+				;
 	
 	}
 	
