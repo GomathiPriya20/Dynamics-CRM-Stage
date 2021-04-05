@@ -32,16 +32,17 @@ public class TestCase_7420 {
 			.defaultMembershipProvider()
 		
 		//4. Provide Account name = Any
-			.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
+			.typeMPAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
 			
 			//Change the Account type to Membership provider
 			.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
-			
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Plug in issue~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~			
 			//save the record
-			.clickSave() 
+			//.clickSave() 
 			
 			//Verify CRM Account # is generated 
-			.crmNumberIsDisplayedWithFrame1()	
+			//.crmNumberIsDisplayedWithFrame1()	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			
 		//5. Verify Membership provider field automatically turned to Yes
 			.verifyMembershipProviderYes()
@@ -55,7 +56,10 @@ public class TestCase_7420 {
 			
 			//save the record
 			.clickSave() 
-			
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+			//Verify CRM Account # is generated 
+			.crmNumberIsDisplayedWithFrame1()	
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		//8. Go to the Accounts and search for CRM# 1000155584
 			.selectAccountss()
 			.chooseActiveMember1(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))	

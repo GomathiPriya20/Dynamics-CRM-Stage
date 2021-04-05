@@ -47,6 +47,9 @@ public class TestCase_7142 {
 			//Account name = Any
 			.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
 			
+			//Participation Type = Standard
+			.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
+			
 			//Premier Start date = Today's Date
 			//.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 			
@@ -58,12 +61,6 @@ public class TestCase_7142 {
 			
 			//Account Status = Auto Populated to Active
 			.defaultAccountStatus()	
-			
-			//Application Start Date = Today's Date
-			.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
-			
-			//Participation Type = Standard
-			.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 			
 			//Direct Parent Entity Code = 673415
 			.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
@@ -80,7 +77,10 @@ public class TestCase_7142 {
 			//Top Parent Relation Date = Today's Date
 			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
 			 
-			// Click on Save 
+			//Application Start Date = Today's Date
+				.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
+			 
+			 // Click on Save 
 			 .clickSave() 
 				
 		//5.  Click the + icon on the Line of Business Grid

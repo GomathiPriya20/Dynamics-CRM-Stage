@@ -27,16 +27,25 @@ public class TestCase_7138 {
 		
 		//4. Click on Add new account 
 		.clickNewAccountInSubAccount()
+		.switchToSubAccount()
+		
+		//6. Account Name = Any
+			.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
+				
+				 
+			//Click on save 
+	 		 .clickSave()
+
+		//Select member form
 		.chooseMemberFormInSubAccount()
 		
 		//5. Verify Direct parent and Top parent are populated 
  		.verifyDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyTopParent", sDataSheetName))
  		.verifyTopParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
 				
-		//6. Account Name = Any
-		.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
-		
-			//Top Parent Relation =  OLM
+
+	
+		//6.	//Top Parent Relation =  OLM
 			 .selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 		
 			//Top Parent Relation Date = Today's Date
@@ -44,9 +53,10 @@ public class TestCase_7138 {
 			 
 			//type TP reason
 			 .typeTPReason(DataInputProvider.getCellData_ColName(iRowNumber, "TPReason", sDataSheetName))
-		 
-				//Click on save 
-		 		 .clickSave()
+			
+			 //Click on save 
+	 		 .clickSave()
+			 		 
 			
 		//7. Verify CRM Account # is generated 
 			.crmNumberIsDisplayedWithFrame0()	
@@ -121,7 +131,7 @@ public class TestCase_7138 {
 			 .clickSave() 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 			//Add Membership provider
-				.clickAddNewPremierMembershipWithFrame1()
+				.clickAddNewPremierMembershipWithFrame0()
 				
 				// Choose Membership type
 				.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
@@ -132,13 +142,13 @@ public class TestCase_7138 {
 				.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 		//11 Record Status = Published
-			.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+			.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			
 			//Click on Save 
 			.clickSave() 
 		
 		//12 Verify Entity code is generated 
-			.entityCodeIsDisplayedWithFrame1()
+			.entityCodeIsDisplayedWithFrame0()
 		
 		//13 Verify "IS Corporate parent" field
 			.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))

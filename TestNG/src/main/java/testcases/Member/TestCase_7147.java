@@ -27,6 +27,17 @@ public class TestCase_7147 {
 		
 		//4. Click on Add new account 
 		.clickNewAccountInSubAccount()
+		.switchToSubAccount()
+		
+
+		//6. Account Name = Any
+			.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
+				
+				 
+			//Click on save 
+	 		 .clickSave()
+	 	
+	 	//Select member form
 		.chooseMemberFormInSubAccount()
 		
 		//5. Verify Direct parent and Top parent are populated 

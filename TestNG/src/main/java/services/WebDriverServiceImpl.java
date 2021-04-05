@@ -201,21 +201,20 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public void click(WebElement ele)  {
-		String text = "";
+	public void click(WebElement ele,String field)  {
 		try {
-			WebDriverWait wait = new WebDriverWait(getDriver(), 15);
-			wait.until(ExpectedConditions.elementToBeClickable(ele));			
-			text = ele.getText();
+			//WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+//			wait.until(ExpectedConditions.elementToBeClickable(ele));			
 			ele.click();
+			setReport().log(Status.PASS,"Clicked on "+field, screenshotCapture());	
 		}
 		catch (InvalidElementStateException e) {
 			e.printStackTrace();
-			setReport().log(Status.FAIL,text+" could not be clicked", screenshotCapture());	
+			setReport().log(Status.FAIL,field+" could not be clicked", screenshotCapture());	
 			Driver.failCount++;
 		} catch (WebDriverException e) {
 			e.printStackTrace();
-			setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+text,screenshotCapture());	
+			setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+field,screenshotCapture());	
 			Driver.failCount++;
 		} 
 	}
@@ -244,15 +243,16 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	public String getTextValue(WebElement ele) {	
+	public String getTextValue(WebElement ele, String field) {	
 	String bReturn = "";
 	try {
+		
 		bReturn = ele.getText();
-		if (bReturn != null && bReturn !="" ) {
-			setReport().log(Status.PASS, bReturn+" is displayed",screenshotCapture());
+		if(bReturn != null && !bReturn.isEmpty()){
+			setReport().log(Status.PASS, bReturn+" is displayed in "+field,screenshotCapture());
 		}
 		else {
-			setReport().log(Status.FAIL, bReturn+" is NOT displayed",screenshotCapture());
+			setReport().log(Status.FAIL, bReturn+" is NOT displayed in "+field,screenshotCapture());
 			Driver.failCount++;
 		}
 	} catch (WebDriverException e) {
@@ -325,12 +325,12 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	public void selectDropDownUsingIndex(WebElement ele, int index) {
+	public void selectDropDownUsingIndex(WebElement ele, int index,String field) {
 		try {
 			new Select(ele).selectByIndex(index);
-			setReport().log(Status.PASS, ele+" is selected with index "+index,screenshotCapture());
+			setReport().log(Status.PASS, ele+" is selected with index "+index+"in "+field,screenshotCapture());
 		} catch (WebDriverException e) {
-			setReport().log(Status.FAIL, "The element: "+ele+"could not be found",screenshotCapture());
+			setReport().log(Status.FAIL, "The element: "+ele+"could not be found in "+field,screenshotCapture());
 			Driver.failCount++;
 			throw e;
 		} 
@@ -488,8 +488,8 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	
 	public void switchToFrame(WebElement ele) {
 		try {
+			
 			getDriver().switchTo().frame(ele);
-		//	setReport().log(Status.PASS, "switch In to the Frame "+ele,screenshotCapture());
 		} catch (NoSuchFrameException e) {
 			setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
 			Driver.failCount++;
@@ -691,6 +691,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		} 
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
 
 	
 }

@@ -1,8 +1,13 @@
 package pages;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.interactions.Actions;
 
 import driver.Driver;
@@ -12,7 +17,7 @@ import utils.DataInputProvider;
 public class ContactsPage extends WebDriverServiceImpl{
 	
 	public ContactsPage clickNewOnContactsPage() {
-		click(getDriver().findElement(By.xpath("//span[@command='contact|NoRelationship|HomePageGrid|Mscrm.NewRecordFromGrid']")));
+		click(getDriver().findElement(By.xpath("//span[@command='contact|NoRelationship|HomePageGrid|Mscrm.NewRecordFromGrid']")),"New");
 		return this;
 	}
 
@@ -20,23 +25,23 @@ public class ContactsPage extends WebDriverServiceImpl{
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		
 		//Click on Full name
-		click(getDriver().findElement(By.id("fullname")));
+		click(getDriver().findElement(By.id("fullname")),"Full Name");
 		
 		//Type first name
-		click(getDriver().findElement(By.id("fullname_compositionLinkControl_firstname")));
+		click(getDriver().findElement(By.id("fullname_compositionLinkControl_firstname")),"First Name");
 		clearAndType(((getDriver().findElement(By.id("fullname_compositionLinkControl_firstname_i")))),firstName, "First Name");
 	
 		//Type second name
-		click(getDriver().findElement(By.id("fullname_compositionLinkControl_lastname")));
+		click(getDriver().findElement(By.id("fullname_compositionLinkControl_lastname")),"Last Name");
 		clearAndType(((getDriver().findElement(By.id("fullname_compositionLinkControl_lastname_i")))),lastName, "Last Name");
 	
 		//Click on done
-		click(getDriver().findElement(By.id("fullname_compositionLinkControl_flyoutLoadingArea-confirm")));
+		click(getDriver().findElement(By.id("fullname_compositionLinkControl_flyoutLoadingArea-confirm")),"Done");
 		return this;
 	}
 
 	public ContactsPage selectPrimaryAccount(String primaryAccount) {
-		click(getDriver().findElement(By.id("parentcustomerid")));
+		click(getDriver().findElement(By.id("parentcustomerid")),"Primary Account");
 		typeAndChoose(getDriver().findElement(By.id("parentcustomerid_ledit")), primaryAccount,"Primary Account");
 		return this;
 	}
@@ -44,31 +49,28 @@ public class ContactsPage extends WebDriverServiceImpl{
 	public ContactsPage AddMemberPrimaryContactFromLookUp(String PrimaryContactLookUp) throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		Actions action = new Actions(getDriver());	
+		Actions action = new Actions(getDriver());
 		Thread.sleep(3000);
 		action.moveToElement(getDriver().findElement(By.id("parentcustomerid"))).perform();
 		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//img[@id='parentcustomerid_i']")));
+		click(getDriver().findElement(By.xpath("//img[@id='parentcustomerid_i']")),"Primary Contact");
 		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//span[contains(text(),'Look Up More Records')]")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Look Up More Records')]")),"Look Up More Records");
 		Thread.sleep(3000);
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
-		
-		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_clearCriteriaImg']")));
-		type(getDriver().findElement(By.id("crmGrid_findCriteria")),PrimaryContactLookUp,"Primary Contact in LookUp");
+		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_clearCriteriaImg']")),"Clear");
+		type(getDriver().findElement(By.id("crmGrid_findCriteria")),PrimaryContactLookUp,"Primary Contact in LookUp");	
 		Thread.sleep(3000);
-		
-		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_findCriteriaImg']")));
-	
-		click(getDriver().findElement(By.id("butBegin")));
-		Thread.sleep(2000);
+		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_findCriteriaImg']")),"Find Criteria");
+		click(getDriver().findElement(By.id("butBegin")),"Add");
+		Thread.sleep(5000);
 		return this;
 	}
 	
 
 	public ContactsPage clickOnContactDeactivate() throws InterruptedException {
-		click(getDriver().findElement(By.xpath("//*[@id='contact|NoRelationship|Form|Mscrm.Form.contact.Deactivate']/span/a/span")));
+		click(getDriver().findElement(By.xpath("//*[@id='contact|NoRelationship|Form|Mscrm.Form.contact.Deactivate']/span/a/span")),"Deactivate");
 		Thread.sleep(10000);
 		return this;
 	}
@@ -77,19 +79,20 @@ public class ContactsPage extends WebDriverServiceImpl{
 	public ContactsPage clickConfirmDeactivation() throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
-		click(getDriver().findElement(By.id("ok_id")));
+		click(getDriver().findElement(By.id("ok_id")),"Confirm");
 		Thread.sleep(10000);
 		return this;
 	}
+	
 	public ContactsPage clickSave() throws InterruptedException {
-		click(getDriver().findElement(By.id("savefooter_statuscontrol")));
-		Thread.sleep(10000);
+		click(getDriver().findElement(By.id("savefooter_statuscontrol")),"Save");
+		Thread.sleep(5000);
 		return this;
 	}
 	
 	public ContactsPage isInnovatixContactIDDisplayed() {
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
-		String sCRMNumber = getTextValue(((getDriver().findElement(By.id("ix_innovatixcontactid")))));;
+		String sCRMNumber = getTextValue(getDriver().findElement(By.id("ix_innovatixcontactid")), "Innovatix Contact ID");;
 		js.executeScript("return document.getElementById('ix_innovatixcontactid').innerHTML").toString();
 		 try {
 				DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber",Driver.properties.getProperty("DriverSheetName"));
@@ -101,60 +104,60 @@ public class ContactsPage extends WebDriverServiceImpl{
 	
 	public ContactsPage chooseRecordStatus(String recordStatus) throws InterruptedException {
 		Thread.sleep(3000);
-		click(getDriver().findElement(By.id("ix_recordstatus")));
+		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatus,"Record Status");
 		getDriver().findElement(By.id("ix_recordstatus")).sendKeys(Keys.TAB);
 		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),recordStatus,"Record Status"); 
-		Thread.sleep(3000);
 		return this;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~AccountAssocoation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 	public ContactsPage clicAddContatAccountAssociation() throws InterruptedException {
-		Thread.sleep(5000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		click(getDriver().findElement(By.id("ContactAccountAssociation_addImageButtonImage")));
-		Thread.sleep(10000);
+		click(getDriver().findElement(By.id("ContactAccountAssociation_addImageButtonImage")),"Add");
+		Thread.sleep(5000);
 		return this;
 	}
 	
-	public ContactsPage typeAccountInCAA(String account) {
+	public ContactsPage typeAccountInCAA(String account) throws InterruptedException {
+		Thread.sleep(2000);
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
-		click(getDriver().findElement(By.id("ix_account")));
+		click(getDriver().findElement(By.id("ix_account")),"Account");
 		typeAndChoose(getDriver().findElement(By.id("ix_account_ledit")), account,"Account");
 		return this;
 	}
 	
 	public ContactsPage clickSaveInContactAccountAssociation() throws InterruptedException {
-		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")));
-		Thread.sleep(10000);
+		switchToDefaultContent();
+		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")),"Save");
+		Thread.sleep(5000);
 		return this;
 	}
 	
 	public ContactsPage clickGridViewInContactAccountAssociation() throws InterruptedException {
-		//scrollDown(((getDriver().findElement(By.id("ContactAccountAssociation_openAssociatedGridViewImageButtonImage")))));
-		click(getDriver().findElement(By.xpath("//*[@id='ContactAccountAssociation_openAssociatedGridViewImageButtonImage']")));
-		Thread.sleep(10000);
+		scrollDown(((getDriver().findElement(By.id("ContactAccountAssociation_openAssociatedGridViewImageButtonImage")))));
+		//click(getDriver().findElement(By.xpath("//*[@id='ContactAccountAssociation_openAssociatedGridViewImageButtonImage']")),"Open Associated Grid View");
+		Thread.sleep(5000);
 		return this;
 	}
-	
 	public ContactsPage clickCAAAssociatedViewAndSelectContactInactiveView() throws InterruptedException {
-		Thread.sleep(1000);
 		switchToFrame(getDriver().findElement(By.id("area_ix_contact_ix_contactaccountassociation_ContactFrame")));
-		click(getDriver().findElement(By.id("crmGrid_ix_contact_ix_contactaccountassociation_Contact_SavedNewQuerySelector")));
-		click(getDriver().findElement(By.xpath("//*[@id='Dialog_0']/div/ul/li[5]")));
-		Thread.sleep(10000);
+		click(getDriver().findElement(By.id("crmGrid_ix_contact_ix_contactaccountassociation_Contact_SavedNewQuerySelector")),"Contact Account Association");
+		Thread.sleep(5000);
+		click(getDriver().findElement(By.xpath("//*[@id='Dialog_0']/div/ul/li[5]")),"Contact Inactive View");
+		Thread.sleep(5000);
 		return this;
 	}
 	public ContactsPage clickCAAAssociatedViewAndSelectContactSubGridView() throws InterruptedException {
-		Thread.sleep(1000);
 		switchToFrame(getDriver().findElement(By.id("area_ix_contact_ix_contactaccountassociation_ContactFrame")));
-		click(getDriver().findElement(By.id("crmGrid_ix_contact_ix_contactaccountassociation_Contact_SavedNewQuerySelector")));
-		click(getDriver().findElement(By.xpath("//*[@id='Dialog_0']/div/ul/li[4]")));
-		Thread.sleep(10000);
+		click(getDriver().findElement(By.id("crmGrid_ix_contact_ix_contactaccountassociation_Contact_SavedNewQuerySelector")),"Contact Account Association");
+		Thread.sleep(5000);
+		click(getDriver().findElement(By.xpath("//*[@id='Dialog_0']/div/ul/li[4]")),"Sub Grid View");
+		Thread.sleep(5000);
 		return this;
 	}
+	
 	public ContactsPage verifyContactAccAssoTerminationReasonInSubGridView(String terminationReason) {
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='crmGrid_ix_contact_ix_contactaccountassociation_Contact_divDataArea']/div/table/tbody/tr/td[6]/nobr")),terminationReason,"Termination Reason in Contact Account Association Sub Grid View"); 
 		return this;
@@ -162,6 +165,21 @@ public class ContactsPage extends WebDriverServiceImpl{
 			
 	public ContactsPage verifyContactAccAssoRelatioEndDateInSubGridView(String relatioshipEndDate) {
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='crmGrid_ix_contact_ix_contactaccountassociation_Contact_divDataArea']/div/table/tbody/tr/td[5]/div")),relatioshipEndDate,"Relationship End Date in Contact Account Association Sub Grid View"); 
+		return this;
+	}
+	
+	public ContactsPage verifyContactAccAssoRelatioEndDateInSubGridViewCurrentDate() throws InterruptedException {
+		 // Create object of SimpleDateFormat class and decide the format
+		 DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy ");
+		 
+		 //get current date time with Date()
+		 Date date = new Date();
+		 
+		 // Now format the date
+		 String date1= dateFormat.format(date);
+		 Thread.sleep(3000);
+		 
+		 verifyExactText(getDriver().findElement(By.xpath("//*[@id='crmGrid_ix_contact_ix_contactaccountassociation_Contact_divDataArea']/div/table/tbody/tr/td[5]/div")),date1,"Relationship End Date in Contact Account Association Sub Grid View"); 
 		return this;
 	}
 	
@@ -186,7 +204,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 	
 	public ContactsPage chooseContactTerminationReason(String contactTerminationReason) throws InterruptedException {
 		Thread.sleep(3000);
-		click(getDriver().findElement(By.id("ix_terminationreason")));
+		click(getDriver().findElement(By.id("ix_terminationreason")),"Termination Reason");
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_terminationreason_i")))),contactTerminationReason,"Termination Reason");
 		getDriver().findElement(By.id("ix_terminationreason")).sendKeys(Keys.TAB);
 		verifyExactText(getDriver().findElement(By.id("ix_terminationreason")),contactTerminationReason,"Termination Reason"); 
@@ -196,7 +214,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 	
 	
 	public ContactsPage typeContactRelationshipEndDate(String contactRelationshipEndDate) {
-		click((getDriver().findElement(By.id("ix_relationshipenddate"))));
+		click((getDriver().findElement(By.id("ix_relationshipenddate"))),"Contact Relationship End Date");
 		clearAndType(((getDriver().findElement(By.id("ix_relationshipenddate_iDateInput")))),contactRelationshipEndDate, "Relationship End Date");
 		return this;
 	}
@@ -240,19 +258,28 @@ public class ContactsPage extends WebDriverServiceImpl{
 			
 	public ContactsPage typeContactEndDate(String contactEndDate) {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		click((getDriver().findElement(By.id("ix_contactenddate"))));
+		click((getDriver().findElement(By.id("ix_contactenddate"))),"Contact End Date");
 		clearAndType(((getDriver().findElement(By.id("ix_contactenddate_iDateInput")))),contactEndDate, "Contact End Date");
 		return this;
 	}
 	
 	
-	public ContactsPage clickSaveDuplicateDetected() throws InterruptedException {
-		Thread.sleep(5000);
-		switchToDefaultContent();
-		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
-		click(getDriver().findElement(By.id("butBegin")));
-		Thread.sleep(10000);
-		switchToDefaultContent();
+	public ContactsPage clickSaveDuplicateDetected() {
+		try {
+			Thread.sleep(5000);
+			switchToDefaultContent();
+			if (getDriver().findElement(By.id("InlineDialog_Iframe")).isEnabled())
+			{
+				switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
+				click(getDriver().findElement(By.id("butBegin")),"Ok");
+				Thread.sleep(10000);
+				switchToDefaultContent();
+			}
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}catch (WebDriverException e) {
+			e.printStackTrace();
+		}
 		return this;
 	}
 
@@ -273,7 +300,6 @@ public class ContactsPage extends WebDriverServiceImpl{
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ContactAccountAssociation_divDataArea']/div/table/tbody/tr/td[3]/nobr")),account,"Contact Account Association Grid"); 
 		return this;
 	}
-	//*[@id="gridBodyTable"]/tbody/tr/td[5]/div
 	
 	public ContactsPage verifyContactAccAssoRelationshipEndDate(String account) {
 		switchToDefaultContent();
@@ -293,14 +319,14 @@ public class ContactsPage extends WebDriverServiceImpl{
 	public ContactsPage clickOkErrorMsgForDuplicateCAA() throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
-		click(getDriver().findElement(By.id("butBegin")));
+		click(getDriver().findElement(By.id("butBegin")),"Ok");
 		Thread.sleep(3000);
 		return this;
 	}
 	
 	public ContactsPage clickCloseInCAA() throws InterruptedException {
 		switchToDefaultContent();
-		click(getDriver().findElement(By.id("closeButton")));
+		click(getDriver().findElement(By.id("closeButton")),"Close");
 		Thread.sleep(3000);
 		return this;
 	}
@@ -309,15 +335,16 @@ public class ContactsPage extends WebDriverServiceImpl{
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Job Function~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public ContactsPage clicAddJobFunction() throws InterruptedException {
-		click(getDriver().findElement(By.id("ContactJobFunctionSubgrid_addImageButtonImage")));
+		click(getDriver().findElement(By.id("ContactJobFunctionSubgrid_addImageButtonImage")),"Add");
 		Thread.sleep(10000);
 		return this;
 	}
 	
-	public ContactsPage typeJobFunction(String jobFunction) {
+	public ContactsPage typeJobFunction(String jobFunction) throws InterruptedException {
+		Thread.sleep(3000);
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
-		click(getDriver().findElement(By.id("ix_jobfunctionnew")));
+		click(getDriver().findElement(By.id("ix_jobfunctionnew")),"Job Function");
 		typeAndChoose(getDriver().findElement(By.id("ix_jobfunctionnew_ledit")), jobFunction,"Job Function");
 		return this;
 	}
@@ -338,7 +365,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 	
 	public ContactsPage clickSaveInJobFunction() throws InterruptedException {
 		switchToDefaultContent();
-		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")));
+		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")),"Save");
 		Thread.sleep(10000);
 		return this;
 	}
@@ -363,39 +390,46 @@ public class ContactsPage extends WebDriverServiceImpl{
 	}
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Communication/Publication~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	public ContactsPage clicAddCommunicationPublication() throws InterruptedException {
+	/*public ContactsPage clicAddCommunicationPublication() throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		click(getDriver().findElement(By.id("ContactCommunicationSubgrid_addImageButtonImage")));
+		click(getDriver().findElement(By.xpath("//*[@id='ContactCommunicationSubgrid_addImageButtonImage']")),"Add");
 		Thread.sleep(10000);
+		return this;
+	}*/
+	
+	public ContactsPage clicAddCommunicationPublication() throws InterruptedException {
+		click(getDriver().findElement(By.xpath("//*[@id='ContactCommunicationSubgrid_addImageButtonImage']")),"Add");
+		Thread.sleep(5000);
 		return this;
 	}
 	
-	public ContactsPage typeCommunicationPublication(String communicationPublication) {
+	public ContactsPage typeCommunicationPublication(String communicationPublication) throws InterruptedException {
+		Thread.sleep(5000);
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
-		click(getDriver().findElement(By.id("ix_communicationpublication")));
+		click(getDriver().findElement(By.id("ix_communicationpublication")),"Communication/Publication Type");
 		typeAndChoose(getDriver().findElement(By.id("ix_communicationpublication_ledit")), communicationPublication,"Communication Publication");
 		return this;
 	}
 	
 	public ContactsPage clickSaveInCommunicationPublication() throws InterruptedException {
+		Thread.sleep(3000);
 		switchToDefaultContent();
-		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")));
-		Thread.sleep(10000);
+		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")),"Save");
+		Thread.sleep(5000);
 		return this;
 	}
 	
 	public ContactsPage pageRefresh() throws InterruptedException {
 		getDriver().navigate().refresh();
-		Thread.sleep(10000);		
+		Thread.sleep(5000);		
 		return this;
 	}
 	public ContactsPage chooseActiveContact(String CrmNumber1) throws InterruptedException   {
 	    switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));	
-		click(getDriver().findElement(By.id("crmGrid_findCriteria")));
-		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),CrmNumber1,"Find Criteria");
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),CrmNumber1,"Find Criteria");
 		Actions a = new Actions(getDriver());
 	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr/td[4]/nobr"))).
 	      doubleClick().
@@ -425,7 +459,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 	public ContactsPage verifyErrorInCommPublivationn() {	
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
 		verifyDisplayed(getDriver().findElement(By.xpath("//*[@id='ix_communicationpublication_warnSpan']")),"Error in Job Function");
-		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ix_communicationpublication_warnSpan']")),"Test","Termination Status in Communication Publications Grid"); 
+	//	verifyExactText(getDriver().findElement(By.xpath("//*[@id='ix_communicationpublication_warnSpan']")),"Test","Termination Status in Communication Publications Grid"); 
 		return this;
 	}
 
@@ -433,148 +467,11 @@ public class ContactsPage extends WebDriverServiceImpl{
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ContactCommunicationSubgrid_divDataArea']/table/tbody/tr/td/div[2]")),noRecordAlert,"Communication Publications Grid"); 
 	return this;
 	}
-
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//Address Details
-/*	
-	public ContactsPage typeStreet1(String Street1) {
-		scrollDown(getDriver().findElement(By.id("address1_line1")));
-		click((getDriver().findElement(By.id("address1_line1"))));
-		clearAndType(((getDriver().findElement(By.id("address1_line1_i")))),Street1, "Street1");
-		return this;
-	}
-	
-
-	public MemberFormPage verifyStreet2IsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_line2")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_line2_lock")),"Street2");
-		return this;
-	}
-	public MemberFormPage typeStreet2(String Street2) {
-		click((getDriver().findElement(By.id("address1_line2"))));
-		clearAndType(((getDriver().findElement(By.id("address1_line2_i")))),Street2, "Street2");
-		return this;
-	}
-	
-	public MemberFormPage typeDeliveryInfo(String DeliveryInfo) {
-		click((getDriver().findElement(By.id("address1_line3"))));
-		clearAndType(((getDriver().findElement(By.id("address1_line3_i")))),DeliveryInfo, "Delivery Info");
-		return this;
-	}
-	public MemberFormPage verifyDeliveryInfoIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_line3")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_line3_lock")),"Delivery Info");
-		return this;
-	}
-
-	public MemberFormPage typeState(String State) {
-		click((getDriver().findElement(By.id("address1_stateorprovince"))));
-		clearAndType(((getDriver().findElement(By.id("address1_stateorprovince_i")))),State, "State");
-		return this;
-	}
-	public MemberFormPage verifyStateIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_stateorprovince")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_stateorprovince_lock")),"State");
-		return this;
-	}
-	public MemberFormPage verifyMainPhoneIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("telephone1")));
-		verifyIsEnabled(getDriver().findElement(By.id("telephone1_lock")),"Main Phone");
-		return this;
-	}
-	public MemberFormPage verifyReferredByIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("ix_referredby")));
-		verifyIsEnabled(getDriver().findElement(By.id("ix_referredby_lock")),"Main Phone");
-		return this;
-	}
-	
-	
-	public MemberFormPage typeMainPhone(String MainPhone) {
-		click((getDriver().findElement(By.id("telephone1"))));
-		clearAndType(((getDriver().findElement(By.id("telephone1_i")))),MainPhone, "Main Phone");
-		return this;
-	}
-	public MemberFormPage typeOtherPhone(String OtherPhone) {
-		click((getDriver().findElement(By.id("telephone2"))));
-		type(((getDriver().findElement(By.id("telephone2_i")))),OtherPhone, "Other Phone");
-		return this;
-	}
-	public MemberFormPage typeOverrideName(String OverrideName) {
-		click((getDriver().findElement(By.id("address1_name"))));
-		type(((getDriver().findElement(By.id("address1_name_i")))),OverrideName, "OverrideName");
-		return this;
-	}
-	public MemberFormPage typeFax(String Fax) {
-		click((getDriver().findElement(By.id("fax"))));
-		type(((getDriver().findElement(By.id("fax_i")))),Fax, "Fax");
-		return this;
-	}
-	public MemberFormPage typeWebsite(String Website) {
-		click((getDriver().findElement(By.id("websiteurl"))));
-		type(((getDriver().findElement(By.id("websiteurl_i")))),Website, "Website");
-		return this;
-	}
-	public MemberFormPage verifyReceiveDirectMail(String ReceiveDirectMail) {
-		verifyExactText(getDriver().findElement(By.id("ix_receivedirectmail")),ReceiveDirectMail,"Receive Direct Mail"); 
-		return this;
-	}
-	public MemberFormPage verifyFSRPTFlag(String FSRPTFlag) {
-		verifyExactText(getDriver().findElement(By.id("ix_receivedirectmail")),FSRPTFlag,"FSRPT Flag"); 
-		return this;
-	}
-	public MemberFormPage verifyDoNotVerifyAddress(String DoNotVerifyAddress) {
-		verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),DoNotVerifyAddress,"Do Not Verify Address"); 
-		return this;
-	}
-	public MemberFormPage verifyExternalAddessID(String ExternalAddessID) {
-		verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),ExternalAddessID,"External Addess ID"); 
-		return this;
-	}
-	public MemberFormPage verifyCountyIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_county")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_county_lock")),"County");
-		return this;
-	}
-	
-	public MemberFormPage typeCounty(String County) {
-		click((getDriver().findElement(By.id("address1_county"))));
-		clearAndType((getDriver().findElement(By.id("address1_county_i"))),County,"County");
-		return this;
-	}
-	
-	
-	public MemberFormPage typeCity(String City) {
-		click((getDriver().findElement(By.id("address1_city"))));
-		clearAndType((getDriver().findElement(By.id("address1_city_i"))),City,"City");
-		return this;
-	}
-	public MemberFormPage verifyCityIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_city")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_city_lock")),"City");
-		return this;
-	}
-
-	
-	public MemberFormPage typeCountry(String Country) {
-		click((getDriver().findElement(By.id("address1_country"))));
-		clearAndType((getDriver().findElement(By.id("address1_country_i"))),Country,"Country");
-		return this;
-	}
-	
-	public MemberFormPage verifyCountryIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_country")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_country_lock")),"Country");
-		return this;
-	}
-	
-	public MemberFormPage typeZipCode(String ZipCode) {
-		click((getDriver().findElement(By.id("address1_postalcode"))));
-		clearAndType((getDriver().findElement(By.id("address1_postalcode_i"))),ZipCode, "ZipCode");
-		return this;
-	}
-	public MemberFormPage verifyZipIsEnabled() {
-		scrollDown(getDriver().findElement(By.id("address1_postalcode")));
-		verifyIsEnabled(getDriver().findElement(By.id("address1_postalcode_lock")),"ZipCode");
-		return this;
-	}*/
 }
+	
+	
+	
+	
+	
+	
+	

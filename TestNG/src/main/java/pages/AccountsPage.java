@@ -9,23 +9,18 @@ import org.openqa.selenium.interactions.Actions;
 
 public class AccountsPage extends WebDriverServiceImpl {
 	
-	public NewAccountPage clickNewOnAccountsPage() {
-		
-		try {
-			getDriver().navigate().refresh();
-			Thread.sleep(3000);
-			click(getDriver().findElement(By.xpath("//*[@id='account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.NewRecord']")));
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+	public NewAccountPage clickNewOnAccountsPage() throws InterruptedException { 
+		getDriver().navigate().refresh();
+		Thread.sleep(3000);
+		click(getDriver().findElement(By.xpath("//*[@id='account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.NewRecord']")),"New");
 		return new NewAccountPage();
 	}
 
   	public MemberFormPage chooseActiveMember(String CrmNumber) throws InterruptedException   {
   		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		click(getDriver().findElement(By.id("crmGrid_findCriteria")));
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Search creteria text box");
 		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),CrmNumber,"Find Criteria");
-		click(((getDriver().findElement(By.xpath("//table//a[@href='javascript:;']")))));
+		click(getDriver().findElement(By.xpath("//table//a[@href='javascript:;']")),"Find Creteria Search");
 		Thread.sleep(6000);
 		return new MemberFormPage();		
 	}
@@ -36,7 +31,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		click(getDriver().findElement(By.id("crmGrid_findCriteria")));
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");
 		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),crmNumberInput,"Find Criteria" );
 		return this;
 	}
@@ -48,15 +43,10 @@ public class AccountsPage extends WebDriverServiceImpl {
 		return new MemberFormPage();
 	}
 
-  	
-
   	public  SupplierFormPage selectSupplierAccountFromSearchResults() throws InterruptedException {	
 		Actions action = new Actions(getDriver());	
 		action.moveToElement(getDriver().findElement(By.xpath("//nobr[@class='gridcellpadding']")));
 		action.doubleClick(getDriver().findElement(By.xpath("//nobr[@class='gridcellpadding']"))).build().perform();
 		return new SupplierFormPage();
 	}
-
-
-
 }

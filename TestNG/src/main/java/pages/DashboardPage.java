@@ -7,33 +7,33 @@ public class DashboardPage extends WebDriverServiceImpl {
 
 
 	public DashboardPage clickWorkplace() throws InterruptedException {	
-		Thread.sleep(3000);
 		getDriver().navigate().refresh();
-		click(getDriver().findElement(By.id("TabWorkplace")));
+		Thread.sleep(5000);
+		click(getDriver().findElement(By.id("TabWorkplace")),"Workplace");
+		Thread.sleep(5000);
 		return this;
 	}
 
 	public AccountsPage selectAccounts() throws InterruptedException {	
-		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//span[text()='Accounts']")));
-		Thread.sleep(3000);
+		click(getDriver().findElement(By.xpath("//span[text()='Accounts']")),"Accounts");
+		Thread.sleep(5000);
 		return new AccountsPage();
 		}
 	
-	public AccountsPage pageRefresh() {
+	public AccountsPage pageRefresh() throws InterruptedException {
 		getDriver().navigate().refresh();
 		return new AccountsPage();
 	}
 	
 	public ContactsPage selectContacts() {	
-		click(getDriver().findElement(By.xpath("//span[text()='Contacts']")));
+		click(getDriver().findElement(By.xpath("//span[text()='Contacts']")),"Contacts");
 		return new ContactsPage();
 		}
 
 
 	public DashboardPage clickUserIcon() {
-		click(getDriver().findElement(By.className("navTabButtonUserInfoProfileImage")));
-		click(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")));
+		click(getDriver().findElement(By.className("navTabButtonUserInfoProfileImage")),"User info");
+		click(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")),"User info");
 		verifyPartialText(getDriver().findElement(By.id("navTabButtonUserInfoDropDownId")), "Test","User info");
 		return this;
 	}

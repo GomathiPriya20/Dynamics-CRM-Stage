@@ -312,6 +312,8 @@ public class TestCase_1111 {
 		
 		//Click on Save and Close
 		.clickSaveAndCloseInAccountNumbers()
+		//.clickSaveInAccountNumbers()
+
 		
 	//Enter DEA
 		//Click on add new account number in Account numbers entity
@@ -327,7 +329,7 @@ public class TestCase_1111 {
 		.clickSaveAndCloseInAccountNumbers()
 	
 		//Click on Save 		
-		//.clickSaveInAccountNumbers()
+	//	.clickSaveInAccountNumbers()
 		
 		.clickMemberName()
 		
@@ -340,6 +342,33 @@ public class TestCase_1111 {
 		//Verify HIN
 		.verifyHIN(DataInputProvider.getCellData_ColName(iRowNumber, "HIN", sDataSheetName))
 		
+		
+		//Click on created member name
+		.clickMemberName()
+	
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+		//Add Membership provider
+			.clickAddNewPremierMembershipWithFrame1()
+			
+			// Choose Membership type 
+			.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+			.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+			
+			//Provide any start date and click on save
+			.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
+			.clickAddNewMembershipProviderSave()
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	
+	//6. Record Status = Published
+	.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		
+		//Click on Save 
+		.clickSave() 
+		
+	//7. Verify Entity code is generated 
+		.entityCodeIsDisplayedWithFrame1()
+
 		;	
 	}
 }

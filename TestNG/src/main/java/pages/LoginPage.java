@@ -17,7 +17,8 @@ public class LoginPage extends WebDriverServiceImpl{
 	}
 
 	public DashboardPage clickSignIn() throws InterruptedException {
-		click(getDriver().findElement(By.id("submitButton")));	 
+		click(getDriver().findElement(By.id("submitButton")),"Submit");	
+		Thread.sleep(5000);
 		return new DashboardPage();
 	}	
 }

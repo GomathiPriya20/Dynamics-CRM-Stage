@@ -120,7 +120,7 @@ public class TestCase_7150 {
 		
 
 		//Move the status from Published to draft and update the following:
-		.chooseRecordStatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
+		.chooseRecordStatusDraft(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
 		
 			//Application Start Date = Today's Date
 			.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
@@ -128,12 +128,11 @@ public class TestCase_7150 {
 			//Participation Type = Standard
 			.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 			
+			//Click on Save 
+			.clickSave()
+			
 			//Store/Location type = Null	
 			.chooseLocationTypeNull()
-			
-			//Click on Save 
-			//.clickSave() 
-			
 			
 			//Click the + icon on the Line of Business Grid
 			.clickLineOfBusiness()

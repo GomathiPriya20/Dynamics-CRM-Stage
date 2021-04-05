@@ -42,11 +42,11 @@ public class TestCase_7312 {
 			//Participation Type = Standard
 			.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 			
-			//Business Classification =Any
-			.businessClassificationIsVerified()	
-			
 			//Class of Trade =Any
 			.selectClassOfTrade(DataInputProvider.getCellData_ColName(iRowNumber, "ClassOfTrade", sDataSheetName))
+			
+			//Business Classification =Any
+			.businessClassificationIsVerified()	
 			
 			//Account Status = Auto Populated to Active
 			.defaultAccountStatus()	

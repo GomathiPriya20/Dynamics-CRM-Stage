@@ -38,7 +38,7 @@ public interface WebDriverService {
 	 * @author Innovatix QA - GAVS
 	 * @throws IOException 
 	 */
-	public void click(WebElement ele) throws IOException;
+	public void click(WebElement ele,String field) throws IOException;
 
 	/**
 	 * This method will get the text of the element
@@ -72,7 +72,7 @@ public interface WebDriverService {
 	 * @param index The index to be selected from the dropdown 
 	 * @author Innovatix QA - GAVS
 	 */
-	public void selectDropDownUsingIndex(WebElement ele, int index) throws IOException ;
+	public void selectDropDownUsingIndex(WebElement ele, int index,String field) throws IOException ;
 
 	/**
 	 * This method will verify browser actual title with expected
