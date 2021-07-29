@@ -338,6 +338,12 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
 		return this;
 	}
+	public SupplierFormPage storeLocationTypeBlankWithoutFrame() {
+		click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_locationtype_i")))),0,"Location Type");
+		click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
+		return this;
+	}
 	
 	public SupplierFormPage typeStreet1(String street1) {
 		scrollUp(((getDriver().findElement(By.id("address1_line1")))));
