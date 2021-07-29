@@ -133,8 +133,24 @@ public class TestCase_7312 {
 			//Click on Save 
 			.clickSave() 
 			
+			.entityCodeIsDisplayedWithFrame1()
+			
+			//Verify Premier start date is auto populated
+			.verifyPremierStartDateIsAutoPopulated()
+			
+			.verifyAffiliateGroupIsNotNull()
+			.verifyAgEffectiveDateIsNotNull()
+			
+			
 		//5. Verify the Primary contact name displayed in the field
-		.VerifyPrimaryContactValue(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactName", sDataSheetName))
+		.VerifyPrimaryContactValueWithoutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactName", sDataSheetName))
+		
+		//Record Status = Draft
+		 .chooseRecordStatusDraft(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
+		 
+		//Click on Save 
+		.clickSave() 
+		.entityCodeIsDisplayedWithFrame1()
 			
 			
 		//6. Click on the primary contact lookup and click on lookup for more records
@@ -142,7 +158,15 @@ public class TestCase_7312 {
 		.AddMemberPrimaryContactFromLookUp(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactLookUp", sDataSheetName))
 		
 		
+		//Record Status = Published
+		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		
+		//Click on Save 
+		.clickSave() 
+		
 		//8. Verify the newly updated Primary contact name is displayed in the form
 		.VerifyPrimaryContactValue(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactNameLookUp", sDataSheetName));
+		
+		
 	}
 }

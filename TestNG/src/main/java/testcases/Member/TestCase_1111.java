@@ -267,7 +267,7 @@ public class TestCase_1111 {
 		
 		
 //FBO
-		//Is FBO
+		//FBO
 		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
 		
 		//16. Verify "Is FBO" field 

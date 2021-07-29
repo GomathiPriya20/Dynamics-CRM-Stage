@@ -23,7 +23,7 @@ public class TestCase_7155 {
 		.existingRecordStatusDraftToPublished(DataInputProvider.getCellData_ColName(iRowNumber, "recordStatusPublished", sDataSheetName))
 		//.pickTPRDClear()
 		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "defaultAccountType", sDataSheetName))
-		//.pickTPRDEdit(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
+		.pickTPRDEdit(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
 		.crmNumberIsDisplayed()
 		.clickSave()		
 		.entityCodeIsDisplayed();	

@@ -58,7 +58,7 @@ public class TestCase_7474 {
 			//Verify CRM Account # is generated 
 			.crmNumberIsDisplayedWithFrame1()	
 			
-		//8. Go to the Accounts and search for CRM# 1000155584
+	/*	//8. Go to the Accounts and search for CRM# 1000155584
 			.selectAccountss()
 			.chooseActiveMember1(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))	
 			
@@ -89,7 +89,7 @@ public class TestCase_7474 {
 			.clickAddNewMembershipProvider()
 			.selectMembershipProviderTypeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
 			.typeCRMNumberInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(Driver.iTestCaseRowNumDriver, "CRMNumber",Driver.properties.getProperty("DriverSheetName")))
-			.verifyNoRecordsFoundMsgInMPInAddMP()
+			.verifyNoRecordsFoundMsgInMPInAddMP() */
 			;
 	
 	}

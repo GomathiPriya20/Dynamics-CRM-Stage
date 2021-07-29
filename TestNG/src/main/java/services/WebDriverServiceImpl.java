@@ -252,7 +252,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			setReport().log(Status.PASS, bReturn+" is displayed in "+field,screenshotCapture());
 		}
 		else {
-			setReport().log(Status.FAIL, bReturn+" is NOT displayed in "+field,screenshotCapture());
+			setReport().log(Status.FAIL, field+" is Null or Empty ",screenshotCapture());
 			Driver.failCount++;
 		}
 	} catch (WebDriverException e) {
@@ -262,6 +262,32 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 	return bReturn;
 }
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		public String verifyNullValue(WebElement ele, String field) {	
+		String bReturn = "";
+		try {
+			
+			bReturn = ele.getText();
+			if(bReturn.isEmpty()){
+				setReport().log(Status.PASS, field+" is Empty ",screenshotCapture());
+			}
+			else {
+				setReport().log(Status.FAIL, field+" contains "+bReturn,screenshotCapture());
+				Driver.failCount++;
+			}
+		} catch (WebDriverException e) {
+			setReport().log(Status.FAIL, ele+"could not be found",screenshotCapture());
+			Driver.failCount++;
+			throw e;
+		}
+		return bReturn;
+	}
+
+	
+	
+	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public void scrollUp(WebElement ele) {
 		String text = "";

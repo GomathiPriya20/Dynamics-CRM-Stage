@@ -63,9 +63,7 @@ public class PreAndPost extends WebDriverEvents
         htmlReporter.config().setTheme(Theme.STANDARD);
     }
     
-   	public void beforeMethod() throws Exception {
-   	//	Runtime.getRuntime().exec("taskkill /F /IM chromedriver.exe /T");
-   		
+   	public void beforeMethod() throws Exception { 		
    		properties.load(new FileInputStream(new File("./src/test/resources/environment.properties")));
         System.setProperty("webdriver.chrome.driver", "src\\test\\resources\\chromedriver.exe");
    		ChromeOptions options = new ChromeOptions();  		
@@ -78,7 +76,7 @@ public class PreAndPost extends WebDriverEvents
    		tlDriver.set(driver);		
    		getDriver().manage().window().maximize();
    		getDriver().get(URL);
-   		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
+    		getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);	
    	}
    	
     //Create the report path

@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 import pages.LoginPage;
 import utils.DataInputProvider;
+//TFS ID_7147:Create new Shipto account - New Member form through sub account and save it as prospect first
 
 public class TestCase_7147 {
 	
@@ -104,27 +105,21 @@ public class TestCase_7147 {
 				 //Click on Save 
 				.clickSave() 
 				
-				//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
-				//Add Membership provider
-					.clickAddNewPremierMembershipWithFrame0()
-					
-					// Choose Membership type 
-					.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
-					.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
-					
-					//Provide any start date and click on save
-					.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
-					.clickAddNewMembershipProviderSave()
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			
 			//10. Record Status = Published
 			.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 				
 				//Click on Save 
 				.clickSave() 
 				
-			//11. Verify Entity code is generated 
-			.entityCodeIsDisplayedWithFrame0()
+			//11. Verify Entity code is same as DP's entity code  
+			.verifyEntityCodeFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+			
+			//Verify Premier start date is auto populated
+			.verifyPremierStartDateIsAutoPopulated()
+			
+			.verifyAgEffectiveDateIsNull()
+			.verifyAffiliateGroupIsNull()
+
 			
 			//9. Verify "IS Corporate account" field
 			.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))

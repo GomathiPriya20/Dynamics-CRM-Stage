@@ -103,9 +103,9 @@ public class TestCase_7144 {
 			//FBO Type = Any
 			.selectFBOGPOType(DataInputProvider.getCellData_ColName(iRowNumber, "FBOType", sDataSheetName))
 			
+			
 			//FBO effective date = Today's date
 			.selectFBOEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "FBOEffectiveDate", sDataSheetName))
-			
 			//Click on Save 
 			.clickSave() 	
 			
@@ -144,9 +144,18 @@ public class TestCase_7144 {
 			
 			//Click on Save 
 			.clickSave() 
-			
+		
 		//8. Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame1()
+		
+		.verifyAffiliateGroupIsNotNull()
+		.verifyAgEffectiveDateIsNotNull()
+		
+		.verifyDirectParentIsEmpty()
+		.verifyToParentIsEmpty()
+		
+		//Verify Premier start date is auto populated
+		.verifyPremierStartDateIsAutoPopulated()
 		
 		//9. Verify "IS Corporate account" field
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))	

@@ -11,6 +11,7 @@ public class TestCase_7138 {
 	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException 
 	{
 	
+		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
 		.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
   	    .typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName)) 
@@ -103,11 +104,14 @@ public class TestCase_7138 {
 			 //City = NY
 			.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
 			
-			 //Country =USA
+			/* //Country =USA
 			.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
 			
 			//
-			.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+			.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))*/
+			
+			//Type Zip code
+			.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
 			
 			//Click on Save
 			// .clickSave() 
@@ -149,6 +153,12 @@ public class TestCase_7138 {
 		
 		//12 Verify Entity code is generated 
 			.entityCodeIsDisplayedWithFrame0()
+			
+			//Verify Premier start date is auto populated
+			.verifyPremierStartDateIsAutoPopulated()
+			
+			.verifyAffiliateGroupIsNotNull()
+			.verifyAgEffectiveDateIsNotNull()
 		
 		//13 Verify "IS Corporate parent" field
 			.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
@@ -168,18 +178,29 @@ public class TestCase_7138 {
 		//18 Verify Sponsor field 
 			.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 			
-		/*//19 Go to > and click on Membership entity and double click on the Top parent membership entity
-			.selectMembershipEntity()
-			.doubleClickOnTopParentInMembershipWithFrame0()
+		//FBO details verification
+		//Verify "Is FBO" field 
+		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
+		
+		//FBO
+		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
+				
+		//FBORD
+		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
 			
-		//20 Click on > and go to Audit history 
-			.selectTPAuditHistory()
-			
-		//21 Verify "Is Member Add mail sent" flag turned from No to Yes 
-			.verifyIsMemberAddMailSentwithFrame0()
-			
-		//22 Verify the timestamp on which the flag gets updated 
-			.verifyTimeStampInTPMembershipAuditHistory()*/
+		
+		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
+		.selectMembershipEntity()
+		.doubleClickOnNationalMembershipWithFrame0()
+		
+		//17 Click on > and go to Audit history 
+		.selectTPAuditHistory()
+		
+		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
+		.verifyIsMemberAddMailSentwithFrame01()
+		
+		//19 Verify the time-stamp on which the flag gets updated 
+		.verifyTimeStampInTPMembershipAuditHistory()
 			
 			;
 	}

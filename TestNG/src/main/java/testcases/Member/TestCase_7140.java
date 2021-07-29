@@ -125,9 +125,16 @@ public class TestCase_7140 {
 			
 			//Click on Save 
 			.clickSave() 
-		
+			
+			
 		//9. Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame1()
+		
+		//Verify Premier start date is auto populated
+		.verifyPremierStartDateIsAutoPopulated()
+		
+		.verifyAffiliateGroupIsNotNull()
+		.verifyAgEffectiveDateIsNotNull()
 		
 		//10. Verify "IS Corporate account" field
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
@@ -148,18 +155,31 @@ public class TestCase_7140 {
 		//15 Verify "Is Sponsor" field 
 		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 		
-	/*	//16  Go to > and click on Membership entity and double click on the Top parent membership entity
+		//FBO details verification
+		//Verify "Is FBO" field 
+		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
+		
+		//FBO
+		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
+				
+		//FBORD
+		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
+					
+				
+		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
 		.selectMembershipEntity()
-		.doubleClickOnTopParentInMembership()
+		.doubleClickOnNationalMembership()
 		
 		//17 Click on > and go to Audit history 
 		.selectTPAuditHistory()
 		
 		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
-		.verifyIsMemberAddMailSent()
+		.verifyIsMemberAddMailSentwithFrame0()
 		
 		//19 Verify the time-stamp on which the flag gets updated 
-		.verifyTimeStampInTPMembershipAuditHistory()*/;
+		.verifyTimeStampInTPMembershipAuditHistory()
+				
+				;
 
 	}
 }

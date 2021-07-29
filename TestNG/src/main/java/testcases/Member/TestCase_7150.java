@@ -76,28 +76,23 @@ public class TestCase_7150 {
 		
 			//Click on save 			
 			.clickSave() 
-			
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
-			//Add Membership provider
-				.clickAddNewPremierMembershipWithFrame1()
-				
-				// Choose Membership type 
-				.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
-				.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
-				
-				//Provide any start date and click on save
-				.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
-				.clickAddNewMembershipProviderSave()
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		
+	
 		//5. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			
 			//Click on Save 
 			.clickSave() 
+			
 		
-		//6. Verify Entity code is generated 
-		.entityCodeIsDisplayedWithFrame1()
+		//6. Verify Entity code is same as DP's entity code  
+		.verifyEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+		
+		//Verify Premier start date is auto populated
+		.verifyPremierStartDateIsAutoPopulated()
+		
+		.verifyAgEffectiveDateIsNull()
+		.verifyAffiliateGroupIsNull()
+
 		
 		//7. Verify "IS Corporate account" field
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
@@ -158,6 +153,13 @@ public class TestCase_7150 {
 		
 		//Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame1()
+		.verifyMainAccountEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+		
+		.verifyPremierStartDateIsAutoPopulated()
+		
+		.verifyAffiliateGroupIsNotNull()
+		.verifyAgEffectiveDateIsNotNull()
+
 		
 		// Verify "IS Corporate parent" field 
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
@@ -177,18 +179,29 @@ public class TestCase_7150 {
 		 //Verify Sponsor field 	
 		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
 		
-		/* //Go to > and click on Membership entity and double click on the Top parent membership entity			
-		.selectMembershipEntity()
-		.doubleClickOnTopParentInMembership()
+		//FBO details verification
+		//Verify "Is FBO" field 
+		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
 		
-		//Click on > and go to Audit history 		
+		//FBO
+		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
+				
+		//FBORD
+		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
+			
+		
+		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
+		.selectMembershipEntity()
+		.doubleClickOnNationalMembership()
+		
+		//17 Click on > and go to Audit history 
 		.selectTPAuditHistory()
 		
-		//Verify "Is Member Add mail sent" flag turned from No to Yes  
-		.verifyIsMemberAddMailSent()
+		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
+		.verifyIsMemberAddMailSentwithFrame0()
 		
-		//Verify the timestamp on which the flag gets updated 		
-		.verifyTimeStampInTPMembershipAuditHistory()*/;
+		//19 Verify the time-stamp on which the flag gets updated 
+		.verifyTimeStampInTPMembershipAuditHistory();
 		
 		
 	}

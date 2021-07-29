@@ -1,10 +1,17 @@
 package pages;
 
 import static org.testng.Assert.assertNotNull;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.junit.Assert; 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
+
 import driver.Driver;
 import services.WebDriverServiceImpl;
 import utils.DataInputProvider;
@@ -13,6 +20,12 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 
 	public SupplierFormPage defaultAccountStatus(String defaultAccountStatus) {
 		verifyExactText((getDriver().findElement(By.id("Account Status_label"))),defaultAccountStatus,"Account Status");
+		return this;
+	}
+	
+	public SupplierFormPage defaultAccountStatusWithFrame(String defaultAccountStatus) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		defaultAccountStatus(defaultAccountStatus);
 		return this;
 	}
 
@@ -58,6 +71,7 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 	
+	
 
 	public SupplierFormPage verifyAccountName(String verifyAccountName) throws InterruptedException {
 		Thread.sleep(5000);
@@ -67,12 +81,48 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 
-	public SupplierFormPage pickPremierStartDate(String premierStartDate) {
+	public SupplierFormPage pickPremierStartDate(String premierStartDate) throws InterruptedException {
 		click(getDriver().findElement(By.id("ix_premiermemberstartdate_d")),"Premier Start Date");
-		type(getDriver().findElement(By.id("ix_premiermemberstartdate_iDateInput")),premierStartDate,"Premier Start Date");
+		Thread.sleep(1000);
+		clearAndType(getDriver().findElement(By.id("ix_premiermemberstartdate_iDateInput")),premierStartDate,"Premier Start Date");
 		return this;
 	}
-
+	
+	public SupplierFormPage verifyPremierStartDate(String premierStartDate) {
+		scrollDown(((getDriver().findElement(By.xpath("//*[@id='Premier Start Date_label']")))));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='Premier Start Date_label']")),premierStartDate,"Premier Start Date");
+		return this;
+	}
+	
+	public SupplierFormPage clickSupplierAccountName() throws InterruptedException {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//*[@id='TabNode_tab0Tab-main']/a/span/span")),"Supplier Account Name");
+		Thread.sleep(5000);	
+		return this;
+	}
+	
+	public SupplierFormPage verifyPremierStartDateAsCurrentDate() {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		 DateFormat dateFormat = new SimpleDateFormat("M/d/yyyy");
+		 Date date = new Date();
+		 String date1= dateFormat.format(date); 
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='Premier Start Date_label']")),date1,"Premier Start Date");
+		return this;
+	}
+	public SupplierFormPage verifyPremierEndDate(String premierEndDate) {
+		scrollDown(((getDriver().findElement(By.id("Premier End Date_label")))));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='Premier End Date_label']")),premierEndDate,"Premier End Date");
+		return this;
+	}
+	public SupplierFormPage verifyPremierEndDateWithFrame1(String premierEndDate) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		scrollDown(((getDriver().findElement(By.id("Premier End Date_label")))));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='Premier End Date_label']")),premierEndDate,"Premier End Date");
+		return this;
+	}
+	
+	 
+	 
 	public SupplierFormPage selectBusinessClassification(String businessClassification) throws InterruptedException {
 		scrollDown(((getDriver().findElement(By.id("ix_businessclassification_cl")))));
 		click(getDriver().findElement(By.id("ix_businessclassification_cl")),"Business Classification");
@@ -101,7 +151,73 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 
 	}
-
+	public SupplierFormPage selectMembershipEntity() throws InterruptedException {
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		click(getDriver().findElement(By.id("TabNode_tab0Tab")),"Tab Node");
+		Thread.sleep(3000);
+		click(getDriver().findElement(By.id("Node_nav_ix_account_ix_membership_AccountName")),"Membership Entity");
+		Thread.sleep(3000);
+		return this;
+	}
+	public SupplierFormPage doubleClickOnNationalMembership(String membershipStartDate) throws InterruptedException {	
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[4]/div")),membershipStartDate,"Membership Start Date");
+		Actions a = new Actions(getDriver());
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[2]/nobr/span"))).doubleClick().build().perform();
+		Thread.sleep(3000);
+		return this;
+	}
+	public SupplierFormPage selectMembershipEndReason(String EndReason) {
+		click(getDriver().findElement(By.id("ix_endreason")),"End Reason");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_endreason_i")))),EndReason,"End Reason");
+		return this;
+	}
+	public SupplierFormPage clickMembershipSaveAndClose() throws InterruptedException {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//*[@id='ix_membership|NoRelationship|Form|Mscrm.Form.ix_membership.SaveAndClose']/span/a/span")),"Save and Close");
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		Thread.sleep(5000);
+		return this;
+	}
+	
+	public SupplierFormPage selectMembershipProviderType1(String membershipProviderType) throws InterruptedException{
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
+		click(getDriver().findElement(By.id("ix_membershiptype")),"Membership Provider Type");
+		//selectDropDownUsingIndex(getDriver().findElement(By.id("ix_membershiptype_i")),15);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_membershiptype_i']")))),membershipProviderType,"Membership Provider Type");
+		return this;
+	}
+	public SupplierFormPage typeInAddNewMembershipProvider(String MembershipProvider) {
+		click(getDriver().findElement(By.id("ix_membershipprovider")),"Membership Provider");
+		typeAndChoose(((getDriver().findElement(By.id("ix_membershipprovider_ledit")))),MembershipProvider,"Membership Provider");
+		return this;
+	}
+	
+	public SupplierFormPage clickAddNewMembershipProvider() throws InterruptedException {
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
+		click(getDriver().findElement(By.xpath("//*[@id='ix_membership|OneToMany|SubGridAssociated|Mscrm.SubGrid.ix_membership.AddNewStandard']/span/a")),"Add");
+		return this;
+	}
+	
+	public SupplierFormPage clickAddNewMembershipProviderSave() throws InterruptedException {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.id("globalquickcreate_save_button_NavBarGloablQuickCreate")),"Save");	
+		Thread.sleep(5000);
+		return this;
+	}
+	public SupplierFormPage selectMembershipProviderStartDateInAddNewMembershipProvider(String LineOfBusinessStartDate) {
+		click(getDriver().findElement(By.id("ix_startdate_d")),"Start Date");
+		type(((getDriver().findElement(By.id("ix_startdate_iDateInput")))),LineOfBusinessStartDate,"Start Date");
+		return this;
+	}
 	public SupplierFormPage crmNumberIsDisplayed() {
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
@@ -161,7 +277,8 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		return this;
 	} 
 	public SupplierFormPage pickTPRD(String selectTPRelationDate) throws InterruptedException {
-		scrollDown(getDriver().findElement(By.id("ix_topparentrelationdate")));
+		Thread.sleep(2000);
+	//	scrollDown(getDriver().findElement(By.id("ix_topparentrelationdate")));
 		click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
 		type(((getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")))),selectTPRelationDate,"Top Parent Relation Date");
 		click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
@@ -258,6 +375,15 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		Thread.sleep(2000);
 		return this;
 	}
+	
+	public SupplierFormPage recordStatusPublishedWithoutFrame(String recordStatusPublished) throws InterruptedException {
+		Thread.sleep(3000);
+		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		click(getDriver().findElement(By.id("ix_recordstatus_i")),"Record Status");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
 
 	public SupplierFormPage verifyRecordStatus() throws InterruptedException {
 		Thread.sleep(3000);
@@ -276,6 +402,7 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		Thread.sleep(2000);
 		return this;
 	}
+	
 	public SupplierFormPage recordStatusLock(String recordStatusPublished) throws InterruptedException {
 		Thread.sleep(3000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));	
@@ -418,6 +545,15 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		verifyExactText(getDriver().findElement(By.id("ix_nonewproducts")),VerifyNoNewProducts,"No New Products"); 
 		return this;
 	}
+	
+	public SupplierFormPage typeEndDateInMembership(String membershipEndDate) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_enddate")),"End Date");
+		type(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),membershipEndDate,"End Date");
+		return this;
+	}
+	
+	
 
 }
 

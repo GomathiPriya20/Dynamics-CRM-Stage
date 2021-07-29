@@ -26,14 +26,12 @@ public class TestCase_7161 {
 		.storeLocationTypeBlank()
 		.crmNumberIsDisplayed()
 		.clickSave()
-		
-		
 		.recordStatusPublished(DataInputProvider.getCellData_ColName(iRowNumber, "recordStatusPublished", sDataSheetName))
 		.clickSave()
 		.entityCodeIsDisplayed()
-		.verifyMainAccountEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "verifyEntityCode", sDataSheetName));
-		
+		.verifyMainAccountEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "verifyEntityCode", sDataSheetName))
+		.storeLocationTypeWithOutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "storeLocationType", sDataSheetName))
+        .clickSave();
 	}
-
 
 }

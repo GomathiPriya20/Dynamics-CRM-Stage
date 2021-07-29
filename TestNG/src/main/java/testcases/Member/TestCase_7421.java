@@ -74,7 +74,7 @@ public class TestCase_7421 {
 			
 		//11. Provide any start date and click on save
 			.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
-			.clickAddNewMembershipProviderSave()
+		//	.clickAddNewMembershipProviderSave()
 			
 			;
 	

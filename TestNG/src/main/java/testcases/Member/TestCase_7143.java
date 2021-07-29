@@ -152,6 +152,15 @@ public class TestCase_7143 {
 		//11. Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame0()
 		
+		//Verify Premier start date is auto populated
+		.verifyPremierStartDateIsAutoPopulated()
+		
+		.verifyAffiliateGroupIsNotNull()
+		.verifyAgEffectiveDateIsNotNull()
+		
+		.verifyDirectParentIsEmpty()
+		.verifyToParentIsEmpty()
+		
 		//12. Verify "IS Corporate account" field
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))	
 		.verifyIsCorporateAccountLocked()

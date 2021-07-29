@@ -18,6 +18,7 @@ import org.w3c.dom.NodeList;
 import java.awt.AWTException;
 import java.io.File;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -93,6 +94,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(getDriver().findElement(By.id("ix_premiermemberstartdate_iDateInput")),PremierStartDate,"Premier Start Date");
 		return this;
 	}
+	public MemberFormPage verifyPremierStartDateIsAutoPopulated()  {
+		System.out.println("Test");
+		scrollDown(getDriver().findElement(By.id("ix_premiermemberstartdate_d")));
+		getTextValue(getDriver().findElement(By.id("ix_premiermemberstartdate_d")),"Premier Start Date");
+		return this;
+	}
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public MemberFormPage AddMemberPrimaryContact(String AddMemberPrimaryContact) throws InterruptedException {
@@ -110,11 +117,19 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
+	public MemberFormPage VerifyPrimaryContactValueWithoutFrame(String verifyPrimaryContactValue) throws InterruptedException {
+		scrollDown(getDriver().findElement(By.id("primarycontactid")));
+		verifyExactText((getDriver().findElement(By.xpath("//*[@id='primarycontactid']"))), verifyPrimaryContactValue,"Primary Contact");
+		return this;
+	}
+	
 	public MemberFormPage AddMemberPrimaryContactFromLookUp(String PrimaryContactLookUp) throws InterruptedException {
-		Actions action = new Actions(getDriver());	
-		action.moveToElement(getDriver().findElement(By.id("primarycontactid"))).perform();
-		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//img[@id='primarycontactid_i']")),"Primary Contact");
+		
+		scrollDown(getDriver().findElement(By.id("ix_premiermemberstartdate_d")));
+		Actions action = new Actions(getDriver());
+		action.moveToElement(getDriver().findElement(By.xpath("//*[@id='primarycontactid_d']"))).perform();
+		Thread.sleep(2000);
+		click(getDriver().findElement(By.xpath("//*[@id=\"primarycontactid_lookupSearchIcon\"]")),"Primary Contact");
 		Thread.sleep(3000);
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Look Up More Records')]")),"Look Up More Records");
 		Thread.sleep(3000);
@@ -209,8 +224,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage clickSave() throws InterruptedException {
 		switchToDefaultContent();
 		click(getDriver().findElement(By.id("account|NoRelationship|Form|Mscrm.Form.account.Save")),"Save");
-		Thread.sleep(10000);
-		return this;
+		Thread.sleep(15000);		
+		return this;	
 	}
 	
 	public MemberFormPage clickSaveInAccountNumbers() throws InterruptedException {
@@ -357,6 +372,10 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		type(((getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")))),DirectParentRelationDate, "Direct Parent Relation Date");
 		return this;
 	}
+	public MemberFormPage verifyDirectParentRelationDate(String DirectParentRelationDate) {
+		verifyExactText(((getDriver().findElement(By.id("ix_directparentrelationdate")))),DirectParentRelationDate, "Direct Parent Relation Date");
+		return this;
+	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public MemberFormPage typeStockSymbol(String StockSymbol) {
 		click(getDriver().findElement(By.id("ix_stocksymbol")),"Stock Symbol");
@@ -370,8 +389,9 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
-	public MemberFormPage selectTopParentRelation(String TopParentRelation) {
+	public MemberFormPage selectTopParentRelation(String TopParentRelation) throws InterruptedException {
 		click(getDriver().findElement(By.id("ix_topparentrelationship")),"Top Parent Relation");
+		Thread.sleep(1000);
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_topparentrelationship_i")))),TopParentRelation,"Top Parent Relation");
 		verifyExactText(getDriver().findElement(By.id("ix_topparentrelationship")),TopParentRelation,"Top Parent Relation"); 
 		return this;
@@ -380,6 +400,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage selectTopParentRelationDate(String TopParentRelationDate) {
 		click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
 		type(getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")),TopParentRelationDate,"Top Parent Relation Date");
+		return this;
+	}
+	
+	public MemberFormPage verifyTopParentRelationDate(String TopParentRelationDate) {
+		verifyExactText(getDriver().findElement(By.id("ix_topparentrelationdate")),TopParentRelationDate,"Top Parent Relation Date");
 		return this;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ADDRESSS DETAILS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -650,6 +675,14 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
+	public MemberFormPage selectLineOfBusiness(String LineOfBusiness) throws InterruptedException   {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
+		click(getDriver().findElement(By.id("ix_portfolio")),"Line of Bussiness");
+		selectDropDownUsingVisibleText(getDriver().findElement(By.xpath("//*[@id=\"ix_portfolio_i\"]")),LineOfBusiness,"LOB");
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ix_portfolio']")),LineOfBusiness,"LOB");
+		return this;
+	}
 	public MemberFormPage selectLineOfClassificationGeneralGPO(String LineOfClassificationGeneralGPO) {
 		click(getDriver().findElement(By.id("ix_classificationtypenew_c")),"Line of classification");
 		click(getDriver().findElement(By.id("ix_classificationtypenew_c")),"Line of classification");
@@ -700,6 +733,17 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+
+	public MemberFormPage verifyDirectParentIsEmpty() {
+		verifyNullValue(getDriver().findElement(By.id("header_parentaccountid")),"Direct Parent in header"); 
+		return this;
+	}
+	
+	public MemberFormPage verifyToParentIsEmpty() {
+		verifyNullValue(getDriver().findElement(By.id("header_ix_topparent")),"Top Parent in header"); 
+		return this;
+	}
+	
 	public MemberFormPage entityCodeIsDisplayed() throws InterruptedException {
 		Thread.sleep(6000);
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
@@ -732,6 +776,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	
 	public MemberFormPage verifyAccountStatus(String AcountStatus) {
+		verifyExactText((getDriver().findElement(By.id("ix_accountstatus"))),AcountStatus,"Account Status");
+		return this;
+	}
+	public MemberFormPage verifyAccountStatusWithFrame1(String AcountStatus) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		verifyExactText((getDriver().findElement(By.id("ix_accountstatus"))),AcountStatus,"Account Status");
 		return this;
 	}
@@ -784,6 +833,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyExactText(getDriver().findElement(By.id("ix_fbo")),FBO,"FBO"); 
 		return this;
 	}
+	public MemberFormPage VerifyFBORD(String FBORD) {
+		verifyExactText(getDriver().findElement(By.id("ix_fborelationdate")),FBORD,"FBO Relation Date"); 
+		return this;
+	}
+	
+	//*[@id="ix_fborelationdate"]
 	
 	public MemberFormPage VerifyFBOManualOverride(String FBOManualOverride) {
 		verifyExactText(getDriver().findElement(By.id("ix_fbomanualoverride")),FBOManualOverride,"FBO Manual Override"); 
@@ -822,6 +877,89 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.id("ix_ispaymententity")),"Is Payment Entity"); 
 		return this;
 	}
+	
+	
+	public MemberFormPage selectMembershipEndReason(String EndReason) {
+		click(getDriver().findElement(By.id("ix_endreason")),"End Reason");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_endreason_i")))),EndReason,"End Reason");
+		return this;
+	}
+	public MemberFormPage typeMembershipEndDate(String EndDate) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_enddate")),"End Date");
+		clearAndType(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),EndDate,"End Date");
+		return this;
+	}
+	public MemberFormPage clickMembershipSaveAndClose() {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//*[@id='ix_membership|NoRelationship|Form|Mscrm.Form.ix_membership.SaveAndClose']/span/a/span")),"Save and Close");
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+
+		return this;
+	}
+	public MemberFormPage verifyPremierEndDateIsNull() {
+		verifyNullValue(getDriver().findElement(By.id("ix_premiermemberenddate")),"Premier End Date"); 
+		return this;
+	}
+	public MemberFormPage verifyPremierEndDate(String PremierEndDate) {
+		verifyExactText(getDriver().findElement(By.id("ix_premiermemberenddate")),PremierEndDate,"Premier End Date");
+		return this;
+	}
+	public MemberFormPage verifyPremierStartDate(String PremierStartDate) {
+		verifyExactText(getDriver().findElement(By.id("ix_premiermemberstartdate_d")),PremierStartDate,"Premier Start Date");
+		return this;
+	}
+	
+	
+	public MemberFormPage verifyAffiliateGroup(String AffiliateGroup) {
+		verifyExactText(getDriver().findElement(By.id("ix_affiliategroup")),AffiliateGroup,"Affiliate Group");
+		return this;
+	}
+	public MemberFormPage verifyAgEffectiveDate(String AgEffectiveDate) {
+		verifyExactText(getDriver().findElement(By.id("ix_affiliategroupeffectivedate")),AgEffectiveDate,"Affiliate Group Effective Date");
+		return this;
+	}
+	
+	public MemberFormPage verifyAffiliateGroupIsNotNull() {
+		getTextValue(getDriver().findElement(By.id("ix_affiliategroup")),"Affiliate Group");
+		return this;
+	}
+	public MemberFormPage verifyAgEffectiveDateIsNotNull() {
+		getTextValue(getDriver().findElement(By.id("ix_affiliategroupeffectivedate")),"Affiliate Group Effective Date");
+		return this;
+	}
+	public MemberFormPage verifyAgEffectiveDateIsNull() {
+		verifyNullValue(getDriver().findElement(By.id("ix_affiliategroupeffectivedate")),"AG Effective Date"); 
+		return this;
+	}
+
+	public MemberFormPage verifyAffiliateGroupIsNull() {
+		verifyNullValue(getDriver().findElement(By.id("ix_affiliategroup")),"Affiliate Group"); 
+		return this;
+	}
+
+	public MemberFormPage verifyEntityCode(String verifyEntityCode) throws InterruptedException {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
+		 verifyExactText(getDriver().findElement(By.id("Entity Code_label")), verifyEntityCode,"Entity code");
+		return this;
+	}
+	public MemberFormPage verifyEntityCodeFrame0(String verifyEntityCode) throws InterruptedException {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
+		 verifyExactText(getDriver().findElement(By.id("Entity Code_label")), verifyEntityCode,"Entity code");
+		return this;
+	}
+	public MemberFormPage verifyMainAccountEntityCode(String verifyEntityCode) throws InterruptedException {
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
+		Assert.assertFalse(getTextValue(getDriver().findElement(By.id("Entity Code_label")),"Entity Code").equals(verifyEntityCode));
+		return this;
+	}
+
+	
 	public MemberFormPage verifyIsPaymentEntity(String IsPaymentEntity) {
 		verifyExactText(getDriver().findElement(By.id("ix_ispaymententity")),IsPaymentEntity,"Is Payment Entity"); 
 		return this;
@@ -860,17 +998,27 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
-	public MemberFormPage doubleClickOnTopParentInMembership() throws InterruptedException {	
+	public MemberFormPage doubleClickOnNationalMembership() throws InterruptedException {	
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
-		verifyExactText(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[3]/nobr")),"National","Membership Provider");
+		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
 		Actions a = new Actions(getDriver());
-	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[3]/nobr"))).
-	      doubleClick().
-	      build().perform();
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr[2]/td[2]/nobr/span"))).doubleClick().build().perform();
 		Thread.sleep(3000);
+		//verifyExactText(getDriver().findElement(By.xpath("//*[@id='Membership Provider_label']")),"National","Membership Entity");
 		return this;
 	}
+	public MemberFormPage doubleClickOnNationalMembershipWithFrame0() throws InterruptedException {	
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
+		Actions a = new Actions(getDriver());
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr[2]/td[2]/nobr/span"))).doubleClick().build().perform();
+		Thread.sleep(3000);
+		//verifyExactText(getDriver().findElement(By.xpath("//*[@id='Membership Provider_label']")),"National","Membership Entity");
+		return this;
+	}
+	
 	public MemberFormPage doubleClickOnTopParentInMembershipLocationType() throws InterruptedException {	
 		Thread.sleep(3000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
@@ -903,9 +1051,18 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage verifyIsMemberAddMailSentwithFrame0() {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
+		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
+		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
+		return this;
+	}
+	
+	public MemberFormPage verifyIsMemberAddMailSentwithFrame01() {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
-		verifyExactText(getDriver().findElement(By.xpath("//*[contains(@id,'ix_ismemberaddmailsent_newvalue_')]")),"Yes","Is add mail sent"); 
+		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
+		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
 		return this;
 	}
 	
@@ -985,7 +1142,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage verifyIsFBO(String isFBO) { 
 		verifyExactText(getDriver().findElement(By.id("ix_isfbo")),isFBO, "Is FBO"); 
 			return this;
-		}
+	}
 	
 	public MemberFormPage verifyDirectParentRelation(String DirectParentRelation) { 
 		verifyExactText(getDriver().findElement(By.id("ix_parentrelationship")),DirectParentRelation,"Direct Parent Relation"); 
@@ -1065,6 +1222,13 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage clickAddNewPremierMembershipWithFrame1() throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		//scrollDown(((getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")))));
+		click(getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")),"Add");
+		Thread.sleep(6000);
+		return this;
+	}
+	
+	public MemberFormPage clickAddNewPremierMembership() throws InterruptedException {
 		//scrollDown(((getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")))));
 		click(getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")),"Add");
 		Thread.sleep(6000);
@@ -1308,7 +1472,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 			//switchToWindow(1);
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 			click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")),"Form Selector");
-			click(getDriver().findElement(By.xpath("//span[@title='Member Form']")),"Member Form");
+			Thread.sleep(1000);
+			click(getDriver().findElement(By.xpath("//*[@id=\"Dialog_0\"]/div/ul/li/a[2]/span/nobr/span")),"Member Form");
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -1324,7 +1489,15 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;	
 	}
 	
+	
+	public MemberFormPage chooseRecordStatusDraftWithFrame1(String RecordStatus) throws InterruptedException {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		chooseRecordStatusDraft(RecordStatus);
+		return this;	
+	}
+	
 	public MemberFormPage chooseRecordStatusDraft(String RecordStatus) throws InterruptedException {
+		//scrollDown(getDriver().findElement(By.id("ix_recordstatus")));
 		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
 		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),0,"Record Status");
 		getDriver().findElement(By.id("ix_recordstatus")).sendKeys(Keys.TAB);

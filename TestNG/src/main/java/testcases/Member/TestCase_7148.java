@@ -88,27 +88,22 @@ public class TestCase_7148 {
 			 //Click on Save 
 			.clickSave() 
 		
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
-			//Add Membership provider
-				.clickAddNewPremierMembershipWithFrame1()
-				
-				// Choose Membership type
-				.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
-				.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
-				
-				//Provide any start date and click on save
-				.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
-				.clickAddNewMembershipProviderSave()
-		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		
 		//7. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			
 			//Click on Save 
 			.clickSave() 
+			
 		
-		//8. Verify Entity code is generated 
-		.entityCodeIsDisplayedWithFrame1()
+		//8. Verify Entity code is same as DP's entity code  
+		.verifyEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+			
+		
+		//Verify Premier start date is auto populated
+		.verifyPremierStartDateIsAutoPopulated()
+		
+		.verifyAgEffectiveDateIsNull()
+		.verifyAffiliateGroupIsNull()
 		
 		//9. Verify "IS Corporate account" field
 		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
