@@ -146,7 +146,7 @@ public class TestCase_7312 {
 		.VerifyPrimaryContactValueWithoutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactName", sDataSheetName))
 		
 		//Record Status = Draft
-		 .chooseRecordStatusDraft(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
+		 .chooseRecordStatusDraft()
 		 
 		//Click on Save 
 		.clickSave() 

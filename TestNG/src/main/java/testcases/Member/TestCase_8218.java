@@ -134,7 +134,7 @@ public class TestCase_8218 {
 			.verifyAgEffectiveDateIsNotNull()
 			
 		//9.Move the record status to draft and save  ***** Record moved to draft 
-			.chooseRecordStatusDraft(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatus", sDataSheetName))
+			.chooseRecordStatusDraft()
 			
 			//Click on Save 
 			.clickSave() 
@@ -174,7 +174,19 @@ public class TestCase_8218 {
 			
 			//Click on Save 
 			.clickSave()
-
+			
+		//17.Go to membership and add New membership **** Account should be saved successfully 
+		//Add Membership provider
+			.clickAddNewPremierMembershipWithFrame1()
+			
+			// Choose Membership type
+			.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+			.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider1", sDataSheetName))
+			
+			//Provide any start date and click on save
+			.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
+			.clickAddNewMembershipProviderSave()	
+			
 		//18.Now add corresponding LOB **** LOB should be added successfully 
 		//Click the + icon on the Line of Business Grid
 		.clickLineOfBusinessWithFrame1()
@@ -191,18 +203,6 @@ public class TestCase_8218 {
 
 		//Click on Save 
 		.clickLineOfBusinessSave()
-			
-		//17.Go to membership and add New membership **** Account should be saved successfully 
-		//Add Membership provider
-			.clickAddNewPremierMembershipWithFrame1()
-			
-			// Choose Membership type
-			.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
-			.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider1", sDataSheetName))
-			
-			//Provide any start date and click on save
-			.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
-			.clickAddNewMembershipProviderSave()	
 			
 		//25.Move the record status to Published ***** Account should be published and reactivated successfully 
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))

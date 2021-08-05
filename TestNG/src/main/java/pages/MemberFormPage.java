@@ -1492,16 +1492,16 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	
 	public MemberFormPage chooseRecordStatusDraftWithFrame1(String RecordStatus) throws InterruptedException {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-		chooseRecordStatusDraft(RecordStatus);
+		chooseRecordStatusDraft();
 		return this;	
 	}
 	
-	public MemberFormPage chooseRecordStatusDraft(String RecordStatus) throws InterruptedException {
+	public MemberFormPage chooseRecordStatusDraft() throws InterruptedException {
 		//scrollDown(getDriver().findElement(By.id("ix_recordstatus")));
 		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
 		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),0,"Record Status");
 		getDriver().findElement(By.id("ix_recordstatus")).sendKeys(Keys.TAB);
-		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatus,"Record Status"); 
+		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),"Draft","Record Status"); 
 		Thread.sleep(3000);
 		return this;	
 	}

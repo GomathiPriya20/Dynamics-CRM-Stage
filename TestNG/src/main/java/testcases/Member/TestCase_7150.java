@@ -115,7 +115,7 @@ public class TestCase_7150 {
 		
 
 		//Move the status from Published to draft and update the following:
-		.chooseRecordStatusDraft(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
+		.chooseRecordStatusDraft()
 		
 			//Application Start Date = Today's Date
 			.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
