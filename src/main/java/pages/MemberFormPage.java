@@ -14,6 +14,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static org.testng.Assert.assertNotNull;
+
 //Test Case 7312:Add and update Primary contact to a Member account
 import java.awt.AWTException;
 import java.io.File;
@@ -281,7 +283,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
 		 try {
 				DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber",Driver.properties.getProperty("DriverSheetName"));
-			} catch (Exception e) {
+				assertNotNull(sCRMNumber);
+		 } catch (Exception e) {
 				e.printStackTrace();
 			}
 		return this;
@@ -748,7 +751,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		Thread.sleep(6000);
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
-		getTextValue(getDriver().findElement(By.id("Entity Code_label")),"Entity Code");
+		String entityCode=getTextValue(getDriver().findElement(By.id("Entity Code_label")),"Entity Code");
+		assertNotNull(entityCode);
 		return this;
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -942,7 +946,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
-		 verifyExactText(getDriver().findElement(By.id("Entity Code_label")), verifyEntityCode,"Entity code");
+		Assert.assertFalse(getTextValue(getDriver().findElement(By.xpath("//*[@id='Entity Code_labe']")),"Entity Code").equals(verifyEntityCode));
 		return this;
 	}
 	public MemberFormPage verifyEntityCodeFrame0(String verifyEntityCode) throws InterruptedException {

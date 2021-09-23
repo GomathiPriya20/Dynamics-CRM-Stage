@@ -27,7 +27,6 @@ public class TestCase_7420 {
 			.clickNewOnAccountsPage()
 			.chooseMemberFormwithFrame1()
 		
-			
 		//3. Verify Membership provider field is defaulted to No 
 			.defaultMembershipProvider()
 		
