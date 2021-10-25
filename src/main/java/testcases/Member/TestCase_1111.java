@@ -219,11 +219,11 @@ public class TestCase_1111 {
 		 
 //Fee Share
 			
-		//Fee share eligible		
-		.changeFeeShareEligible1()
-		
-		//Fee share eligible date = Today's date
-		.selectFeeShareEligibleStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "FeeShareEligibleStartDate", sDataSheetName))
+//		//Fee share eligible		
+//		.changeFeeShareEligible1()
+//		
+//		//Fee share eligible date = Today's date
+//		.selectFeeShareEligibleStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "FeeShareEligibleStartDate", sDataSheetName))
 				
 //Sponsor
 		 
@@ -281,11 +281,11 @@ public class TestCase_1111 {
 		//FBORelationDate
 		
 		//FBO Type = Any
-		.selectFBOGPOType(DataInputProvider.getCellData_ColName(iRowNumber, "FBOType", sDataSheetName))
-				
-		//FBO effective date = Today's date
-		.selectFBOEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "FBOEffectiveDate", sDataSheetName))
-		
+//		.selectFBOGPOType(DataInputProvider.getCellData_ColName(iRowNumber, "FBOType", sDataSheetName))
+//				
+//		//FBO effective date = Today's date
+//		.selectFBOEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "FBOEffectiveDate", sDataSheetName))
+//		
 		//Click on Save 
 		.clickSave() 
 		

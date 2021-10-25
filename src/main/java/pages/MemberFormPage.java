@@ -888,7 +888,9 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_endreason_i")))),EndReason,"End Reason");
 		return this;
 	}
-	public MemberFormPage typeMembershipEndDate(String EndDate) {
+	public MemberFormPage typeMembershipEndDate(String EndDate) throws InterruptedException {
+		Thread.sleep(1000);
+		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		click(getDriver().findElement(By.id("ix_enddate")),"End Date");
 		clearAndType(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),EndDate,"End Date");
@@ -946,11 +948,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
-		Assert.assertFalse(getTextValue(getDriver().findElement(By.xpath("//*[@id='Entity Code_labe']")),"Entity Code").equals(verifyEntityCode));
+		Assert.assertTrue(getTextValue(getDriver().findElement(By.xpath("//*[@id='Entity Code_label']")),"Entity Code").equals(verifyEntityCode));
 		return this;
 	}
 	public MemberFormPage verifyEntityCodeFrame0(String verifyEntityCode) throws InterruptedException {
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
 		 verifyExactText(getDriver().findElement(By.id("Entity Code_label")), verifyEntityCode,"Entity code");

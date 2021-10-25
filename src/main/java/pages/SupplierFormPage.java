@@ -160,8 +160,13 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		Thread.sleep(3000);
 		return this;
 	}
-	public SupplierFormPage doubleClickOnNationalMembership(String membershipStartDate) throws InterruptedException {	
+	public SupplierFormPage doubleClickOnNationalMembership(String membershipStartDate) throws InterruptedException {
+		
+		Thread.sleep(1000);
+		switchToDefaultContent();
+
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
 		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[4]/div")),membershipStartDate,"Membership Start Date");
@@ -289,7 +294,7 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 			scrollDown(getDriver().findElement(By.id("ix_topparentrelationdate")));
 			click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
 			clearAndType(((getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")))),selectTPRelationDate,"Top Parent Relation Date");
-			click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
+			//click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
 			return this;
 		}
 	
@@ -554,7 +559,9 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		return this;
 	}
 	
-	public SupplierFormPage typeEndDateInMembership(String membershipEndDate) {
+	public SupplierFormPage typeEndDateInMembership(String membershipEndDate) throws InterruptedException {
+		switchToDefaultContent();
+Thread.sleep(2000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		click(getDriver().findElement(By.id("ix_enddate")),"End Date");
 		type(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),membershipEndDate,"End Date");

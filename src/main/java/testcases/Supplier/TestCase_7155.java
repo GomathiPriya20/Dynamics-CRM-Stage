@@ -47,7 +47,7 @@ public class TestCase_7155 {
 		//Verify Default Account Type on Supplier Form
 		.defaultAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "defaultAccountType", sDataSheetName))
 		
-		//.pickTPRDEdit(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
+		.pickTPRDEdit(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))				
 		
 		//Verify if CRM# is generated.
 		.crmNumberIsDisplayed()

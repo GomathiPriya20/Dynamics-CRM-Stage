@@ -674,7 +674,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 
 	public void clearAndType(WebElement ele, String data,String field)  {
 		try {
-			//ele.clear();
+			ele.sendKeys(Keys.CONTROL, Keys.chord("a"));
 			ele.sendKeys(Keys.BACK_SPACE);
 			ele.sendKeys(data);		
 			String sExpectedValue= ele.getAttribute("value");

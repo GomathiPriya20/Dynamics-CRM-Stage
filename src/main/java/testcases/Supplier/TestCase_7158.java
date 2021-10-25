@@ -47,7 +47,7 @@ public class TestCase_7158 {
 		//.recordChangeStatus(DataInputProvider.getCellData_ColName(iRowNumber, "recordChangeStatus", sDataSheetName))
 		
 		//Verify the Record Change Status
-		.verifyRecordChangeStatus(DataInputProvider.getCellData_ColName(iRowNumber, "verifyRecordChangeStatus", sDataSheetName))
+		.verifyRecordChangeStatus(DataInputProvider.getCellData_ColName(iRowNumber, "recordChangeStatus", sDataSheetName))
 		
 		//Save the information
 		.clickSave()

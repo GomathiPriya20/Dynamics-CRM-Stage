@@ -71,10 +71,7 @@ public class TestCase_7312 {
 			 
 			//Top Parent Relation Date = Today's Date
 			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
-			 
-			//Record Status = Draft
-			 .chooseRecordStatus(DataInputProvider.getCellData_ColName(iRowNumber, "Recordstatus", sDataSheetName))
-			 
+			  
 			//Click on Save
 			 //.clickSave() 
 			 
