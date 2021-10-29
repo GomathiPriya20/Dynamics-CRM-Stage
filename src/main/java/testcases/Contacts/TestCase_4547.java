@@ -95,11 +95,11 @@ public class TestCase_4547 {
 			 //Check the Contact record status
 			.verifyContactRecordStatus(DataInputProvider.getCellData_ColName(iRowNumber, "contactRecordStatus", sDataSheetName))
 			
+			//Select contact account association
+			.doubleClickOnOldContactAccountAssociationRecord()
+			
 			//Verify contact account association termination reason is empty
 			.verifyContactAccAssoRelationshipEndDate("")
-			
-			//Select contact account association
-			.doubleClickOnContactAccountAssociationRecord()
 			
 			// Check job function
 			.verifyJobFunctionTerminationStatus("")

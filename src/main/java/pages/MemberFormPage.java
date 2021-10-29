@@ -145,7 +145,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_findCriteriaImg']")),"Find Criteria");
 	
 		click(getDriver().findElement(By.id("butBegin")),"Add");
-		Thread.sleep(2000);
+		Thread.sleep(8000);
+		switchToDefaultContent();
 		return this;
 	}
 	
@@ -252,7 +253,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage clickSaveAndCloseInAccountNumbers() throws InterruptedException {
 		switchToDefaultContent();
 		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//*[@id='ix_accountnumber|NoRelationship|Form|Mscrm.Form.ix_accountnumber.SaveAndClose']/span/a/span")),"Save");
+		clickWithNoSnap(getDriver().findElement(By.xpath("//*[@id='ix_accountnumber|NoRelationship|Form|Mscrm.Form.ix_accountnumber.SaveAndClose']/span/a/span")));
 		Thread.sleep(10000);
 		switchToWindow(0);
 		return this;
@@ -862,6 +863,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
+	public MemberFormPage verifyIsSponsorwithFrame1(String VerifyIsSponsor) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		verifyExactText(getDriver().findElement(By.id("ix_issponsor")),VerifyIsSponsor,"Is Sponsor"); 
+		return this;
+	}
+	
 	public MemberFormPage verifyCAMSFlag(String VerifyCAMSFlag) {
 		verifyExactText(getDriver().findElement(By.id("ix_camsflag")),VerifyCAMSFlag,"CAMS Flag"); 
 		return this;
@@ -1043,34 +1050,34 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 	
-	public MemberFormPage selectTPAuditHistory() throws InterruptedException {
-		switchToDefaultContent();
-		click(getDriver().findElement(By.id("TabNode_tab0Tab")),"Tab Node");
-		Thread.sleep(2000);
-		click(getDriver().findElement(By.id("Node_navAudit")),"Audi History");
-		Thread.sleep(2000);
-		return this;
-	}
-	public MemberFormPage verifyTimeStampInTPMembershipAuditHistory() { 
-		getTextValue(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[2]/td[2]/div")),"Time in Top Parent Membersihp Audit History"); 
-		return this;
-	}
-
-	public MemberFormPage verifyIsMemberAddMailSentwithFrame0() {
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
-		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
-		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
-		return this;
-	}
-	
-	public MemberFormPage verifyIsMemberAddMailSentwithFrame01() {
-		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
-		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
-		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
-		return this;
-	}
+//	public MemberFormPage selectTPAuditHistory() throws InterruptedException {
+//		switchToDefaultContent();
+//		click(getDriver().findElement(By.id("TabNode_tab0Tab")),"Tab Node");
+//		Thread.sleep(2000);
+//		click(getDriver().findElement(By.id("Node_navAudit")),"Audi History");
+//		Thread.sleep(2000);
+//		return this;
+//	}
+//	public MemberFormPage verifyTimeStampInTPMembershipAuditHistory() { 
+//		getTextValue(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[2]/td[2]/div")),"Time in Top Parent Membersihp Audit History"); 
+//		return this;
+//	}
+//
+//	public MemberFormPage verifyIsMemberAddMailSentwithFrame0() {
+//		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+//		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
+//		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
+//		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
+//		return this;
+//	}
+//	
+//	public MemberFormPage verifyIsMemberAddMailSentwithFrame01() {
+//		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+//		switchToFrame(getDriver().findElement(By.id("areaAuditFrame")));
+//		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_cell')])[1]")),"Is Member Add mail sent","Audit History"); 
+//		verifyExactText(getDriver().findElement(By.xpath("(//*[contains(@id,'ix_ismemberaddmailsent_newvalue')])[1]")),"Yes","Is add mail sent"); 
+//		return this;
+//	}
 	
 	public MemberFormPage changeTopParent() {
 		click(getDriver().findElement(By.id("ix_istopparent")),"Top Parent"); 
@@ -1389,6 +1396,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		switchToFrame(getDriver().findElement(By.id("areaSubAcctsFrame")));
 		click(getDriver().findElement(By.id("account|OneToMany|SubGridAssociated|Mscrm.SubGrid.account.AddNewStandard")),"New");
+		Thread.sleep(5000);
 		return this;
 	}
 	
@@ -1409,14 +1417,14 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage verifyDEA(String DEA) throws InterruptedException {
-
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-		verifyExactText((getDriver().findElement(By.id("ix_dea"))),DEA,"DEA");
+		pageRefresh();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		verifyExactText((getDriver().findElement(By.id("DEA_label"))),DEA,"DEA");
 		return this;
 	}
 
 	public MemberFormPage verifyHIN(String HIN) {
-		verifyExactText((getDriver().findElement(By.id("ix_hin"))),HIN,"HIN");
+		verifyExactText((getDriver().findElement(By.id("HIN_label"))),HIN,"HIN");
 		return this;
 	}
 
@@ -1464,10 +1472,27 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	public MemberFormPage switchToNewWindow() {
+		try {
+			switchToWindow(1);
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+			Thread.sleep(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		return this;
+	}
 	
 	public MemberFormPage chooseMemberEntryForm() {
 		click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")),"Form Selector");
 		click(getDriver().findElement(By.xpath("//span[@title='Member Entry Form']")),"Member Entry Form");
+		return new MemberFormPage();
+	}
+	
+	public MemberFormPage chooseMemberEntryFormWithFrame0() throws InterruptedException {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		chooseMemberEntryForm();
+		Thread.sleep(1000);
 		return new MemberFormPage();
 	}
 	

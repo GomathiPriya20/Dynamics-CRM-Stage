@@ -74,6 +74,15 @@ public class TestCase_7143 {
 			
 			//Top parent classification = Any
 			.selectTopParentClassification(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentClassification", sDataSheetName))
+			 //Require Manual AG =Yes
+			 .changeRequireManualAG()
+			 
+			 //Select affiliate group =Affiliate NonAcute
+			 .selectAffiliateGroup(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroup", sDataSheetName))
+			 
+			 //Enter affiliate group effective date = today's date
+			 .selectAffiliateGroupEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroupEffectiveDate", sDataSheetName))
+			
 			
 			//Click on Save
 			//.clickSave() 

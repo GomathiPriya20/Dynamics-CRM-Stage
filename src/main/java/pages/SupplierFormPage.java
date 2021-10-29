@@ -328,6 +328,7 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 	}
 	
 	public SupplierFormPage storeLocationTypeWithOutFrame(String storeLocationType) {
+		
 		click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_locationtype_i")))),storeLocationType,"Store Location Type");
 		getDriver().findElement(By.id("ix_locationtype")).sendKeys(Keys.TAB);
@@ -390,9 +391,8 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 	
 	public SupplierFormPage recordStatusPublishedWithoutFrame(String recordStatusPublished) throws InterruptedException {
 		Thread.sleep(3000);
-		scrollUp(getDriver().findElement(By.id("ix_recordstatus")));
-//		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-//		click(getDriver().findElement(By.id("ix_recordstatus_i")),"Record Status");
+		scrollUp(getDriver().findElement(By.xpath("//*[@title='Record Status-Account Record Status.']")));
+	//	click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
 		Thread.sleep(2000);
 		return this;
@@ -412,6 +412,14 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
 		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),0,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+	public SupplierFormPage recordStatusPublished() throws InterruptedException {
+		Thread.sleep(3000);
+		//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),1,"Record Status");
 		Thread.sleep(2000);
 		return this;
 	}
@@ -452,7 +460,7 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 	}
 	
 	public SupplierFormPage typeStockSymbol(String StockSymbol) {
-		click(getDriver().findElement(By.id("ix_stocksymbol")),"Stock Symbol");
+		click(getDriver().findElement(By.id("ix_stocksymbol_d")),"Stock Symbol");
 		type(getDriver().findElement(By.id("ix_stocksymbol_i")),StockSymbol, "Stock Symbol");
 		return this;
 	}

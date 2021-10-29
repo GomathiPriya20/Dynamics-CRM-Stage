@@ -50,7 +50,7 @@ public class TestCase_1111 {
 		.verifyFacilityType(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFacilityType", sDataSheetName))
 		
 		//9.Business Classification =Any
-		.verifyBusinessClassification(DataInputProvider.getCellData_ColName(iRowNumber, "BusinessClassification", sDataSheetName))	
+		.businessClassificationIsVerified()
 		
 		//10. Premier Owner
 		.verifyPremierOwner(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyPremierOwner", sDataSheetName))
@@ -228,7 +228,7 @@ public class TestCase_1111 {
 //Sponsor
 		 
 		// Verify "Is Sponsor" field 
-		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
+		.verifyIsSponsorwithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 			
 		//14 Verify Sponsor field 
 		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
@@ -345,7 +345,7 @@ public class TestCase_1111 {
 	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//Add Membership provider
-			.clickAddNewPremierMembershipWithFrame1()
+			.clickAddNewPremierMembershipWithFrame0()
 			
 			// Choose Membership type 
 			.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
@@ -358,13 +358,13 @@ public class TestCase_1111 {
 
 	
 	//6. Record Status = Published
-	.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+	.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 		
 		//Click on Save 
 		.clickSave() 
 		
 	//7. Verify Entity code is generated 
-		.entityCodeIsDisplayedWithFrame1()
+		.entityCodeIsDisplayedWithFrame0()
 
 		;	
 	}

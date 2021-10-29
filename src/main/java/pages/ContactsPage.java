@@ -47,24 +47,26 @@ public class ContactsPage extends WebDriverServiceImpl{
 	}
 	
 	public ContactsPage AddMemberPrimaryContactFromLookUp(String PrimaryContactLookUp) throws InterruptedException {
-		switchToDefaultContent();
+	//	scrollDown(getDriver().findElement(By.id("department_cl_span")));
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		Actions action = new Actions(getDriver());
-		Thread.sleep(3000);
-		action.moveToElement(getDriver().findElement(By.id("parentcustomerid"))).perform();
-		Thread.sleep(3000);
-		click(getDriver().findElement(By.xpath("//img[@id='parentcustomerid_i']")),"Primary Contact");
+		action.moveToElement(getDriver().findElement(By.xpath("//*[@id='parentcustomerid_d']"))).perform();
+		Thread.sleep(2000);
+		click(getDriver().findElement(By.xpath("//*[@id=\"parentcustomerid_lookupSearchIcon\"]")),"Primary Contact");
 		Thread.sleep(3000);
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Look Up More Records')]")),"Look Up More Records");
 		Thread.sleep(3000);
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
+
 		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_clearCriteriaImg']")),"Clear");
 		type(getDriver().findElement(By.id("crmGrid_findCriteria")),PrimaryContactLookUp,"Primary Contact in LookUp");	
 		Thread.sleep(3000);
 		click(getDriver().findElement(By.xpath("//*[@id='crmGrid_findCriteriaImg']")),"Find Criteria");
 		click(getDriver().findElement(By.id("butBegin")),"Add");
-		Thread.sleep(5000);
+		Thread.sleep(8000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		return this;
 	}
 	
@@ -241,6 +243,19 @@ public class ContactsPage extends WebDriverServiceImpl{
 		Thread.sleep(3000);
 		return this;
 	}
+	public ContactsPage doubleClickOnOldContactAccountAssociationRecord() throws InterruptedException {
+		Thread.sleep(5000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		Actions a = new Actions(getDriver());
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr[2]/td[4]"))).
+	      doubleClick().
+	      build().perform();
+		Thread.sleep(3000);
+		return this;
+	}
+	
+	
 	
 	public ContactsPage doubleClickOnContactAccountAssociationRecordWithFrame1() throws InterruptedException {
 		Thread.sleep(5000);
@@ -304,7 +319,7 @@ public class ContactsPage extends WebDriverServiceImpl{
 	public ContactsPage verifyContactAccAssoRelationshipEndDate(String account) {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ContactAccountAssociation_divDataArea']/div/table/tbody/tr/td[5]/div")),account,"Contact Account Association Grid"); 
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ix_relationshipenddate_iDateInput']")),"","Contact Account Association Grid"); 
 		return this;
 	}
 

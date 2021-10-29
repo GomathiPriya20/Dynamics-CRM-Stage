@@ -63,16 +63,6 @@
 			//Exchange 
 			.typeExchange(DataInputProvider.getCellData_ColName(iRowNumber, "Exchange", sDataSheetName))
 			
-			//Store location type
-			.storeLocationTypeWithOutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "storeLocationType", sDataSheetName))	
-			
-			//Override name
-			.typeOverrideName(DataInputProvider.getCellData_ColName(iRowNumber, "overrideName", sDataSheetName))
-			
-			//Street 1
-			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "street1", sDataSheetName))		
-
-			
 			//Street 2
 			.typeStreet2(DataInputProvider.getCellData_ColName(iRowNumber, "Street2", sDataSheetName))
 
@@ -127,9 +117,19 @@
 			
 			//Top parent relation date
 			.pickTPRD(DataInputProvider.getCellData_ColName(iRowNumber, "selectTPRelationDate", sDataSheetName))	
+			
+			//Street 1
+			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "street1", sDataSheetName))		
+			
+			//Override name
+			.typeOverrideName(DataInputProvider.getCellData_ColName(iRowNumber, "overrideName", sDataSheetName))
+			
+			//Store location type
+			.storeLocationTypeWithOutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "storeLocationType", sDataSheetName))		
 				
 			//Choose Record Status as Published
-			.recordStatusPublishedWithoutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "recordStatusPublished", sDataSheetName))
+			.recordStatusPublished()
+			//.recordStatusPublishedWithoutFrame(DataInputProvider.getCellData_ColName(iRowNumber, "recordStatusPublished", sDataSheetName))
 			
 			//Click on SAve
 			.clickSave()

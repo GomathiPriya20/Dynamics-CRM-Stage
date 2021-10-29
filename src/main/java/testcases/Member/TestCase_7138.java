@@ -193,14 +193,14 @@ public class TestCase_7138 {
 		.selectMembershipEntity()
 		.doubleClickOnNationalMembershipWithFrame0()
 		
-		//17 Click on > and go to Audit history 
-		.selectTPAuditHistory()
-		
-		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
-		.verifyIsMemberAddMailSentwithFrame01()
-		
-		//19 Verify the time-stamp on which the flag gets updated 
-		.verifyTimeStampInTPMembershipAuditHistory()
+//		//17 Click on > and go to Audit history 
+//		.selectTPAuditHistory()
+//		
+//		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
+//		.verifyIsMemberAddMailSentwithFrame01()
+//		
+//		//19 Verify the time-stamp on which the flag gets updated 
+//		.verifyTimeStampInTPMembershipAuditHistory()
 			
 			;
 	}

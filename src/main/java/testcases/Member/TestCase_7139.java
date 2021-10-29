@@ -28,7 +28,7 @@ public class TestCase_7139 {
 		
 		//4. Click on Add new account 
 		.clickNewAccountInSubAccount()
-		.chooseMemberEntryFormInSubAccount()
+		.switchToNewWindow()
 		
 		//5. Verify Direct parent and Top parent are populated 
  		.verifyDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyTopParent", sDataSheetName))
@@ -48,9 +48,11 @@ public class TestCase_7139 {
 		 
 				//Click on save 
 		 		 .clickSave() 
+		 		 
+		 		.chooseMemberEntryFormWithFrame0()
 		 						
 			//7. Verify CRM Account # is generated 
-				.crmNumberIsDisplayedWithFrame0()	
+				.crmNumberIsDisplayed()	
 			
 			//8 Account  Type = Member
 				.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
@@ -183,14 +185,14 @@ public class TestCase_7139 {
 			.selectMembershipEntity()
 			.doubleClickOnNationalMembershipWithFrame0()
 			
-			//20 Click on > and go to Audit history 
-			.selectTPAuditHistory()
-			
-			//21 Verify "Is Member Add mail sent" flag turned from No to Yes 
-			.verifyIsMemberAddMailSentwithFrame01()
-			
-			//22 Verify the time-stamp on which the flag gets updated 
-			.verifyTimeStampInTPMembershipAuditHistory()
+//			//20 Click on > and go to Audit history 
+//			.selectTPAuditHistory()
+//			
+//			//21 Verify "Is Member Add mail sent" flag turned from No to Yes 
+//			.verifyIsMemberAddMailSentwithFrame01()
+//			
+//			//22 Verify the time-stamp on which the flag gets updated 
+//			.verifyTimeStampInTPMembershipAuditHistory()
 			
 				;
 	
