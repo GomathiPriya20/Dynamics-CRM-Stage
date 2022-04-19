@@ -42,6 +42,7 @@ public class PreAndPost extends WebDriverEvents
     private static String reportFileLocation =  reportFilepath +fileSeperator+ reportFileName+timeStamp+".html";
     public static String URL;
     
+    //Before suite - Git update
     @BeforeSuite
     public static void setUp() throws Exception
     {

@@ -5,6 +5,15 @@ import services.WebDriverServiceImpl;
 
 public class LoginPage extends WebDriverServiceImpl{
 
+	public LoginPage enterEmail(String email) {
+		getDriver().findElement(By.tagName("body")).sendKeys(email);
+		return this;
+	}
+	
+	public LoginPage enterPassword() {
+		
+		return this;
+	}
 
 	public LoginPage typeUsername(String username) {
 		type(getDriver().findElement(By.id("userNameInput")),username,"Username");

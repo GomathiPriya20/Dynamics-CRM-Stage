@@ -32,6 +32,15 @@ public class TestCase_7312 {
 			//Account  Type = Member
 			.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 			
+			//Direct Parent Entity Code = 831908
+			.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
+			
+			//Direct Parent Relation = Any
+			.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
+			
+			//Direct Parent Relation date = Today's Date
+			.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+		
 			//Premier Start date = Today's Date
 		//	.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 			
@@ -53,16 +62,7 @@ public class TestCase_7312 {
 			
 			//Application Start Date = Today's Date
 			.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
-			
-			//Direct Parent Entity Code = 831908
-			.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
-			
-			//Direct Parent Relation = Any
-			.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
-			
-			//Direct Parent Relation date = Today's Date
-			.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
-			
+				
 			//DP Exception Reason =Any
 			.typeDPReason(DataInputProvider.getCellData_ColName(iRowNumber, "DPReason", sDataSheetName))
 			
@@ -161,6 +161,8 @@ public class TestCase_7312 {
 		//Click on Save 
 		.clickSave() 
 		
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
 		//8. Verify the newly updated Primary contact name is displayed in the form
 		.VerifyPrimaryContactValue(DataInputProvider.getCellData_ColName(iRowNumber, "PrimaryContactNameLookUp", sDataSheetName));
 		

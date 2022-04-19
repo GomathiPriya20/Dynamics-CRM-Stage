@@ -5,6 +5,7 @@ import static org.testng.Assert.assertNotNull;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 
 import org.junit.Assert; 
 import org.openqa.selenium.By;
@@ -12,6 +13,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
+import base.PreAndPost;
 import driver.Driver;
 import services.WebDriverServiceImpl;
 import utils.DataInputProvider;
@@ -39,7 +41,7 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 	public SupplierFormPage verifyInactiveAccountStatusError(String expectedAccountStatusErrorText) {
 		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
 		getTextValue(getDriver().findElement(By.id("ErrorTitle")),"Error Window");
-		verifyExactText((getDriver().findElement(By.xpath("//h3[text()='Supplier cannot be made Inactive']"))), expectedAccountStatusErrorText,"In Active Account Status Error");
+		verifyPartialText((getDriver().findElement(By.xpath("//span[@id='ErrorMessage']"))), expectedAccountStatusErrorText,"In Active Account Status Error");
 		return this;
 	}
 
@@ -371,6 +373,19 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1,"Street1");
 		return this;
 	}
+	
+	public SupplierFormPage updateStreet1Random(String street1) {
+		Random random = new Random();
+		char randomizedCharacter = (char) (random.nextInt(26) + 'a');
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("address1_line1")),"Street1");
+		clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1+randomizedCharacter,"Street1");
+		return this;
+	}
+	
+	
+	
+	
 		
 	public SupplierFormPage updateZipCode(String zipCode) {
 		click(getDriver().findElement(By.id("address1_postalcode")),"Zip code");
@@ -567,6 +582,25 @@ public SupplierFormPage pickTPRDClear() throws InterruptedException {
 		return this;
 	}
 	
+	public SupplierFormPage Logout() {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//*[@class='navTabButtonUserInfoProfileImage']")),"User Account");
+		click(getDriver().findElement(By.id("navTabButtonUserInfoSignOutId")),"Logout Button");
+		return this;
+	}
+	
+	public DashboardPage Login() {
+		getDriver().get(PreAndPost.URL);
+    	return new DashboardPage();
+	}
+	
+	public SupplierFormPage pageRefresh() {
+		getDriver().navigate().refresh();
+		return this;
+	}
+	
+	
+	
 	public SupplierFormPage typeEndDateInMembership(String membershipEndDate) throws InterruptedException {
 		switchToDefaultContent();
 Thread.sleep(2000);
@@ -575,6 +609,7 @@ Thread.sleep(2000);
 		type(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),membershipEndDate,"End Date");
 		return this;
 	}
+	
 	
 	
 

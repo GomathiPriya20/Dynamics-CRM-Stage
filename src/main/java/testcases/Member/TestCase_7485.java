@@ -23,7 +23,7 @@ public class TestCase_7485 {
 		//2. Go to Workplace >> Take Any Member Account 
 		.clickWorkplace()
 		.selectAccounts()		
-		.chooseActiveMember(DataInputProvider.getCellData_ColName(Driver.iTestCaseRowNumDriver-1, "CRMNumber",Driver.properties.getProperty("DriverSheetName")))     		
+		.chooseActiveMember(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))     		
 
 		//3.Verify following Fields are editable in Opened Member Account 
 			//Account Name
@@ -107,7 +107,10 @@ public class TestCase_7485 {
 			
 		//5. Click  on Save after updating the following fields. 
 		.clickSave() 
-			
+		.selectMembershipEntity()
+		.doubleClickOnNationalMembership()
+		.clickCloseButton()
+			.switchtoFrame1()
 		//6.Verify and Observe the Record status field after updating following fields. 
 		.verifyRecordChangeStatus(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyRecordChangeStatus", sDataSheetName))
 		

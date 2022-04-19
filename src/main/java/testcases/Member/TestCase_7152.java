@@ -99,6 +99,10 @@ public class TestCase_7152 {
 				//8. Verify Entity code is same as DP's entity code  
 				.verifyEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 				
+				.selectMembershipEntity()
+				.doubleClickOnNationalMembership()
+				.clickMembershipSaveAndClose()
+				
 				//Verify Premier start date is auto populated
 				.verifyPremierStartDateIsAutoPopulated()
 				
@@ -124,6 +128,8 @@ public class TestCase_7152 {
 				//14 Verify "Is Sponsor" field 
 				.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
 				
+				.chooseLocationType("Ship To")
+				.clickSave()
 			/*	//15  Go to > and click on Membership entity and double click on the Top parent membership entity
 				.selectMembershipEntity()
 				.doubleClickOnTopParentInMembershipLocationType()

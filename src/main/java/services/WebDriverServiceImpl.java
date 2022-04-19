@@ -43,6 +43,8 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	//public static int failCount=0;
 	public byte[] encodedPassword ;
 	public String encodedData;
+	public String CRMNumber;
+	public String mainPage;
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public ExtentTest setReport()
@@ -405,9 +407,9 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		String bReturn=ele.getText();
 		try {
 			if(bReturn.equalsIgnoreCase(expectedText)) {
-				setReport().log(Status.PASS, "The text :"+bReturn+" matches with the value in "+field+" field",screenshotCapture());
+				setReport().log(Status.PASS, "The text :"+bReturn+" matches with the value "+expectedText+ "in "+field+" field",screenshotCapture());
 			}else {
-				setReport().log(Status.FAIL, "The text :"+bReturn+" did not match with the value in "+field+" field",screenshotCapture());
+				setReport().log(Status.FAIL, "The text :"+bReturn+" did not match with the value in "+expectedText+ "in "+field+" field",screenshotCapture());
 				Driver.failCount++;
 			}
 		} catch (WebDriverException e) {
@@ -498,6 +500,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	
 	public void switchToWindow(int index) {
 		try {
+			mainPage= getDriver().getWindowHandle();
 			Set<String> allWindowHandles = getDriver().getWindowHandles();
 			List<String> allHandles = new ArrayList<String>();
 			allHandles.addAll(allWindowHandles);

@@ -55,6 +55,20 @@ public class TestCase_7146 {
 			//CAMS Flag = Yes
 			.changeCAMSFlag()
 			
+			//6. Street 1 = Any
+			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
+				
+				 //City = NY
+				.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
+				
+				 //Country =USA
+				.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
+				
+				//Enter county
+				.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+				
+				 //Click on Save 
+			
 			//Direct Parent Entity Code = 673415
 			.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 				
@@ -70,22 +84,6 @@ public class TestCase_7146 {
 			// Top Parent Relation Date = Today's Date
 			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
 					 
-					//Click on Save 
-					// .clickSave() 
-					 
-			//6. Street 1 = Any
-			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
-				
-				 //City = NY
-				.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-				
-				 //Country =USA
-				.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-				
-				//Enter county
-				.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
-				
-				 //Click on Save 
 				 .clickSave() 
 				
 			//7. Record Status = Published
@@ -96,7 +94,12 @@ public class TestCase_7146 {
 				
 			//8. Verify Entity code is same as DP's entity code 
 			.verifyEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
-		
+			
+			
+			.selectMembershipEntity()
+			.doubleClickOnNationalMembership()
+			.clickMembershipSaveAndClose()
+			
 			//Verify Premier start date is auto populated
 			.verifyPremierStartDateIsAutoPopulated()
 			

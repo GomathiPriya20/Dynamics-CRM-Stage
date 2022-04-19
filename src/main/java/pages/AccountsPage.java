@@ -36,6 +36,18 @@ public class AccountsPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+  	
+	public  AccountsPage searchOnAccountsPage1(String crmNumberInput) throws InterruptedException {	
+		try {
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");
+		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),crmNumberInput,"Find Criteria" );
+		return this;
+	}
+
   	public  MemberFormPage selectAccountFromSearchResults() throws InterruptedException {	
 		Actions action = new Actions(getDriver());	
 		action.moveToElement(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr")));

@@ -80,6 +80,16 @@ public class TestCase_7147 {
 				//CAMS Flag = Yes
 			.changeCAMSFlag()
 			
+			//9. Type street
+			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
+			
+				 //City = NY
+				.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
+				
+				 //Country =USA
+				//Type Zip code
+				.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
+								
 			//Direct Parent Relation = Managed
 			.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 			
@@ -92,16 +102,7 @@ public class TestCase_7147 {
 			
 			//Click on Save 
 			
-			//9. Type street
-			.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
 			
-				 //City = NY
-				.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-				
-				 //Country =USA
-				//Type Zip code
-				.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
-								
 				 //Click on Save 
 				.clickSave() 
 				
@@ -114,6 +115,9 @@ public class TestCase_7147 {
 			//11. Verify Entity code is same as DP's entity code  
 			.verifyEntityCodeFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 			
+			.typeAccountName2("Update")
+			.clickSave() 
+			.switchToFrame()
 			//Verify Premier start date is auto populated
 			.verifyPremierStartDateIsAutoPopulated()
 			

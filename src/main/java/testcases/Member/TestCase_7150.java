@@ -87,6 +87,11 @@ public class TestCase_7150 {
 		//6. Verify Entity code is same as DP's entity code  
 		.verifyEntityCode(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 		
+		.selectMembershipEntity()
+		.doubleClickOnNationalMembership()
+		.clickMembershipSaveAndClose()
+		
+		
 		//Verify Premier start date is auto populated
 		.verifyPremierStartDateIsAutoPopulated()
 		
