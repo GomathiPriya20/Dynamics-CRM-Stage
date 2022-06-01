@@ -14,11 +14,28 @@ public class DashboardPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	
+	public DashboardPage clickService() throws InterruptedException {	
+	
+		Thread.sleep(5000);
+		click(getDriver().findElement(By.xpath("//span[@class='navTabButtonArrowDown']")),"Workplace");
+		Thread.sleep(5000);
+		return this;
+	}
+
 	public AccountsPage selectAccounts() throws InterruptedException {	
 		click(getDriver().findElement(By.xpath("//span[text()='Accounts']")),"Accounts");
 		Thread.sleep(5000);
 		return new AccountsPage();
 		}
+	
+	
+	public DashboardPage selectWorkplace() throws InterruptedException {	
+		click(getDriver().findElement(By.xpath("//span[@class='navActionButtonIcon']")),"Accounts");
+		Thread.sleep(5000);
+		return this;
+		}
+	
 	
 	public AccountsPage pageRefresh() throws InterruptedException {
 		getDriver().navigate().refresh();

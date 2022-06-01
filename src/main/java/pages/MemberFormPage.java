@@ -269,7 +269,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage scrollDownToPublish(){
-
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		
 		scrollDown(getDriver().findElement(By.id("ix_recordstatus_i")));
 		return this;
 	}
@@ -768,9 +769,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage chooseRecordStatusPublished(String RecordStatusPublished) throws InterruptedException {
 		Thread.sleep(6000);
 
-		//scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))));
+		scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))));
 		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-		//click(((getDriver().findElement(By.id("ix_recordstatus_i")))));
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
 		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatusPublished,"Record Status"); 
 		return this;
@@ -905,8 +905,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 			.clickAddNewMembershipProviderSave()
 			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			//8. Record Status = Published
-			.scrollDownToPublish()
-			.chooseRecordStatusPublished("Published")
+			.chooseRecordStatusPublishedWithFrame0("Published")
 
 			//Click on Save 
 			.clickSave() 

@@ -22,7 +22,8 @@ public class TestCase_7111 {
 		.clickSignIn()
 
 		//2.Go to Workplace > Accounts and search for EIN 673415 
-		.clickWorkplace()
+		.clickService()
+		.selectWorkplace()
 		.selectAccounts()
 		.searchOnAccountsPage(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 
@@ -145,7 +146,7 @@ public class TestCase_7111 {
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 		//11 Record Status = Published
-		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 
 		//Click on Save 
 		.clickSave() 
