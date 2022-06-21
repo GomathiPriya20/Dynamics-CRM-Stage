@@ -122,23 +122,7 @@ public class TestCase_7143 {
 		//Click on Save 
 		.clickSave() 
 
-		//9.  Click the + icon on the Line of Business Grid
-		.clickLineOfBusinessWithFrame0()
-
-		// Line of Business =General GPO
-		.selectLineOfBusinessGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
-
-		// Classification Type = General GPO
-		.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
-
-		// Start Date =Today's date
-		.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
-
-		// Click on LOB Save 
-		.clickLineOfBusinessSave()
-
-		//Click on Save 
-		.clickSave() 
+		
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//Add Membership provider
 		.clickAddNewPremierMembershipWithFrame0()
@@ -151,7 +135,23 @@ public class TestCase_7143 {
 		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		//9.  Click the + icon on the Line of Business Grid
+				.clickLineOfBusinessWithFrame0()
 
+				// Line of Business =General GPO
+				.selectLineOfBusinessGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
+
+				// Classification Type = General GPO
+				.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
+
+				// Start Date =Today's date
+				.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
+
+				// Click on LOB Save 
+				.clickLineOfBusinessSave()
+
+				//Click on Save 
+				.clickSave() 
 
 		//10. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))

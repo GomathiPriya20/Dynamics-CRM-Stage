@@ -89,23 +89,7 @@ public class TestCase_7140 {
 			 //Click on Save 
 			.clickSave() 
 		
-		//7.  Click the + icon on the Line of Business Grid
-		.clickLineOfBusinessWithFrame1()
-			
-			// Line of Business =General GPO
-			.selectLineOfBusinessGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
-			
-			// Classification Type = General GPO
-			.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
-			
-			// Start Date =Today's date
-			.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
-			
-			// Click on LOB Save 
-			.clickLineOfBusinessSave()
-			
-			//Click on Save 
-			.clickSave() 
+	
 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//Add Membership provider
@@ -120,6 +104,23 @@ public class TestCase_7140 {
 			.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+			//7.  Click the + icon on the Line of Business Grid
+			.clickLineOfBusinessWithFrame1()
+				
+				// Line of Business =General GPO
+				.selectLineOfBusinessGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
+				
+				// Classification Type = General GPO
+				.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
+				
+				// Start Date =Today's date
+				.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
+				
+				// Click on LOB Save 
+				.clickLineOfBusinessSave()
+				
+				//Click on Save 
+				.clickSave() 
 		//8. Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 			

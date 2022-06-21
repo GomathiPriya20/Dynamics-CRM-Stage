@@ -762,6 +762,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 
 	public MemberFormPage chooseRecordStatusPublishedWithFrame1(String RecordStatusPublished) throws InterruptedException {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		
 		chooseRecordStatusPublished(RecordStatusPublished);
 		return this;
 	}
@@ -770,11 +771,25 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		Thread.sleep(6000);
 
 		scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))));
-		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		Thread.sleep(10000);
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
 		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatusPublished,"Record Status"); 
 		return this;
 	}
+	
+	/*
+	 * public MemberFormPage chooseRecordStatusPublished(String
+	 * RecordStatusPublished) throws InterruptedException { Thread.sleep(6000);
+	 * 
+	 * scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))
+	 * )); click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+	 * Thread.sleep(10000); Select Actions a = new Actions(getDriver());
+	 * a.moveToElement(getDriver().findElement(By.xpath(
+	 * "//option[contains(text(),'Published')]"))). click(). build().perform();
+	 * //verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),
+	 * RecordStatusPublished,"Record Status"); return this; }
+	 */
 
 	public MemberFormPage chooseRecordStatusPublishedWithFrame0(String RecordStatusPublished) throws InterruptedException {
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
@@ -1223,7 +1238,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
 		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
 		Actions a = new Actions(getDriver());
-		a.moveToElement(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[2]/td[2]/nobr/span"))).doubleClick().build().perform();
+		a.moveToElement(getDriver().findElement(By.xpath("(//*[@id='gridBodyTable']/tbody/tr/td[@rawlookupitemname=\"National\"])"))).doubleClick().build().perform();
 		Thread.sleep(3000);
 		//verifyExactText(getDriver().findElement(By.xpath("//*[@id='Membership Provider_label']")),"National","Membership Entity");
 		return this;
