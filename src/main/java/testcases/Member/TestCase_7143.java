@@ -18,9 +18,9 @@ public class TestCase_7143 {
 		.clickSignIn()
 
 		//2. Go to Workplace > Accounts > +New 
-		.clickService()
-		.selectWorkplace()
+		.clickWorkplace()
 		.selectAccounts()
+		
 		.clickNewOnAccountsPage()
 		.chooseMemberFormwithFrame1() 
 

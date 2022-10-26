@@ -229,7 +229,7 @@ public class TestCase_8218 {
 				
 		//24.Verify AG and AG effective date  ***** AG should not be NON Premier.AG effective date should be updated
 			.verifyAffiliateGroup(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroupAfterReactivation", sDataSheetName))
-			.verifyAgEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
+			.verifyAgEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
 		
 		
 			

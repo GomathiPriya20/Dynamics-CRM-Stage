@@ -45,6 +45,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	public String encodedData;
 	public String CRMNumber;
 	public String mainPage;
+	public static String entityCode;
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public ExtentTest setReport()
@@ -220,8 +221,30 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			Driver.failCount++;
 		} 
 	}
-//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		public void clickwithout(WebElement ele,String field)  {
+			try {
+				//WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+//				wait.until(ExpectedConditions.elementToBeClickable(ele));			
+				ele.click();
+				setReport().log(Status.PASS,"Clicked on "+field, screenshotCapture());	
+			}
+			catch (InvalidElementStateException e) {
+				e.printStackTrace();
+				setReport().log(Status.FAIL,field+" could not be clicked", screenshotCapture());	
+				//Driver.failCount++;
+			} catch (WebDriverException e) {
+				e.printStackTrace();
+				setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+field,screenshotCapture());	
+				//Driver.failCount++;
+			} 
+		}
+//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
+
+
+
 	public void clickWithNoSnap(WebElement ele) {
 		String text = "";
 		try {
@@ -647,7 +670,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		try {
 			((JavascriptExecutor)getDriver()).executeScript("arguments[0].scrollIntoView(true);", ele);
 			WebDriverWait wait = new WebDriverWait(getDriver(), 10);
-			wait.until(ExpectedConditions.elementToBeClickable(ele));			
+			wait.until(ExpectedConditions.elementToBeClickable(ele));	
 			text = ele.getText();
 			ele.click();	
 			//setReport().log(Status.PASS, text+" is clicked 3",screenshotCapture());

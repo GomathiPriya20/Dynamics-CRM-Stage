@@ -92,8 +92,13 @@ public class ContactsPage extends WebDriverServiceImpl{
 		return this;
 	}
 	
-	public ContactsPage isInnovatixContactIDDisplayed() {
+	public ContactsPage isInnovatixContactIDDisplayed() throws InterruptedException {
+		
+		clickSave();
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		
+		Thread.sleep(6000);
+		
 		String sCRMNumber = getTextValue(getDriver().findElement(By.id("ix_innovatixcontactid")), "Innovatix Contact ID");;
 		js.executeScript("return document.getElementById('ix_innovatixcontactid').innerHTML").toString();
 		 try {

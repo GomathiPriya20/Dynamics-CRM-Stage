@@ -270,7 +270,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 
 	public MemberFormPage scrollDownToPublish(){
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-		
+
 		scrollDown(getDriver().findElement(By.id("ix_recordstatus_i")));
 		return this;
 	}
@@ -403,6 +403,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public MemberFormPage selectDirectParent(String DirectParent) throws InterruptedException {
 		Thread.sleep(10000);
+		System.out.println(DirectParent);
 		scrollDown(((getDriver().findElement(By.id("parentaccountid_c")))));
 		click(getDriver().findElement(By.id("parentaccountid_ledit")),"Direct Parent");
 		typeAndChoose(((getDriver().findElement(By.id("parentaccountid_ledit")))),DirectParent,"Direct Parent");
@@ -646,7 +647,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage switchtoFrame1() {
-		
+
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		return this;
 	}
@@ -761,14 +762,15 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage chooseRecordStatusPublishedWithFrame1(String RecordStatusPublished) throws InterruptedException {
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+
 		chooseRecordStatusPublished(RecordStatusPublished);
 		return this;
 	}
 
 	public MemberFormPage chooseRecordStatusPublished(String RecordStatusPublished) throws InterruptedException {
-		Thread.sleep(6000);
+		Thread.sleep(10000);
 
 		scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))));
 		//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
@@ -777,7 +779,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatusPublished,"Record Status"); 
 		return this;
 	}
-	
+
 	/*
 	 * public MemberFormPage chooseRecordStatusPublished(String
 	 * RecordStatusPublished) throws InterruptedException { Thread.sleep(6000);
@@ -805,46 +807,27 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
-
 	public MemberFormPage createSubAccount(String countofSubaccount) throws InterruptedException {
 
-		getDriver().close();
-		getDriver().switchTo().window(mainPage);
 		int count=Integer.parseInt(countofSubaccount);
-		for(int i=0;i<count;i++) {
+
+		for(int i=2;i<=count+1;i++) {
 			new DashboardPage()
+			//2. Go to Workplace > Accounts > +New 
 			.clickWorkplace()
 			.selectAccounts()
-			.searchOnAccountsPage1(CRMNumber)
-
-			//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
-			.selectAccountFromSearchResults()
-			.selectSubaccount()
-
-			//4. Click on Add new account 
-			.clickNewAccountInSubAccount0()
-			.switchToSubAccount()
+			.clickNewOnAccountsPage()
+			.chooseMemberFormwithFrame1()
 
 			//3. Account Name = Any
-			.typeAccountName("Account_"+i)
-
-			//Direct Parent Relation = Managed
-			.selectDirectParentRelationMEF("Managed") 
-
-			//Direct Parent Relation date = Today's Date
-			.selectDirectParentRelationDate("3/4/2021")
-
-			//Top Parent Relation =  OLM
-			.selectTopParentRelation("OLM")
-
-			// Top Parent Relation Date = Today's Date
-			.selectTopParentRelationDate("3/4/2021")
+			
+			.typeAccountName("Mani sub 26OCT_"+i)
 
 			//Click on save 			
 			.clickSave() 
 
 			//4. Verify CRM Account # is generated 
-			.crmNumberIsDisplayedWithFrame0()	
+			.crmNumberIsDisplayedWithFrame1()	
 
 			//5. Account Type = Member
 			.selectAccountType("Member")
@@ -862,29 +845,44 @@ public class MemberFormPage extends WebDriverServiceImpl {
 			.defaultAccountStatus()	
 
 			//Application Start Date = Today's Date
-			.chooseApplicationDate("3/4/2021")
+			.chooseApplicationDate("9/13/2022")
 
 			//CAMS Flag = Yes
 			.changeCAMSFlag()
 
 			//Participation Type = Standard
-			.selectParticipationType("Pharmacy")
+			.selectParticipationType("Standard")
 
+			//Direct Parent Entity Code = 673415
+			
+			.selectDirectParent(entityCode)
+
+			//Direct Parent Relation = Managed
+			.selectDirectParentRelationManaged("Managed") 
+
+			//Direct Parent Relation date = Today's Date
+			.selectDirectParentRelationDate("9/13/2022")
+
+			//Top Parent Relation =  OLM
+			.selectTopParentRelation("Affiliate")
+
+			// Top Parent Relation Date = Today's Date
+			.selectTopParentRelationDate( "9/13/2022")
 
 			//Click on Save 
 			// .clickSave() 
 
 			//6. Street 1 = Any
-			.typeStreet1("345 Bakers Street")
+			.typeStreet1("253 33rd St")
 
 			//City = NY
 			.typeCity("NY")
 
 			//Country =USA
-			.typeCountry("US")
+			.typeCountry("USA")
 
 			//
-			.typeCounty("US")
+			.typeCounty("USA")
 
 			//Click on Save 
 			// .clickSave() 
@@ -899,35 +897,31 @@ public class MemberFormPage extends WebDriverServiceImpl {
 			.selectLineOfClassificationGeneralGPO("General GPO")
 
 			// Start Date =Today's date
-			.selectLineOfBusinessStartDate("3/4/2021")
+			.selectLineOfBusinessStartDate("9/13/2022")
 
 			// Click on LOB Save 
 			.clickLineOfBusinessSave()
 
 			//Click on Save 
 			.clickSave() 
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 			//Add Membership provider
-			.clickAddNewPremierMembershipWithFrame0()
+			.clickAddNewPremierMembershipWithFrame1()
 
 			// Choose Membership type 
 			.selectMembershipProviderType1("Premier")
-
 			.typeInAddNewMembershipProvider("National")
 
 			//Provide any start date and click on save
-			.selectMembershipProviderStartDateInAddNewMembershipProvider("3/4/2021")
+			.selectMembershipProviderStartDateInAddNewMembershipProvider("9/13/2022")
 			.clickAddNewMembershipProviderSave()
-			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 			//8. Record Status = Published
-			.chooseRecordStatusPublishedWithFrame0("Published")
+			.chooseRecordStatusPublishedWithFrame1("Published")
 
 			//Click on Save 
 			.clickSave() 
 
 			//9. Verify Entity code is generated 
-			.entityCodeIsDisplayedWithFrame0();
-
+			.entityCodeIsDisplayedWithFrame1();
 
 		}
 
@@ -955,10 +949,13 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		Thread.sleep(6000);
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("return document.getElementById('Entity Code_label').innerHTML").toString();
-		String entityCode=getTextValue(getDriver().findElement(By.id("Entity Code_label")),"Entity Code");
+		entityCode=getTextValue(getDriver().findElement(By.id("Entity Code_label")),"Entity Code");
+		System.out.println(entityCode);
 		assertNotNull(entityCode);
 		return this;
 	}
+	
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public MemberFormPage verifyIsCorporateAccount(String VerifyIsCorporateAccount) {
 		verifyExactText(getDriver().findElement(By.id("Is Corporate Account_label")),VerifyIsCorporateAccount,"Is Corporate Account"); 
@@ -1004,6 +1001,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage verifyCorporateParentName(String VerifyCorporateParentName) {
+	
 		verifyExactText(getDriver().findElement(By.id("ix_corporateparentname_lookupValue")),VerifyCorporateParentName,"Corporate Parent Name"); 
 		return this;
 	}
@@ -1642,6 +1640,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage verifyDirectParent(String TopParent) {
+		System.out.println(getDriver().findElement(By.id("parentaccountid")).getText());
 		verifyExactText((getDriver().findElement(By.id("parentaccountid"))),TopParent,"Top Parent");
 		return this;
 	}
@@ -1694,6 +1693,15 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyDisplayed(getDriver().findElement(By.id("ix_sponsor_lock")),"Sponsor lock");
 		return this;
 	}
+	
+	public MemberFormPage verifyAccountTypeLocked() {
+		verifyDisplayed(getDriver().findElement(By.xpath("//label[contains(@id,'Account Type_label')]//parent::div[contains(@class,'Locked')]")),"Account type lock");
+		return this;
+	}
+	
+	
+	
+	
 
 	public MemberFormPage chooseMemberEntryFormInSubAccount() {
 		try {
@@ -1735,11 +1743,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage chooseMemberFormInSubAccount() {
 		try {
 			Thread.sleep(3000);
-			//switchToWindow(1);
+			switchToWindow(1);
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 			click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")),"Form Selector");
 			Thread.sleep(1000);
-			click(getDriver().findElement(By.xpath("//*[@id=\"Dialog_0\"]/div/ul/li/a[2]/span/nobr/span")),"Member Form");
+			clickwithout(getDriver().findElement(By.xpath("//*[@id=\"Dialog_0\"]/div/ul/li/a[2]/span/nobr/span")),"Member Form");
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();

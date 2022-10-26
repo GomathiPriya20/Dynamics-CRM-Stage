@@ -198,8 +198,8 @@ public class TestCase_1111 {
 	
 //Top Parent
 		
-		// Verify Top parent is populated 
-		.verifyDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyTopParent", sDataSheetName))
+		// Verify Direct parent is populated 
+		.verifyDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
 		
 		//Top Parent Relation Date = Today's Date
 		 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
@@ -242,7 +242,7 @@ public class TestCase_1111 {
 		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
 		
 		//CorpParentStartDate
-		.VerifyCorpParenttartDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+		.VerifyCorpParenttartDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
 		
 		//CorpParentOverride
 		.VerifyCorpParentOverride(DataInputProvider.getCellData_ColName(iRowNumber, "CorpParentOverride", sDataSheetName))
@@ -256,7 +256,7 @@ public class TestCase_1111 {
 		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
 				
 		//FoodParentStartDate
-		.VerifyFoodServiceStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+		.VerifyFoodServiceStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
 		
 		
 		//FoodParentOverride
@@ -265,7 +265,7 @@ public class TestCase_1111 {
 		
 //FBO
 		//FBO
-		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyDirectParent", sDataSheetName))
+		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
 		
 		//16. Verify "Is FBO" field 
 		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))

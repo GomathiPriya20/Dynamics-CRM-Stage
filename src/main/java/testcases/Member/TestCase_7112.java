@@ -153,7 +153,7 @@ public class TestCase_7112 {
 		//12 Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame0()
 
-		.createSubAccount(DataInputProvider.getCellData_ColName(iRowNumber, "SubAccountcount", sDataSheetName))
+	//	.createSubAccount(DataInputProvider.getCellData_ColName(iRowNumber, "SubAccountcount", sDataSheetName))
 		;
 	}
 }

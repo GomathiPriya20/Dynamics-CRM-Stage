@@ -11,7 +11,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 	
 	public NewAccountPage clickNewOnAccountsPage() throws InterruptedException { 
 		getDriver().navigate().refresh();
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		click(getDriver().findElement(By.xpath("//*[@id='account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.NewRecord']")),"New");
 		return new NewAccountPage();
 	}
