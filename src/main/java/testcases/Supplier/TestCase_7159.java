@@ -29,7 +29,7 @@ public class TestCase_7159 {
 		//Select Accounts Entity
 		.selectAccounts()
 		
-		//Click on +New ( goes to Accounts Page)
+		//Click on +Ne( goes to Accounts Page)
 		.clickNewOnAccountsPage()
 		
 		//Choose 'Supplier Form' Option

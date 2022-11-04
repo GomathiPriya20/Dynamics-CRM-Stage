@@ -26,6 +26,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 	}
 
   	public  AccountsPage searchOnAccountsPage(String crmNumberInput) throws InterruptedException {	
+  		switchToDefaultContent();
 		try {
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		} catch (Exception e) {
@@ -35,6 +36,20 @@ public class AccountsPage extends WebDriverServiceImpl {
 		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),crmNumberInput,"Find Criteria" );
 		return this;
 	}
+  	
+	public  AccountsPage searchOnAccountsPageNew(String crmNumberInput) throws InterruptedException {	
+		try {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");
+		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),crmNumberInput,"Find Criteria" );
+		return this;
+	}
+  	
+  	
 
   	
 	public  AccountsPage searchOnAccountsPage1(String crmNumberInput) throws InterruptedException {	

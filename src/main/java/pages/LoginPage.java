@@ -15,6 +15,11 @@ public class LoginPage extends WebDriverServiceImpl{
 		return this;
 	}
 
+	
+	public LoginPage getPage() {
+		getDriver().get("https://crmstage.premierinc.com/main.aspx#7815483");
+		return this;
+	}
 	public LoginPage typeUsername(String username) {
 		type(getDriver().findElement(By.id("userNameInput")),username,"Username");
 		return this;

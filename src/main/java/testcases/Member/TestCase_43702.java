@@ -7,13 +7,13 @@ import driver.Driver;
 import pages.LoginPage;
 import pages.MemberFormPage;
 import utils.DataInputProvider;
-//TFS ID_ 7137:Create new member - New Member form and Save it as prospect first
+//TFS ID_43702: 11223_Cloud: Verify corresponding LOB is getting deactivated when end dated membership is deactivated
 
-public class TestCase_7137 {
+public class TestCase_43702 {
 
 
 	@Test
-	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void verifyLOBDeactivated(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
@@ -108,8 +108,26 @@ public class TestCase_7137 {
 		// Click on LOB Save 
 		.clickLineOfBusinessSave()
 
+
+		//18.Now add corresponding LOB **** LOB should be added successfully 
+		//Click the + icon on the Line of Business Grid
+		.clickLineOfBusinessWithFrame1()
+
+		//On the Pop up window fill in the required fields
+		//Line of Business =Acurity
+		.selectLineOfBusiness(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO1", sDataSheetName))
+
+		//Classification Type = Acurity
+		.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO1", sDataSheetName))
+
+		//Start Date =Today's date
+		.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate1", sDataSheetName))
+
+		//Click on Save 
+		.clickLineOfBusinessSave()
 		//Click on Save 
 		.clickSave() 
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//Add Membership provider
 		.clickAddNewPremierMembershipWithFrame1()
@@ -122,6 +140,19 @@ public class TestCase_7137 {
 		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+		//Add Membership provider
+		.clickAddNewPremierMembershipWithFrame1()
+
+		// Choose Membership type 
+		.selectMembershipProviderType1(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderType", sDataSheetName))
+		.typeInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider1", sDataSheetName))
+
+		//Provide any start date and click on save
+		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
+		.clickAddNewMembershipProviderSave()
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 		//8. Record Status = Published
 
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
@@ -132,54 +163,36 @@ public class TestCase_7137 {
 		//9. Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame1()
 
-		//Verify Premier start date is auto populated
-		.verifyPremierStartDateIsAutoPopulated()
+		//9.Move the record status to draft and save  ***** Record moved to draft 
+		.chooseRecordStatusDraft()
 
-		.verifyAffiliateGroupIsNotNull()
-		.verifyAgEffectiveDateIsNotNull()
+		//Click on Save 
+		.clickSave() 
 
-		//10. Verify "IS Corporate account" field
-		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
-
-		//11. Verify Corporate parent name in the form
-		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//12. Verify "Is Food Service parent" field 
-		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
-
-		//13 Verify Food Service parent name in the form 
-		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
-
-		//14 Verify Sponsor field 
-		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
-
-		//15 Verify "Is Sponsor" field 
-		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
-
-		//FBO details verification
-		//Verify "Is FBO" field 
-		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
-
-		//FBO
-		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//FBORD
-		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-
-
-		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
+		//Go to membership and Open the Premier National membership ***** Premier National membership should be opened 
 		.selectMembershipEntity()
 		.doubleClickOnNationalMembership()
 
-		//		//17 Click on > and go to Audit history 
-		//		.selectTPAuditHistory()
-		//		
-		//		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
-		//		.verifyIsMemberAddMailSentwithFrame0()
-		//		
-		//		//19 Verify the time-stamp on which the flag gets updated 
-		//		.verifyTimeStampInTPMembershipAuditHistory()
+		//11.Provide end date = Any future date **** Account should be saved successfully 
+		.typeMembershipEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
 
+		// End reason = Anything from dropdown,
+		.selectMembershipEndReason(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndReason", sDataSheetName))
+
+		// then save
+		.clickMembershipSaveAndClose()
+
+		.navigateToLOB()
+		.verifyLOBEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
+		
+		//Go to membership and Open the Premier National membership ***** Premier National membership should be opened 
+		.selectMembershipEntity()
+		.singlClickOnNationalMembership()
+		.deactivateMembership1()
+		.clickLookupValue()
+		.navigateToLOB()
+		.verifyLOBDeactivated(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
+		
 		;
 	}
 }

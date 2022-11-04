@@ -429,6 +429,8 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	public void verifyExactText(WebElement ele, String expectedText,String field) {
 		String bReturn=ele.getText();
 		try {
+			System.out.println(bReturn);
+			System.out.println(expectedText); 
 			if(bReturn.equalsIgnoreCase(expectedText)) {
 				setReport().log(Status.PASS, "The text :"+bReturn+" matches with the value "+expectedText+ "in "+field+" field",screenshotCapture());
 			}else {
@@ -521,6 +523,41 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+		public void verifElementIsPresent(int Count,String field) {
+			try {
+				
+				if(Count>0) {
+					setReport().log(Status.PASS, field+" is displayed",screenshotCapture());
+				} else {
+					setReport().log(Status.FAIL, field+" is not displayed",screenshotCapture());
+				}
+			} catch (WebDriverException e) {
+				setReport().log(Status.FAIL, "WebDriverException : \"+e.getMessage()",screenshotCapture());
+				Driver.failCount++;
+				throw e;
+			} 
+		}
+		
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		
+			public void verifyElementIsNotPresent(int Count,String field) {
+				try {
+					
+					if(Count==0) {
+						setReport().log(Status.PASS, field+" is displayed",screenshotCapture());
+					} else {
+						setReport().log(Status.FAIL, field+" is not displayed",screenshotCapture());
+					}
+				} catch (WebDriverException e) {
+					setReport().log(Status.FAIL, "WebDriverException : \"+e.getMessage()",screenshotCapture());
+					Driver.failCount++;
+					throw e;
+				} 
+			}
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		
 	public void switchToWindow(int index) {
 		try {
 			mainPage= getDriver().getWindowHandle();

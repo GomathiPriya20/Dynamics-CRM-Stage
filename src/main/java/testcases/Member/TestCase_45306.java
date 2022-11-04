@@ -7,13 +7,13 @@ import driver.Driver;
 import pages.LoginPage;
 import pages.MemberFormPage;
 import utils.DataInputProvider;
-//TFS ID_ 7137:Create new member - New Member form and Save it as prospect first
+//Test case 45306: Verify Prospect accounts can not be published
 
-public class TestCase_7137 {
+public class TestCase_45306 {
 
 
 	@Test
-	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void verifyProspectAccount(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
@@ -35,9 +35,6 @@ public class TestCase_7137 {
 
 		//4. Verify CRM Account # is generated 
 		.crmNumberIsDisplayedWithFrame1()	
-
-		//5. Account Type = Member
-		.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
 
 		//Premier Start date = Today's Date
 		//.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
@@ -128,57 +125,8 @@ public class TestCase_7137 {
 
 		//Click on Save 
 		.clickSave() 
-
-		//9. Verify Entity code is generated 
-		.entityCodeIsDisplayedWithFrame1()
-
-		//Verify Premier start date is auto populated
-		.verifyPremierStartDateIsAutoPopulated()
-
-		.verifyAffiliateGroupIsNotNull()
-		.verifyAgEffectiveDateIsNotNull()
-
-		//10. Verify "IS Corporate account" field
-		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
-
-		//11. Verify Corporate parent name in the form
-		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//12. Verify "Is Food Service parent" field 
-		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
-
-		//13 Verify Food Service parent name in the form 
-		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
-
-		//14 Verify Sponsor field 
-		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
-
-		//15 Verify "Is Sponsor" field 
-		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
-
-		//FBO details verification
-		//Verify "Is FBO" field 
-		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
-
-		//FBO
-		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//FBORD
-		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-
-
-		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
-		.selectMembershipEntity()
-		.doubleClickOnNationalMembership()
-
-		//		//17 Click on > and go to Audit history 
-		//		.selectTPAuditHistory()
-		//		
-		//		//18 Verify "Is Member Add mail sent" flag turned from No to Yes 
-		//		.verifyIsMemberAddMailSentwithFrame0()
-		//		
-		//		//19 Verify the time-stamp on which the flag gets updated 
-		//		.verifyTimeStampInTPMembershipAuditHistory()
+		.verifyErrorMessage(DataInputProvider.getCellData_ColName(iRowNumber, "ErrorMessage", sDataSheetName))
+		.ClickOkInErrorMessage()
 
 		;
 	}
