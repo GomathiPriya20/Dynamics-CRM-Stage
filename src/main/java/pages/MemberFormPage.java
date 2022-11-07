@@ -323,8 +323,31 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
 		return this;	
 	}
+	
+	
+	//Navigate to LOB Widget in member Form
 
-	//Navigate To Record Status
+		public MemberFormPage navigateToLOBWidget() throws InterruptedException {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Record Change Status')]")),"Record Change Status");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Current Internal Rep')]")),"Current Internal Rep");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Rank')]")),"Account Rank");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Fee Share Eligible Date')]")),"Fee Share Eligible Date");
+			click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
+			return this;	
+		}
+
+	//Navigate To Do not verify Address
 
 	public MemberFormPage navigateToDoNotVerifyAddress() throws InterruptedException {
 		switchToDefaultContent();
@@ -932,6 +955,13 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	public  MemberFormPage verifyDraftStatusMSG() throws InterruptedException 
+	{
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		verifElementIsPresent((getDriver().findElements(By.xpath("//div[@role='alert']//span[contains(text(),'This account is in Draft status.')]"))).size(), "Draft Status Message");
+		return this;
+	}
 	/*
 	 * public MemberFormPage chooseRecordStatusPublished(String
 	 * RecordStatusPublished) throws InterruptedException { Thread.sleep(6000);

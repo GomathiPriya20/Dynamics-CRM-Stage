@@ -98,12 +98,27 @@ public class TestCase_44710 {
 		//Change the Record status to Draft
 		.navigateToDoNotVerifyAddress()
 		.chooseRecordStatusPublishedWithFrame1("Draft")
-		
+
 		.clickSave()
 		//Store/Location type = Blank
 		.chooseLocationType("")	
 
 		.clickSave() 
+		.navigateToLOBWidget()
+		//7.  Click the + icon on the Line of Business Grid
+		.clickLineOfBusiness()
+
+		// Line of Business =General GPO
+		.selectLineOfBusinessGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
+
+		// Classification Type = General GPO
+		.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
+
+		// Start Date =Today's date
+		.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
+
+		// Click on LOB Save 
+		.clickLineOfBusinessSave()
 
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MultiGPO Update~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 		//Add Membership provider
@@ -117,6 +132,27 @@ public class TestCase_44710 {
 		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		.navigateToRecordStatus()
+
+		//7. Record Status = Published
+		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+
+		//Click on Save 
+		.clickSave() 
+
+		//9. Verify "IS Corporate account" field
+		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
+
+
+		//10. Verify Corporate parent name in the form
+		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
+
+		//11. Verify "Is Food Service parent" field 
+		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
+
+		//12 Verify Food Service parent name in the form 
+		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
 
 
 		;

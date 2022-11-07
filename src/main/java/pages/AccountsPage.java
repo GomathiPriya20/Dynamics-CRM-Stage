@@ -50,7 +50,20 @@ public class AccountsPage extends WebDriverServiceImpl {
 	}
   	
   	
-
+	public AccountsPage navigatetoTerminatedAccountview() throws InterruptedException {
+		try {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		click(getDriver().findElement(By.xpath("//img[@alt='Select a view']")),"Select a View");
+		Thread.sleep(2000);
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Terminated Members')]")),"Find Criteria");
+		return this;
+	}
+	
+	
   	
 	public  AccountsPage searchOnAccountsPage1(String crmNumberInput) throws InterruptedException {	
 		try {
