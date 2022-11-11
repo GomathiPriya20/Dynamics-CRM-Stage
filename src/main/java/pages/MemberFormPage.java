@@ -655,6 +655,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		String sCRMNumber = getTextValue(getDriver().findElement(By.id("CRM Account #_label")),"CRM Number");
 		CRMNumber=sCRMNumber;
+		System.out.println(CRMNumber);
 		js.executeScript("return document.getElementById('CRM Account #_label').innerHTML").toString();
 		try {
 			DataInputProvider.setCellData(sCRMNumber.toString(), Driver.iTestCaseRowNumDriver, "CRMNumber",Driver.properties.getProperty("DriverSheetName"));
@@ -762,7 +763,18 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		typeAndChoose(((getDriver().findElement(By.id("parentaccountid_ledit")))),DirectParent,"Direct Parent");
 		return this;
 	}
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		public MemberFormPage updateDP(String DirectParent) throws InterruptedException {
+			Thread.sleep(10000);
+			System.out.println(DirectParent);
+			scrollDown(((getDriver().findElement(By.id("parentaccountid")))));
+			click(getDriver().findElement(By.id("parentaccountid")),"Direct Parent");
+			typeAndChoose(((getDriver().findElement(By.id("parentaccountid_ledit")))),DirectParent,"Direct Parent");
+			return this;
+		}
 
+	
 	public MemberFormPage selectDirectParentRelationManaged(String DirectParentRelation) {
 		click(getDriver().findElement(By.xpath("//option[@title='Managed']")),"Direct Parent Relation Managed");	
 		return this;
@@ -817,8 +829,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+	public MemberFormPage clickTopParentRelation() throws InterruptedException {
 	
+	click(getDriver().findElement(By.id("ix_topparentrelationship")),"Top Parent Relation");
+	return this;
+	}
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 		public MemberFormPage selectTopParentRelation0(String TopParentRelation) throws InterruptedException {
 			switchToDefaultContent();
@@ -1727,6 +1742,15 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToDefaultContent();
 		return this;
 	}
+	
+	public MemberFormPage navigateToGeneralTab0() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.xpath("//h1[@title='Return to form']")),"Tab Node");
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		return this;
+	}
 
 	public MemberFormPage doubleClickOnTopParentInMembershipWithFrame0() throws InterruptedException {	
 		Thread.sleep(3000);
@@ -2287,6 +2311,17 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	
+	
+	public MemberFormPage updateDirectParent() {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.id("parentaccountid")),"Parent Account Id");
+		Actions a =new Actions(getDriver());
+		a.sendKeys(Keys.BACK_SPACE).build().perform();
+		return this;
+	}
+
 
 	public MemberFormPage verifySupplierFormIsDisplayed() {
 		verifyExactText((getDriver().findElement(By.id("header_crmFormSelector"))),"Account : Supplier Form","Form");
@@ -2423,6 +2458,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+	public MemberFormPage clickDirectParentRelationMEF() throws InterruptedException {
+	click(getDriver().findElement(By.id("ix_parentrelationship")),"Direct Parent Relation");
+	return this;	
+	}
+	
 	public MemberFormPage selectDirectParentRelationMEF(String DirectParentRelation) throws InterruptedException {
 		Thread.sleep(3000);
 		click(getDriver().findElement(By.id("ix_parentrelationship")),"Direct Parent Relation");

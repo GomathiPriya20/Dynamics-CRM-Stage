@@ -43,7 +43,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	//public static int failCount=0;
 	public byte[] encodedPassword ;
 	public String encodedData;
-	public String CRMNumber;
+	public static String CRMNumber;
 	public String mainPage;
 	public static String entityCode;
 	

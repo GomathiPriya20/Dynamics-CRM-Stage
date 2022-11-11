@@ -171,16 +171,39 @@ public class TestCase_11228 {
 		new DashboardPage()
 		.clickWorkplace()
 		.selectAccounts()
-		.searchOnAccountsPage(driverservice.CRMNumber)
+		.searchOnAccountsPageNew(WebDriverServiceImpl.CRMNumber)
 
 		//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
 		.selectAccountFromSearchResults()
-		.navigateToRecordStatus()
-		.chooseRecordStatusPublishedWithFrame1("Draft")
+		.navigateToRecordStatus0()
+		.chooseRecordStatusPublishedWithFrame0("Draft")
+		.clickSave()
+		.verifyDraftStatusMSG0()
+		.selectMembershipEntity()
+		.navigateToGeneralTab0()
+		.clickSave()
+		.updateDirectParent()
+		.updateDP("635436")
+
+		//Direct Parent Relation = Managed
+		.clickDirectParentRelationMEF()
+		.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
+
+		.selectDirectParentRelationDate("3/4/2021")
+		.typeDPReason("Test")
+
+		.clickTopParentRelation()
+		//6.	//Top Parent Relation =  OLM
+		.selectTopParentRelation0(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
+
+		//Top Parent Relation Date = Today's Date
+		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
+
+		.typeTPReason("Test")
+		.chooseRecordStatusPublishedWithFrame0("Published")
 		.clickSave()
 		.verifyDraftStatusMSGNotDisplayed0()
 
-		
 		;
 	}
 }
