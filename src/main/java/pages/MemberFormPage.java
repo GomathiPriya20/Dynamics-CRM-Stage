@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -25,6 +26,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import driver.Driver;
 import services.WebDriverServiceImpl;
@@ -39,6 +41,38 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.id("name_d")),"Account name");
 		clearAndType(((getDriver().findElement(By.id("name_i")))),AccountName,"Account name");
 		return this;
+	}
+
+
+	public MemberFormPage verifyParticipationType() throws InterruptedException{
+
+		ArrayList<String> type =new ArrayList<String>();
+		Thread.sleep(500);
+		Select participationtype=new Select(getDriver().findElement(By.xpath("//select[@attrname='ix_participationtype']")));
+		List <WebElement> participationoptions=participationtype.getOptions();
+
+		for(int i=1;i<participationoptions.size();i++) {
+			System.out.println(participationoptions.get(i).getAttribute("title"));
+			type.add(participationoptions.get(i).getAttribute("title"))	;			
+		}
+		Assert.assertTrue("Provide Type:MD is lister", !(type.contains("Provider Select: MD")));
+		return new MemberFormPage();
+	}
+
+	public MemberFormPage verifyProviderSelect() throws InterruptedException{
+
+		ArrayList<String> type =new ArrayList<String>();
+		Thread.sleep(500);
+		Select participationtype=new Select(getDriver().findElement(By.xpath("//select[@attrname='ix_providerselectmd']")));
+		List <WebElement> participationoptions=participationtype.getOptions();
+
+		for(int i=1;i<participationoptions.size();i++) {
+			System.out.println(participationoptions.get(i).getAttribute("title"));
+			type.add(participationoptions.get(i).getAttribute("title"))	;			
+		}
+		Assert.assertTrue("Provide Type:MD is not listed", (type.contains("Provider Select: MD")));
+		Assert.assertTrue("Provide Type:MD is not listed", (type.contains("Provider Select: MD Grandfathered")));
+		return new MemberFormPage();
 	}
 
 	public MemberFormPage typeAccountNameWithIDName(String AccountName) throws InterruptedException {
@@ -62,6 +96,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToWindow(1);
 		Thread.sleep(2000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		return this;
+	}
+
+	public MemberFormPage navigateToExcludeRoaster() throws InterruptedException {
+
 		return this;
 	}
 
@@ -189,9 +228,19 @@ public class MemberFormPage extends WebDriverServiceImpl {
 
 	public MemberFormPage chooseApplicationDate(String ApplicationDate) {
 		click(getDriver().findElement(By.id("ix_applicationstartdate")),"Application Start Date");
-		type(((getDriver().findElement(By.id("ix_applicationstartdate_iDateInput")))),ApplicationDate, "Application Start Date");
+		clearApplicationDate();
+		click(getDriver().findElement(By.id("ix_applicationstartdate")),"Application Start Date");
+		typeWithoutClear(((getDriver().findElement(By.id("ix_applicationstartdate_iDateInput")))),ApplicationDate, "Application Start Date");
 		return this;
 	}
+
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		public MemberFormPage clearApplicationDate() {
+			getDriver().findElement(By.id("ix_applicationstartdate_iDateInput")).clear();
+			return this;
+		}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`~~~~~~~~~~~~~~~
 	public MemberFormPage verifyGroup(String Group) {
@@ -321,31 +370,94 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Type')]")),"Account Type");
+
+
 		return this;	
 	}
-	
-	
+
+
 	//Navigate to LOB Widget in member Form
 
-		public MemberFormPage navigateToLOBWidget() throws InterruptedException {
-			switchToDefaultContent();
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Record Change Status')]")),"Record Change Status");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Current Internal Rep')]")),"Current Internal Rep");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Rank')]")),"Account Rank");
-			click(getDriver().findElement(By.xpath("//span[contains(text(),'Fee Share Eligible Date')]")),"Fee Share Eligible Date");
-			click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
-			return this;	
-		}
+	public MemberFormPage navigateToLOBWidget() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Record Change Status')]")),"Record Change Status");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Current Internal Rep')]")),"Current Internal Rep");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Rank')]")),"Account Rank");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Fee Share Eligible Date')]")),"Fee Share Eligible Date");
+		click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
+		return this;	
+	}
+
+	//Navigate to NAICS code in member Form
+
+	public MemberFormPage navigateToNAICSCode() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Record Change Status')]")),"Record Change Status");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Current Internal Rep')]")),"Current Internal Rep");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Rank')]")),"Account Rank");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Fee Share Eligible Date')]")),"Fee Share Eligible Date");
+		click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'PURCHASING OFFICE DETAILS')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'Purchasing Office Account')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'FACILITY AUTHORIZATION')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'Facility Authorization Date')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'OVERRIDE')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'Override Creation Date')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'Estimated Locations')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'CSA Commissioned')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'Annual Revenue')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'No. of Employees')]")),"Account Number");
+		click(getDriver().findElement(By.xpath("//*[contains(text(),'NAICS Code')]")),"Account Number");
+
+		return this;	
+	}
+
+
+	//Select NAICS Code
+
+	public MemberFormPage selectNAICSCode(String NAICScode) throws InterruptedException {
+
+		Thread.sleep(10000);
+		System.out.println(NAICScode);
+		click(getDriver().findElement(By.id("ix_naicscode")),"NAICS code");
+		typeAndEnterWithoutClr(((getDriver().findElement(By.id("ix_naicscode_ledit")))),NAICScode,"Direct Parent");
+		Actions a=new Actions(getDriver());
+		a.moveToElement(getDriver().findElement(By.xpath("//li[contains(@id,'item')]/a[2]/span/nobr/span[@title='11111']"))).click().build().perform();;
+
+		return this;
+	}
+
+	public MemberFormPage verifyIndustry() throws InterruptedException {
+
+		Thread.sleep(10000);
+		verifElementIsPresent(getDriver().findElements(By.xpath("//span[contains(text(),'Industry Title')]")).size(), "Industry Title");
+		verifElementIsPresent(getDriver().findElements(By.xpath("//label[@id='Industry Title_label']")).size(), "Industry Title");
+		return this;
+	}
+
+
+
 
 	//Navigate To Do not verify Address
 
@@ -362,6 +474,49 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;	
 	}
 
+	//Navigate To Exclude From Roaster
+
+	public MemberFormPage navigateToExcludeFromRoaster() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Class of Trade')]")),"Class of Trade");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Classification')]")),"Business Classification");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+		return this;	
+	}
+
+	//Navigate To Exclude From Roaster
+
+	public MemberFormPage navigateToExcludeFromRoaster0() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Class of Trade')]")),"Class of Trade");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Classification')]")),"Business Classification");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+		return this;	
+	}
+
+	//Verify Exclude from roaster
+
+	public MemberFormPage verifyExcludeFromRoaster() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		verifElementIsPresent(getDriver().findElements(By.xpath("//span[contains(text(),'Exclude from Roster')]")).size(), "Exclude From Roster");
+		return this;	
+	}
+
+	//Verify Exclude from roaster
+
+	public MemberFormPage verifyExcludeFromRoaster0() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		verifElementIsPresent(getDriver().findElements(By.xpath("//span[contains(text(),'Exclude from Roster')]")).size(), "Exclude From Roster");
+		return this;	
+	}
+
+	//span[contains(text(),'Exclude from Roster')]
 
 	//Navigate To Record Status
 
@@ -375,6 +530,16 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
 
 		return this;	
+	}
+
+	public MemberFormPage navigateToisStoreLocation() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Class of Trade')]")),"Class of Trade");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Classification')]")),"Business Classification");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+		return this;
 	}
 
 	//Navigate To Record Status
@@ -548,6 +713,17 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	public MemberFormPage selectProviderSelect(String ParticipationType) throws InterruptedException {
+		Thread.sleep(5000);
+		//scrollDown(((getDriver().findElement(By.id("ix_participationtype")))));
+		//click(getDriver().findElement(By.id("ix_participationtype")),"Participation type");
+		click(getDriver().findElement(By.id("ix_providerselectmd")),"Provider Select");
+		selectDropDownUsingVisibleText(getDriver().findElement(By.id("ix_providerselectmd_i")),ParticipationType,"Provider Select");
+		verifyExactText(getDriver().findElement(By.id("ix_providerselectmd")),ParticipationType,"Provider Select"); 
+		return this;
+	}
+
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public MemberFormPage selectParticipationTypeWithOutValidation(String ParticipationType) throws InterruptedException {
 		Thread.sleep(5000);
 		//scrollDown(((getDriver().findElement(By.id("ix_participationtype")))));
@@ -574,7 +750,14 @@ public class MemberFormPage extends WebDriverServiceImpl {
 
 	public MemberFormPage selectDirectParentRelationDate(String DirectParentRelationDate) {
 		click(getDriver().findElement(By.id("ix_directparentrelationdate")),"Direct Parent Relation Date");
-		type(((getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")))),DirectParentRelationDate, "Direct Parent Relation Date");
+		clearDirectParentRelationDate();
+		click(getDriver().findElement(By.id("ix_directparentrelationdate")),"Direct Parent Relation Date");
+		typeWithoutClear(((getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")))),DirectParentRelationDate, "Direct Parent Relation Date");
+		return this;
+	}
+	
+	public MemberFormPage clearDirectParentRelationDate() {
+		getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")).clear();
 		return this;
 	}
 
@@ -613,9 +796,32 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
+		public MemberFormPage selectTopParentRelation0(String TopParentRelation) throws InterruptedException {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+			click(getDriver().findElement(By.id("ix_topparentrelationship")),"Top Parent Relation");
+			Thread.sleep(1000);
+			selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_topparentrelationship_i")))),TopParentRelation,"Top Parent Relation");
+			verifyExactText(getDriver().findElement(By.id("ix_topparentrelationship")),TopParentRelation,"Top Parent Relation"); 
+			return this;
+		}
+
+		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+			public MemberFormPage clearTopParentDate() {
+				getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")).clear();
+				return this;
+			}
+			//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public MemberFormPage selectTopParentRelationDate(String TopParentRelationDate) {
 		click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
-		type(getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")),TopParentRelationDate,"Top Parent Relation Date");
+		clearTopParentDate();
+		click(getDriver().findElement(By.id("ix_topparentrelationdate")),"Top Parent Relation Date");
+		typeWithoutClear(getDriver().findElement(By.id("ix_topparentrelationdate_iDateInput")),TopParentRelationDate,"Top Parent Relation Date");
 		return this;
 	}
 
@@ -944,6 +1150,17 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	public MemberFormPage chooseRecordStatusPublishedWithoutVerification(String RecordStatusPublished) throws InterruptedException {
+		Thread.sleep(10000);
+
+		scrollDown(((getDriver().findElement(By.xpath("//*[@id='ix_recordstatus']")))));
+		//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		Thread.sleep(10000);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
+		Thread.sleep(5000);
+		return this;
+	}
+
 	public MemberFormPage chooseRecordStatusPublished(String RecordStatusPublished) throws InterruptedException {
 		Thread.sleep(10000);
 
@@ -951,6 +1168,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
 		Thread.sleep(10000);
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
+		Thread.sleep(5000);
 		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatusPublished,"Record Status"); 
 		return this;
 	}
@@ -1346,12 +1564,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
-	
+
 
 	public MemberFormPage verifyLOBEndDate(String endDate) throws InterruptedException {
 		switchToDefaultContent();
 		if((getDriver().findElements(By.id("contentIFrame1"))).size()>0){
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		}else {
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		}
@@ -1360,20 +1578,34 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[3]/td[6]/div")),endDate, CRMNumber);
 		return this;
 	}
-	
+
 	public MemberFormPage verifyLOBDeactivated(String LOB) throws InterruptedException {
 		switchToDefaultContent();
 		if((getDriver().findElements(By.id("contentIFrame1"))).size()>0){
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		}else {
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		}
 		//switchToFrameMemberIndex(2);
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_portfoliocategory_AccountFrame")));
-		verifyElementIsNotPresent(getDriver().findElements(By.xpath("//*[@id='gridBodyTable']/tbody//td[@rawlookupitemname='"+LOB+"']")).size(), LOB+" Deactivated");
+		verifyElementIsNotPresent(getDriver().findElements(By.xpath("//*[@id='gridBodyTable']/tbody//td[@class='ms-crm-List-DataCell-Associated-Lite']//span[contains(text(),'"+LOB+"')]")).size(), LOB+" Deactivated");
 		return this;
 	}
-	
+
+	public MemberFormPage verifyLOBDisplayed(String LOB) throws InterruptedException {
+		switchToDefaultContent();
+		if((getDriver().findElements(By.id("contentIFrame1"))).size()>0){
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		}else {
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		}
+		//switchToFrameMemberIndex(2);
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_portfoliocategory_AccountFrame")));
+		verifElementIsPresent(getDriver().findElements(By.xpath("//*[@id='gridBodyTable']/tbody//td[@class='ms-crm-List-DataCell-Associated-Lite']//span[contains(text(),'"+LOB+"')]")).size(), LOB+" Deactivated");
+		return this;
+	}
+
+
 
 	public MemberFormPage verifyAffiliateGroup(String AffiliateGroup) {
 		verifyExactText(getDriver().findElement(By.id("ix_affiliategroup")),AffiliateGroup,"Affiliate Group");
@@ -1449,7 +1681,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	public MemberFormPage navigateToGeneralTab() throws InterruptedException {
-
+		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		click(getDriver().findElement(By.xpath("//h1[@title='Return to form']")),"Tab Node");
 		Thread.sleep(3000);
@@ -1491,7 +1723,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		//verifyExactText(getDriver().findElement(By.xpath("//*[@id='Membership Provider_label']")),"National","Membership Entity");
 		return this;
 	}
-	
+
 	public MemberFormPage singlClickOnNationalMembership() throws InterruptedException {	
 		switchToDefaultContent();
 		List<WebElement> entitycode= getDriver().findElements(By.id("contentIFrame1"));
@@ -1718,6 +1950,87 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	public MemberFormPage verifySubAccountView() throws InterruptedException {
+
+		JavascriptExecutor je = (JavascriptExecutor) getDriver();
+
+		WebElement element = getDriver().findElement(By.xpath("//label[contains(text(),'Direct Parent Relation')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+
+
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Direct Parent Relation Date')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Is Corporate')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Corporate Parent')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+
+
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Top Parent')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Is Sponsor')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Premier Start')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'Street 2')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'City')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+		
+		element = getDriver().findElement(By.xpath("//label[contains(text(),'ZIP')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+
+		element = getDriver().findElement(By.xpath("//a[@title='Sort by Name (Group)']//label[contains(text(),'Name (Group)')]"));
+		je.executeScript("arguments[0].scrollIntoView(true);",element);
+
+
+		return this;
+
+	}
+
+	public MemberFormPage navigatetoSubAccount() {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("areaSubAcctsFrame")));
+		return this;
+	}
+	public MemberFormPage searchinSubAccount(String subaccount) throws InterruptedException {	
+		Thread.sleep(3000);
+		navigatetoSubAccount();
+		click(getDriver().findElement(By.id("crmGrid_account_parent_account_findCriteria")),"Search Boc");
+		typeAndEnter(getDriver().findElement(By.id("crmGrid_account_parent_account_findCriteria")), subaccount, "subaccount");
+		return this;
+	}
+
+	public MemberFormPage verifyColumn(String ColumnName) throws InterruptedException {	
+		Thread.sleep(3000);
+		verifElementIsPresent(getDriver().findElements(By.xpath("//a[@title='Sort by "+ColumnName+"']//label[contains(text(),'"+ColumnName+"')]")).size(), ColumnName);
+		return this;
+	}
+
+
+
+	public MemberFormPage verifyColumnrightShift(String ColumnName) throws InterruptedException {	
+		Thread.sleep(3000);
+		verifElementIsPresent(getDriver().findElements(By.xpath("//a[@title='Sort by "+ColumnName+"']//label[contains(text(),'"+ColumnName+"')]")).size(), ColumnName);
+		return this;
+	}
+
+
+	public  MemberFormPage selectAccountFromSearchResults() throws InterruptedException {	
+		Actions action = new Actions(getDriver());	
+		action.moveToElement(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr")));
+		action.doubleClick(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr"))).build().perform();	
+		return new MemberFormPage();
+	}
+
 	public MemberFormPage selectAccountNumbers() throws InterruptedException {	
 		Thread.sleep(3000);
 		switchToDefaultContent();
@@ -1886,7 +2199,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
-	
+
 	public MemberFormPage typeAccountNumberHIN() {
 		int min=111111111;
 		int max=999999999;
@@ -2129,7 +2442,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.id("ok_id")),"Confirm Deactivate");
 		return this;
 	}
-	
+
 	public MemberFormPage deactivateMembership1() throws InterruptedException {
 		switchToDefaultContent();
 		click(getDriver().findElement(By.xpath("//span[@command=\"ix_membership|NoRelationship|Form|Mscrm.Form.Deactivate\"]")),"Deactivate Button");
@@ -2140,14 +2453,14 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.id("ok_id")),"Confirm Deactivate");
 		return this;
 	}
-	
+
 	public MemberFormPage clickLookupValue() throws InterruptedException {
 		switchToDefaultContent();
 		if((getDriver().findElements(By.id("contentIFrame1"))).size()>0){
 			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			}else {
-				switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
-			}
+		}else {
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		}
 		click(getDriver().findElement(By.xpath("//span[@id='ix_accountname_lookupValue']")),"Lookupvalue");
 		Thread.sleep(3000);
 

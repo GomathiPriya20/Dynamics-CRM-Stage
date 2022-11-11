@@ -7,7 +7,7 @@ import driver.Driver;
 import pages.LoginPage;
 import pages.MemberFormPage;
 import utils.DataInputProvider;
-//TFS ID_43703
+//TFS ID_43703 Test case 11227: Cloud: Verify "This account is in Draft status." info text is displayed when Account is Terminated and Record status is in draft
 
 public class TestCase_43703 {
 
@@ -27,8 +27,12 @@ public class TestCase_43703 {
 		.navigatetoTerminatedAccountview()
 		.selectAccountFromSearchResults()
 		.navigateToRecordStatus()
-		.chooseRecordStatusPublished("Draft")
+		.chooseRecordStatusPublishedWithoutVerification("Draft")
+		.clickSave()
 		.verifyDraftStatusMSG()
+		.navigateToRecordStatus()
+		.chooseRecordStatusPublishedWithoutVerification("Published")
+		.clickSave()
 
 		;
 	}

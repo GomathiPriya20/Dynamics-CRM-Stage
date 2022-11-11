@@ -108,6 +108,13 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		try {
 		
 			ele.clear();
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		//	ele.click();
 			ele.sendKeys(data);
 			String sExpectedValue= ele.getAttribute("value");
 		if (fieldName.equalsIgnoreCase("password"))
@@ -150,6 +157,28 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		}
 	}
 	
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+		public void typeWithoutClear(WebElement ele, String data, String fieldName)  {
+			try {
+			
+				
+				ele.sendKeys(data);
+				String sExpectedValue= ele.getAttribute("value");
+			
+		
+			} catch (InvalidElementStateException e) {
+				setReport().log(Status.FAIL, "The data: "+data+" could not be entered in  : "+fieldName, screenshotCapture());
+				Driver.failCount++;
+				throw e;
+			} catch (WebDriverException e) {
+				e.printStackTrace();
+				setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+" in "+fieldName, screenshotCapture());	
+				Driver.failCount++;
+				throw e;
+			}
+		}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	
 	public void typeAndChoose(WebElement ele, String data,String field)  {
@@ -167,6 +196,24 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			throw e;
 		}
 	}
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	
+		public void typeAndEnterWithoutClr(WebElement ele, String data,String field)  {
+			try {
+			//	ele.clear();
+				ele.sendKeys(data, Keys.ENTER);
+				setReport().log(Status.PASS, "The data: "+data+" entered successfully in  :"+field,screenshotCapture());
+			} catch (InvalidElementStateException e) {
+				setReport().log(Status.FAIL, "The data: "+data+" could not be entered in the field :"+field,screenshotCapture());
+				Driver.failCount++;
+				throw e;
+			} catch (WebDriverException e) {
+				setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+" in the field :"+field,screenshotCapture());
+				Driver.failCount++;
+				throw e;
+			}
+		}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	public void clickAndChoose(WebElement ele, String data, String field)  {

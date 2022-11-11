@@ -8,9 +8,9 @@ import utils.DataInputProvider;
 //Created On  	:05/11/2021
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//TFS ID_45336:Verify CP, FSP, FBORD, AG dates are recalculated when reactivating an account
+//TFS ID_45305:Verify Date validation happen when reactivating a terminated account
 
-public class TestCase_8218 {
+public class TestCase_45305 {
 
 	//test msg
 
@@ -219,25 +219,61 @@ public class TestCase_8218 {
 
 		//20.Verify the Premier start date **** Premier start date should be Acurity's start date 
 		.verifyPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
-
-		//21.Verify Premier end date ***** Premier end date should be blank 
-		.verifyPremierEndDateIsNull()
-
-		//22.Verify DPRD ***** DPRD should be same as new Premier start date 
-		.verifyDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
-
-		//23.Verify TPRD ****TPRD should be same as New Premier start date 
-		.verifyTopParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate1", sDataSheetName))
-
-		.VerifyCorpParenttartDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-		.VerifyFoodServiceStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-
-		//24.Verify AG and AG effective date  ***** AG should not be NON Premier.AG effective date should be updated
-		.verifyAffiliateGroup(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroupAfterReactivation", sDataSheetName))
-		.verifyAgEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
+		.navigateToRecordStatus()
+		.chooseRecordStatusPublished("Draft")
+		.clickSave()
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
+		.navigateToExcludeFromRoaster()
+		.chooseApplicationDate("9/11/2023")
+		.navigateToRecordStatus()
+		.chooseRecordStatusPublished("Published")
+		.clickSave()
+		.verifyPartialErrorMessage("Date Restriction Error: Application Start Date")
+		.ClickOkInErrorMessage()
+		.chooseRecordStatusPublishedWithFrame1("Draft")
+		.clickSave()
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
+		.navigateToExcludeFromRoaster()
+		.chooseApplicationDate("3/4/2021")
+		.clickSave()
 		
-
+		.switchtoFrame1()
+		.selectTopParentRelationDate("9/11/2020")
+		.typeTPReason("Test")
+		.navigateToRecordStatus()
+		.chooseRecordStatusPublished("Published")
+		.clickSave()
+		.verifyPartialErrorMessage("Top Parent Relation")
+		.ClickOkInErrorMessage()
+		.chooseRecordStatusPublishedWithFrame1("Draft")
+		.clickSave()
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
+		.navigateToExcludeFromRoaster()
+		.selectTopParentRelationDate("3/4/2021")
+		.clickSave()
+		
+		
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
+		.switchtoFrame1()
+		.selectDirectParentRelationDate("9/11/2020")
+		.typeDPReason("Test")
+		.navigateToRecordStatus()
+		.chooseRecordStatusPublished("Published")
+		.clickSave()
+		.verifyPartialErrorMessage("Direct Parent Relation")
+		.ClickOkInErrorMessage()
+		.chooseRecordStatusPublishedWithFrame1("Draft")
+		.clickSave()
+		.selectMembershipEntity()
+		.navigateToGeneralTab()
+		.navigateToExcludeFromRoaster()
+		.selectDirectParentRelationDate("9/11/2020")
+		.clickSave()
+		
 		;
 	}
 }

@@ -4,10 +4,10 @@ import pages.LoginPage;
 
 import utils.DataInputProvider;
 
-//TFS ID_44710:Verify when ship to account converted to main account, CP and FSP updated.
+//TFS ID_44715: Verify date validation triggers when Ship to accounts converted to Member
 
 
-public class TestCase_44710 {
+public class TestCase_44715 {
 
 
 	@Test
@@ -49,6 +49,8 @@ public class TestCase_44710 {
 		//Account Status = Auto Populated to Active
 		.defaultAccountStatus()	
 
+		.chooseApplicationDate("11/20/2017")
+		
 		//Store/Location type = Mail to
 		.chooseLocationType(DataInputProvider.getCellData_ColName(iRowNumber, "LocationType", sDataSheetName))	
 
@@ -76,13 +78,13 @@ public class TestCase_44710 {
 		.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 
 		//Direct Parent Relation date = Today's Date
-		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+		.selectDirectParentRelationDate("11/20/2017")
 
 		//Top Parent Relation =  OLM
 		.selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 
 		// Top Parent Relation Date = Today's Date
-		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
+		.selectTopParentRelationDate("11/20/2017")
 
 		.clickSave() 
 
@@ -103,7 +105,7 @@ public class TestCase_44710 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.navigateToisStoreLocation()
-		.chooseApplicationDate("11/20/2018")
+		
 		.selectParticipationType("Pharmacy")
 		//Store/Location type = Blank
 		.chooseLocationType("")	
@@ -137,25 +139,9 @@ public class TestCase_44710 {
 
 		//Click on Save 
 		.clickSave() 
+		.verifyPartialErrorMessage(DataInputProvider.getCellData_ColName(iRowNumber, "ErrorMessage", sDataSheetName))
 		
-		.selectMembershipEntity()
-		.navigateToGeneralTab()
-		.navigateToDoNotVerifyAddress()
-
-		//9. Verify "IS Corporate account" field
-		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
-
-
-		//10. Verify Corporate parent name in the form
-		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//11. Verify "Is Food Service parent" field 
-		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
-
-		//12 Verify Food Service parent name in the form 
-		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
-
-
+		
 		;
 
 	}
