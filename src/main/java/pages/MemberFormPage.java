@@ -375,6 +375,26 @@ public class MemberFormPage extends WebDriverServiceImpl {
 
 		return this;	
 	}
+	
+	//Navigate To Record Status
+
+		public MemberFormPage navigateToRecordStatus0() throws InterruptedException {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Type')]")),"Account Type");
+
+
+			return this;	
+		}
 
 
 	//Navigate to LOB Widget in member Form
@@ -1180,6 +1200,24 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifElementIsPresent((getDriver().findElements(By.xpath("//div[@role='alert']//span[contains(text(),'This account is in Draft status.')]"))).size(), "Draft Status Message");
 		return this;
 	}
+	
+	
+	public  MemberFormPage verifyDraftStatusMSG0() throws InterruptedException 
+	{
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		verifElementIsPresent((getDriver().findElements(By.xpath("//div[@role='alert']//span[contains(text(),'This account is in Draft status.')]"))).size(), "Draft Status Message");
+		return this;
+	}
+	
+	
+	public  MemberFormPage verifyDraftStatusMSGNotDisplayed0() throws InterruptedException 
+	{
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		verifyElementIsNotPresent((getDriver().findElements(By.xpath("//div[@role='alert']//span[contains(text(),'This account is in Draft status.')]"))).size(), "Draft Status Message");
+		return this;
+	}
 	/*
 	 * public MemberFormPage chooseRecordStatusPublished(String
 	 * RecordStatusPublished) throws InterruptedException { Thread.sleep(6000);
@@ -1194,6 +1232,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	 */
 
 	public MemberFormPage chooseRecordStatusPublishedWithFrame0(String RecordStatusPublished) throws InterruptedException {
+		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		chooseRecordStatusPublished(RecordStatusPublished);
 		return this;

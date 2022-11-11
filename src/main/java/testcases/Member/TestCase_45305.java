@@ -16,7 +16,7 @@ public class TestCase_45305 {
 
 
 	@Test
-	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void reactivateMember(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()

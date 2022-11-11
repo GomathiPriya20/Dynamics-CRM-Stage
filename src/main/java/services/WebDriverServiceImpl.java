@@ -593,9 +593,9 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 				try {
 					
 					if(Count==0) {
-						setReport().log(Status.PASS, field+" is displayed",screenshotCapture());
+						setReport().log(Status.PASS, field+" is not displayed",screenshotCapture());
 					} else {
-						setReport().log(Status.FAIL, field+" is not displayed",screenshotCapture());
+						setReport().log(Status.FAIL, field+" is displayed",screenshotCapture());
 					}
 				} catch (WebDriverException e) {
 					setReport().log(Status.FAIL, "WebDriverException : \"+e.getMessage()",screenshotCapture());

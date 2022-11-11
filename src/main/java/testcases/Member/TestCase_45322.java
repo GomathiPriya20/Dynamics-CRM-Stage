@@ -9,7 +9,7 @@ import utils.DataInputProvider;
 public class TestCase_45322 {
 
 	@Test
-	public void createMemberTP(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void verifyTPExceptioReason(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
@@ -257,6 +257,11 @@ public class TestCase_45322 {
 		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
+		.navigateToRecordStatus0()
+		.changeRequireManualAG()
+		.selectAffiliateGroup(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroup", sDataSheetName))
+		.selectAffiliateGroupEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroupEffectiveDate", sDataSheetName))
+		
 		//11 Record Status = Published
 		.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 
