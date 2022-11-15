@@ -114,7 +114,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		//	ele.click();
+			ele.click();
 			ele.sendKeys(data);
 			String sExpectedValue= ele.getAttribute("value");
 		if (fieldName.equalsIgnoreCase("password"))

@@ -239,7 +239,7 @@ public class TestCase_45305 {
 		.chooseApplicationDate("3/4/2021")
 		.clickSave()
 		
-		.switchtoFrame1()
+		.switchToFrame1()
 		.selectTopParentRelationDate("9/11/2020")
 		.typeTPReason("Test")
 		.navigateToRecordStatus()
@@ -258,7 +258,7 @@ public class TestCase_45305 {
 		
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.switchtoFrame1()
+		.switchToFrame1()
 		.selectDirectParentRelationDate("9/11/2020")
 		.typeDPReason("Test")
 		.navigateToRecordStatus()

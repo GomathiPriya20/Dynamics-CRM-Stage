@@ -110,7 +110,7 @@ public class TestCase_7485 {
 		.selectMembershipEntity()
 		.doubleClickOnNationalMembership()
 		.clickCloseButton()
-			.switchtoFrame1()
+			.switchToFrame1()
 		//6.Verify and Observe the Record status field after updating following fields. 
 		.verifyRecordChangeStatus(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyRecordChangeStatus", sDataSheetName))
 		

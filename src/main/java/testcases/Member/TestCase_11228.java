@@ -184,21 +184,15 @@ public class TestCase_11228 {
 		.clickSave()
 		.updateDirectParent()
 		.updateDP("635436")
+		.clickSave()
 
-		//Direct Parent Relation = Managed
-		.clickDirectParentRelationMEF()
-		.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 
-		.selectDirectParentRelationDate("3/4/2021")
-		.typeDPReason("Test")
 
-		.clickTopParentRelation()
 		//6.	//Top Parent Relation =  OLM
 		.selectTopParentRelation0(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 
 		//Top Parent Relation Date = Today's Date
-		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
-
+		
 		.typeTPReason("Test")
 		.chooseRecordStatusPublishedWithFrame0("Published")
 		.clickSave()
