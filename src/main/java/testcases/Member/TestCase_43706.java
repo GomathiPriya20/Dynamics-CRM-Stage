@@ -78,7 +78,7 @@ public class TestCase_43706 {
 		.clickSave()
 
 		//6.	//Top Parent Relation =  OLM
-		.selectTopParentRelationWithoutClick("Affiliate")
+		.selectTopParentRelationWithoutClick0("Affiliate")
 
 
 		.typeTPReason("Test")
