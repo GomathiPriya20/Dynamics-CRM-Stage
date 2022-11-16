@@ -47,7 +47,7 @@ public class TestCase_7138 {
 
 	
 		//6.	//Top Parent Relation =  OLM
-			 .selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
+			 .selectTopParentRelation0(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 		
 			//Top Parent Relation Date = Today's Date
 			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))

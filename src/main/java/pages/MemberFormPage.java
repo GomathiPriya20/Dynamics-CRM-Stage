@@ -441,6 +441,28 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
 		return this;	
 	}
+	
+	//Navigate to LOB Widget in member Form
+
+		public MemberFormPage navigateToLOBWidget0() throws InterruptedException {
+			switchToDefaultContent();
+			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Participation Type')]")),"Participation Type");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Key')]")),"Business Key");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Region')]")),"Region");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"OwnerShip");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchanfe");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Payment Entity')]")),"Payment Entity");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Corporate Rebate Fee')]")),"Corporate Rebate Fee");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group')]")),"Affiliate Group");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Affiliate Group Effective Date')]")),"Affiliate Group Effective Date");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Record Change Status')]")),"Record Change Status");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Current Internal Rep')]")),"Current Internal Rep");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Account Rank')]")),"Account Rank");
+			click(getDriver().findElement(By.xpath("//span[contains(text(),'Fee Share Eligible Date')]")),"Fee Share Eligible Date");
+			click(getDriver().findElement(By.xpath("//div[@title='No Account Numbers found for this Account. Select Add (+).']")),"Account Number");
+			return this;	
+		}
 
 	//Navigate to NAICS code in member Form
 
@@ -871,7 +893,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
-
+	
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~		
 	public MemberFormPage selectTopParentRelationWithoutClick(String TopParentRelation) throws InterruptedException {
 		switchToDefaultContent();
@@ -1267,6 +1290,18 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	
+	public MemberFormPage chooseRecordStatusPublishedWithoutScroll(String RecordStatusPublished) throws InterruptedException {
+		Thread.sleep(10000);
+
+		
+		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		Thread.sleep(10000);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),RecordStatusPublished, "Record Status");	
+		Thread.sleep(5000);
+		verifyExactText(getDriver().findElement(By.id("ix_recordstatus")),RecordStatusPublished,"Record Status"); 
+		return this;
+	}
 	public  MemberFormPage verifyDraftStatusMSG() throws InterruptedException 
 	{
 		switchToDefaultContent();
@@ -1309,6 +1344,13 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 		chooseRecordStatusPublished(RecordStatusPublished);
+		return this;
+	}
+	
+	public MemberFormPage chooseRecordStatusPublishedWithFrame0WithoutScroll(String RecordStatusPublished) throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		chooseRecordStatusPublishedWithoutScroll(RecordStatusPublished);
 		return this;
 	}
 

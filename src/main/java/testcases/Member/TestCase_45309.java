@@ -41,10 +41,33 @@ public class TestCase_45309 {
 
 		//Select member form
 		.chooseMemberFormInSubAccount()
+		
+		
 
+		//Direct Parent Relation = Managed
+		.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
+
+		//Direct Parent Relation date = Today's Date
+		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
+
+
+		//9. Street 1 = Any
+				.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
+
+				//City = NY
+				.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
+
+				 //Country =USA
+					.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
+
+					//
+					.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+
+				//Type Zip code
+				.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
 
 		//6.	//Top Parent Relation =  OLM
-		.selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
+		.selectTopParentRelation0(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 
 		//Top Parent Relation Date = Today's Date
 		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
@@ -80,35 +103,18 @@ public class TestCase_45309 {
 		//Participation Type = Standard
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 
-		//Direct Parent Relation = Managed
-		.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
-
-		//Direct Parent Relation date = Today's Date
-		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
 
 
 		//Click on Save 
 		.clickSave() 
 
-		//9. Street 1 = Any
-		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
-
-		//City = NY
-		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-
-		/* //Country =USA
-			.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-
-			//
-			.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))*/
-
-		//Type Zip code
-		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
-
+		
 		//Click on Save
 		// .clickSave() 
 
-		//10 Click the + icon on the Line of Business Grid		
+		//10 Click the + icon on the Line of Business Grid	
+		
+		.navigateToLOBWidget0()
 		.clickLineOfBusiness()
 
 		// Line of Business =General GPO
@@ -142,8 +148,7 @@ public class TestCase_45309 {
 
 		//Click on Save 
 		.clickSave() 
-		.verifyErrorMessage(DataInputProvider.getCellData_ColName(iRowNumber, "ErrorMessage", sDataSheetName))
-		.ClickOkInErrorMessage()
+		.verifyENorrorMessage()
 		;
 	}
 

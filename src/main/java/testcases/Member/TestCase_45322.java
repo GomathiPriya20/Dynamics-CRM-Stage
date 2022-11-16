@@ -263,7 +263,7 @@ public class TestCase_45322 {
 		.selectAffiliateGroupEffectiveDate(DataInputProvider.getCellData_ColName(iRowNumber, "AffiliateGroupEffectiveDate", sDataSheetName))
 		
 		//11 Record Status = Published
-		.chooseRecordStatusPublishedWithFrame0(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		.chooseRecordStatusPublishedWithFrame0WithoutScroll(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 
 		//Click on Save 
 		.clickSave() 
