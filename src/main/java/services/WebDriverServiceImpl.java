@@ -1,6 +1,7 @@
 package services;
 
 import events.WebDriverEvents;
+import pages.MemberFormPage;
 
 import static org.testng.Assert.fail;
 
@@ -11,6 +12,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
@@ -44,8 +46,10 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	public byte[] encodedPassword ;
 	public String encodedData;
 	public static String CRMNumber;
-	public String mainPage;
+	public static String mainPage;
 	public static String entityCode;
+	public static String beforeSupplier;
+	public static String afterSupplier;
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public ExtentTest setReport()
@@ -197,6 +201,9 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		}
 	}
 	
+	
+		
+	
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	
 		public void typeAndEnterWithoutClr(WebElement ele, String data,String field)  {
@@ -269,6 +276,37 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		} 
 	}
 	
+	
+	public void comparesupplierRecord() throws InterruptedException {
+		if((beforeSupplier.contentEquals(beforeSupplier))) {
+			setReport().log(Status.PASS,"Supplier Record is not updated", screenshotCapture());
+		}else {
+			setReport().log(Status.FAIL,"Supplier Record is updated", screenshotCapture());
+		}
+		
+		
+	}
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+		public void doubleclick(WebElement ele,String field)  {
+			try {
+				//WebDriverWait wait = new WebDriverWait(getDriver(), 15);
+//				wait.until(ExpectedConditions.elementToBeClickable(ele));			
+				Actions a = new Actions(getDriver());
+				a.moveToElement(ele).doubleClick().build().perform();
+				setReport().log(Status.PASS,"Clicked on "+field, screenshotCapture());	
+			}
+			catch (InvalidElementStateException e) {
+				e.printStackTrace();
+				setReport().log(Status.FAIL,field+" could not be clicked", screenshotCapture());	
+				Driver.failCount++;
+			} catch (WebDriverException e) {
+				e.printStackTrace();
+				setReport().log(Status.FAIL, "Unknown exception occured while clicking in the field : "+field,screenshotCapture());	
+				Driver.failCount++;
+			} 
+		}
+		
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 		public void clickwithout(WebElement ele,String field)  {
@@ -620,6 +658,21 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			throw e;
 		}
 	}
+	
+	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+		public void switchToMainWindow() {
+			try {
+				getDriver().close();
+				getDriver().switchTo().window(mainPage);
+			} catch (NoSuchWindowException e) {
+				setReport().log(Status.FAIL, "The driver could not move to the given window by index ",screenshotCapture());
+			} catch (WebDriverException e) {
+				setReport().log(Status.FAIL, "WebDriverException"+e.getMessage(),screenshotCapture());
+				Driver.failCount++;
+				throw e;
+			}
+		}
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	public void switchToFrame(WebElement ele) {

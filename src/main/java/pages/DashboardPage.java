@@ -11,9 +11,14 @@ public class DashboardPage extends WebDriverServiceImpl {
 		Thread.sleep(5000);
 		click(getDriver().findElement(By.id("TabWorkplace")),"Workplace");
 		Thread.sleep(5000);
+		
 		return this;
 	}
 
+	public DashboardPage acceptallert() throws InterruptedException {
+	getDriver().switchTo().alert().accept();
+	return this;
+	}
 	
 	public DashboardPage clickService() throws InterruptedException {	
 	
