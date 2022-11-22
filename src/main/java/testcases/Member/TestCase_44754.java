@@ -37,7 +37,7 @@ public class TestCase_44754 {
 		.updateDPwithoutScrolldonw("635436")
 
 		.typeDPReason("Test")
-
+		.clickSave() 
 		//Top Parent Relation =  OLM
 		.selectTopParentRelationWithoutClick("Affiliate")
 
