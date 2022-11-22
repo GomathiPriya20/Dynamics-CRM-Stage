@@ -203,7 +203,7 @@ public class TestCase_45299 {
 		
 
 		//7. Verify CRM Account # is generated 
-		.crmNumberIsDisplayed()	
+		.crmNumberIsDisplayedWithFrame0()	
 
 		//8 Account  Type = Member
 		.selectAccountType(DataInputProvider.getCellData_ColName(iRowNumber, "AccountType", sDataSheetName))
