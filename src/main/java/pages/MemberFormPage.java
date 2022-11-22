@@ -155,6 +155,12 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	public MemberFormPage getAccountName() throws InterruptedException {
+		
+		accountName=getDriver().findElement(By.id("Account Name_label")).getText();
+		return this;
+	}
+	
 
 	public MemberFormPage verifyPremierStartDateIsAutoPopulated() throws InterruptedException  {
 		System.out.println("Test");
@@ -2620,8 +2626,7 @@ public MemberFormPage clearLOBEndDate()  {
 
 
 	public MemberFormPage updateDirectParent1() {
-		switchToDefaultContent();
-		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame1();
 		click(getDriver().findElement(By.xpath("//span[@id='parentaccountid_cl']")),"Parent Account ID");
 		Actions a =new Actions(getDriver());
 		a.sendKeys(Keys.BACK_SPACE).build().perform();

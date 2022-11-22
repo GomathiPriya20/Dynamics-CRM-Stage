@@ -50,6 +50,7 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 	public static String entityCode;
 	public static String beforeSupplier;
 	public static String afterSupplier;
+	public static String accountName;
 	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
 	public ExtentTest setReport()
