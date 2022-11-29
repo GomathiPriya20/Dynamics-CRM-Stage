@@ -3,8 +3,7 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.DataInputProvider;
 
-
-public class TestCase_7156 {
+public class TestCase_7163 {
 	
 	//Automation-Modify Address in an existing Supplier Account and re-publish as a Supplier Supervisor. Same Entity code should be retained
 	

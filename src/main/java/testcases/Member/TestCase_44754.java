@@ -33,7 +33,7 @@ public class TestCase_44754 {
 		.switchToFrame1()
 		.getAccountName()
 		.typeAccountName("Update")
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("635436")
 
 		.typeDPReason("Test")
@@ -52,7 +52,7 @@ public class TestCase_44754 {
 		.switchToFrame1()
 		.typeAccountName(WebDriverServiceImpl.accountName)
 		.clickSave()
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("743059")
 
 		.typeDPReason("Test")
@@ -111,7 +111,7 @@ public class TestCase_44754 {
 		.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 
 		//Direct Parent Relation = Managed
-		.selectDirectParentRelationMEF(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
+		.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 
 		//Direct Parent Relation date = Today's Date
 		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
@@ -177,17 +177,17 @@ public class TestCase_44754 {
 		.switchToFrame1()
 		.getAccountName()
 		.typeAccountName("Update")
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("635436")
 
 		.typeDPReason("Test")
-
+		.clickSave()
 		//Top Parent Relation =  OLM
-		.selectTopParentRelationWithoutClick("Affiliate")
+		.selectTopParentRelationWithoutClick("OLM")
 
 
 		.typeTPReason("Test")
-		.selectParticipationType("Pharmacy")
+		
 		.clickSave()
 		.verifyENorrorMessage()
 

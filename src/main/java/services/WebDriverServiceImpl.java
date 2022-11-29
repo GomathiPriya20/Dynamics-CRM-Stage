@@ -863,6 +863,25 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 		}
 	}
 	
+	
+	public void clearAndTypeWithoutVerification(WebElement ele, String data,String field)  {
+		try {
+			ele.sendKeys(Keys.CONTROL, Keys.chord("a"));
+			ele.sendKeys(Keys.BACK_SPACE);
+			ele.sendKeys(data);		
+		
+		} catch (InvalidElementStateException e) {
+			setReport().log(Status.FAIL, "The data: "+data+" could not be entered in  : "+field, screenshotCapture());
+			Driver.failCount++;
+			throw e;
+		} catch (WebDriverException e) {
+			e.printStackTrace();
+			setReport().log(Status.FAIL, "Unknown exception occured while entering  "+data+" in "+field, screenshotCapture());
+			Driver.failCount++;
+			throw e;
+		}
+	}
+	
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	public void verifyIsEnabled(WebElement ele,String field) {
 		boolean bReturn =true;

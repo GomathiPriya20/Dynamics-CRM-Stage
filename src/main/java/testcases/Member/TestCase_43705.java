@@ -34,7 +34,7 @@ public class TestCase_43705 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.clickSave()
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("635436")
 
 		.typeDPReason("Test")
@@ -54,7 +54,7 @@ public class TestCase_43705 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.clickSave()
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("AR0006")
 
 		.typeDPReason("Test")
