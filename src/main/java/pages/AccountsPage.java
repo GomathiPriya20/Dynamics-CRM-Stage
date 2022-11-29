@@ -16,7 +16,7 @@ public class AccountsPage extends WebDriverServiceImpl {
 	
 	public NewAccountPage clickNewOnAccountsPage() throws InterruptedException { 
 		getDriver().navigate().refresh();
-		Thread.sleep(5000);
+		Thread.sleep(7000);
 		click(getDriver().findElement(By.xpath("//*[@id='account|NoRelationship|HomePageGrid|Mscrm.HomepageGrid.account.NewRecord']")),"New");
 		return new NewAccountPage();
 	}
@@ -82,12 +82,18 @@ public class AccountsPage extends WebDriverServiceImpl {
 		return this;
 	}
 
+	
+	public  AccountsPage verifySearchAccountLocationType() throws InterruptedException {
+		verifElementIsPresent(getDriver().findElements(By.xpath("//*[@id='gridBodyTable']/tbody/tr/td[5]//span")).size(), "Location Type");
+		return this;
+	}
   	public  MemberFormPage selectAccountFromSearchResults() throws InterruptedException {	
 		Actions action = new Actions(getDriver());	
 		action.moveToElement(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr")));
 		action.doubleClick(getDriver().findElement(By.cssSelector("table#gridBodyTable>tbody>tr>td:nth-of-type(3)>nobr"))).build().perform();	
 		return new MemberFormPage();
 	}
+  	
 
   	public  SupplierFormPage selectSupplierAccountFromSearchResults() throws InterruptedException {	
 		Actions action = new Actions(getDriver());	

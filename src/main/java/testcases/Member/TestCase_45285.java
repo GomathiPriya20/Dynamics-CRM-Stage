@@ -42,7 +42,7 @@ public class TestCase_45285 {
 		  .selectMembershipEntity()
 		  .navigateToGeneralTab() 
 		  .clickSave()
-		  .updateDirectParent1() 
+		  .clearDirectParent1() 
 		  .updateDPwithoutScrolldonw("635436")
 		  
 		  .typeDPReason("Test") 
@@ -78,7 +78,7 @@ public class TestCase_45285 {
 		  .selectMembershipEntity()
 		  .navigateToGeneralTab0() 
 		  .clickSave() 
-		  .updateDirectParent()
+		  .clearDirectParent()
 		  .updateDPwithoutScrolldonw("838463")
 		  
 		  .typeDPReason("Test") .clickSave()
@@ -214,7 +214,7 @@ public class TestCase_45285 {
 
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.updateDirectParent1()
+		.clearDirectParent1()
 		.updateDPwithoutScrolldonw("635436")
 		.selectTopParentRelationDate("11/22/2022")
 		.typeDPReason("Test")

@@ -174,7 +174,7 @@ public class TestCase_45305 {
 		.clickSave() 
 
 		//16.For reactivation, move the record status to draft *** Record should be moved to draft 
-		.chooseRecordStatusDraftWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatus", sDataSheetName))
+		.chooseRecordStatusDraftWithFrame1()
 
 		//Click on Save 
 		.clickSave()

@@ -182,7 +182,7 @@ public class TestCase_11228 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab0()
 		.clickSave()
-		.updateDirectParent()
+		.clearDirectParent()
 		.updateDP("635436")
 		.clickSave()
 
