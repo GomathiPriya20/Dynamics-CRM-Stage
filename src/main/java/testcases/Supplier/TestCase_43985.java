@@ -12,7 +12,7 @@ public class TestCase_43985 {
 	
 	@Test()
 
-	public void modifyAddressAsSupplierSupervisor(int iRowNumber, String sDataSheetName) throws Exception {
+	public void verifyLocationType(int iRowNumber, String sDataSheetName) throws Exception {
 		//Access Login Page
 		new LoginPage()	
 		

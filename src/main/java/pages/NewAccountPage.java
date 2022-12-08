@@ -6,6 +6,7 @@ import services.WebDriverServiceImpl;
 public class NewAccountPage extends WebDriverServiceImpl {
 
 	public SupplierFormPage chooseSupplierForm() {
+		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")),"Form Selector");
 		click(getDriver().findElement(By.xpath("//span[@title='Supplier Form']")),"Supplier Form");

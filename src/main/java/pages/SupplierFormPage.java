@@ -5,12 +5,14 @@ import static org.testng.Assert.assertNotNull;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.junit.Assert; 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import base.PreAndPost;
@@ -18,7 +20,11 @@ import driver.Driver;
 import services.WebDriverServiceImpl;
 import utils.DataInputProvider;
 
+
 public class SupplierFormPage extends WebDriverServiceImpl{
+
+	public String before;
+	public String after;
 
 	public SupplierFormPage defaultAccountStatus(String defaultAccountStatus) {
 		verifyExactText((getDriver().findElement(By.id("Account Status_label"))),defaultAccountStatus,"Account Status");
@@ -67,6 +73,32 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 
+	public SupplierFormPage verifyNewSupplierForm() {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		verifyExactText(getDriver().findElement(By.id("Account Type_label")), "Supplier", "Account Type ");
+		verifyExactText(getDriver().findElement(By.id("Account Status_label")), "Active", "Account Status");
+		return this;
+	}
+	public SupplierFormPage navigateToNYInformation() {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Premier End Date')]")),"Premier End Date");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Business Classification')]")),"Business Classification");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'CAMS Flag')]")),"CAMS Flag");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'No New Products')]")),"No New Products");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Reprocessor')]")),"Reprocessor");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Ownership')]")),"Ownership");
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'Exchange')]")),"Exchange");
+		click(getDriver().findElement(By.xpath("//h3[contains(text(),'NY INFORMATION')]")),"NY Information");
+		return this;
+	}
+	
+	public SupplierFormPage verifyNoMemberisnotDisplayed() {
+		verifyElementIsNotPresent(getDriver().findElements(By.id("ix_numberofsubaccounts_cl")).size(), "# of member field is displayed");
+		return this;
+	}
+	
 	public SupplierFormPage typeAccountName(String accountName) {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
@@ -165,6 +197,55 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		Thread.sleep(3000);
 		return this;
 	}
+
+	public SupplierFormPage selectDiversityInformationEntity() throws InterruptedException {
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		click(getDriver().findElement(By.id("TabNode_tab0Tab")),"Tab Node");
+		Thread.sleep(3000);
+		click(getDriver().findElement(By.id("Node_nav_ix_account_ix_diversityinformation")),"Membership Entity");
+		Thread.sleep(3000);
+		return this;
+	}
+	public SupplierFormPage addDiversityInformation(String Diversity, String Certifyingagency) throws InterruptedException {
+		Thread.sleep(3000);
+		switchToDefaultContent();
+
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_diversityinformationFrame")));
+
+		click(getDriver().findElement(By.xpath("//span[@command='ix_diversityinformation|OneToMany|SubGridAssociated|Mscrm.AddNewRecordFromSubGridStandard']")),"Membership Entity");
+		mainPage=getDriver().getWindowHandle();
+		switchToWindow(1);
+
+		switchToDefaultContent();
+
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.xpath("//div[@id='ix_diversitytype']")),"Diversity Type");
+		selectDropDownUsingVisibleText(getDriver().findElement(By.id("ix_diversitytype_i")), Diversity, "Diversity Value");
+		click(getDriver().findElement(By.id("ix_certifyingagency")),"Membership Entity");
+		typeWithoutClear(getDriver().findElement(By.id("ix_certifyingagency_i")), Certifyingagency, "Certifyingagency");
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//span[@command='ix_diversityinformation|NoRelationship|Form|Mscrm.SavePrimary']")),"Save and Close button");
+
+		Thread.sleep(3000);
+		getDriver().switchTo().window(mainPage);
+		return this;
+	}
+
+	public SupplierFormPage verifyDirversityInformation(String Diversity) throws InterruptedException {
+		boolean iscreated=false;
+		List<WebElement> diversityname=getDriver().findElements(By.xpath("//tr[@otypename='ix_diversityinformation' and @onmouseout='Mscrm.GridControl.mouseOut(this);']/td[2]//span"));
+		for(WebElement e:diversityname) {
+			if(e.getText().contentEquals(Diversity)) {
+				iscreated=true;
+				break;
+			}
+		}
+		Assert.assertTrue("Issue in creating Diversity information",iscreated);
+		return this;
+	}
+
 	public SupplierFormPage doubleClickOnNationalMembership(String membershipStartDate) throws InterruptedException {
 
 		Thread.sleep(1000);
@@ -180,6 +261,52 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		Thread.sleep(3000);
 		return this;
 	}
+
+	public SupplierFormPage doubleClickOnNationalMembership() throws InterruptedException {
+
+		Thread.sleep(1000);
+		switchToDefaultContent();
+
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
+		verifyExactText(getDriver().findElement(By.xpath("//*[@title='Open National' and @class='ms-crm-List-Link']")),"National","Membership Provider");
+		Actions a = new Actions(getDriver());
+		a.moveToElement(getDriver().findElement(By.xpath("//*[@id=\"gridBodyTable\"]/tbody/tr/td[2]/nobr/span"))).doubleClick().build().perform();
+		Thread.sleep(3000);
+		return this;
+	}
+
+	public SupplierFormPage changeMembershipStartDate(String premierStartDate) throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//div[@id='ix_startdate']")),"Premier Start Date");
+		Actions a=new Actions(getDriver());
+		a.sendKeys(Keys.BACK_SPACE).build().perform();
+		typeWithoutClear(getDriver().findElement(By.id("ix_startdate_iDateInput")),premierStartDate,"Premier Start Date");
+		Thread.sleep(3000);
+		return this;
+
+	}
+	public SupplierFormPage getPremierStartDate() throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		premierStartDate=getDriver().findElement(By.id("Premier Start Date_label")).getText();
+		System.out.println(premierStartDate);
+		return this;
+	}
+
+	public SupplierFormPage savePremierStartDate(boolean isbefore) {
+		if(isbefore) {
+			before=premierStartDate;
+		}else {
+			after=premierStartDate;
+		}
+
+		return this;
+	}
+
+
 	public SupplierFormPage selectMembershipEndReason(String EndReason) {
 		click(getDriver().findElement(By.id("ix_endreason")),"End Reason");
 		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_endreason_i")))),EndReason,"End Reason");
@@ -322,6 +449,19 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 
+	public SupplierFormPage verifyDirectParentList(String directParent, boolean isDisplayed) throws InterruptedException {
+
+		Thread.sleep(3000);
+		scrollDown(((getDriver().findElement(By.id("parentaccountid_c")))));
+		click(getDriver().findElement(By.id("parentaccountid_ledit")),"Direct Parent");
+		typeAndEnter(((getDriver().findElement(By.id("parentaccountid_ledit")))),directParent,"Direct Parent");
+		if(!(isDisplayed)) {
+			verifyNoRecordFound();
+		}
+		return this;
+
+	}
+
 	public SupplierFormPage UpdateDirectParent(String directParent) throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
@@ -334,314 +474,325 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 
+
+
+
 	public SupplierFormPage verifyNoRecordFound() throws InterruptedException {
 		verifElementIsPresent(getDriver().findElements(By.xpath("//span[@title='No records found. Create a new record.']")).size(), "No Record Found");
 		return this;
 
 	}
-		public SupplierFormPage verifyDPValue(String verifyDPValue) throws InterruptedException {
-			verifyExactText(((getDriver().findElement(By.id("parentaccountid_lookupValue")))),verifyDPValue,"Direct Parent");
-			return this;
-		}
+	public SupplierFormPage verifyDPValue(String verifyDPValue) throws InterruptedException {
+		verifyExactText(((getDriver().findElement(By.id("parentaccountid_lookupValue")))),verifyDPValue,"Direct Parent");
+		return this;
+	}
 
-		public SupplierFormPage selectDPParentRelationDate(String selectDPRelationDate) throws InterruptedException {
-			click(getDriver().findElement(By.id("ix_directparentrelationdate")),"DPRD");
-			type(((getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")))),selectDPRelationDate,"Direct Parent Relation Date");
-			click(getDriver().findElement(By.id("ix_directparentrelationdate")),"DPRD");
-			return this;
-		}
+	public SupplierFormPage selectDPParentRelationDate(String selectDPRelationDate) throws InterruptedException {
+		click(getDriver().findElement(By.id("ix_directparentrelationdate")),"DPRD");
+		type(((getDriver().findElement(By.id("ix_directparentrelationdate_iDateInput")))),selectDPRelationDate,"Direct Parent Relation Date");
+		click(getDriver().findElement(By.id("ix_directparentrelationdate")),"DPRD");
+		return this;
+	}
 
-		public SupplierFormPage storeLocationType(String storeLocationType) {
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			storeLocationTypeWithOutFrame(storeLocationType);
-			return this;
-		}
+	public SupplierFormPage storeLocationType(String storeLocationType) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		storeLocationTypeWithOutFrame(storeLocationType);
+		return this;
+	}
 
-		public SupplierFormPage storeLocationTypeWithOutFrame(String storeLocationType) {
+	public SupplierFormPage storeLocationTypeWithOutFrame(String storeLocationType) {
 
-			click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
-			selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_locationtype_i")))),storeLocationType,"Store Location Type");
-			getDriver().findElement(By.id("ix_locationtype")).sendKeys(Keys.TAB);
-			verifyExactText(getDriver().findElement(By.id("ix_locationtype")),storeLocationType,"Location type"); 	
-			//verifyExactText(((getDriver().findElement(By.xpath("//option[text()='Ship To']")))),storeLocationType,"Location Type");
-			return this;
-		}
+		click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_locationtype_i")))),storeLocationType,"Store Location Type");
+		getDriver().findElement(By.id("ix_locationtype")).sendKeys(Keys.TAB);
+		verifyExactText(getDriver().findElement(By.id("ix_locationtype")),storeLocationType,"Location type"); 	
+		//verifyExactText(((getDriver().findElement(By.xpath("//option[text()='Ship To']")))),storeLocationType,"Location Type");
+		return this;
+	}
 
-		public SupplierFormPage storeLocationTypeBlank() {
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
-			selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_locationtype_i")))),0,"Location Type");
-			click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
-			return this;
-		}
-		public SupplierFormPage storeLocationTypeBlankWithoutFrame() {
-			click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
-			selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_locationtype_i")))),0,"Location Type");
-			click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
-			return this;
-		}
+	public SupplierFormPage storeLocationTypeBlank() {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_locationtype_i")))),0,"Location Type");
+		click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
+		return this;
+	}
+	public SupplierFormPage storeLocationTypeBlankWithoutFrame() {
+		click(getDriver().findElement(By.id("ix_locationtype")),"Location Type");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_locationtype_i")))),0,"Location Type");
+		click(getDriver().findElement(By.id("ix_locationtype")),"Locaton Type");
+		return this;
+	}
 
-		public SupplierFormPage typeStreet1(String street1) {
-			scrollUp(((getDriver().findElement(By.id("address1_line1")))));
-			click(getDriver().findElement(By.id("address1_line1")),"Street");
-			type((getDriver().findElement(By.id("address1_line1_i"))), street1,"Street");
-			return this;
-		}
+	public SupplierFormPage typeStreet1(String street1) {
+		scrollUp(((getDriver().findElement(By.id("address1_line1")))));
+		click(getDriver().findElement(By.id("address1_line1")),"Street");
+		type((getDriver().findElement(By.id("address1_line1_i"))), street1,"Street");
+		return this;
+	}
 
-		public SupplierFormPage typeZipCode(String zipCode) {
-			click(getDriver().findElement(By.id("address1_postalcode")),"Zip Code");
-			type((getDriver().findElement(By.id("address1_postalcode_i"))), zipCode,"Zip Code");
-			return this;
-
-		}
-
-		public SupplierFormPage updateStreet1(String street1) {
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("address1_line1")),"Street1");
-			clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1,"Street1");
-			return this;
-		}
-
-		public SupplierFormPage updateStreet1Random(String street1) {
-			Random random = new Random();
-			char randomizedCharacter = (char) (random.nextInt(26) + 'a');
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("address1_line1")),"Street1");
-			clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1+randomizedCharacter,"Street1");
-			return this;
-		}
-
-
-
-
-
-		public SupplierFormPage updateZipCode(String zipCode) {
-			click(getDriver().findElement(By.id("address1_postalcode")),"Zip code");
-			clearAndType((getDriver().findElement(By.id("address1_postalcode_i"))), zipCode,"Zip code");
-			return this;
-		}
-
-		public SupplierFormPage recordStatusPublished(String recordStatusPublished) throws InterruptedException {
-			Thread.sleep(3000);
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			scrollUp(getDriver().findElement(By.id("ix_recordstatus")));
-			//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-			//click(getDriver().findElement(By.id("ix_recordstatus_i")),"Record Status");
-			selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
-			Thread.sleep(2000);
-			return this;
-		}
-
-		public SupplierFormPage recordStatusPublishedWithoutFrame(String recordStatusPublished) throws InterruptedException {
-			Thread.sleep(3000);
-			scrollUp(getDriver().findElement(By.xpath("//*[@title='Record Status-Account Record Status.']")));
-			//	click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-			selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
-			Thread.sleep(2000);
-			return this;
-		}
-
-		public SupplierFormPage verifyRecordStatus() throws InterruptedException {
-			Thread.sleep(3000);
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			scrollUp(((getDriver().findElement(By.id("ix_recordstatus")))));
-			String rs=getTextValue(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-			verifyExactText((getDriver().findElement(By.id("ix_recordstatus"))),rs,"Record Status");
-			return this;
-		}
-
-		public SupplierFormPage recordStatusDraft() throws InterruptedException {
-			Thread.sleep(3000);
-			//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
-			selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),0,"Record Status");
-			Thread.sleep(2000);
-			return this;
-		}
-		public SupplierFormPage recordStatusPublished() throws InterruptedException {
-			Thread.sleep(3000);
-			//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
-			selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),1,"Record Status");
-			Thread.sleep(2000);
-			return this;
-		}
-
-		public SupplierFormPage recordStatusLock(String recordStatusPublished) throws InterruptedException {
-			Thread.sleep(3000);
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));	
-			scrollUp((getDriver().findElement(By.id("ix_recordstatus"))));
-			getAttribute(getDriver().findElement(By.id("ix_recordstatus_lock")), "id","Record Status Lock");
-			return this;
-		}
-
-		public SupplierFormPage existingRecordStatusDraftToPublished(String recordStatusPublished) throws InterruptedException {
-			click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-			getTextValue(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
-			selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
-			Thread.sleep(2000);
-			return this;
-		}
-
-		//Account name 2
-		public SupplierFormPage typeAccountName2(String AccountName2) {
-			click(getDriver().findElement(By.id("ix_hiscirostername")),"AccountName2");
-			type(((getDriver().findElement(By.id("ix_hiscirostername_i")))),AccountName2,"Account name2");
-			return this;
-		}
-		public SupplierFormPage verifyCAMSFlag(String VerifyCAMSFlag) {
-			verifyExactText(getDriver().findElement(By.id("ix_camsflag")),VerifyCAMSFlag,"CAMS Flag"); 
-			return this;
-		}
-
-
-		public SupplierFormPage selectOwnership(String Ownership){
-			click(getDriver().findElement(By.id("ix_ownership")),Ownership);
-			selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_ownership_i']")))),Ownership,"Ownership");
-			verifyExactText(getDriver().findElement(By.id("ix_ownership")),Ownership,"Ownership"); 
-			return this;
-		}
-
-		public SupplierFormPage typeStockSymbol(String StockSymbol) {
-			click(getDriver().findElement(By.id("ix_stocksymbol_d")),"Stock Symbol");
-			type(getDriver().findElement(By.id("ix_stocksymbol_i")),StockSymbol, "Stock Symbol");
-			return this;
-		}
-
-		public SupplierFormPage typeExchange(String Exchange) {
-			click(getDriver().findElement(By.id("ix_exchange")),Exchange);
-			type(getDriver().findElement(By.id("ix_exchange_i")),Exchange, "Exchange");
-			return this;
-		}
-
-		public SupplierFormPage typeOverrideName(String OverrideName) {
-			click(getDriver().findElement(By.id("address1_name")),"OverrideName");
-			type(getDriver().findElement(By.id("address1_name_i")),OverrideName, "OverrideName");
-			return this;
-		}
-
-		public SupplierFormPage typeStreet2(String Street2) {
-			click(getDriver().findElement(By.id("address1_line2")),"Street2");
-			type(getDriver().findElement(By.id("address1_line2_i")),Street2, "Street2");
-			return this;
-		}
-
-		public SupplierFormPage typeDeliveryInfo(String DeliveryInfo) {
-			click(getDriver().findElement(By.id("address1_line3")),"Delivery Info");
-			type(getDriver().findElement(By.id("address1_line3_i")),DeliveryInfo, "Delivery Info");
-			return this;
-		}
-		public SupplierFormPage typeState(String State) {
-			click(getDriver().findElement(By.id("address1_stateorprovince")),"State");
-			type(getDriver().findElement(By.id("address1_stateorprovince_i")),State, "State");
-			return this;
-		}
-
-
-		public SupplierFormPage typeMainPhone(String MainPhone) {
-			click(getDriver().findElement(By.id("telephone1")),"Teephone");
-			type(getDriver().findElement(By.id("telephone1_i")),MainPhone, "Main Phone");
-			return this;
-		}
-
-
-		public SupplierFormPage typeCity(String City) {
-			click(getDriver().findElement(By.id("address1_city")),"City");
-			type(getDriver().findElement(By.id("address1_city_i")),City,"City");
-			return this;
-		}
-
-		public SupplierFormPage typeCounty(String County) {
-			click(getDriver().findElement(By.id("address1_country")),"Country");
-			type(getDriver().findElement(By.id("address1_country_i")),County,"County");
-			return this;
-		}
-
-		public SupplierFormPage typeCountry(String Country) {
-			click(getDriver().findElement(By.id("address1_county")),"County");
-			type((getDriver().findElement(By.id("address1_county_i"))),Country,"Country");
-			return this;
-		}
-
-		public SupplierFormPage typeFax(String Fax) {
-			click(getDriver().findElement(By.id("fax")),"Fax");
-			type(getDriver().findElement(By.id("fax_i")),Fax, "Fax");
-			return this;
-		}
-		public SupplierFormPage typeWebsite(String Website) {
-			click(getDriver().findElement(By.id("websiteurl")),"Website");
-			type(((getDriver().findElement(By.id("websiteurl_i")))),Website, "Website");
-			return this;
-		}
-		public SupplierFormPage verifyReceiveDirectMail(String ReceiveDirectMail) {
-			verifyExactText(getDriver().findElement(By.id("ix_receivedirectmail")),ReceiveDirectMail,"Receive Direct Mail"); 
-			return this;
-		}
-
-		public SupplierFormPage verifyDoNotVerifyAddress(String DoNotVerifyAddress) {
-			verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),DoNotVerifyAddress,"Do Not Verify Address"); 
-			return this;
-		}
-		public SupplierFormPage verifyIsTopParent(String IsTopParent) {
-			verifyExactText(getDriver().findElement(By.id("ix_istopparent")),IsTopParent,"Is Top Parent"); 
-			return this;
-		}
-		public SupplierFormPage verifyTopParent(String TopParent) {
-			verifyExactText((getDriver().findElement(By.id("parentaccountid"))),TopParent,"Top Parent");
-			return this;
-		}
-
-		public SupplierFormPage addMemberRecord(String MemberRecord) throws InterruptedException {
-			Thread.sleep(3000);
-			scrollDown(((getDriver().findElement(By.id("ix_memberrecordid")))));
-			click(getDriver().findElement(By.id("ix_memberrecordid")),"Member Record");
-			typeAndChoose(((getDriver().findElement(By.id("ix_memberrecordid_ledit")))),MemberRecord,"Member Record");
-			Thread.sleep(2000);
-			return this;
-		}
-
-		public SupplierFormPage verifyHIBCC(String VerifyHIBCC) {
-			verifyExactText(getDriver().findElement(By.id("ix_hibccsubsc")),VerifyHIBCC,"HIBCC Subsec"); 
-			return this;
-		}
-
-		public SupplierFormPage verifyNoNewProducts(String VerifyNoNewProducts) {
-			verifyExactText(getDriver().findElement(By.id("ix_nonewproducts")),VerifyNoNewProducts,"No New Products"); 
-			return this;
-		}
-
-		public SupplierFormPage Logout() {
-			switchToDefaultContent();
-			click(getDriver().findElement(By.xpath("//*[@class='navTabButtonUserInfoProfileImage']")),"User Account");
-			click(getDriver().findElement(By.id("navTabButtonUserInfoSignOutId")),"Logout Button");
-			return this;
-		}
-
-		public DashboardPage Login() {
-			getDriver().get(PreAndPost.URL);
-			return new DashboardPage();
-		}
-
-		public SupplierFormPage pageRefresh() {
-			getDriver().navigate().refresh();
-			return this;
-		}
-
-
-
-		public SupplierFormPage typeEndDateInMembership(String membershipEndDate) throws InterruptedException {
-			switchToDefaultContent();
-			Thread.sleep(2000);
-			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-			click(getDriver().findElement(By.id("ix_enddate")),"End Date");
-			type(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),membershipEndDate,"End Date");
-			return this;
-		}
-
-
-
+	public SupplierFormPage typeZipCode(String zipCode) {
+		click(getDriver().findElement(By.id("address1_postalcode")),"Zip Code");
+		type((getDriver().findElement(By.id("address1_postalcode_i"))), zipCode,"Zip Code");
+		return this;
 
 	}
+
+	public SupplierFormPage updateStreet1(String street1) {
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("address1_line1")),"Street1");
+		clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1,"Street1");
+		return this;
+	}
+
+	public SupplierFormPage updateStreet1Random(String street1) {
+		Random random = new Random();
+		char randomizedCharacter = (char) (random.nextInt(26) + 'a');
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("address1_line1")),"Street1");
+		clearAndType((getDriver().findElement(By.id("address1_line1_i"))), street1+randomizedCharacter,"Street1");
+		return this;
+	}
+
+
+
+
+
+	public SupplierFormPage updateZipCode(String zipCode) {
+		click(getDriver().findElement(By.id("address1_postalcode")),"Zip code");
+		clearAndType((getDriver().findElement(By.id("address1_postalcode_i"))), zipCode,"Zip code");
+		return this;
+	}
+
+	public SupplierFormPage recordStatusPublished(String recordStatusPublished) throws InterruptedException {
+		Thread.sleep(3000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		scrollUp(getDriver().findElement(By.id("ix_recordstatus")));
+		//click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		//click(getDriver().findElement(By.id("ix_recordstatus_i")),"Record Status");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+
+	public SupplierFormPage recordStatusPublishedWithoutFrame(String recordStatusPublished) throws InterruptedException {
+		Thread.sleep(3000);
+		scrollUp(getDriver().findElement(By.xpath("//*[@title='Record Status-Account Record Status.']")));
+		//	click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+
+	public SupplierFormPage verifyRecordStatus() throws InterruptedException {
+		Thread.sleep(3000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		scrollUp(((getDriver().findElement(By.id("ix_recordstatus")))));
+		String rs=getTextValue(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		verifyExactText((getDriver().findElement(By.id("ix_recordstatus"))),rs,"Record Status");
+		return this;
+	}
+
+	public SupplierFormPage recordStatusDraft() throws InterruptedException {
+		Thread.sleep(3000);
+		//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),0,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+	public SupplierFormPage recordStatusPublished() throws InterruptedException {
+		Thread.sleep(3000);
+		//switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_recordstatus_d")),"Record Status");
+		selectDropDownUsingIndex(((getDriver().findElement(By.id("ix_recordstatus_i")))),1,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+
+	public SupplierFormPage recordStatusLock(String recordStatusPublished) throws InterruptedException {
+		Thread.sleep(3000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));	
+		scrollUp((getDriver().findElement(By.id("ix_recordstatus"))));
+		getAttribute(getDriver().findElement(By.id("ix_recordstatus_lock")), "id","Record Status Lock");
+		return this;
+	}
+
+	public SupplierFormPage existingRecordStatusDraftToPublished(String recordStatusPublished) throws InterruptedException {
+		click(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		getTextValue(getDriver().findElement(By.id("ix_recordstatus")),"Record Status");
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_recordstatus_i")))),recordStatusPublished,"Record Status");
+		Thread.sleep(2000);
+		return this;
+	}
+
+	//Account name 2
+	public SupplierFormPage typeAccountName2(String AccountName2) {
+		click(getDriver().findElement(By.id("ix_hiscirostername")),"AccountName2");
+		type(((getDriver().findElement(By.id("ix_hiscirostername_i")))),AccountName2,"Account name2");
+		return this;
+	}
+	public SupplierFormPage verifyCAMSFlag(String VerifyCAMSFlag) {
+		verifyExactText(getDriver().findElement(By.id("ix_camsflag")),VerifyCAMSFlag,"CAMS Flag"); 
+		return this;
+	}
+
+
+	public SupplierFormPage selectOwnership(String Ownership){
+		click(getDriver().findElement(By.id("ix_ownership")),Ownership);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.xpath("//*[@id='ix_ownership_i']")))),Ownership,"Ownership");
+		verifyExactText(getDriver().findElement(By.id("ix_ownership")),Ownership,"Ownership"); 
+		return this;
+	}
+
+	public SupplierFormPage typeStockSymbol(String StockSymbol) {
+		click(getDriver().findElement(By.id("ix_stocksymbol_d")),"Stock Symbol");
+		type(getDriver().findElement(By.id("ix_stocksymbol_i")),StockSymbol, "Stock Symbol");
+		return this;
+	}
+
+	public SupplierFormPage typeExchange(String Exchange) {
+		click(getDriver().findElement(By.id("ix_exchange")),Exchange);
+		type(getDriver().findElement(By.id("ix_exchange_i")),Exchange, "Exchange");
+		return this;
+	}
+
+	public SupplierFormPage typeOverrideName(String OverrideName) {
+		click(getDriver().findElement(By.id("address1_name")),"OverrideName");
+		type(getDriver().findElement(By.id("address1_name_i")),OverrideName, "OverrideName");
+		return this;
+	}
+
+	public SupplierFormPage typeStreet2(String Street2) {
+		click(getDriver().findElement(By.id("address1_line2")),"Street2");
+		type(getDriver().findElement(By.id("address1_line2_i")),Street2, "Street2");
+		return this;
+	}
+
+	public SupplierFormPage typeDeliveryInfo(String DeliveryInfo) {
+		click(getDriver().findElement(By.id("address1_line3")),"Delivery Info");
+		type(getDriver().findElement(By.id("address1_line3_i")),DeliveryInfo, "Delivery Info");
+		return this;
+	}
+	public SupplierFormPage typeState(String State) {
+		click(getDriver().findElement(By.id("address1_stateorprovince")),"State");
+		type(getDriver().findElement(By.id("address1_stateorprovince_i")),State, "State");
+		return this;
+	}
+
+
+	public SupplierFormPage typeMainPhone(String MainPhone) {
+		click(getDriver().findElement(By.id("telephone1")),"Teephone");
+		type(getDriver().findElement(By.id("telephone1_i")),MainPhone, "Main Phone");
+		return this;
+	}
+
+
+	public SupplierFormPage typeCity(String City) {
+		click(getDriver().findElement(By.id("address1_city")),"City");
+		type(getDriver().findElement(By.id("address1_city_i")),City,"City");
+		return this;
+	}
+
+	public SupplierFormPage typeCounty(String County) {
+		click(getDriver().findElement(By.id("address1_country")),"Country");
+		type(getDriver().findElement(By.id("address1_country_i")),County,"County");
+		return this;
+	}
+
+	public SupplierFormPage typeCountry(String Country) {
+		click(getDriver().findElement(By.id("address1_county")),"County");
+		type((getDriver().findElement(By.id("address1_county_i"))),Country,"Country");
+		return this;
+	}
+
+	public SupplierFormPage typeFax(String Fax) {
+		click(getDriver().findElement(By.id("fax")),"Fax");
+		type(getDriver().findElement(By.id("fax_i")),Fax, "Fax");
+		return this;
+	}
+	public SupplierFormPage typeWebsite(String Website) {
+		click(getDriver().findElement(By.id("websiteurl")),"Website");
+		type(((getDriver().findElement(By.id("websiteurl_i")))),Website, "Website");
+		return this;
+	}
+	public SupplierFormPage verifyReceiveDirectMail(String ReceiveDirectMail) {
+		verifyExactText(getDriver().findElement(By.id("ix_receivedirectmail")),ReceiveDirectMail,"Receive Direct Mail"); 
+		return this;
+	}
+
+	public SupplierFormPage verifyDoNotVerifyAddress(String DoNotVerifyAddress) {
+		verifyExactText(getDriver().findElement(By.id("ix_donotverifyaddress")),DoNotVerifyAddress,"Do Not Verify Address"); 
+		return this;
+	}
+	public SupplierFormPage verifyIsTopParent(String IsTopParent) {
+		verifyExactText(getDriver().findElement(By.id("ix_istopparent")),IsTopParent,"Is Top Parent"); 
+		return this;
+	}
+	public SupplierFormPage verifyTopParent(String TopParent) {
+		verifyExactText((getDriver().findElement(By.id("parentaccountid"))),TopParent,"Top Parent");
+		return this;
+	}
+
+	public SupplierFormPage addMemberRecord(String MemberRecord) throws InterruptedException {
+		Thread.sleep(3000);
+		scrollDown(((getDriver().findElement(By.id("ix_memberrecordid")))));
+		click(getDriver().findElement(By.id("ix_memberrecordid")),"Member Record");
+		typeAndChoose(((getDriver().findElement(By.id("ix_memberrecordid_ledit")))),MemberRecord,"Member Record");
+		Thread.sleep(2000);
+		return this;
+	}
+
+	public SupplierFormPage verifyHIBCC(String VerifyHIBCC) {
+		verifyExactText(getDriver().findElement(By.id("ix_hibccsubsc")),VerifyHIBCC,"HIBCC Subsec"); 
+		return this;
+	}
+
+	public SupplierFormPage verifyNoNewProducts(String VerifyNoNewProducts) {
+		verifyExactText(getDriver().findElement(By.id("ix_nonewproducts")),VerifyNoNewProducts,"No New Products"); 
+		return this;
+	}
+
+	public SupplierFormPage Logout() {
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//*[@class='navTabButtonUserInfoProfileImage']")),"User Account");
+		click(getDriver().findElement(By.id("navTabButtonUserInfoSignOutId")),"Logout Button");
+		return this;
+	}
+
+	public DashboardPage Login() {
+		getDriver().get(PreAndPost.URL);
+		return new DashboardPage();
+	}
+
+	public SupplierFormPage pageRefresh() {
+		getDriver().navigate().refresh();
+		return this;
+	}
+
+
+
+	public SupplierFormPage typeEndDateInMembership(String membershipEndDate) throws InterruptedException {
+		switchToDefaultContent();
+		Thread.sleep(2000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("ix_enddate")),"End Date");
+		type(((getDriver().findElement(By.id("ix_enddate_iDateInput")))),membershipEndDate,"End Date");
+		return this;
+	}
+
+
+	public SupplierFormPage verifyEndResaon() throws InterruptedException {
+		switchToDefaultContent();
+		Thread.sleep(2000);
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.xpath("//span[contains(text(),'End Date')]")),"End Date");
+		verifyExactText(getDriver().findElement(By.id("End Reason_label")),"Change" , "End Reason");
+		return this;
+	}
+
+
+}
 
 
 

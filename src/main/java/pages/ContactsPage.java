@@ -46,6 +46,57 @@ public class ContactsPage extends WebDriverServiceImpl{
 		return this;
 	}
 	
+	//Click on Save
+		public ContactsPage signOut() throws InterruptedException {
+			Thread.sleep(1000);
+			switchToDefaultContent();
+			click(getDriver().findElement(By.xpath("//img[@class='navTabButtonUserInfoProfileImage']")),"User Profile");
+			Thread.sleep(1000);
+			click(getDriver().findElement(By.id("navTabButtonUserInfoSignOutId")),"Sign Out Button");
+			Thread.sleep(1000);
+			return this;	
+		}
+		
+		
+		public ContactsPage pageRefresh() {
+			getDriver().navigate().refresh();
+			return this;
+		}
+
+	public ContactsPage updatePrimaryAccount(String primaryAccount) {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		click(getDriver().findElement(By.id("parentcustomerid_cl")),"Primary Account");
+		Actions a=new Actions(getDriver());
+		a.sendKeys(Keys.BACK_SPACE).build().perform();
+		typeAndChoose(getDriver().findElement(By.id("parentcustomerid_ledit")), primaryAccount,"Primary Account");
+		return this;
+	}
+	
+	public ContactsPage updatePrimaryAccount0(String primaryAccount) {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.id("parentcustomerid_cl")),"Primary Account");
+		Actions a=new Actions(getDriver());
+		a.sendKeys(Keys.BACK_SPACE).build().perform();
+		typeAndChoose(getDriver().findElement(By.id("parentcustomerid_ledit")), primaryAccount,"Primary Account");
+		return this;
+	}
+	
+	public ContactsPage verifyPrimaryAccount(String primaryAccountName) {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		verifyExactText(getDriver().findElement(By.id("parentcustomerid_lookupValue")), primaryAccountName, "primary Account Name");
+		return this;
+	}
+	
+	public ContactsPage verifyPrimaryAccount0(String primaryAccountName) {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		verifyExactText(getDriver().findElement(By.id("parentcustomerid_lookupValue")), primaryAccountName, "primary Account Name");
+		return this;
+	}
+	
 	public ContactsPage AddMemberPrimaryContactFromLookUp(String PrimaryContactLookUp) throws InterruptedException {
 	//	scrollDown(getDriver().findElement(By.id("department_cl_span")));
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
@@ -441,14 +492,22 @@ public class ContactsPage extends WebDriverServiceImpl{
 		return this;
 	}
 	
-	public ContactsPage pageRefresh() throws InterruptedException {
-		getDriver().navigate().refresh();
-		Thread.sleep(5000);		
-		return this;
-	}
+	
 	public ContactsPage chooseActiveContact(String CrmNumber1) throws InterruptedException   {
 	    switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));	
+		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),CrmNumber1,"Find Criteria");
+		Actions a = new Actions(getDriver());
+	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr/td[4]/nobr"))).
+	      doubleClick().
+	      build().perform();	      
+		Thread.sleep(6000);
+		return this;
+	}
+	
+	public ContactsPage chooseActiveContact1(String CrmNumber1) throws InterruptedException   {
+	    switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));	
 		click(getDriver().findElement(By.id("crmGrid_findCriteria")),"Find Criteria");		typeAndEnter(getDriver().findElement(By.id("crmGrid_findCriteria")),CrmNumber1,"Find Criteria");
 		Actions a = new Actions(getDriver());
 	      a.moveToElement(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr/td[4]/nobr"))).
