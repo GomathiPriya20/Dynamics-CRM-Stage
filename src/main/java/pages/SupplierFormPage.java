@@ -199,7 +199,7 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 	}
 
 	public SupplierFormPage selectDiversityInformationEntity() throws InterruptedException {
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		switchToDefaultContent();
 		click(getDriver().findElement(By.id("TabNode_tab0Tab")),"Tab Node");
 		Thread.sleep(3000);

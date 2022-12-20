@@ -17,7 +17,7 @@ public class TestCase_43702 {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
-		.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "username", sDataSheetName))
+		.typeUsername(DataInputProvider.getCellData_ColName(iRowNumber, "UserName", sDataSheetName))
 		.typePassword(DataInputProvider.getCellData_ColName(iRowNumber, "password", sDataSheetName))  
 		.clickSignIn()
 

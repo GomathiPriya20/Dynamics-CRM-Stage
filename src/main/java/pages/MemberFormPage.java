@@ -1008,6 +1008,15 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		verifyExactText(getDriver().findElement(By.id("ix_topparentrelationship")),TopParentRelation,"Top Parent Relation"); 
 		return this;
 	}
+	public MemberFormPage selectTopParentRelationInFrame0(String TopParentRelation) throws InterruptedException {
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
+		click(getDriver().findElement(By.id("ix_topparentrelationship")),"Top Parent Relation");
+		Thread.sleep(1000);
+		selectDropDownUsingVisibleText(((getDriver().findElement(By.id("ix_topparentrelationship_i")))),TopParentRelation,"Top Parent Relation");
+		verifyExactText(getDriver().findElement(By.id("ix_topparentrelationship")),TopParentRelation,"Top Parent Relation"); 
+		return this;
+	}
 
 	public MemberFormPage chooseMemberForm() throws InterruptedException {
 		switchToDefaultContent();
@@ -2524,6 +2533,7 @@ public MemberFormPage clearLOBEndDate()  {
 
 	public MemberFormPage clickAddNewPremierMembershipWithFrame1() throws InterruptedException {
 		switchToDefaultContent();
+		Thread.sleep(3000);
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
 		//scrollDown(((getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")))));
 		click(getDriver().findElement(By.id("MembershipSubGrid_addImageButtonImage")),"Add");
@@ -2841,11 +2851,11 @@ return this;
 
 	public MemberFormPage chooseMemberFormInSubAccount() {
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(5000);
 			switchToWindow(1);
 			switchToFrame(getDriver().findElement(By.id("contentIFrame0")));
 			click(getDriver().findElement(By.xpath("(//span[@class='ms-crm-FormSelector'])[1]")),"Form Selector");
-			Thread.sleep(1000);
+			Thread.sleep(3000);
 			clickwithout(getDriver().findElement(By.xpath("//*[@id=\"Dialog_0\"]/div/ul/li/a[2]/span/nobr/span")),"Member Form");
 			Thread.sleep(10000);
 		} catch (InterruptedException e) {
@@ -2954,8 +2964,10 @@ return this;
 
 	public MemberFormPage deactivateMembership1() throws InterruptedException {
 		switchToDefaultContent();
+		Thread.sleep(2000);
 		click(getDriver().findElement(By.xpath("//span[@command=\"ix_membership|NoRelationship|Form|Mscrm.Form.Deactivate\"]")),"Deactivate Button");
-		
+		clickConfirmDeactivate();
+		Thread.sleep(3000);
 		return this;
 	}
 	

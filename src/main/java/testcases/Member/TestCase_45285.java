@@ -55,6 +55,7 @@ public class TestCase_45285 {
 		  .typeTPReason("Test")
 		  .chooseRecordStatusPublishedWithFrame1("Published") 
 		  .clickSave()
+		  .clickSaveinDuplicatePopup()
 		  .verifyPartialdescriptionMessage("This account has sub accounts that will be changed as well.") 
 		  .ClickOkInErrorMessage() 
 		  .clickSaveinDuplicatePopup()
