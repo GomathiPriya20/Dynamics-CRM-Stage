@@ -1398,8 +1398,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	
 	
-	//***************************************************************************************************************************************	
-
+	
+	//**********************************************************************************************************
 		public MemberFormPage verifyLOBClassificationType(String LineOfBusinessGeneralGPO) throws InterruptedException   {
 			List<WebElement> LOBClassification=getDriver().findElements(By.xpath("//*[@colname='ix_lineofbusiness']"));
 			
@@ -1417,7 +1417,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("NavBarGloablQuickCreate")));
 		click(getDriver().findElement(By.id("ix_portfolio")),"Line of Bussiness");
-		selectDropDownUsingVisibleText(getDriver().findElement(By.xpath("//*[@id=\"ix_portfolio_i\"]")),LineOfBusiness,"LOB");
+		selectDropDownUsingVisibleText(getDriver().findElement(By.xpath("//*[@id='ix_portfolio_i']")),LineOfBusiness,"LOB");
 		verifyExactText(getDriver().findElement(By.xpath("//*[@id='ix_portfolio']")),LineOfBusiness,"LOB");
 		return this;
 	}
@@ -2215,7 +2215,28 @@ public MemberFormPage clearLOBEndDate()  {
 		return this;
 	}
 
-
+	public MemberFormPage verifyAnyMembership(String MembershipProvider) throws InterruptedException {	
+		switchToDefaultContent();
+		List<WebElement> entitycode= getDriver().findElements(By.id("contentIFrame1"));
+		if(entitycode.size()>0) {
+			switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
+		}
+		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_membership_AccountNameFrame")));
+		List<WebElement> rowList = getDriver().findElements(By.xpath("//*[@id='crmGrid_ix_account_ix_membership_AccountName_divDataArea']//td[3]//span"));
+		System.out.println("# of Rows Including Header:"+ rowList.size());
+		for (int i = 2; i <=rowList.size(); i++) {
+			String membershipProvider = getDriver().findElement(By.xpath("(//*[@id='crmGrid_ix_account_ix_membership_AccountName_divDataArea']//table//td[3]//span//span)["+i+"]")).getText();
+			System.out.println(membershipProvider);					
+			if (membershipProvider.equals(MembershipProvider)) {
+				Thread.sleep(5000);
+				verifyExactText(getDriver().findElement(By.xpath("(//*[@id='crmGrid_ix_account_ix_membership_AccountName_divDataArea']//table//td[3]//span//span)["+i+"]")), MembershipProvider, "Membership Provider");
+				Thread.sleep(3000);
+				break;				
+			}
+		}
+	
+		return this;
+	}
 
 	public MemberFormPage doubleClickOnTopParentInMembershipLocationType() throws InterruptedException {	
 		Thread.sleep(3000);

@@ -169,7 +169,7 @@ public class TestCase_7137 {
 
 		//16  Go to > and click on Membership entity and double click on the Top parent membership entity
 		.selectMembershipEntity()
-		.doubleClickOnNationalMembership()
+		.doubleClickOnNationalMembership();
 
 		//		//17 Click on > and go to Audit history 
 		//		.selectTPAuditHistory()
@@ -180,6 +180,6 @@ public class TestCase_7137 {
 		//		//19 Verify the time-stamp on which the flag gets updated 
 		//		.verifyTimeStampInTPMembershipAuditHistory()
 
-		;
+		
 	}
 }

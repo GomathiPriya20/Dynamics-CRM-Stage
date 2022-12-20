@@ -519,9 +519,9 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 			System.out.println(bReturn);
 			System.out.println(expectedText); 
 			if(bReturn.equalsIgnoreCase(expectedText)) {
-				setReport().log(Status.PASS, "The text :"+bReturn+" matches with the value "+expectedText+ "in "+field+" field",screenshotCapture());
+				setReport().log(Status.PASS, "The text :"+bReturn+" matches with the value "+expectedText+ " in "+field+" field",screenshotCapture());
 			}else {
-				setReport().log(Status.FAIL, "The text :"+bReturn+" did not match with the value in "+expectedText+ "in "+field+" field",screenshotCapture());
+				setReport().log(Status.FAIL, "The text :"+bReturn+" did not match with the value in "+expectedText+ " in "+field+" field",screenshotCapture());
 				Driver.failCount++;
 			}
 		} catch (WebDriverException e) {
