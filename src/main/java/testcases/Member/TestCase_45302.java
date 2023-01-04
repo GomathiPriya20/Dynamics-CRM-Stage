@@ -30,7 +30,7 @@ public class TestCase_45302 {
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.selectTopParentRelationDate("11/23/2020")
 		.clickSave()
 		.verifyTopRelationReasonMandatroy()

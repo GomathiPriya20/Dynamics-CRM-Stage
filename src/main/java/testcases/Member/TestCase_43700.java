@@ -27,7 +27,7 @@ public class TestCase_43700 {
 		.chooseMemberFormwithFrame1()
 		.typeAccountName("Test")
 		.clickSave()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.verifyParticipationType()
 		;
 		
@@ -38,7 +38,7 @@ public class TestCase_43700 {
 		.chooseMemberEntryFormWithFrame1()
 		.typeAccountName("Test")
 		.clickSave()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.verifyParticipationType()
 		;
 		
@@ -47,7 +47,7 @@ public class TestCase_43700 {
 		.selectAccounts()
 		.searchOnAccountsPageNew(DataInputProvider.getCellData_ColName(iRowNumber, "CrmNumber", sDataSheetName))
 		.selectAccountFromSearchResults()
-		.navigateToExcludeFromRoaster0()
+		.navigateToExcludeFromRoster0()
 		.verifyParticipationType()
 		
 		;

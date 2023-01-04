@@ -1,15 +1,17 @@
 package testcases.Member;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.MemberFormPage;
 import utils.DataInputProvider;
 
-//TFS ID_109492:Verify Conductiv membership provider is available for Premier Membership
+//TFS ID_109496:TFS ID_Verify the Membership Vs LOB logic is applied for Conductiv membership
 
-public class TestCase_109492 {
+public class TestCase_109496 {
 
 
 	@Test
-	public void verifyConductivMembership(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void verifyConductiveMembershipLOBLogic(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
@@ -26,19 +28,8 @@ public class TestCase_109492 {
 		//4. Street 1 = Any
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
 
-		//City = NY
-		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-
-		//Country =USA
-		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-
-		//Country = USA
-		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
-
-		//.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName)
-
-		//Click on Save 
-		//.clickSave() 
+		// Type ZipCode	
+		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
 
 
 		//3. Account  Type = Member
@@ -47,7 +38,7 @@ public class TestCase_109492 {
 		//Account name = Any
 		.typeAccountName(DataInputProvider.getCellData_ColName(iRowNumber, "AccountName", sDataSheetName))
 
-		//Premier Start date = Today's Date
+		//Premier Start date 
 		//	.pickPremierStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "PremierStartDate", sDataSheetName))
 
 		//Class of Trade =Any
@@ -59,25 +50,25 @@ public class TestCase_109492 {
 		//Account Status = Auto Populated to Active
 		.defaultAccountStatus()	
 
-		//Application Start Date = Today's Date
+		//Application Start Date 
 		.chooseApplicationDate(DataInputProvider.getCellData_ColName(iRowNumber, "ApplicationDate", sDataSheetName))
 
 		//Participation Type = Standard
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))
 
-		//Direct Parent Entity Code = 673415
+		//Direct Parent 
 		.selectDirectParent(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParent", sDataSheetName))
 
-		//Direct Parent Relation = Managed
+		//Direct Parent Relation 
 		.selectDirectParentRelationManaged(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelation", sDataSheetName)) 
 
-		//Direct Parent Relation date = Today's Date
+		//Direct Parent Relation date 
 		.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
 
-		//Top Parent Relation =  OLM
+		//Top Parent Relation 
 		.selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 
-		//Top Parent Relation Date = Today's Date
+		//Top Parent Relation Date
 		.selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
 
 		// Click on Save 
@@ -98,74 +89,80 @@ public class TestCase_109492 {
 		.selectMembershipProviderStartDateInAddNewMembershipProvider(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProviderStartDate", sDataSheetName))
 		.clickAddNewMembershipProviderSave()
 		//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-		//5.  Click the + icon on the Line of Business Grid
+		// Click the + icon on the Line of Business Grid
 		.clickLineOfBusinessWithFrame1()
 
-		// Line of Business =General GPO
+		// Line of Business 1
 		.selectLineOfBusiness(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
 
-		// Classification Type = General GPO
+		// Classification Type
 		.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
 
-		// Start Date =Today's date
+		// Start Date
 		.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate", sDataSheetName))
 
 		// Click on LOB Save 
 		.clickLineOfBusinessSave()
 
+
 		//Click on Save 
 		.clickSave() 
 
-		//6. Record Status = Published
+		//Record Status = Published
 		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
 
 		//Click on Save 
 		.clickSave() 
+		
+		//verify LOB- Membership Error message
+		.verifyErrorTitle(DataInputProvider.getCellData_ColName(iRowNumber, "ErrorMessage", sDataSheetName))
+		.ClickOkInErrorMessage()
+		
+		//Move record to draft
+		.chooseRecordStatusDraftWithFrame1()
+		
+		//Click on Save 
+		.clickSave() 
+		
+		//Deactivate Incorrect LOB
+		.navigateToLoBEntity()
+		.decativateAllLOBs()
+		.clickConfirmDeactivate()
+		.addNewLOB()
+		//  Add the  Line of Business corresponding to Membership
+		.selectLineOfBusiness(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO1", sDataSheetName))
 
-		//7. Verify Entity code is generated 
+		// Classification Type
+		.selectLineOfClassificationGeneralGPO(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO1", sDataSheetName))
+
+		// Start Date
+		.selectLineOfBusinessStartDate(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessStartDate1", sDataSheetName))
+
+		// Click on LOB Save 
+		.clickLineOfBusinessSave()
+		
+		//Go to Main Member Form
+		.returnToMemberForm()
+		
+		//Publish the record
+		.chooseRecordStatusPublishedWithFrame1(DataInputProvider.getCellData_ColName(iRowNumber, "RecordStatusPublished", sDataSheetName))
+		.clickSave()
+
+		//Verify Entity code is generated 
 		.entityCodeIsDisplayedWithFrame1()
 		.crmNumberIsDisplayed()
 
 		//Verify Premier start date is auto populated
 		.verifyPremierStartDateIsAutoPopulated()
 
-		.verifyAffiliateGroupIsNotNull()
-		.verifyAgEffectiveDateIsNotNull()
+		//Verify LOB and Classification Type
+		.navigateToLoBEntity()
+		.verifyAnyLoB(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO1", sDataSheetName), DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO1", sDataSheetName))
 
-		//8. Verify "IS Corporate account" field
-		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
-
-
-		//9. Verify Corporate parent name in the form
-		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//10. Verify "Is Food Service parent" field 
-		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
-
-		//11 Verify Food Service parent name in the form 
-		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
-
-		//12 Verify Sponsor field 
-		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
-
-		//13 Verify "Is Sponsor" field 
-		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
-
-		//FBO details verification
-		//Verify "Is FBO" field 
-		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
-
-		//FBO
-		//.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFBO", sDataSheetName))
-
-		//FBORD
-		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-
-
-		//15  Go to > and click on Membership entity and double click on the Top parent membership entity
+		//Verify Memberships created
 		.selectMembershipEntity()
-		.verifyAnyMembership(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName));
+		.verifyAnyMembership(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
 
-
+		;
 	}
 }

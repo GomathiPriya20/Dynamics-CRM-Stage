@@ -781,7 +781,13 @@ public class SupplierFormPage extends WebDriverServiceImpl{
 		return this;
 	}
 
-
+	public SupplierFormPage verifyErrorMessage(String ErrorMessage) throws InterruptedException {
+		Thread.sleep(3000);
+		switchToDefaultContent();
+		switchToFrame(getDriver().findElement(By.id("InlineDialog_Iframe")));
+		verifyExactText(getDriver().findElement(By.id("ErrorMessage")),ErrorMessage,"Error Message"); 
+		return this;
+	}
 	public SupplierFormPage verifyEndResaon() throws InterruptedException {
 		switchToDefaultContent();
 		Thread.sleep(2000);

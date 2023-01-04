@@ -62,7 +62,7 @@ public class TestCase_1111 {
 		.verifyCAMSFlag(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCAMSFlag", sDataSheetName))
 		
 		//14.Exclude From Roaster
-		.verifyExcludeFromRoaster(DataInputProvider.getCellData_ColName(iRowNumber, "ExcludeFromRoaster", sDataSheetName))
+		.verifyExcludeFromRoster(DataInputProvider.getCellData_ColName(iRowNumber, "ExcludeFromRoster", sDataSheetName))
 		
 		//15. Participation Type = Standard
 		.selectParticipationType(DataInputProvider.getCellData_ColName(iRowNumber, "ParticipationType", sDataSheetName))

@@ -27,8 +27,8 @@ public class TestCase_44716 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
 		.selectAccountFromSearchResults()
-		.navigateToExcludeFromRoaster()
-		.verifyExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
+		.verifyExcludeFromRoster()
 		;
 		
 		new DashboardPage()
@@ -38,7 +38,7 @@ public class TestCase_44716 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
 		.selectAccountFromSearchResults()
-		.navigateToExcludeFromRoaster0()
+		.navigateToExcludeFromRoster0()
 		.verifyExcludeFromRoaster0()
 		;
 		
@@ -49,7 +49,7 @@ public class TestCase_44716 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
 		.selectAccountFromSearchResults()
-		.navigateToExcludeFromRoaster0()
+		.navigateToExcludeFromRoster0()
 		.verifyExcludeFromRoaster0()
 		;
 		
@@ -60,7 +60,7 @@ public class TestCase_44716 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking > on the top 
 		.selectAccountFromSearchResults()
-		.navigateToExcludeFromRoaster0()
+		.navigateToExcludeFromRoster0()
 		.verifyExcludeFromRoaster0()
 		;
 

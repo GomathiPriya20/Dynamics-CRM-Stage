@@ -31,7 +31,7 @@ public class TestCase_45282 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking >on the top 
 		.selectAccountFromSearchResults() 
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.clearTopParentDate()
 		.clickSave()
 		.verifyTPRDErrorisnotDisplayed()
@@ -57,7 +57,7 @@ public class TestCase_45282 {
 
 		//3.Double click on the account and go to Sub accounts entity by clicking >on the top 
 		.selectAccountFromSearchResults() 
-		.navigateToExcludeFromRoaster0()
+		.navigateToExcludeFromRoster0()
 		.clearTopParentDate()
 		.clickSave()
 		.verifyTPRDErrorisnotDisplayed0()

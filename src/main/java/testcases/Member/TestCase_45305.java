@@ -224,7 +224,7 @@ public class TestCase_45305 {
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.chooseApplicationDate("9/11/2023")
 		.navigateToRecordStatus()
 		.chooseRecordStatusPublished("Published")
@@ -235,7 +235,7 @@ public class TestCase_45305 {
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.chooseApplicationDate("3/4/2021")
 		.clickSave()
 		
@@ -251,7 +251,7 @@ public class TestCase_45305 {
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.selectTopParentRelationDate("3/4/2021")
 		.clickSave()
 		
@@ -270,7 +270,7 @@ public class TestCase_45305 {
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
-		.navigateToExcludeFromRoaster()
+		.navigateToExcludeFromRoster()
 		.selectDirectParentRelationDate("9/11/2020")
 		.clickSave()
 		

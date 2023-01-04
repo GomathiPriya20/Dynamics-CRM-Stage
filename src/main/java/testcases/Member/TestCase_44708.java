@@ -140,7 +140,7 @@ public class TestCase_44708 {
 		//Click on Save 
 		.clickSave() 
 
-		.navigateToLOB()
+		.navigateToLoBEntity()
 		.verifyLOBDisplayed("Food Services")
 
 
@@ -266,7 +266,7 @@ public class TestCase_44708 {
 		//Click on Save 
 		.clickSave() 
 
-		.navigateToLOB()
+		.navigateToLoBEntity()
 		.verifyLOBDeactivated("Food Services")
 ;
 	}

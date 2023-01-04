@@ -183,7 +183,7 @@ public class TestCase_44709 {
 				//9. Verify Entity code is generated 
 				.entityCodeIsDisplayedWithFrame1()
 				
-				.navigateToLOB()
+				.navigateToLoBEntity()
 				.selectLob(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO1", sDataSheetName))
 				.enterLOBEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
 				//Click on Save 
@@ -204,13 +204,13 @@ public class TestCase_44709 {
 				//Click on Save 
 				.clickSave() 
 				
-				.navigateToLOB()
+				.navigateToLoBEntity()
 				.selectLob(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO1", sDataSheetName))
 				.enterLOBEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
 				//Click on Save 
 				.clickLOBSave()
 				.navigateToGeneralTabFromLOB()
-				.navigateToLOB()
+				.navigateToLoBEntity()
 				.selectLob(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName))
 				.deactivateLOB()
 				.clickConfirmDeactivate()

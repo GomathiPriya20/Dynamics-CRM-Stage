@@ -34,6 +34,14 @@ public class DashboardPage extends WebDriverServiceImpl {
 		return new AccountsPage();
 		}
 	
+	public AccountsPage selectAccountsTab() throws InterruptedException {	
+		Thread.sleep(5000);
+		switchToDefaultContent();
+		click(getDriver().findElement(By.xpath("//span[text()='Accounts']")),"Accounts");
+		Thread.sleep(3000);
+		return new AccountsPage();
+		}
+	
 	
 	public DashboardPage selectWorkplace() throws InterruptedException {	
 		click(getDriver().findElement(By.xpath("//span[@class='navActionButtonIcon']")),"Accounts");

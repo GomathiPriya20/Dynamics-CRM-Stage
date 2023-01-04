@@ -1,15 +1,17 @@
 package testcases.Member;
+import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
+import pages.MemberFormPage;
 import utils.DataInputProvider;
 
-//TFS ID_109492:Verify Conductiv membership provider is available for Premier Membership
+//TFS ID_109495:Verify the Line Of business and Classification Type for Conductiv contracts
 
-public class TestCase_109492 {
+public class TestCase_109495 {
 
 
 	@Test
-	public void verifyConductivMembership(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
+	public void verifyConductiveLOBandClassifcation(int iRowNumber, String sDataSheetName) throws Exception, InterruptedException  {
 
 		//1. Login to CRM using member supervisor / member credentials 
 		new LoginPage()
@@ -26,19 +28,8 @@ public class TestCase_109492 {
 		//4. Street 1 = Any
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
 
-		//City = NY
-		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-
-		//Country =USA
-		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-
-		//Country = USA
-		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
-
-		//.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName)
-
-		//Click on Save 
-		//.clickSave() 
+		// Type ZipCode	
+		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
 
 
 		//3. Account  Type = Member
@@ -129,43 +120,17 @@ public class TestCase_109492 {
 		//Verify Premier start date is auto populated
 		.verifyPremierStartDateIsAutoPopulated()
 
-		.verifyAffiliateGroupIsNotNull()
-		.verifyAgEffectiveDateIsNotNull()
+		
+		//Verify LOB and Classification Type
+		.navigateToLoBEntity()
+		.verifyAnyLoB(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfBusinessGeneralGPO", sDataSheetName), DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
 
-		//8. Verify "IS Corporate account" field
-		.verifyIsCorporateAccount(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsCorporateAccount", sDataSheetName))
-
-
-		//9. Verify Corporate parent name in the form
-		.verifyCorporateParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
-
-		//10. Verify "Is Food Service parent" field 
-		.verifyIsFoodServiceParent(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsFoodServiceParent", sDataSheetName))
-
-		//11 Verify Food Service parent name in the form 
-		.VerifyFoodServiceParentName(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFoodServiceParentName", sDataSheetName))
-
-		//12 Verify Sponsor field 
-		.verifySponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifySponsor", sDataSheetName))
-
-		//13 Verify "Is Sponsor" field 
-		.verifyIsSponsor(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyIsSponsor", sDataSheetName))
-
-		//FBO details verification
-		//Verify "Is FBO" field 
-		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
-
-		//FBO
-		//.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyFBO", sDataSheetName))
-
-		//FBORD
-		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))
-
-
-		//15  Go to > and click on Membership entity and double click on the Top parent membership entity
+		//Verify Memberships created
 		.selectMembershipEntity()
-		.verifyAnyMembership(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName));
+		.verifyAnyMembership(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipProvider", sDataSheetName))
+		
+		
 
-
+		;
 	}
 }

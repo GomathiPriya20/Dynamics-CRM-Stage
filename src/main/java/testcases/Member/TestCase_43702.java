@@ -182,7 +182,7 @@ public class TestCase_43702 {
 		// then save
 		.clickMembershipSaveAndClose()
 
-		.navigateToLOB()
+		.navigateToLoBEntity()
 		.verifyLOBEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
 		
 		//Go to membership and Open the Premier National membership ***** Premier National membership should be opened 
@@ -190,7 +190,7 @@ public class TestCase_43702 {
 		.singlClickOnNationalMembership()
 		.deactivateMembership1()
 		.clickLookupValue()
-		.navigateToLOB()
+		.navigateToLoBEntity()
 		.verifyLOBDeactivated(DataInputProvider.getCellData_ColName(iRowNumber, "LineOfClassificationGeneralGPO", sDataSheetName))
 		
 		;
