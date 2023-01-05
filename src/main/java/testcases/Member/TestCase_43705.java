@@ -47,7 +47,7 @@ public class TestCase_43705 {
 		.typeTPReason("Test")
 		.chooseRecordStatusPublishedWithFrame1("Published")
 		.clickSave()
-		.verifyENorrorMessage()
+		.verifyNoErrorMessage()
 		
 		.chooseRecordStatusPublishedWithFrame1("Draft")
 		.clickSave()
@@ -67,7 +67,7 @@ public class TestCase_43705 {
 		.typeTPReason("Test")
 		.chooseRecordStatusPublishedWithFrame1("Published")
 		.clickSave()
-		.verifyENorrorMessage()
+		.verifyNoErrorMessage()
 
 
 		;

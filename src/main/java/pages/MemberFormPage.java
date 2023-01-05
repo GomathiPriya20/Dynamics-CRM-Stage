@@ -371,7 +371,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 
-	public MemberFormPage verifyENorrorMessage() throws InterruptedException {
+	public MemberFormPage verifyNoErrorMessage() throws InterruptedException {
 		Thread.sleep(3000);
 		switchToDefaultContent();
 		verifyElementIsNotPresent((getDriver().findElements(By.id("InlineDialog_Iframe"))).size(), "Error message");
@@ -1418,9 +1418,9 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 	//*************************************************************************************************************************
 	public MemberFormPage clickLineOfBusiness() throws InterruptedException   {
-		Thread.sleep(2000);
+		Thread.sleep(3000);
 		click(getDriver().findElement(By.xpath("//*[@id='LineOfBusinessSubGrid_addImageButtonImage']")),"Line Of Business");
-		Thread.sleep(6000);
+		Thread.sleep(4000);
 		return this;
 	}
 

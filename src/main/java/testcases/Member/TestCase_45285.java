@@ -60,7 +60,7 @@ public class TestCase_45285 {
 		  .ClickOkInErrorMessage() 
 		  .clickSaveinDuplicatePopup()
 		  .clickSave()
-		  .verifyENorrorMessage() 
+		  .verifyNoErrorMessage() 
 		  ;
 		  new DashboardPage()
 		  
@@ -228,7 +228,7 @@ public class TestCase_45285 {
 		.typeTPReason("Test")
 		.chooseRecordStatusPublishedWithFrame1("Published")
 		.clickSave()
-		.verifyENorrorMessage()
+		.verifyNoErrorMessage()
 		;
 	}
 }

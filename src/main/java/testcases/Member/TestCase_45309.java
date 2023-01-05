@@ -148,7 +148,7 @@ public class TestCase_45309 {
 
 		//Click on Save 
 		.clickSave() 
-		.verifyENorrorMessage()
+		.verifyNoErrorMessage()
 		;
 	}
 

@@ -189,7 +189,7 @@ public class TestCase_7150 {
 		.verifyIsFBO(DataInputProvider.getCellData_ColName(iRowNumber, "isFBO", sDataSheetName))
 		
 		//FBO
-		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyCorporateParentName", sDataSheetName))
+		.VerifyFBO(DataInputProvider.getCellData_ColName(iRowNumber, "VerifyTopParent", sDataSheetName))
 				
 		//FBORD
 		.VerifyFBORD(DataInputProvider.getCellData_ColName(iRowNumber, "verifyFBORD", sDataSheetName))

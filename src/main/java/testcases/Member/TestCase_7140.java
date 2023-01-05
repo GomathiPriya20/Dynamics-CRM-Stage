@@ -65,11 +65,13 @@ public class TestCase_7140 {
 			//Direct Parent Relation date = Today's Date
 			.selectDirectParentRelationDate(DataInputProvider.getCellData_ColName(iRowNumber, "DirectParentRelationDate", sDataSheetName))
 			
+			// Top Parent Relation Date = Today's Date
+			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
+			
 			//Top Parent Relation =  OLM
 			 .selectTopParentRelation(DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelation", sDataSheetName))
 			
-			// Top Parent Relation Date = Today's Date
-			 .selectTopParentRelationDate( DataInputProvider.getCellData_ColName(iRowNumber, "TopParentRelationDate", sDataSheetName))
+		
 			 
 			//Click on Save 
 			// .clickSave() 

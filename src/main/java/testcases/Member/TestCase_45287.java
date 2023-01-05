@@ -63,7 +63,7 @@ public class TestCase_45287 {
 		
 		.chooseRecordStatusPublishedWithFrame1WithoutVerification("Published")
 		.clickSave()
-		.verifyENorrorMessage()
+		.verifyNoErrorMessage()
 		
 		.selectMembershipEntity()
 		.navigateToGeneralTab()

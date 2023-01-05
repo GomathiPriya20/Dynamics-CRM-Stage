@@ -3,9 +3,9 @@ import org.testng.annotations.Test;
 import pages.LoginPage;
 import utils.DataInputProvider;
 
-////TFS ID_628984:Verify user should NOT be able to change the record status from Active to terminated manually
+//TFS ID:628984:Verify user should NOT be able to change the record status from Active to terminated manually
 
-public class TestCase_628976 {
+public class TestCase_628984 {
 
 
 	@Test
@@ -27,13 +27,13 @@ public class TestCase_628976 {
 
 		.choosecontentFrame1()
 		
-		//Verify Premier End Date is populated
-		.verifyPremierEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
+//		//Verify Premier End Date is populated
+//		.verifyPremierEndDate(DataInputProvider.getCellData_ColName(iRowNumber, "MembershipEndDate", sDataSheetName))
 
-		//Verify  Account Status is Terminated
+		//Verify  Account Status is Active
 		.verifyAccountStatus(DataInputProvider.getCellData_ColName(iRowNumber, "AccountStatus", sDataSheetName))
 		
-		//Choose Account Status as Active
+		//Choose Account Status as Terminated
 		.selectAccountStatus(DataInputProvider.getCellData_ColName(iRowNumber, "AccountStatus1", sDataSheetName))
 		
 		//Click save
