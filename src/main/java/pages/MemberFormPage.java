@@ -425,8 +425,8 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage clickSave() throws InterruptedException {
 		switchToDefaultContent();
 		click(getDriver().findElement(By.id("account|NoRelationship|Form|Mscrm.Form.account.Save")),"Save");
-		Thread.sleep(10000);
-		Thread.sleep(10000);
+		Thread.sleep(5000);
+		Thread.sleep(7000);
 		return this;	
 	}
 
@@ -985,11 +985,11 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 	//~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	public MemberFormPage updateDPwithoutScrolldonw(String DirectParent) throws InterruptedException {
-		Thread.sleep(10000);
+	public MemberFormPage updateDPwithoutScrolldown(String DirectParent) throws InterruptedException {
+		Thread.sleep(7000);
 		System.out.println(DirectParent);
 		click(getDriver().findElement(By.id("parentaccountid")),"Direct Parent");
-		Thread.sleep(10000);
+		Thread.sleep(6000);
 		typeAndChoose(((getDriver().findElement(By.id("parentaccountid_ledit")))),DirectParent,"Direct Parent");
 		return this;
 	}
@@ -1138,14 +1138,16 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	}
 
 
-	public MemberFormPage verifyTopRelationReasonMandatroy() {
+	public MemberFormPage verifyTopRelationReasonMandatory() throws InterruptedException {
+		Thread.sleep(3000);
 		switchToFrame1();
-		verifElementIsPresent(getDriver().findElements(By.xpath("//div[contains(@aria-label,'TP Exception Reason')]//div[@class='ms-crm-Inline-Edit ms-crm-Inline-HasError']")).size(), "TP Exception Reason mandatory");		return this;
+		verifElementIsPresent(getDriver().findElements(By.xpath("//div[contains(@aria-label,'TP Exception Reason')]//div[@class='ms-crm-Inline-Edit ms-crm-Inline-HasError']")).size(), "TP Exception Reason mandatory");		
+		return this;
 
 	}
 
 
-	public MemberFormPage verifyTopRelationReasonMandatroyisNotDisplayed() {
+	public MemberFormPage verifyTopRelationReasonMandatoryisNotDisplayed() {
 		switchToFrame1();
 		verifyElementIsNotPresent(getDriver().findElements(By.xpath("//div[contains(@aria-label,'TP Exception Reason')]//div[@class='ms-crm-Inline-Edit ms-crm-Inline-HasError']")).size(), "TP Exception Reason mandatory");
 		return this;
@@ -1497,7 +1499,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 	public MemberFormPage chooseRecordStatusPublishedWithFrame1(String RecordStatusPublished) throws InterruptedException {
 		switchToDefaultContent();
 		switchToFrame(getDriver().findElement(By.id("contentIFrame1")));
-
+		Thread.sleep(3000);
 		chooseRecordStatusPublished(RecordStatusPublished);
 		return this;
 	}
@@ -2052,7 +2054,7 @@ public class MemberFormPage extends WebDriverServiceImpl {
 		}
 		//switchToFrameMemberIndex(2);
 		switchToFrame(getDriver().findElement(By.id("area_ix_account_ix_portfoliocategory_AccountFrame")));
-		verifyExactText(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[3]/td[6]/div")),endDate, CRMNumber);
+		verifyExactText(getDriver().findElement(By.xpath("//*[@id='gridBodyTable']/tbody/tr[3]/td[6]/div")),endDate, "LOB End Date");
 		return this;
 	}
 

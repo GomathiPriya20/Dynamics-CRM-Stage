@@ -105,7 +105,7 @@ public class TestCase_44708 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.navigateToisStoreLocation()
-		.chooseApplicationDate("11/20/2018")
+		.chooseApplicationDate("11/20/2005")
 		.selectParticipationType("Pharmacy")
 		//Store/Location type = Blank
 		.chooseLocationType("")	
@@ -231,7 +231,7 @@ public class TestCase_44708 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.navigateToisStoreLocation()
-		.chooseApplicationDate("11/20/2018")
+		.chooseApplicationDate("11/20/2005")
 		.selectParticipationType("Cellular Services Only")
 		//Store/Location type = Blank
 		.chooseLocationType("")	

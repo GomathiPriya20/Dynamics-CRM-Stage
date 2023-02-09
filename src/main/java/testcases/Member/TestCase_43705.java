@@ -35,7 +35,7 @@ public class TestCase_43705 {
 		.navigateToGeneralTab()
 		.clickSave()
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("635436")
+		.updateDPwithoutScrolldown("635436")
 
 		.typeDPReason("Test")
 		.clickSave()
@@ -55,7 +55,7 @@ public class TestCase_43705 {
 		.navigateToGeneralTab()
 		.clickSave()
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("AR0006")
+		.updateDPwithoutScrolldown("AR0006")
 
 		.typeDPReason("Test")
 		.clickSave()

@@ -103,7 +103,7 @@ public class TestCase_44710 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.navigateToisStoreLocation()
-		.chooseApplicationDate("11/20/2018")
+		.chooseApplicationDate("11/20/2005")
 		.selectParticipationType("Pharmacy")
 		//Store/Location type = Blank
 		.chooseLocationType("")	

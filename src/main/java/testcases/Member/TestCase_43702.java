@@ -81,17 +81,21 @@ public class TestCase_43702 {
 		//6. Street 1 = Any
 		.typeStreet1(DataInputProvider.getCellData_ColName(iRowNumber, "Street1", sDataSheetName))
 
-		//City = NY
-		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
-
-		//Country =USA
-		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
-
+//		//City = NY
+//		.typeCity(DataInputProvider.getCellData_ColName(iRowNumber, "City", sDataSheetName))
+//
+//		//Country =USA
+//		.typeCountry(DataInputProvider.getCellData_ColName(iRowNumber, "Country", sDataSheetName))
+//
+//		//
+//		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+//		
 		//
-		.typeCounty(DataInputProvider.getCellData_ColName(iRowNumber, "County", sDataSheetName))
+		.typeZipCode(DataInputProvider.getCellData_ColName(iRowNumber, "ZipCode", sDataSheetName))
 
-		//Click on Save 
-		// .clickSave() 
+		//Click on Save  -01/23/2023 fix
+		 .clickSave() 		 
+		 .choosecontentFrame1()
 
 		//7.  Click the + icon on the Line of Business Grid
 		.clickLineOfBusiness()

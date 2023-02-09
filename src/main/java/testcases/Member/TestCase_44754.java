@@ -34,7 +34,7 @@ public class TestCase_44754 {
 		.getAccountName()
 		.typeAccountName("Update")
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("635436")
+		.updateDPwithoutScrolldown("635436")
 
 		.typeDPReason("Test")
 		.clickSave() 
@@ -53,7 +53,7 @@ public class TestCase_44754 {
 		.typeAccountName(WebDriverServiceImpl.accountName)
 		.clickSave()
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("743059")
+		.updateDPwithoutScrolldown("743059")
 
 		.typeDPReason("Test")
 		.clickSave()
@@ -178,7 +178,7 @@ public class TestCase_44754 {
 		.getAccountName()
 		.typeAccountName("Update")
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("635436")
+		.updateDPwithoutScrolldown("635436")
 
 		.typeDPReason("Test")
 		.clickSave()

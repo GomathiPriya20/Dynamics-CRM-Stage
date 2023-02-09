@@ -33,11 +33,11 @@ public class TestCase_45302 {
 		.navigateToExcludeFromRoster()
 		.selectTopParentRelationDate("11/23/2020")
 		.clickSave()
-		.verifyTopRelationReasonMandatroy()
+		.verifyTopRelationReasonMandatory()
 		.switchToFrame1()
 		.typeTPReason("Test")
 		.clickSave()
-		.verifyTopRelationReasonMandatroyisNotDisplayed()
+		.verifyTopRelationReasonMandatoryisNotDisplayed()
 		.clickSave()
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
@@ -47,7 +47,7 @@ public class TestCase_45302 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("635436")
+		.updateDPwithoutScrolldown("635436")
 		.typeDPReason("Test")
 		.clickSave()
 
@@ -62,13 +62,15 @@ public class TestCase_45302 {
 		.selectMembershipEntity()
 		.navigateToGeneralTab()
 		.clearDirectParent1()
-		.updateDPwithoutScrolldonw("743059")
+		.updateDPwithoutScrolldown("743059")
 		.typeDPReason("Test")
 		.clickSave()
 
 		//6.	//Top Parent Relation =  OLM
 		.selectTopParentRelationWithoutClick("Affiliate")
 		.selectTopParentRelationDate("11/23/2021")
+		
+		
 		.typeTPReason("Test")
 		.clickSave()
 		
