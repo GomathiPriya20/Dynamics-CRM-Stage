@@ -1,12 +1,9 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
 import pages.DashboardPage;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import services.WebDriverServiceImpl;
 import utils.DataInputProvider;
 //TFS ID_11228: Cloud: Verify "This account is in Draft status." info text is displayed when there is a DP change and Record status is in draft

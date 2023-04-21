@@ -1,11 +1,8 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //TFS ID_ 44713:Verify a member record can be created and published by a Member - Positive case
 

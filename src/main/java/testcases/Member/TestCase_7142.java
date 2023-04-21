@@ -1,8 +1,6 @@
 package testcases.Member;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 
 //TFS ID_7142: Create new member - New Member entry form and Save it as member first

@@ -1,7 +1,6 @@
 package testcases.Member;
 import org.testng.annotations.Test;
 
-import pages.DashboardPage;
 import pages.LoginPage;
 
 import utils.DataInputProvider;

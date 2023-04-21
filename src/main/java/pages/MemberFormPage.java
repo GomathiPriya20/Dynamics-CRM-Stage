@@ -1,13 +1,8 @@
 package pages;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.Random;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -17,8 +12,6 @@ import org.w3c.dom.NodeList;
 
 import static org.testng.Assert.assertNotNull;
 
-//Test Case 7312:Add and update Primary contact to a Member account
-import java.awt.AWTException;
 import java.io.File;
 
 import org.junit.Assert;

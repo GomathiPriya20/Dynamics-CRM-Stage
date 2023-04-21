@@ -1,12 +1,9 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
 import pages.DashboardPage;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //Test case 45332: Verify whether "Cater" is available in the "Participation Type" Field in Member Form and Member Entry Form.
 

@@ -1,16 +1,10 @@
 package pages;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-
 import services.WebDriverServiceImpl;
 
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
 
 public class AccountsPage extends WebDriverServiceImpl {
 	

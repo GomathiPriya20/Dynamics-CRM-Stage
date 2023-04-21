@@ -1,12 +1,8 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
-import pages.DashboardPage;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //TFS ID_45283:Verify User should be able to override "CP and FSP" values and user should not allow to choose "Supplier" as CP or FSP.
 

@@ -1,8 +1,6 @@
 package testcases.Member;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 
 //TFS ID_33106:Verify Whether "Exclude from Roster" field is defaulted to 'No' for Member Form.

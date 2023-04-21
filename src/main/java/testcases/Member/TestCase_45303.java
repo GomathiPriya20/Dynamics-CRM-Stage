@@ -2,7 +2,6 @@ package testcases.Member;
 
 import org.testng.annotations.Test;
 
-import pages.DashboardPage;
 import pages.LoginPage;
 import utils.DataInputProvider;
 //TFS ID_45303:Verify Global search results to include Location type when searching with Account EIN numbers

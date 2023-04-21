@@ -1,12 +1,8 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
-import pages.DashboardPage;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //TFS ID_45286:Verify the TP relation is showing in UI when creating a new member
 

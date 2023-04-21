@@ -1,7 +1,6 @@
 package testcases.Supplier;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.NewAccountPage;
 import utils.DataInputProvider;
 
 //TFS ID_44008:Test Case 8771 :Supplier Form - DP & TP Search Look up should have only Supplier Accounts

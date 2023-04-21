@@ -1,9 +1,7 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 
 //Test Case 7151:Create new Bill to account - New Member form and Save it as prospect first

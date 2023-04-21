@@ -2,7 +2,6 @@ package testcases.Member;
 
 import org.testng.annotations.Test;
 
-import pages.DashboardPage;
 import pages.LoginPage;
 import utils.DataInputProvider;
 //TFS ID_45300: Verify whether "LOB Classification Type", is getting filtered based on corresponding LOB is selected.

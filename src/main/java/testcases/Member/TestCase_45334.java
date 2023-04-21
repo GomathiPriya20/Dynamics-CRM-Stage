@@ -1,12 +1,9 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
 import pages.DashboardPage;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //Test case 45334:Verify whether "Provider Select: MD" Field is available in Member and Member Entry Forms. 
 

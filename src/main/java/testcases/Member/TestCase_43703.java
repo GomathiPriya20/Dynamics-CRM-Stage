@@ -1,11 +1,8 @@
 package testcases.Member;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 
-import driver.Driver;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 //TFS ID_43703 Test case 11227: Cloud: Verify "This account is in Draft status." info text is displayed when Account is Terminated and Record status is in draft
 

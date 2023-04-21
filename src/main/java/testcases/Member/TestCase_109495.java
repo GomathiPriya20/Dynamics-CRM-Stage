@@ -1,8 +1,6 @@
 package testcases.Member;
-import org.openqa.selenium.By;
 import org.testng.annotations.Test;
 import pages.LoginPage;
-import pages.MemberFormPage;
 import utils.DataInputProvider;
 
 //TFS ID_109495:Verify the Line Of business and Classification Type for Conductiv contracts

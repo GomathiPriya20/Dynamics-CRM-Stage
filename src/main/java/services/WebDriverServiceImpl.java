@@ -1,19 +1,13 @@
 package services;
 
 import events.WebDriverEvents;
-import pages.MemberFormPage;
-
-import static org.testng.Assert.fail;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Base64;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import org.apache.commons.io.FileUtils;
-import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidElementStateException;
@@ -172,7 +166,6 @@ public class WebDriverServiceImpl extends WebDriverEvents implements WebDriverSe
 
 
 			ele.sendKeys(data);
-			String sExpectedValue= ele.getAttribute("value");
 			setReport().log(Status.PASS, "The data: "+data+" was entered in  : "+fieldName, screenshotCapture());
 
 		} catch (InvalidElementStateException e) {
